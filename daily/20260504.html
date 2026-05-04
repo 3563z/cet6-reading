@@ -14,460 +14,250 @@
     line-height: 1.8;
   }
   .container { max-width: 520px; margin: 0 auto; }
-
-  /* Header */
-  .header {
-    text-align: center;
-    padding: 24px 0 16px;
-  }
-  .header h1 {
-    font-size: 22px;
-    font-weight: 700;
-    color: #1a1a2e;
-  }
-  .header .date {
-    font-size: 14px;
-    color: #888;
-    margin-top: 4px;
-  }
-  .header .badge {
-    display: inline-block;
-    background: #e8f0fe;
-    color: #1a73e8;
-    font-size: 12px;
-    padding: 2px 10px;
-    border-radius: 12px;
-    margin-top: 8px;
-  }
-
-  /* Passage Card */
-  .passage {
-    background: #fff;
-    border-radius: 16px;
-    padding: 20px;
-    margin: 16px 0;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  }
-  .passage .tag {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 8px;
-    margin-bottom: 12px;
-  }
+  .header { text-align: center; padding: 24px 0 16px; }
+  .header h1 { font-size: 22px; font-weight: 700; color: #1a1a2e; }
+  .header .date { font-size: 14px; color: #888; margin-top: 4px; }
+  .header .badge { display: inline-block; background: #e8f0fe; color: #1a73e8; font-size: 12px; padding: 2px 10px; border-radius: 12px; margin-top: 8px; }
+  .passage { background: #fff; border-radius: 16px; padding: 20px; margin: 16px 0; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .passage .tag { display: inline-block; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 8px; margin-bottom: 12px; }
   .tag-tech { background: #e3f2fd; color: #1565c0; }
   .tag-human { background: #fce4ec; color: #c62828; }
-  
-  .passage h2 {
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 1.5;
-    margin-bottom: 12px;
-    color: #1a1a2e;
-  }
-  .passage .text {
-    font-size: 15px;
-    line-height: 1.9;
-    color: #333;
-    text-align: justify;
-    margin-bottom: 16px;
-  }
-  .passage .text p { margin-bottom: 12px; }
-
-  /* Highlighted vocab */
-  .vocab {
-    display: inline;
-    color: #1a73e8;
-    font-weight: 600;
-    border-bottom: 2px solid #1a73e8;
-    cursor: help;
-  }
-
-  /* Vocabulary Box */
-  .vocab-box {
-    background: #f0f4ff;
-    border-radius: 10px;
-    padding: 12px 14px;
-    margin-bottom: 16px;
-    font-size: 13px;
-  }
+  .passage h2 { font-size: 18px; font-weight: 600; line-height: 1.5; margin-bottom: 12px; color: #1a1a2e; }
+  .passage .text { font-size: 15px; line-height: 1.9; color: #333; text-align: justify; margin-bottom: 16px; }
+  .passage .text p { margin-bottom: 12px; text-indent: 2em; }
+  .vocab { display: inline; color: #1a73e8; font-weight: 600; border-bottom: 2px solid #1a73e8; cursor: help; }
+  .vocab-box { background: #f0f4ff; border-radius: 10px; padding: 12px 14px; margin-bottom: 16px; font-size: 13px; }
   .vocab-box strong { color: #1a73e8; }
   .vocab-box .word { display: inline-block; margin-right: 12px; }
-
-  /* Questions */
   .question { margin-bottom: 18px; }
-  .question .q-num {
-    font-weight: 700;
-    font-size: 14px;
-    color: #1a73e8;
-    margin-bottom: 6px;
-  }
-  .question .q-text {
-    font-size: 14.5px;
-    color: #333;
-    margin-bottom: 8px;
-  }
+  .question .q-num { font-weight: 700; font-size: 14px; color: #1a73e8; margin-bottom: 6px; }
+  .question .q-text { font-size: 14.5px; color: #333; margin-bottom: 8px; }
   .question .options { padding-left: 4px; }
-  .question .option {
-    display: block;
-    font-size: 14px;
-    padding: 8px 10px;
-    margin: 4px 0;
-    border-radius: 8px;
-    background: #f8f9fa;
-    border: 1.5px solid transparent;
-    transition: all 0.15s;
-    cursor: pointer;
-  }
+  .question .option { display: block; font-size: 14px; padding: 8px 10px; margin: 4px 0; border-radius: 8px; background: #f8f9fa; border: 1.5px solid transparent; transition: all 0.15s; cursor: pointer; }
   .question .option:hover { background: #e8f0fe; }
-  .question .option.correct {
-    background: #e6f4ea;
-    border-color: #34a853;
-    color: #1e7e34;
-  }
-  .question .option.wrong {
-    background: #fce8e6;
-    border-color: #ea4335;
-    color: #c5221f;
-  }
-  .question .option.reveal-correct {
-    background: #e6f4ea;
-    border-color: #34a853;
-    color: #1e7e34;
-  }
-
-  /* Answers section */
-  .answer-section {
-    margin-top: 8px;
-    display: none;
-  }
+  .question .option.correct { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
+  .question .option.wrong { background: #fce8e6; border-color: #ea4335; color: #c5221f; }
+  .question .option.reveal-correct { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
+  .answer-section { margin-top: 8px; display: none; }
   .answer-section.show { display: block; }
-  .answer-section .answer-key {
-    font-size: 13px;
-    color: #34a853;
-    font-weight: 600;
-    padding: 8px 10px;
-    background: #e6f4ea;
-    border-radius: 8px;
-  }
-  .answer-section .explanation {
-    font-size: 13px;
-    color: #666;
-    margin-top: 6px;
-    padding: 8px 10px;
-    background: #f8f9fa;
-    border-radius: 8px;
-  }
-
-  /* Buttons */
-  .btn-group {
-    display: flex;
-    gap: 10px;
-    margin: 20px 0;
-  }
-  .btn {
-    flex: 1;
-    padding: 14px;
-    border: none;
-    border-radius: 12px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-align: center;
-  }
-  .btn-primary {
-    background: #1a73e8;
-    color: #fff;
-  }
+  .answer-section .answer-key { font-size: 13px; color: #34a853; font-weight: 600; padding: 8px 10px; background: #e6f4ea; border-radius: 8px; }
+  .answer-section .explanation { font-size: 13px; color: #666; margin-top: 6px; padding: 8px 10px; background: #f8f9fa; border-radius: 8px; }
+  .btn-group { display: flex; gap: 10px; margin: 20px 0; }
+  .btn { flex: 1; padding: 14px; border: none; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center; }
+  .btn-primary { background: #1a73e8; color: #fff; }
   .btn-primary:active { background: #1557b0; }
-  .btn-secondary {
-    background: #e8eaed;
-    color: #444;
-  }
+  .btn-secondary { background: #e8eaed; color: #444; }
   .btn-secondary:active { background: #d2d4d8; }
-
-  /* Progress */
-  .progress-bar {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin: 16px 0;
-  }
-  .progress-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: #ddd;
-  }
-  .progress-dot.done { background: #1a73e8; }
-  .progress-dot.wrong-dot { background: #ea4335; }
+  .progress-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #ddd; margin: 0 4px; }
   .progress-dot.correct-dot { background: #34a853; }
-
-  /* Footer */
-  .footer {
-    text-align: center;
-    padding: 24px 0 32px;
-    font-size: 12px;
-    color: #aaa;
-  }
+  .progress-dot.wrong-dot { background: #ea4335; }
+  .footer { text-align: center; padding: 24px 0 32px; font-size: 12px; color: #aaa; }
 </style>
 </head>
 <body>
 <div class="container">
 
-  <!-- Header -->
-  <div class="header">
-    <h1>📖 每日六级阅读</h1>
-    <div class="date">2026 年 5 月 4 日 · 星期一</div>
-    <div class="badge">🎯 CET-6 双篇训练</div>
+<div class="header">
+  <h1>📖 每日六级阅读</h1>
+  <div class="date">2026 年 5 月 4 日 · 星期一</div>
+  <div class="badge">🎯 CET-6 双篇深度训练</div>
+</div>
+
+<!-- Passage 1: Tech/Nature -->
+<div class="passage">
+  <span class="tag tag-tech">🔬 科技 · 自然</span>
+  <h2>Can Large Language Models Truly Reason? The Emerging Evidence</h2>
+
+  <div class="text">
+    <p>The rapid advancement of large language models (LLMs) such as GPT-4, Claude, and Gemini has reignited a long-standing debate in artificial intelligence: can machines genuinely <span class="vocab">reason</span>, or are they merely engaging in extraordinarily sophisticated pattern matching? This question has moved beyond philosophical circles and into the heart of mainstream AI research, with profound implications for how we deploy these systems in critical domains like medicine, law, and finance.</p>
+
+    <p>A landmark study published recently in <em>Nature</em> has provided compelling evidence that the reasoning abilities of LLMs may be far more limited than previously assumed. Researchers constructed a battery of novel reasoning tasks — logic puzzles, mathematical word problems, and causal inference exercises — that deliberately departed from patterns commonly found in the models' training data. The results were striking: when presented with unfamiliar <span class="vocab">permutations</span> of familiar problem types, model performance <span class="vocab">plummeted</span> by margins exceeding 60 percentage points in many cases. For example, a simple arithmetic word problem involving apples and oranges achieved over 90% accuracy, but when the same underlying logic was embedded in a scenario about train schedules and platform numbers, accuracy fell below 25%.</p>
+
+    <p>These findings suggest that LLMs operate primarily through what researchers call "surface-level statistical <span class="vocab">generalization</span>" — the ability to recognize and reproduce patterns from training data that bear <span class="vocab">superficial</span> resemblance to the current input, rather than through genuine abstract reasoning. The models appear to be <span class="vocab">exploiting</span> correlations in their training data rather than understanding the underlying principles. This interpretation is supported by experiments showing that LLMs can be easily "distracted" by irrelevant information added to problem statements, a phenomenon known as "sensitivity to <span class="vocab">syntax</span> over semantics."</p>
+
+    <p>Proponents of the view that LLMs do possess reasoning capabilities counter that the ability to <span class="vocab">adapt</span> to novel contexts is itself a form of intelligence, and that human reasoning similarly relies on pattern recognition to a large extent. However, the study's authors are careful to point out a crucial difference: humans, even young children, can learn abstract rules from a single example and apply them in radically different contexts — a capacity that remains <span class="vocab">conspicuously</span> absent in current AI systems. As LLMs are increasingly deployed in high-stakes decision-making roles, from diagnostic assistance in healthcare to legal document analysis, understanding the boundaries of their cognitive capabilities is not merely an academic exercise — it is a matter of urgent practical importance.</p>
   </div>
 
-  <!-- Progress -->
-  <div class="progress-bar" id="progressBar">
-    <span class="progress-dot" data-q="1"></span>
-    <span class="progress-dot" data-q="2"></span>
-    <span class="progress-dot" data-q="3"></span>
-    <span class="progress-dot" data-q="4"></span>
-    <span class="progress-dot" data-q="5"></span>
-    <span class="progress-dot" data-q="6"></span>
+  <div class="vocab-box">
+    <strong>📝 核心词汇</strong><br>
+    reason /ˈriːzn/ v. 推理<br>
+    permutation /ˌpɜːmjuˈteɪʃn/ n. 排列；变化<br>
+    plummet /ˈplʌmɪt/ v. 急剧下降<br>
+    superficial /ˌsuːpəˈfɪʃl/ adj. 表面的；肤浅的<br>
+    generalization /ˌdʒenrəlaɪˈzeɪʃn/ n. 概括；泛化<br>
+    exploit /ɪkˈsplɔɪt/ v. 利用；开发<br>
+    syntax /ˈsɪntæks/ n. 句法；语法<br>
+    conspicuously /kənˈspɪkjuəsli/ adv. 明显地<br>
+    adapt /əˈdæpt/ v. 适应；改编
   </div>
 
-  <!-- ============ PASSAGE 1 ============ -->
-  <div class="passage">
-    <span class="tag tag-tech">🔬 科技 · 自然</span>
-    <h2>Are Large Language Models Actually Reasoning?</h2>
-
-    <div class="text">
-      <p>The astonishing capabilities of large language models (LLMs) such as GPT-4 and Claude have sparked a fierce debate among researchers: do these systems genuinely <span class="vocab">reason</span>, or are they merely sophisticated pattern-matching machines? A growing body of research suggests the latter.</p>
-      <p>In a recent study published in *Nature*, researchers tested LLMs on a series of novel reasoning tasks that differed slightly from their training data. When faced with unfamiliar <span class="vocab">permutations</span> of logic puzzles, the models' performance <span class="vocab">plummeted</span> dramatically. For instance, when a simple math word problem was rephrased with different objects and numbers — but the same underlying logic — accuracy dropped from over 90% to under 30%. This suggests that LLMs are not learning abstract rules, but rather memorizing <span class="vocab">superficial</span> patterns in their training data.</p>
-      <p>Critics argue that this is still a form of reasoning, albeit a shallow one. However, the study's authors maintain that true reasoning requires the ability to <span class="vocab">generalize</span> across fundamentally different contexts — a capability that current LLMs <span class="vocab">conspicuously</span> lack. As AI systems become increasingly integrated into decision-making processes in healthcare, law, and finance, understanding the true nature of their "intelligence" becomes not just a scientific question, but a matter of practical urgency.</p>
+  <div class="question" data-q="1">
+    <div class="q-num">第 1 题</div>
+    <div class="q-text">What does the author suggest is the main limitation of large language models based on the study?</div>
+    <div class="options">
+      <div class="option" data-correct="false">A. They cannot process mathematical problems at all</div>
+      <div class="option" data-correct="true">B. They rely on surface-level pattern matching rather than abstract reasoning</div>
+      <div class="option" data-correct="false">C. They require significantly more training data than humans</div>
+      <div class="option" data-correct="false">D. They perform poorly on all logical reasoning tasks</div>
     </div>
-
-    <!-- Vocabulary -->
-    <div class="vocab-box">
-      <strong>📝 核心词汇</strong><br>
-      <span class="word">reason</span> <span style="color:#888;">/ˈriːzn/</span> v. 推理<br>
-      <span class="word">permutation</span> <span style="color:#888;">/ˌpɜːmjuˈteɪʃn/</span> n. 排列；变化<br>
-      <span class="word">plummet</span> <span style="color:#888;">/ˈplʌmɪt/</span> v. 急剧下降<br>
-      <span class="word">superficial</span> <span style="color:#888;">/ˌsuːpəˈfɪʃl/</span> adj. 表面的；肤浅的<br>
-      <span class="word">generalize</span> <span style="color:#888;">/ˈdʒenrəlaɪz/</span> v. 概括；推广<br>
-      <span class="word">conspicuously</span> <span style="color:#888;">/kənˈspɪkjuəsli/</span> adv. 明显地；引人注目地
-    </div>
-
-    <!-- Q1 -->
-    <div class="question" data-q="1">
-      <div class="q-num">第 1 题</div>
-      <div class="q-text">What is the main finding of the study published in *Nature* regarding LLMs?</div>
-      <div class="options">
-        <div class="option" data-correct="false" onclick="selectOption(this,1)">A. LLMs can reason as well as humans when given enough data</div>
-        <div class="option" data-correct="true" onclick="selectOption(this,1)">B. LLMs perform poorly on tasks that differ from their training data</div>
-        <div class="option" data-correct="false" onclick="selectOption(this,1)">C. LLMs have developed a new form of abstract reasoning</div>
-        <div class="option" data-correct="false" onclick="selectOption(this,1)">D. LLMs consistently outperform humans on logic puzzles</div>
-      </div>
-      <div class="answer-section" id="explain1">
-        <div class="answer-key">✅ 正确答案：B</div>
-        <div class="explanation">文章明确指出当任务与训练数据存在差异时，LLM 的准确率从 90% 下降到 30% 以下，说明它们并未真正掌握抽象推理能力。</div>
-      </div>
-    </div>
-
-    <!-- Q2 -->
-    <div class="question" data-q="2">
-      <div class="q-num">第 2 题</div>
-      <div class="q-text">The word "<strong>plummeted</strong>" in paragraph 2 is closest in meaning to:</div>
-      <div class="options">
-        <div class="option" data-correct="false" onclick="selectOption(this,2)">A. increased gradually</div>
-        <div class="option" data-correct="true" onclick="selectOption(this,2)">B. dropped sharply</div>
-        <div class="option" data-correct="false" onclick="selectOption(this,2)">C. remained stable</div>
-        <div class="option" data-correct="false" onclick="selectOption(this,2)">D. fluctuated unpredictably</div>
-      </div>
-      <div class="answer-section" id="explain2">
-        <div class="answer-key">✅ 正确答案：B</div>
-        <div class="explanation">"plummet" 意为"急剧下降"，文中描述模型性能在遇到陌生任务时大幅下滑，与 B 选项吻合。</div>
-      </div>
-    </div>
-
-    <!-- Q3 -->
-    <div class="question" data-q="3">
-      <div class="q-num">第 3 题</div>
-      <div class="q-text">Why does the author consider the question of LLM reasoning a "matter of practical urgency"?</div>
-      <div class="options">
-        <div class="option" data-correct="false" onclick="selectOption(this,3)">A. Because LLMs are becoming too expensive to operate</div>
-        <div class="option" data-correct="false" onclick="selectOption(this,3)">B. Because researchers are running out of funding</div>
-        <div class="option" data-correct="true" onclick="selectOption(this,3)">C. Because LLMs are being used in high-stakes fields like healthcare and law</div>
-        <div class="option" data-correct="false" onclick="selectOption(this,3)">D. Because the public has lost trust in AI technology</div>
-      </div>
-      <div class="answer-section" id="explain3">
-        <div class="answer-key">✅ 正确答案：C</div>
-        <div class="explanation">文章最后一句指出 AI 系统越来越多地应用于医疗、法律、金融等决策场景，理解其"智能"的本质因此成为紧迫实践问题。</div>
-      </div>
+    <div class="answer-section" id="explain1">
+      <div class="answer-key">✅ 正确答案：B</div>
+      <div class="explanation">文章强调 LLM 主要依赖"表面层次的统计泛化"——识别和复现训练数据中的模式，而非真正的抽象推理。准确率从 90% 骤降到 25% 以下的实验印证了这一点。</div>
     </div>
   </div>
 
-  <!-- ============ PASSAGE 2 ============ -->
-  <div class="passage">
-    <span class="tag tag-human">🌍 社会 · 人文</span>
-    <h2>The Quiet Crisis of Digital Loneliness</h2>
-
-    <div class="text">
-      <p>In an age where we are more connected than ever, loneliness has paradoxically become one of the most pressing public health issues of our time. Recent <span class="vocab">epidemiological</span> studies reveal that over one-third of adults in developed countries report feeling lonely regularly, with young adults aged 18–24 being the most affected demographic.</p>
-      <p>Social media platforms, despite their promise of fostering <span class="vocab">interpersonal</span> connections, may actually be <span class="vocab">exacerbating</span> the problem. A longitudinal study tracking 5,000 participants over five years found a strong correlation between heavy social media use and increased feelings of social isolation. The mechanism, researchers suggest, involves the <span class="vocab">displacement</span> of deep, meaningful interactions with shallow, high-volume exchanges. When people replace face-to-face conversations with scrolling and liking, the quality of social <span class="vocab">bonding</span> diminishes significantly.</p>
-      <p>The consequences extend beyond emotional well-being. Chronic loneliness has been linked to a 26% increased risk of premature death, comparable to smoking 15 cigarettes a day. Some countries have begun treating this as a public health emergency: the UK appointed a Minister for Loneliness in 2018, and Japan passed legislation in 2023 to address the issue. However, solving this crisis will require more than government action — it demands a <span class="vocab">fundamental</span> rethinking of how technology shapes human relationships.</p>
+  <div class="question" data-q="2">
+    <div class="q-num">第 2 题</div>
+    <div class="q-text">The word "<strong>plummeted</strong>" in paragraph 2 is closest in meaning to:</div>
+    <div class="options">
+      <div class="option" data-correct="false">A. increased gradually</div>
+      <div class="option" data-correct="true">B. dropped sharply</div>
+      <div class="option" data-correct="false">C. fluctuated unpredictably</div>
+      <div class="option" data-correct="false">D. remained unchanged</div>
     </div>
-
-    <!-- Vocabulary -->
-    <div class="vocab-box">
-      <strong>📝 核心词汇</strong><br>
-      <span class="word">epidemiological</span> <span style="color:#888;">/ˌepɪˌdiːmiəˈlɒdʒɪkl/</span> adj. 流行病学的<br>
-      <span class="word">interpersonal</span> <span style="color:#888;">/ˌɪntəˈpɜːsənl/</span> adj. 人际的<br>
-      <span class="word">exacerbate</span> <span style="color:#888;">/ɪɡˈzæsəbeɪt/</span> v. 加剧；恶化<br>
-      <span class="word">displacement</span> <span style="color:#888;">/dɪsˈpleɪsmənt/</span> n. 替代；移位<br>
-      <span class="word">bonding</span> <span style="color:#888;">/ˈbɒndɪŋ/</span> n. 情感纽带<br>
-      <span class="word">fundamental</span> <span style="color:#888;">/ˌfʌndəˈmentl/</span> adj. 根本的；基础的
-    </div>
-
-    <!-- Q4 -->
-    <div class="question" data-q="4">
-      <div class="q-num">第 4 题</div>
-      <div class="q-text">What does the author suggest is the main cause of increased loneliness in the digital age?</div>
-      <div class="options">
-        <div class="option" data-correct="false" onclick="selectOption(this,4)">A. People are spending too much time working</div>
-        <div class="option" data-correct="true" onclick="selectOption(this,4)">B. Social media replaces deep interactions with shallow ones</div>
-        <div class="option" data-correct="false" onclick="selectOption(this,4)">C. Governments are not doing enough to help</div>
-        <div class="option" data-correct="false" onclick="selectOption(this,4)">D. Young adults refuse to make friends in real life</div>
-      </div>
-      <div class="answer-section" id="explain4">
-        <div class="answer-key">✅ 正确答案：B</div>
-        <div class="explanation">文章指出社交媒体让人们用"浅层、高频率的交流"替代了"深层、有意义的互动"，而这种"替代效应"（displacement）是孤独感增加的核心机制。</div>
-      </div>
-    </div>
-
-    <!-- Q5 -->
-    <div class="question" data-q="5">
-      <div class="q-num">第 5 题</div>
-      <div class="q-text">The phrase "<strong>exacerbating</strong>" in paragraph 2 is closest in meaning to:</div>
-      <div class="options">
-        <div class="option" data-correct="false" onclick="selectOption(this,5)">A. solving effectively</div>
-        <div class="option" data-correct="false" onclick="selectOption(this,5)">B. ignoring completely</div>
-        <div class="option" data-correct="true" onclick="selectOption(this,5)">C. making worse</div>
-        <div class="option" data-correct="false" onclick="selectOption(this,5)">D. partially improving</div>
-      </div>
-      <div class="answer-section" id="explain5">
-        <div class="answer-key">✅ 正确答案：C</div>
-        <div class="explanation">"exacerbate" 意为"使恶化、加剧"，文中指社交媒体非但没有如承诺般促进人际连接，反而让孤独问题更加严重。</div>
-      </div>
-    </div>
-
-    <!-- Q6 -->
-    <div class="question" data-q="6">
-      <div class="q-num">第 6 题</div>
-      <div class="q-text">What can be inferred from the comparison between loneliness and smoking 15 cigarettes a day?</div>
-      <div class="options">
-        <div class="option" data-correct="false" onclick="selectOption(this,6)">A. Loneliness is as addictive as smoking</div>
-        <div class="option" data-correct="true" onclick="selectOption(this,6)">B. Loneliness poses a serious threat to physical health</div>
-        <div class="option" data-correct="false" onclick="selectOption(this,6)">C. Smoking is more dangerous than loneliness</div>
-        <div class="option" data-correct="false" onclick="selectOption(this,6)">D. Both smoking and loneliness are caused by social media</div>
-      </div>
-      <div class="answer-section" id="explain6">
-        <div class="answer-key">✅ 正确答案：B</div>
-        <div class="explanation">作者用"与每天抽 15 支烟的早逝风险相当"这一类比来强调慢性孤独对身体健康的严重危害，呼吁将其视为公共卫生问题。</div>
-      </div>
+    <div class="answer-section" id="explain2">
+      <div class="answer-key">✅ 正确答案：B</div>
+      <div class="explanation">"plummet" 意为"急剧下降"，文中描述模型性能在陌生任务中暴跌超过 60 个百分点，符合 B 选项。</div>
     </div>
   </div>
 
-  <!-- Buttons -->
-  <div class="btn-group">
-    <button class="btn btn-primary" onclick="toggleAllAnswers()">📝 显示 / 隐藏答案</button>
-    <button class="btn btn-secondary" onclick="resetAll()">🔄 重新开始</button>
-  </div>
-
-  <div class="footer">
-    每日六级阅读 · 小约 🤖 为你精选<br>
-    CET-6 Daily Reading · © 2026
+  <div class="question" data-q="3">
+    <div class="q-num">第 3 题</div>
+    <div class="q-text">What does the author imply by stating that understanding LLM limitations is "a matter of urgent practical importance"?</div>
+    <div class="options">
+      <div class="option" data-correct="false">A. LLM research is running out of funding</div>
+      <div class="option" data-correct="true">B. LLMs are being deployed in critical fields like healthcare and law</div>
+      <div class="option" data-correct="false">C. Competitors are developing better AI systems</div>
+      <div class="option" data-correct="false">D. The public has lost trust in AI technology</div>
+    </div>
+    <div class="answer-section" id="explain3">
+      <div class="answer-key">✅ 正确答案：B</div>
+      <div class="explanation">文章最后指出 LLM 正被广泛应用于医疗诊断、法律文书分析等高风险决策场景，因此理解其能力边界不仅是学术问题，更是实践中的紧迫课题。</div>
+    </div>
   </div>
 </div>
 
+<!-- Passage 2: Society/Humanities -->
+<div class="passage">
+  <span class="tag tag-human">🌍 社会 · 人文</span>
+  <h2>The Paradox of Connection: Why Digital Loneliness Has Become a Public Health Crisis</h2>
+
+  <div class="text">
+    <p>In an era when we have at our fingertips unprecedented tools for communication and social connection, a startling paradox has emerged: loneliness is on the rise, reaching what many public health experts now describe as <span class="vocab">epidemic</span> proportions. Recent <span class="vocab">epidemiological</span> surveys conducted across multiple developed nations indicate that more than one-third of adults report experiencing loneliness on a regular basis, with the highest rates concentrated among young adults aged 18 to 24 — the very demographic that has grown up immersed in digital social platforms.</p>
+
+    <p>The relationship between social media usage and loneliness is complex and, in many ways, counterintuitive. Social media platforms were founded on the promise of fostering <span class="vocab">interpersonal</span> connections across geographical and social boundaries, yet a growing body of longitudinal research suggests that they may actually be <span class="vocab">exacerbating</span> the very problem they aimed to solve. A landmark five-year study tracking 5,000 participants found a robust and consistent correlation between heavy social media use and increased feelings of social isolation, even after controlling for baseline levels of social connectedness and personality traits. The researchers proposed a mechanism they call "social <span class="vocab">displacement</span>": the phenomenon whereby time spent on shallow, high-volume digital interactions — scrolling, liking, sharing — progressively replaces the deep, meaningful face-to-face conversations that are essential for genuine human <span class="vocab">bonding</span>.</p>
+
+    <p>The implications of widespread loneliness extend far beyond emotional discomfort. Chronic loneliness has been identified as a significant risk factor for a range of serious health conditions. A comprehensive meta-analysis published in <em>Perspectives on Psychological Science</em> found that loneliness increases the risk of premature death by 26%, an effect size comparable to smoking 15 cigarettes per day or consuming six alcoholic drinks daily. Moreover, loneliness has been linked to elevated rates of cardiovascular disease, weakened immune function, accelerated cognitive decline in older adults, and increased susceptibility to depression and anxiety disorders. These findings have prompted some governments to treat loneliness as a public health <span class="vocab">priority</span>: the United Kingdom appointed a Minister for Loneliness in 2018, and Japan passed comprehensive legislation in 2023 aimed at addressing social isolation at the community level.</p>
+
+    <p>Addressing this crisis, however, will require more than government-led initiatives. Scholars argue that we need a <span class="vocab">fundamental</span> rethinking of how technology shapes human relationships. Some propose redesigning social platforms to <span class="vocab">prioritize</span> quality of interaction over quantity of engagement — for instance, by encouraging longer-form conversations and discouraging passive content consumption. Others advocate for digital literacy education that helps people recognize the difference between online connectivity and genuine social connection. Ultimately, solving the paradox of digital loneliness may require not only technological innovation but also a cultural shift in how we value and cultivate meaningful human relationships in an increasingly digital world.</p>
+  </div>
+
+  <div class="vocab-box">
+    <strong>📝 核心词汇</strong><br>
+    epidemic /ˌepɪˈdemɪk/ n./adj. 流行病；流行性的<br>
+    epidemiological /ˌepɪˌdiːmiəˈlɒdʒɪkl/ adj. 流行病学的<br>
+    interpersonal /ˌɪntəˈpɜːsənl/ adj. 人际的<br>
+    exacerbate /ɪɡˈzæsəbeɪt/ v. 使恶化；加剧<br>
+    displacement /dɪsˈpleɪsmənt/ n. 替代；取代<br>
+    bonding /ˈbɒndɪŋ/ n. 情感纽带<br>
+    priority /praɪˈɒrəti/ n. 优先事项<br>
+    fundamental /ˌfʌndəˈmentl/ adj. 根本的；基础的<br>
+    prioritize /praɪˈɒrətaɪz/ v. 优先处理
+  </div>
+
+  <div class="question" data-q="4">
+    <div class="q-num">第 4 题</div>
+    <div class="q-text">What is the "social displacement" mechanism proposed by the researchers?</div>
+    <div class="options">
+      <div class="option" data-correct="false">A. People spend less time on social media than before</div>
+      <div class="option" data-correct="true">B. Shallow digital interactions replace deep face-to-face conversations</div>
+      <div class="option" data-correct="false">C. Young people refuse to engage in any form of social contact</div>
+      <div class="option" data-correct="false">D. Social media companies deliberately reduce user interaction</div>
+    </div>
+    <div class="answer-section" id="explain4">
+      <div class="answer-key">✅ 正确答案：B</div>
+      <div class="explanation">"social displacement" 指的是浅层数字互动（刷屏、点赞、转发）逐渐替代了深层面对面对话，这是社交媒体加剧孤独感的核心机制。</div>
+    </div>
+  </div>
+
+  <div class="question" data-q="5">
+    <div class="q-num">第 5 题</div>
+    <div class="q-text">The word "<strong>exacerbating</strong>" in paragraph 2 most probably means:</div>
+    <div class="options">
+      <div class="option" data-correct="false">A. effectively solving</div>
+      <div class="option" data-correct="false">B. completely ignoring</div>
+      <div class="option" data-correct="true">C. making worse</div>
+      <div class="option" data-correct="false">D. partially improving</div>
+    </div>
+    <div class="answer-section" id="explain5">
+      <div class="answer-key">✅ 正确答案：C</div>
+      <div class="explanation">"exacerbate" 意为"使恶化、加剧"。文中指社交媒体非但没有促进人际连接，反而加剧了孤独问题。</div>
+    </div>
+  </div>
+
+  <div class="question" data-q="6">
+    <div class="q-num">第 6 题</div>
+    <div class="q-text">What does the author suggest as a potential solution to the digital loneliness crisis?</div>
+    <div class="options">
+      <div class="option" data-correct="false">A. Banning social media platforms entirely</div>
+      <div class="option" data-correct="false">B. Increasing the amount of time spent online</div>
+      <div class="option" data-correct="true">C. Redesigning platforms to prioritize interaction quality and promoting digital literacy</div>
+      <div class="option" data-correct="false">D. Relying solely on government legislation to solve the problem</div>
+    </div>
+    <div class="answer-section" id="explain6">
+      <div class="answer-key">✅ 正确答案：C</div>
+      <div class="explanation">文章最后一段提出需要重新设计社交平台以优先互动质量、推动数字素养教育，以及实现文化转变。单纯的政府行动是不够的。</div>
+    </div>
+  </div>
+</div>
+
+<div class="btn-group">
+  <button class="btn btn-primary" onclick="toggleAll()">📝 显示 / 隐藏答案</button>
+  <button class="btn btn-secondary" onclick="resetAll()">🔄 重新开始</button>
+</div>
+
+<div class="footer">
+  每日六级阅读 · 小约 🤖 为你精选<br>
+  CET-6 Daily Reading · © 2026
+</div>
+</div>
+
 <script>
-let answersRevealed = false;
-
-function selectOption(el, qNum) {
-  const options = el.parentElement.querySelectorAll('.option');
-  // Clear previous selection styling
-  options.forEach(opt => {
-    opt.classList.remove('correct', 'wrong', 'reveal-correct');
-  });
-
-  const isCorrect = el.getAttribute('data-correct') === 'true';
-  el.classList.add(isCorrect ? 'correct' : 'wrong');
-
-  // If wrong, highlight the correct one
-  if (!isCorrect) {
-    options.forEach(opt => {
-      if (opt.getAttribute('data-correct') === 'true') {
-        opt.classList.add('reveal-correct');
-      }
-    });
-  }
-
-  // Show explanation
-  const explainDiv = document.getElementById('explain' + qNum);
-  if (explainDiv) explainDiv.classList.add('show');
-
-  // Update progress
-  updateProgress(qNum, isCorrect);
-}
-
-function updateProgress(qNum, isCorrect) {
-  const dots = document.querySelectorAll('.progress-dot');
-  const dot = dots[qNum - 1];
-  if (dot) {
-    dot.classList.remove('done', 'correct-dot', 'wrong-dot');
-    dot.classList.add(isCorrect ? 'correct-dot' : 'wrong-dot');
-  }
-}
-
-function toggleAllAnswers() {
-  answersRevealed = !answersRevealed;
-  const sections = document.querySelectorAll('.answer-section');
-  const qs = document.querySelectorAll('.question');
-  
-  sections.forEach(sec => {
-    sec.classList.toggle('show', answersRevealed);
-  });
-
-  if (answersRevealed) {
-    qs.forEach(q => {
-      const qNum = q.getAttribute('data-q');
-      const options = q.querySelectorAll('.option');
-      const dot = document.querySelector(`.progress-dot[data-q="${qNum}"]`);
-      options.forEach(opt => {
-        opt.classList.remove('correct', 'wrong', 'reveal-correct');
-        if (opt.getAttribute('data-correct') === 'true') {
-          opt.classList.add('reveal-correct');
-        }
+function toggleAll() {
+  const revealed = document.querySelector('.btn-primary').textContent.includes('隐藏');
+  document.querySelectorAll('.answer-section').forEach(s => s.classList.toggle('show', !revealed));
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('correct','wrong','reveal-correct'));
+  if (!revealed) {
+    document.querySelectorAll('.question').forEach(q => {
+      const qn = q.getAttribute('data-q');
+      const opts = q.querySelectorAll('.option');
+      opts.forEach(o => {
+        if (o.getAttribute('data-correct')==='true') o.classList.add('reveal-correct');
       });
-      if (dot && !dot.classList.contains('correct-dot') && !dot.classList.contains('wrong-dot')) {
-        dot.classList.add('done');
-      }
+      const dot = document.querySelector('.progress-dot[data-q="'+qn+'"]');
+      if (dot && !dot.classList.contains('correct-dot') && !dot.classList.contains('wrong-dot')) dot.classList.add('done');
     });
   }
 }
 
 function resetAll() {
-  answersRevealed = false;
-  // Reset all options
-  document.querySelectorAll('.option').forEach(opt => {
-    opt.classList.remove('correct', 'wrong', 'reveal-correct');
-  });
-  // Hide all answers
-  document.querySelectorAll('.answer-section').forEach(sec => {
-    sec.classList.remove('show');
-  });
-  // Reset progress dots
-  document.querySelectorAll('.progress-dot').forEach(d => {
-    d.classList.remove('done', 'correct-dot', 'wrong-dot');
-  });
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('correct','wrong','reveal-correct'));
+  document.querySelectorAll('.answer-section').forEach(s => s.classList.remove('show'));
+  document.querySelectorAll('.progress-dot').forEach(d => d.classList.remove('done','correct-dot','wrong-dot'));
+}
+
+function selectOption(el, qNum) {
+  const opts = el.parentElement.querySelectorAll('.option');
+  opts.forEach(o => o.classList.remove('correct','wrong','reveal-correct'));
+  const isCorrect = el.getAttribute('data-correct')==='true';
+  el.classList.add(isCorrect ? 'correct' : 'wrong');
+  if (!isCorrect) {
+    opts.forEach(o => { if (o.getAttribute('data-correct')==='true') o.classList.add('reveal-correct'); });
+  }
+  document.getElementById('explain'+qNum).classList.add('show');
+  const dot = document.querySelector('.progress-dot[data-q="'+qNum+'"]');
+  if (dot) dot.classList.add(isCorrect ? 'correct-dot' : 'wrong-dot');
 }
 </script>
 </body>
-<!-- v2 --></html>
+</html>
