@@ -14,40 +14,42 @@
     line-height: 1.8;
   }
   .container { max-width: 520px; margin: 0 auto; }
-  .header { text-align: center; padding: 24px 0 16px; }
-  .header h1 { font-size: 22px; font-weight: 700; color: #1a1a2e; }
-  .header .date { font-size: 14px; color: #888; margin-top: 4px; }
-  .header .badge { display: inline-block; background: #e8f0fe; color: #1a73e8; font-size: 12px; padding: 2px 10px; border-radius: 12px; margin-top: 8px; }
-  .passage { background: #fff; border-radius: 16px; padding: 20px; margin: 16px 0; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-  .passage .tag { display: inline-block; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 8px; margin-bottom: 12px; }
+  .header { text-align: center; padding: 20px 0 12px; }
+  .header h1 { font-size: 20px; font-weight: 700; color: #1a1a2e; }
+  .header .date { font-size: 13px; color: #888; margin-top: 4px; }
+  .header .badge { display: inline-block; background: #e8f0fe; color: #1a73e8; font-size: 11px; padding: 2px 10px; border-radius: 12px; margin-top: 6px; }
+  .passage { background: #fff; border-radius: 14px; padding: 16px; margin: 12px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+  .passage .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 8px; margin-bottom: 10px; }
   .tag-tech { background: #e3f2fd; color: #1565c0; }
   .tag-human { background: #fce4ec; color: #c62828; }
-  .passage h2 { font-size: 18px; font-weight: 600; line-height: 1.5; margin-bottom: 12px; color: #1a1a2e; }
-  .passage .text { font-size: 15px; line-height: 1.9; color: #333; text-align: justify; margin-bottom: 16px; }
-  .passage .text p { margin-bottom: 12px; text-indent: 2em; }
-  .vocab { display: inline; color: #1a73e8; font-weight: 600; border-bottom: 2px solid #1a73e8; cursor: help; }
-  .vocab-box { background: #f0f4ff; border-radius: 10px; padding: 12px 14px; margin-bottom: 16px; font-size: 13px; }
+  .passage h2 { font-size: 16px; font-weight: 600; line-height: 1.5; margin-bottom: 10px; color: #1a1a2e; }
+  .passage .text { font-size: 14px; line-height: 1.8; color: #333; text-align: justify; margin-bottom: 14px; }
+  .passage .text p { margin-bottom: 10px; text-indent: 2em; }
+  .vocab { display: inline; color: #1a73e8; font-weight: 600; border-bottom: 1.5px solid #1a73e8; }
+  .vocab-box { background: #f0f4ff; border-radius: 10px; padding: 10px 12px; margin-bottom: 14px; font-size: 12px; }
   .vocab-box strong { color: #1a73e8; }
-  .question { margin-bottom: 18px; }
-  .question .q-num { font-weight: 700; font-size: 14px; color: #1a73e8; margin-bottom: 6px; }
-  .question .q-text { font-size: 14.5px; color: #333; margin-bottom: 8px; }
-  .question .options { padding-left: 4px; }
-  .question .option { display: block; font-size: 14px; padding: 8px 10px; margin: 4px 0; border-radius: 8px; background: #f8f9fa; border: 1.5px solid transparent; transition: all 0.15s; cursor: pointer; }
-  .question .option:hover { background: #e8f0fe; }
-  .question .option.correct { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
-  .question .option.wrong { background: #fce8e6; border-color: #ea4335; color: #c5221f; }
-  .question .option.reveal-correct { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
-  .answer-section { margin-top: 8px; display: none; }
-  .answer-section.show { display: block; }
-  .answer-section .answer-key { font-size: 13px; color: #34a853; font-weight: 600; padding: 8px 10px; background: #e6f4ea; border-radius: 8px; }
-  .answer-section .explanation { font-size: 13px; color: #666; margin-top: 6px; padding: 8px 10px; background: #f8f9fa; border-radius: 8px; }
-  .btn-group { display: flex; gap: 10px; margin: 20px 0; }
-  .btn { flex: 1; padding: 14px; border: none; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center; }
+  .question { margin-bottom: 14px; }
+  .question .q-num { font-weight: 700; font-size: 13px; color: #1a73e8; margin-bottom: 4px; }
+  .question .q-text { font-size: 13.5px; color: #333; margin-bottom: 6px; }
+  .question .options { padding-left: 2px; }
+  .question .option { display: block; font-size: 13px; padding: 7px 8px; margin: 3px 0; border-radius: 8px; background: #f8f9fa; border: 1.5px solid transparent; cursor: pointer; }
+  .option.selected { background: #e8f0fe; border-color: #1a73e8; color: #1a73e8; }
+  .option.correct { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
+  .option.wrong { background: #fce8e6; border-color: #ea4335; color: #c5221f; }
+  .option.reveal-answer { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
+  .explanation-text { font-size: 12.5px; color: #555; margin-top: 4px; padding: 6px 8px; background: #f8f9fa; border-radius: 8px; display: none; }
+  .explanation-text.show { display: block; }
+  .btn-group { display: flex; gap: 8px; margin: 16px 0; }
+  .btn { flex: 1; padding: 12px; border: none; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; text-align: center; }
   .btn-primary { background: #1a73e8; color: #fff; }
   .btn-primary:active { background: #1557b0; }
   .btn-secondary { background: #e8eaed; color: #444; }
   .btn-secondary:active { background: #d2d4d8; }
-  .footer { text-align: center; padding: 24px 0 32px; font-size: 12px; color: #aaa; }
+  .result-bar { text-align: center; padding: 12px; font-size: 14px; font-weight: 600; border-radius: 10px; margin: 12px 0; display: none; }
+  .result-bar.show { display: block; }
+  .result-bar.pass { background: #e6f4ea; color: #1e7e34; }
+  .result-bar.fail { background: #fce8e6; color: #c5221f; }
+  .footer { text-align: center; padding: 20px 0 24px; font-size: 11px; color: #aaa; }
 </style>
 </head>
 <body>
@@ -59,216 +61,168 @@
   <div class="badge">🎯 CET-6 双篇深度训练</div>
 </div>
 
-<!-- Passage 1: Tech -->
+<!-- Passage 1 -->
 <div class="passage">
   <span class="tag tag-tech">🔬 科技 · 自然</span>
   <h2>The Fusion Energy Race: From Scientific Breakthrough to Commercial Reality</h2>
-
   <div class="text">
-    <p>For decades, nuclear fusion has been the <span class="vocab">elusive</span> holy grail of clean energy — a technology that promises <span class="vocab">virtually</span> limitless power with no carbon emissions and minimal radioactive waste. Unlike nuclear fission, which splits atoms and produces long-lived radioactive byproducts, fusion <span class="vocab">replicates</span> the process that powers the sun: fusing hydrogen atoms into helium at extreme temperatures and pressures. The fuel — deuterium and tritium — is <span class="vocab">abundant</span> and widely available from seawater and lithium. The appeal is obvious: a single gram of fusion fuel can produce as much energy as eight tons of fossil fuels.</p>
-
-    <p>The past three years have witnessed an <span class="vocab">unprecedented</span> acceleration in fusion research. In December 2022, the US National Ignition Facility achieved the first-ever net energy gain from a fusion reaction — a milestone that scientists had been chasing for over half a century. Since then, at least four major public and private fusion projects have replicated or surpassed that achievement. Private investment in fusion has surged past $6 billion, with companies racing to demonstrate commercial-scale reactors before the decade's end.</p>
-
-    <p>However, significant challenges remain. The two dominant approaches — magnetic confinement (tokamaks and stellarators) and inertial confinement (laser-driven) — each face distinct <span class="vocab">engineering</span> hurdles. Tokamaks, which use powerful magnetic fields to contain superheated plasma at temperatures exceeding 150 million degrees Celsius, have struggled with plasma instabilities and the immense heat loads on reactor walls. Laser-based approaches must fire precisely <span class="vocab">synchronized</span> beams at implosion targets multiple times per second — a feat of engineering precision that remains technically demanding.</p>
-
-    <p>Despite these obstacles, optimism abounds. China's Experimental Advanced Superconducting Tokamak (EAST) has sustained plasma for over 17 minutes — a world record. The convergence of advanced computing, AI-driven plasma control, and new high-temperature superconductors has fundamentally changed the <span class="vocab">trajectory</span> of fusion development. Many experts now believe that fusion power could begin contributing to the electrical grid within the next decade, marking what would be one of the most consequential technological transformations in human history.</p>
+    <p>For decades, nuclear fusion has been the <span class="vocab">elusive</span> holy grail of clean energy — a technology that promises <span class="vocab">virtually</span> limitless power with no carbon emissions and minimal radioactive waste. Unlike nuclear fission, which splits atoms and produces long-lived radioactive byproducts, fusion <span class="vocab">replicates</span> the process that powers the sun: fusing hydrogen atoms into helium at extreme temperatures and pressures. The fuel — deuterium and tritium — is <span class="vocab">abundant</span> and widely available from seawater and lithium.</p>
+    <p>The past three years have witnessed an <span class="vocab">unprecedented</span> acceleration in fusion research. In December 2022, the US National Ignition Facility achieved the first-ever net energy gain from a fusion reaction — a milestone that scientists had been chasing for over half a century. Private investment in fusion has surged past $6 billion, with companies racing to demonstrate commercial-scale reactors before the decade's end.</p>
+    <p>However, significant challenges remain. The two dominant approaches — magnetic confinement (tokamaks and stellarators) and inertial confinement (laser-driven) — each face distinct <span class="vocab">engineering</span> hurdles. Tokamaks use powerful magnetic fields to contain superheated plasma at temperatures exceeding 150 million degrees Celsius. China's EAST tokamak has sustained plasma for over 17 minutes — a world record. Many experts now believe fusion power could begin contributing to the electrical grid within the next decade.</p>
   </div>
-
   <div class="vocab-box">
     <strong>📝 核心词汇</strong><br>
     elusive /ɪˈluːsɪv/ adj. 难以捉摸的<br>
     virtually /ˈvɜːtʃuəli/ adv. 几乎；实质上<br>
     replicate /ˈreplɪkeɪt/ v. 复制；重现<br>
-    abundant /əˈbʌndənt/ adj. 丰富的；充裕的<br>
+    abundant /əˈbʌndənt/ adj. 丰富的<br>
     unprecedented /ʌnˈpresɪdentɪd/ adj. 史无前例的<br>
-    engineering /ˌendʒɪˈnɪərɪŋ/ n. 工程学<br>
-    synchronized /ˈsɪŋkrənaɪzd/ adj. 同步的<br>
-    trajectory /trəˈdʒektəri/ n. 轨迹；发展轨道
+    engineering /ˌendʒɪˈnɪərɪŋ/ n. 工程学
   </div>
 
-  <div class="question" data-q="1">
+  <div class="question" data-answer="b">
     <div class="q-num">第 1 题</div>
-    <div class="q-text">What is the main advantage of nuclear fusion over nuclear fission as described in the passage?</div>
+    <div class="q-text">What is the main advantage of nuclear fusion over nuclear fission?</div>
     <div class="options">
-      <div class="option" data-correct="false">A. It produces more energy from the same amount of fuel</div>
-      <div class="option" data-correct="true">B. It produces minimal radioactive waste and no carbon emissions</div>
-      <div class="option" data-correct="false">C. It can be achieved at room temperature</div>
-      <div class="option" data-correct="false">D. It does not require any fuel at all</div>
+      <div class="option" data-value="a">A. It can be achieved at room temperature</div>
+      <div class="option" data-value="b">B. It produces minimal radioactive waste and no carbon emissions</div>
+      <div class="option" data-value="c">C. It does not require any fuel</div>
+      <div class="option" data-value="d">D. It produces more energy than fusion</div>
     </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：B</div>
-      <div class="explanation">第一段明确对比：fission 分裂原子产生长寿命放射性废物，fusion 聚变氢原子几乎无碳排放且放射性废物极少。A 在文中未直接比较同量燃料的产出。</div>
-    </div>
+    <div class="explanation-text">✅ 正确答案：B。核聚变（fusion）几乎无碳排放且放射性废物极少，而核裂变（fission）则产生长寿命放射性副产品。第一段第一句明确说明。</div>
   </div>
 
-  <div class="question" data-q="2">
+  <div class="question" data-answer="c">
     <div class="q-num">第 2 题</div>
-    <div class="q-text">The word "<strong>elusive</strong>" in paragraph 1 is closest in meaning to:</div>
+    <div class="q-text">The word "<strong>elusive</strong>" is closest in meaning to:</div>
     <div class="options">
-      <div class="option" data-correct="false">A. easily achievable</div>
-      <div class="option" data-correct="false">B. highly dangerous</div>
-      <div class="option" data-correct="true">C. difficult to attain or capture</div>
-      <div class="option" data-correct="false">D. widely understood</div>
+      <div class="option" data-value="a">A. easily achievable</div>
+      <div class="option" data-value="b">B. highly dangerous</div>
+      <div class="option" data-value="c">C. difficult to attain</div>
+      <div class="option" data-value="d">D. widely understood</div>
     </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：C</div>
-      <div class="explanation">"elusive" 意为"难以捉摸的、难以实现的"，呼应核聚变虽被誉为清洁能源的"圣杯"但长期未能实现。e-（出）+ lus（玩、游戏）+ ive → 难以把握的。</div>
-    </div>
+    <div class="explanation-text">✅ 正确答案：C。"elusive" 意为"难以捉摸的"，呼应核聚变虽被誉为清洁能源"圣杯"但长期未能实现。</div>
   </div>
 
-  <div class="question" data-q="3">
+  <div class="question" data-answer="b">
     <div class="q-num">第 3 题</div>
-    <div class="q-text">What evidence does the author provide to support the claim that fusion research is accelerating?</div>
+    <div class="q-text">What evidence supports the claim that fusion research is accelerating?</div>
     <div class="options">
-      <div class="option" data-correct="false">A. Only one country is investing in fusion technology</div>
-      <div class="option" data-correct="true">B. First net energy gain achieved in 2022 and private investment exceeding $6 billion</div>
-      <div class="option" data-correct="false">C. All engineering challenges have been resolved</div>
-      <div class="option" data-correct="false">D. Fusion is now cheaper than fossil fuels</div>
+      <div class="option" data-value="a">A. Only one country invests in fusion</div>
+      <div class="option" data-value="b">B. Net energy gain achieved and $6B+ invested</div>
+      <div class="option" data-value="c">C. All challenges have been solved</div>
+      <div class="option" data-value="d">D. Fusion is cheaper than fossil fuels</div>
     </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：B</div>
-      <div class="explanation">第二段提了两个关键证据：2022 年首次实现净能量增益（half-century milestone），以及私人投资超过 60 亿美元，印证了研究加速的判断。</div>
-    </div>
+    <div class="explanation-text">✅ 正确答案：B。第二段提了两个证据：2022 年首次实现净能量增益，私人投资超过 60 亿美元。</div>
   </div>
 
-  <div class="question" data-q="4">
+  <div class="question" data-answer="b">
     <div class="q-num">第 4 题</div>
-    <div class="q-text">The phrase "magnetic confinement" refers to:</div>
+    <div class="q-text">"Magnetic confinement" refers to:</div>
     <div class="options">
-      <div class="option" data-correct="false">A. Using lasers to compress fusion fuel</div>
-      <div class="option" data-correct="true">B. Using magnetic fields to contain superheated plasma</div>
-      <div class="option" data-correct="false">C. Using gravitational forces to initiate fusion</div>
-      <div class="option" data-correct="false">D. Using chemical reactions to generate heat</div>
+      <div class="option" data-value="a">A. Using lasers to compress fuel</div>
+      <div class="option" data-value="b">B. Using magnetic fields to contain plasma</div>
+      <div class="option" data-value="c">C. Using gravity for fusion</div>
+      <div class="option" data-value="d">D. Using chemical reactions</div>
     </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：B</div>
-      <div class="explanation">第三段明确解释：magnetic confinement（如 tokamaks）使用强磁场控制温度超过 1.5 亿摄氏度的超热等离子体，与 laser-based 的 inertial confinement 形成对照。</div>
-    </div>
+    <div class="explanation-text">✅ 正确答案：B。第三段明确解释磁约束（magnetic confinement）使用强磁场控制超热等离子体。</div>
   </div>
 
-  <div class="question" data-q="5">
+  <div class="question" data-answer="c">
     <div class="q-num">第 5 题</div>
-    <div class="q-text">What is the author's overall tone regarding the future of fusion energy?</div>
+    <div class="q-text">The author's tone on fusion's future is:</div>
     <div class="options">
-      <div class="option" data-correct="false">A. Strongly pessimistic — the challenges are insurmountable</div>
-      <div class="option" data-correct="false">B. Neutral — simply presenting facts without opinion</div>
-      <div class="option" data-correct="true">C. Cautiously optimistic — acknowledging challenges while highlighting progress</div>
-      <div class="option" data-correct="false">D. Enthusiastic — claiming fusion will solve all energy problems within two years</div>
+      <div class="option" data-value="a">A. Strongly pessimistic</div>
+      <div class="option" data-value="b">B. Neutral without opinion</div>
+      <div class="option" data-value="c">C. Cautiously optimistic</div>
+      <div class="option" data-value="d">D. Overly enthusiastic</div>
     </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：C</div>
-      <div class="explanation">全文体现了审慎乐观的态度：第三段列出工程挑战，第四段以"Despite these obstacles, optimism abounds"转折，最后指出专家相信十年内有望入网，既非盲目乐观也非悲观。</div>
-    </div>
+    <div class="explanation-text">✅ 正确答案：C。全文审慎乐观——指出工程挑战又肯定进展，专家认为十年内有望入网。</div>
   </div>
 </div>
 
-<!-- Passage 2: Society -->
+<!-- Passage 2 -->
 <div class="passage">
   <span class="tag tag-human">🌍 社会 · 人文</span>
-  <h2>The Four-Day Work Week Revolution: Redefining Productivity in the Post-Pandemic Era</h2>
-
+  <h2>The Four-Day Work Week Revolution: Redefining Productivity</h2>
   <div class="text">
-    <p>The COVID-19 pandemic fundamentally <span class="vocab">disrupted</span> the traditional structure of work, forcing organizations worldwide to <span class="vocab">reassess</span> long-held assumptions about where, when, and how work should be done. Among the most radical ideas to emerge from this period of <span class="vocab">upheaval</span> is the four-day work week — a seemingly simple shift from five days to four that has sparked a global movement. The core proposition is compelling: maintain full pay while reducing working hours, on the theory that employees will be more focused, productive, and creative in less time.</p>
-
-    <p>A landmark trial conducted in the United Kingdom between June and December 2022 provided the most comprehensive evidence to date. Involving 61 companies and approximately 2,900 employees, the trial was described as an "overwhelming success." Results showed that company revenue remained broadly stable, while employee well-being improved dramatically — with 71% of participants reporting reduced burnout levels, 39% experiencing less stress, and sleep quality improving across all age groups. Crucially, the <span class="vocab">productivity</span> gains emerged from structural changes: shorter meetings, fewer interruptions, more focused deep work, and the elimination of <span class="vocab">inefficient</span> processes.</p>
-
-    <p>The movement has gained significant momentum globally. Countries including Belgium, Iceland, Spain, and Japan have <span class="vocab">initiated</span> government-backed trials or legislation supporting reduced-hour work. Belgium became the first European country to grant workers the legal right to request a four-day week in 2023. In the corporate sector, major companies like Microsoft Japan and Kickstarter have reported positive results from their own experiments.</p>
-
-    <p>Critics raise valid concerns. Industries with continuous operations — healthcare, emergency services, manufacturing — face obvious challenges in implementing compressed schedules. Small businesses worry about the cost of additional staffing to cover the fifth day. Some studies suggest that productivity gains may not be <span class="vocab">sustainable</span> over longer timeframes, as initial enthusiasm wears off. Nevertheless, the <span class="vocab">trajectory</span> is clear: the four-day week has moved from the fringe of workplace reform to the mainstream, and its <span class="vocab">adoption</span> by pioneering organizations continues to provide valuable data on how societies might work better, not just harder.</p>
+    <p>The COVID-19 pandemic fundamentally <span class="vocab">disrupted</span> the traditional work structure. Among the most radical ideas to emerge is the four-day work week. The core proposition: maintain full pay while reducing hours, on the theory that employees will be more productive in less time.</p>
+    <p>A landmark UK trial involving 61 companies and 2,900 employees was an "overwhelming success." Revenue remained stable while 71% of participants reported reduced burnout, 39% less stress. Productivity gains came from structural changes: shorter meetings, fewer interruptions, more deep work. Belgium became the first European country to grant the right to request a four-day week in 2023.</p>
+    <p>Critics note that continuous-operation industries (healthcare, manufacturing) face challenges. Some question whether gains are <span class="vocab">sustainable</span> long-term. Nevertheless, the four-day week has moved from fringe to mainstream.</p>
   </div>
-
   <div class="vocab-box">
     <strong>📝 核心词汇</strong><br>
     disrupt /dɪsˈrʌpt/ v. 颠覆；打乱<br>
-    reassess /ˌriːəˈses/ v. 重新评估<br>
-    upheaval /ʌpˈhiːvl/ n. 剧变；动荡<br>
     productivity /ˌprɒdʌkˈtɪvəti/ n. 生产力<br>
-    inefficient /ˌɪnɪˈfɪʃnt/ adj. 低效的<br>
-    initiate /ɪˈnɪʃieɪt/ v. 发起；启动<br>
-    sustainable /səˈsteɪnəbl/ adj. 可持续的<br>
-    trajectory /trəˈdʒektəri/ n. 轨迹<br>
-    adoption /əˈdɒpʃn/ n. 采用
+    sustainable /səˈsteɪnəbl/ adj. 可持续的
   </div>
 
-  <div class="question" data-q="6">
+  <div class="question" data-answer="b">
     <div class="q-num">第 1 题</div>
-    <div class="q-text">What was the main finding of the UK four-day week trial conducted in 2022?</div>
+    <div class="q-text">Main finding of the 2022 UK trial?</div>
     <div class="options">
-      <div class="option" data-correct="false">A. Most companies saw a significant drop in revenue</div>
-      <div class="option" data-correct="true">B. Revenue remained stable while employee well-being improved significantly</div>
-      <div class="option" data-correct="false">C. Employees eventually requested to return to a five-day schedule</div>
-      <div class="option" data-correct="false">D. The trial was considered a failure by most participants</div>
+      <div class="option" data-value="a">A. Most companies saw revenue drop</div>
+      <div class="option" data-value="b">B. Revenue stable; well-being improved</div>
+      <div class="option" data-value="c">C. Employees returned to 5-day schedule</div>
+      <div class="option" data-value="d">D. The trial was a failure</div>
     </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：B</div>
-      <div class="explanation">第二段明确指出试验期间公司收入基本稳定（broadly stable），同时员工幸福感大幅提升——71% 倦怠减少，39% 压力减轻，睡眠质量改善。</div>
-    </div>
+    <div class="explanation-text">✅ 正确答案：B。收入稳定且 71% 倦怠减少、39% 压力减轻。</div>
   </div>
 
-  <div class="question" data-q="7">
+  <div class="question" data-answer="b">
     <div class="q-num">第 2 题</div>
-    <div class="q-text">The word "<strong>upheaval</strong>" in paragraph 1 most nearly means:</div>
+    <div class="q-text">"Disrupted" most nearly means:</div>
     <div class="options">
-      <div class="option" data-correct="false">A. a minor adjustment</div>
-      <div class="option" data-correct="true">B. a major disturbance or disruption</div>
-      <div class="option" data-correct="false">C. a peaceful transition</div>
-      <div class="option" data-correct="false">D. a gradual improvement</div>
+      <div class="option" data-value="a">A. Gently adjusted</div>
+      <div class="option" data-value="b">B. Fundamentally changed</div>
+      <div class="option" data-value="c">C. Slowly improved</div>
+      <div class="option" data-value="d">D. Completely ignored</div>
     </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：B</div>
-      <div class="explanation">"upheaval" 意为"剧变、动荡"，前缀 up- 表示"向上"，heave 表示"举起"，合起来指剧烈的变动。文中指疫情带来的前所未有的工作模式变革。</div>
-    </div>
+    <div class="explanation-text">✅ 正确答案：B。"disrupt" 源自 dis-（分开）+ rupt（打破），意为"颠覆、打破常规"。</div>
   </div>
 
-  <div class="question" data-q="8">
+  <div class="question" data-answer="b">
     <div class="q-num">第 3 题</div>
-    <div class="q-text">According to the passage, how were productivity gains in the UK trial achieved?</div>
+    <div class="q-text">How were productivity gains achieved?</div>
     <div class="options">
-      <div class="option" data-correct="false">A. Employees worked longer hours on their four days</div>
-      <div class="option" data-correct="true">B. Through structural changes such as shorter meetings and fewer interruptions</div>
-      <div class="option" data-correct="false">C. Companies hired additional part-time workers</div>
-      <div class="option" data-correct="false">D. Through mandatory overtime on weekends</div>
+      <div class="option" data-value="a">A. Employees worked overtime</div>
+      <div class="option" data-value="b">B. Structural changes: shorter meetings, fewer interruptions</div>
+      <div class="option" data-value="c">C. Hiring part-time workers</div>
+      <div class="option" data-value="d">D. New technology</div>
     </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：B</div>
-      <div class="explanation">第二段明确说了效率提升来自结构性变化：更短的会议、更少的中断、更专注的深度工作、取消低效流程，而非员工在四天内更努力地工作。</div>
-    </div>
+    <div class="explanation-text">✅ 正确答案：B。效率提升来自结构性变化，而非员工更努力地工作。</div>
   </div>
 
-  <div class="question" data-q="9">
+  <div class="question" data-answer="c">
     <div class="q-num">第 4 题</div>
-    <div class="q-text">What criticism of the four-day work week does the author mention in the passage?</div>
+    <div class="q-text">What criticism is mentioned?</div>
     <div class="options">
-      <div class="option" data-correct="false">A. It always leads to decreased productivity</div>
-      <div class="option" data-correct="false">B. It only benefits technology companies</div>
-      <div class="option" data-correct="true">C. Continuous-operation industries face challenges and productivity gains may not be sustainable</div>
-      <div class="option" data-correct="false">D. It increases employee burnout significantly</div>
+      <div class="option" data-value="a">A. Higher employee burnout</div>
+      <div class="option" data-value="b">B. Only works in tech</div>
+      <div class="option" data-value="c">C. Continuous-ops industries face challenges; gains may not last</div>
+      <div class="option" data-value="d">D. Reduces profits</div>
     </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：C</div>
-      <div class="explanation">第四段提出两方面的批评：一是医疗、应急服务、制造等需要连续运营的行业面临实施难度；二是效率提升可能无法长期可持续。</div>
-    </div>
+    <div class="explanation-text">✅ 正确答案：C。医疗、制造等连续运营行业面临挑战，且效率提升是否可持续存疑。</div>
   </div>
 
-  <div class="question" data-q="10">
+  <div class="question" data-answer="b">
     <div class="q-num">第 5 题</div>
-    <div class="q-text">What does the author mean by stating that the four-day week has "moved from the fringe of workplace reform to the mainstream"?</div>
+    <div class="q-text">"From fringe to mainstream" means:</div>
     <div class="options">
-      <div class="option" data-correct="false">A. The idea is no longer considered important</div>
-      <div class="option" data-correct="true">B. It has transitioned from a marginal concept to wide acceptance and discussion</div>
-      <div class="option" data-correct="false">C. It has been legally mandated in most countries</div>
-      <div class="option" data-correct="false">D. It is now the standard working arrangement worldwide</div>
+      <div class="option" data-value="a">A. No longer popular</div>
+      <div class="option" data-value="b">B. From marginal to widely discussed</div>
+      <div class="option" data-value="c">C. Legally mandated everywhere</div>
+      <div class="option" data-value="d">D. Standard worldwide</div>
     </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：B</div>
-      <div class="explanation">"from the fringe to the mainstream" 意为"从边缘到主流"，文中指四天工作制已从少数人提出的激进想法，变为被广泛讨论和试验的主流议题，并非已普遍实施。</div>
-    </div>
+    <div class="explanation-text">✅ 正确答案：B。表示从边缘想法变为被广泛讨论的主流议题。</div>
   </div>
 </div>
 
+<div class="result-bar" id="resultBar"></div>
+
 <div class="btn-group">
-  <button class="btn btn-primary" onclick="toggleAll()">📝 显示 / 隐藏答案</button>
-  <button class="btn btn-secondary" onclick="resetAll()">🔄 重新开始</button>
+  <button class="btn btn-primary" onclick="submitAll()">📝 提交答案</button>
+  <button class="btn btn-secondary" onclick="resetAll()">🔄 重新答题</button>
 </div>
 
 <div class="footer">
@@ -278,34 +232,70 @@
 </div>
 
 <script>
-function toggleAll() {
-  const revealed = document.querySelector('.btn-primary').textContent.includes('隐藏');
-  document.querySelectorAll('.answer-section').forEach(s => s.classList.toggle('show', !revealed));
-  document.querySelectorAll('.option').forEach(o => o.classList.remove('correct','wrong','reveal-correct'));
-  if (!revealed) {
-    document.querySelectorAll('.question').forEach(q => {
-      const opts = q.querySelectorAll('.option');
-      opts.forEach(o => {
-        if (o.getAttribute('data-correct')==='true') o.classList.add('reveal-correct');
+let submitted = false;
+
+// Select option (toggle)
+document.querySelectorAll('.option').forEach(el => {
+  el.addEventListener('click', function() {
+    if (submitted) return;
+    const siblings = this.parentElement.querySelectorAll('.option');
+    siblings.forEach(s => s.classList.remove('selected'));
+    this.classList.add('selected');
+  });
+});
+
+function submitAll() {
+  if (submitted) return;
+  submitted = true;
+  let total = 0;
+  let correct = 0;
+
+  document.querySelectorAll('.question').forEach(q => {
+    const selected = q.querySelector('.option.selected');
+    const answer = q.getAttribute('data-answer');
+    const options = q.querySelectorAll('.option');
+    const explanation = q.querySelector('.explanation-text');
+
+    total++;
+    if (selected) {
+      const val = selected.getAttribute('data-value');
+      if (val === answer) {
+        selected.classList.remove('selected');
+        selected.classList.add('correct');
+        correct++;
+      } else {
+        selected.classList.remove('selected');
+        selected.classList.add('wrong');
+        options.forEach(o => {
+          if (o.getAttribute('data-value') === answer) {
+            o.classList.add('reveal-answer');
+          }
+        });
+      }
+    } else {
+      // Show correct answer if none selected
+      options.forEach(o => {
+        if (o.getAttribute('data-value') === answer) {
+          o.classList.add('reveal-answer');
+        }
       });
-    });
-  }
+    }
+    explanation.classList.add('show');
+  });
+
+  const bar = document.getElementById('resultBar');
+  const pct = Math.round(correct / total * 100);
+  bar.textContent = `📊 得分：${correct}/${total} (${pct}%)${pct >= 60 ? ' 🎉 通过！' : ' 💪 继续加油！'}`;
+  bar.className = 'result-bar show ' + (pct >= 60 ? 'pass' : 'fail');
 }
 
 function resetAll() {
-  document.querySelectorAll('.option').forEach(o => o.classList.remove('correct','wrong','reveal-correct'));
-  document.querySelectorAll('.answer-section').forEach(s => s.classList.remove('show'));
-}
-
-function selectOption(el, qNum) {
-  const opts = el.parentElement.querySelectorAll('.option');
-  opts.forEach(o => o.classList.remove('correct','wrong','reveal-correct'));
-  const isCorrect = el.getAttribute('data-correct')==='true';
-  el.classList.add(isCorrect ? 'correct' : 'wrong');
-  if (!isCorrect) {
-    opts.forEach(o => { if (o.getAttribute('data-correct')==='true') o.classList.add('reveal-correct'); });
-  }
-  document.querySelectorAll('.answer-section')[qNum-1].classList.add('show');
+  submitted = false;
+  document.querySelectorAll('.option').forEach(o => {
+    o.classList.remove('selected', 'correct', 'wrong', 'reveal-answer');
+  });
+  document.querySelectorAll('.explanation-text').forEach(e => e.classList.remove('show'));
+  document.getElementById('resultBar').className = 'result-bar';
 }
 </script>
 </body>
