@@ -2,425 +2,310 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>姣忔棩鍏骇闃呰 路 2026-05-06</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>每日六级阅读 · 2026-05-06</title>
 <style>
-  :root {
-    --bg: #f5f7fa;
-    --card-bg: #ffffff;
-    --text: #2c3e50;
-    --accent: #3498db;
-    --accent-hover: #2980b9;
-    --correct: #27ae60;
-    --wrong: #e74c3c;
-    --border: #e0e4e8;
-    --shadow: 0 2px 12px rgba(0,0,0,0.08);
-    --radius: 12px;
-  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.8;
-    padding: 24px;
-    max-width: 860px;
-    margin: 0 auto;
-  }
-  .header {
-    text-align: center;
-    padding: 32px 24px 24px;
-    margin-bottom: 32px;
-  }
-  .header h1 { font-size: 24px; font-weight: 700; color: var(--accent); }
-  .header .date { font-size: 14px; color: #888; margin-top: 6px; }
-  .passage {
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 32px;
-    margin-bottom: 32px;
-  }
-  .passage h2 {
-    font-size: 20px;
-    color: var(--accent);
-    margin-bottom: 4px;
-    border-left: 4px solid var(--accent);
-    padding-left: 14px;
-  }
-  .passage .tag {
-    display: inline-block;
-    background: #eef5ff;
-    color: var(--accent);
-    font-size: 12px;
-    padding: 2px 10px;
-    border-radius: 20px;
-    margin-bottom: 16px;
-    margin-left: 18px;
-  }
-  .passage .reading-text {
-    font-size: 15px;
-    text-align: justify;
-    margin: 16px 0;
-  }
-  .passage .reading-text p { margin-bottom: 12px; }
-  .vocab-box {
-    background: #f8f9fc;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin: 20px 0;
-    font-size: 14px;
-  }
-  .vocab-box h3 { font-size: 15px; color: var(--accent); margin-bottom: 10px; }
-  .vocab-box .vocab-item { margin-bottom: 6px; }
-  .vocab-box .vocab-word { font-weight: 600; }
-  .vocab-box .vocab-phonetic { color: #888; font-weight: 400; }
-  .question-block { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
-  .question {
-    margin-bottom: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f5f7fa;
+    color: #1a1a2e;
     padding: 16px;
-    border-radius: 8px;
-    background: #fafbfc;
-    border: 1px solid var(--border);
+    line-height: 1.8;
   }
-  .q-num { font-weight: 600; margin-bottom: 8px; font-size: 14px; color: var(--accent); }
-  .q-text { margin-bottom: 10px; font-size: 14px; }
-  .options { display: flex; flex-direction: column; gap: 6px; }
-  .option {
-    padding: 8px 14px;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.15s;
-    font-size: 14px;
-  }
-  .option:hover { background: #eef5ff; }
-  .option.selected { background: #dbeafe; border-color: var(--accent); }
-  .option.correct { background: #d4edda; border-color: var(--correct); color: #155724; }
-  .option.wrong { background: #f8d7da; border-color: var(--wrong); color: #721c24; }
-  .explanation-text {
-    margin-top: 10px;
-    padding: 10px 14px;
-    border-radius: 6px;
-    font-size: 13px;
-    display: none;
-    line-height: 1.6;
-  }
+  .container { max-width: 520px; margin: 0 auto; }
+  .header { text-align: center; padding: 20px 0 12px; }
+  .header h1 { font-size: 20px; font-weight: 700; color: #1a1a2e; }
+  .header .date { font-size: 13px; color: #888; margin-top: 4px; }
+  .header .badge { display: inline-block; background: #e8f0fe; color: #1a73e8; font-size: 11px; padding: 2px 10px; border-radius: 12px; margin-top: 6px; }
+  .passage { background: #fff; border-radius: 14px; padding: 16px; margin: 12px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+  .passage .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 8px; margin-bottom: 10px; }
+  .tag-tech { background: #e3f2fd; color: #1565c0; }
+  .tag-human { background: #fce4ec; color: #c62828; }
+  .passage h2 { font-size: 16px; font-weight: 600; line-height: 1.5; margin-bottom: 10px; color: #1a1a2e; }
+  .passage .text { font-size: 14px; line-height: 1.8; color: #333; text-align: justify; margin-bottom: 14px; }
+  .passage .text p { margin-bottom: 10px; text-indent: 2em; }
+  .vocab { display: inline; color: #1a73e8; font-weight: 600; border-bottom: 1.5px solid #1a73e8; }
+  .vocab-box { background: #f0f4ff; border-radius: 10px; padding: 10px 12px; margin-bottom: 14px; font-size: 12px; }
+  .vocab-box strong { color: #1a73e8; }
+  .question { margin-bottom: 14px; }
+  .question .q-num { font-weight: 700; font-size: 13px; color: #1a73e8; margin-bottom: 4px; }
+  .question .q-text { font-size: 13.5px; color: #333; margin-bottom: 6px; }
+  .question .options { padding-left: 2px; }
+  .question .option { display: block; font-size: 13px; padding: 7px 8px; margin: 3px 0; border-radius: 8px; background: #f8f9fa; border: 1.5px solid transparent; cursor: pointer; }
+  .option.selected { background: #e8f0fe; border-color: #1a73e8; color: #1a73e8; }
+  .option.correct { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
+  .option.wrong { background: #fce8e6; border-color: #ea4335; color: #c5221f; }
+  .option.reveal-answer { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
+  .explanation-text { font-size: 12.5px; color: #555; margin-top: 4px; padding: 6px 8px; background: #f8f9fa; border-radius: 8px; display: none; }
   .explanation-text.show { display: block; }
-  .explanation-text.correct { background: #d4edda; color: #155724; }
-  .explanation-text.wrong { background: #f8d7da; color: #721c24; }
-  .actions {
-    display: flex; gap: 12px; justify-content: center;
-    margin: 24px 0 16px;
-  }
-  .btn {
-    padding: 10px 28px;
-    border: none;
-    border-radius: 8px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: 0.15s;
-    font-weight: 600;
-  }
-  .btn-primary { background: var(--accent); color: #fff; }
-  .btn-primary:hover { background: var(--accent-hover); }
-  .btn-secondary { background: #e2e8f0; color: #475569; }
-  .btn-secondary:hover { background: #cbd5e1; }
-  .score-bar {
-    text-align: center;
-    font-size: 16px;
-    font-weight: 600;
-    padding: 12px;
-    background: #f0f4f8;
-    border-radius: 8px;
-    margin-bottom: 16px;
-  }
-  .section-title {
-    text-align: center;
-    font-size: 18px;
-    font-weight: 700;
-    margin: 40px 0 20px;
-    color: var(--text);
-  }
-  @media (max-width: 600px) {
-    body { padding: 12px; }
-    .passage { padding: 20px; }
-  }
+  .btn-group { display: flex; gap: 8px; margin: 16px 0; }
+  .btn { flex: 1; padding: 12px; border: none; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; text-align: center; }
+  .btn-primary { background: #1a73e8; color: #fff; }
+  .btn-primary:active { background: #1557b0; }
+  .btn-secondary { background: #e8eaed; color: #444; }
+  .btn-secondary:active { background: #d2d4d8; }
+  .result-bar { text-align: center; padding: 12px; font-size: 14px; font-weight: 600; border-radius: 10px; margin: 12px 0; display: none; }
+  .result-bar.show { display: block; }
+  .result-bar.pass { background: #e6f4ea; color: #1e7e34; }
+  .result-bar.fail { background: #fce8e6; color: #c5221f; }
+  .footer { text-align: center; padding: 20px 0 24px; font-size: 11px; color: #aaa; }
 </style>
 </head>
 <body>
+<div class="container">
 
 <div class="header">
-  <h1>馃摉 姣忔棩鍏骇闃呰</h1>
-  <div class="date">2026 骞?5 鏈?6 鏃?路 CET-6 Level</div>
+  <h1>📖 每日六级阅读</h1>
+  <div class="date">2026 年 5 月 6 日 · 星期三</div>
+  <div class="badge">🎯 CET-6 双篇深度训练</div>
 </div>
 
-<!-- ============ Passage 1: Technology/Science ============ -->
+<!-- Passage 1: Technology -->
 <div class="passage">
+  <span class="tag tag-tech">🔬 科技 · 量子物理</span>
   <h2>Time Crystals: A Quantum Leap Toward Real-World Applications</h2>
-  <div class="tag">馃敩 绉戞妧 路 閲忓瓙鐗╃悊</div>
-
-  <div class="reading-text">
-    <p>At first glance, the concept of a "time crystal" sounds like something pulled straight from the pages of science fiction. A strange form of matter that ticks perpetually without consuming any energy鈥攊t defies common intuition. But in recent years, physicists have not only proven that time crystals can exist; they have taken significant strides toward making them practically useful. A new breakthrough announced in May 2026 marks a major milestone on this journey.</p>
-
-    <p>Time crystals are a phase of matter whose constituent particles exhibit periodic motion in time, rather than in space. Imagine a crystal with atoms arranged in a repeating pattern in space鈥攁 diamond is a familiar example. A time crystal extends this concept to the fourth dimension: its atoms oscillate or "tick" in a repeated cycle over time, and crucially, they do so without any external energy source. This violates no laws of physics because the system is already in its lowest possible energy state, known as the ground state, yet it remains in perpetual motion.</p>
-
-    <p>The latest achievement, spearheaded by a team of researchers, involves demonstrating a time crystal that is significantly more robust and easier to control than previous versions. Earlier experiments required extremely cold temperatures and finely tuned conditions to maintain the fragile quantum state. The new design, however, leverages a technique called "Floquet engineering," where periodic driving pulses are applied to a quantum system to stabilize and manipulate the time-crystalline order. This brings time crystals closer to operating in environments that are less extreme, making them potentially viable for practical applications.</p>
-
-    <p>What could time crystals actually do? Their most promising application lies in quantum computing and precision sensing. Because a time crystal's ticking is inherently stable and resistant to external disturbances, it could serve as an ultra-precise timing reference鈥攁 kind of quantum metronome. In quantum computers, qubits are notoriously sensitive to noise and decoherence; a time crystal could be used to synchronize qubit operations or even store quantum information in a way that is naturally protected from errors. Researchers also speculate that time crystals could enable new types of sensors capable of detecting minuscule changes in magnetic fields, gravity, or temperature, far surpassing current technology.</p>
-
-    <p>Despite this progress, significant hurdles remain before time crystals appear in commercial devices. The systems still require cryogenic cooling and carefully controlled environments. However, the May 2026 breakthrough demonstrates that scientists are steadily marching toward a future where these exotic quantum objects are not merely laboratory curiosities, but the building blocks of next-generation technology.</p>
+  <div class="text">
+    <p>At first glance, the concept of a "time crystal" sounds like something pulled straight from the pages of science fiction. A strange form of matter that ticks <span class="vocab">perpetually</span> without consuming any energy — it defies common intuition. But in recent years, physicists have not only proven that time crystals can exist; they have taken significant strides toward making them practically useful. A new breakthrough announced in May 2026 marks a major milestone on this journey.</p>
+    <p>Time crystals are a phase of matter whose <span class="vocab">constituent</span> particles exhibit periodic motion in time, rather than in space. Imagine a crystal with atoms arranged in a repeating pattern in space — a diamond is a familiar example. A time crystal extends this concept to the fourth dimension: its atoms <span class="vocab">oscillate</span> or "tick" in a repeated cycle over time, and crucially, they do so without any external energy source. This violates no laws of physics because the system is already in its lowest possible energy state, known as the ground state, yet it remains in perpetual motion.</p>
+    <p>The latest achievement, spearheaded by a team of researchers, involves demonstrating a time crystal that is significantly more <span class="vocab">robust</span> and easier to control than previous versions. Earlier experiments required extremely cold temperatures and finely tuned conditions to maintain the fragile quantum state. The new design, however, <span class="vocab">leverages</span> a technique called "Floquet engineering," where periodic driving pulses are applied to a quantum system to stabilize and manipulate the time-crystalline order. This brings time crystals closer to operating in environments that are less extreme, making them potentially viable for practical applications.</p>
+    <p>What could time crystals actually do? Their most promising application lies in quantum computing and precision sensing. Because a time crystal's ticking is inherently stable and resistant to external disturbances, it could serve as an ultra-precise timing reference — a kind of quantum metronome. In quantum computers, qubits are notoriously sensitive to noise and <span class="vocab">decoherence</span>; a time crystal could be used to synchronize qubit operations or even store quantum information in a way that is naturally protected from errors. Researchers also speculate that time crystals could enable new types of sensors capable of detecting <span class="vocab">minuscule</span> changes in magnetic fields, gravity, or temperature, far surpassing current technology.</p>
+    <p>Despite this progress, significant hurdles remain before time crystals appear in commercial devices. The systems still require <span class="vocab">cryogenic</span> cooling and carefully controlled environments. However, the May 2026 breakthrough demonstrates that scientists are steadily marching toward a future where these exotic quantum objects are not merely laboratory curiosities, but the building blocks of next-generation technology.</p>
   </div>
-
   <div class="vocab-box">
-    <h3>馃摎 鏍稿績璇嶆眹</h3>
-    <div class="vocab-item"><span class="vocab-word">perpetual</span> <span class="vocab-phonetic">/p蓹r藞pet蕛u蓹l/</span> 鈥?adj. 姘镐箙鐨勶紝鎸佺画鐨?/div>
-    <div class="vocab-item"><span class="vocab-word">constituent</span> <span class="vocab-phonetic">/k蓹n藞st瑟t蕛u蓹nt/</span> 鈥?n. 鎴愬垎锛岀粍鎴愰儴鍒?/div>
-    <div class="vocab-item"><span class="vocab-word">oscillate</span> <span class="vocab-phonetic">/藞蓱藧s瑟le瑟t/</span> 鈥?v. 鎸崱锛屾憜鍔?/div>
-    <div class="vocab-item"><span class="vocab-word">robust</span> <span class="vocab-phonetic">/ro蕣藞b蕦st/</span> 鈥?adj. 绋冲浐鐨勶紝鑰愪箙鐨?/div>
-    <div class="vocab-item"><span class="vocab-word">leverage</span> <span class="vocab-phonetic">/藞lev蓹r瑟d蕭/</span> 鈥?v. 鍒╃敤锛堣祫婧愩€佹妧鏈瓑锛?/div>
-    <div class="vocab-item"><span class="vocab-word">decoherence</span> <span class="vocab-phonetic">/藢di藧ko蕣藞h瑟蓹r蓹ns/</span> 鈥?n. 閫€鐩稿共锛堥噺瀛愬姏瀛︾幇璞★級</div>
-    <div class="vocab-item"><span class="vocab-word">minuscule</span> <span class="vocab-phonetic">/藞m瑟n蓹skju藧l/</span> 鈥?adj. 寰皬鐨?/div>
-    <div class="vocab-item"><span class="vocab-word">cryogenic</span> <span class="vocab-phonetic">/藢kra瑟o蕣藞d蕭en瑟k/</span> 鈥?adj. 浣庢俯鐨勶紝鍐峰喕鐨?/div>
+    <strong>📝 核心词汇</strong><br>
+    perpetual /pərˈpetʃuəl/ adj. 永久的，持续的<br>
+    constituent /kənˈstɪtʃuənt/ n. 成分，组成部分<br>
+    oscillate /ˈɑːsɪleɪt/ v. 振荡，摆动<br>
+    robust /roʊˈbʌst/ adj. 稳固的，耐久的<br>
+    leverage /ˈlevərɪdʒ/ v. 利用（资源、技术等）<br>
+    decoherence /ˌdiːkoʊˈhɪərəns/ n. 退相干（量子力学现象）<br>
+    minuscule /ˈmɪnəskjuːl/ adj. 微小的<br>
+    cryogenic /ˌkraɪoʊˈdʒenɪk/ adj. 低温的，冷冻的
   </div>
 
-  <div class="question-block" id="questions-1">
-    <div class="question" data-answer="c">
-      <div class="q-num">绗?1 棰?/div>
-      <div class="q-text">What is the most distinctive feature of a time crystal?</div>
-      <div class="options">
-        <div class="option" data-value="a">A. It exists only in science fiction and has not been proven physically.</div>
-        <div class="option" data-value="b">B. Its atoms are arranged in a repeating spatial pattern, like a diamond.</div>
-        <div class="option" data-value="c">C. Its atoms tick in a repeated time cycle without consuming external energy.</div>
-        <div class="option" data-value="d">D. It requires constant external energy to maintain its motion.</div>
-      </div>
-      <div class="explanation-text">鉁?<strong>姝ｇ‘绛旀锛欳</strong>銆傛枃绔犳寚鍑猴紝鏃堕棿鏅朵綋鐨勬牳蹇冪壒寰佹槸锛氬叾缁勬垚绮掑瓙鍦ㄦ椂闂寸淮搴︿笂鍛ㄦ湡鎬у湴"婊寸瓟"杩愬姩锛屼笖鏃犻渶澶栭儴鑳介噺杈撳叆锛?..its atoms oscillate or "tick" in a repeated cycle over time, and crucially, they do so without any external energy source.锛夈€?/div>
+  <div class="question" data-answer="c">
+    <div class="q-num">第 1 题</div>
+    <div class="q-text">What is the most distinctive feature of a time crystal?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. It exists only in science fiction and has not been proven physically.</div>
+      <div class="option" data-value="b">B. Its atoms are arranged in a repeating spatial pattern, like a diamond.</div>
+      <div class="option" data-value="c">C. Its atoms tick in a repeated time cycle without consuming external energy.</div>
+      <div class="option" data-value="d">D. It requires constant external energy to maintain its motion.</div>
     </div>
-
-    <div class="question" data-answer="b">
-      <div class="q-num">绗?2 棰?/div>
-      <div class="q-text">The term "Floquet engineering" (paragraph 3) refers to:</div>
-      <div class="options">
-        <div class="option" data-value="a">A. A method to cool quantum systems to extremely low temperatures.</div>
-        <div class="option" data-value="b">B. A technique that uses periodic driving pulses to stabilize time crystals.</div>
-        <div class="option" data-value="c">C. A process of arranging atoms into a spatial crystal lattice.</div>
-        <div class="option" data-value="d">D. A system to enhance the energy input for quantum devices.</div>
-      </div>
-      <div class="explanation-text">鉁?<strong>姝ｇ‘绛旀锛欱</strong>銆傜涓夋鏄庣‘璇存槑锛?The new design...leverages a technique called 'Floquet engineering,' where periodic driving pulses are applied to a quantum system to stabilize and manipulate the time-crystalline order."</div>
-    </div>
-
-    <div class="question" data-answer="c">
-      <div class="q-num">绗?3 棰?/div>
-      <div class="q-text">According to the passage, what is the most promising application of time crystals?</div>
-      <div class="options">
-        <div class="option" data-value="a">A. Commercial consumer electronics such as smartphones.</div>
-        <div class="option" data-value="b">B. Large-scale power generation without energy input.</div>
-        <div class="option" data-value="c">C. Ultra-precise timing references for quantum computing and sensing.</div>
-        <div class="option" data-value="d">D. A replacement for traditional batteries in portable devices.</div>
-      </div>
-      <div class="explanation-text">鉁?<strong>姝ｇ‘绛旀锛欳</strong>銆傜鍥涙鎸囧嚭锛?Their most promising application lies in quantum computing and precision sensing...it could serve as an ultra-precise timing reference."</div>
-    </div>
-
-    <div class="question" data-answer="b">
-      <div class="q-num">绗?4 棰?/div>
-      <div class="q-text">Why does the author mention that a time crystal "violates no laws of physics"?</div>
-      <div class="options">
-        <div class="option" data-value="a">A. To highlight that time crystals are purely theoretical.</div>
-        <div class="option" data-value="b">B. To clarify that perpetual motion in the ground state is physically allowed.</div>
-        <div class="option" data-value="c">C. To suggest that time crystals are a form of perpetual motion machine.</div>
-        <div class="option" data-value="d">D. To argue that current physics laws need revision.</div>
-      </div>
-      <div class="explanation-text">鉁?<strong>姝ｇ‘绛旀锛欱</strong>銆傜浜屾鏈熬瑙ｉ噴锛?This violates no laws of physics because the system is already in its lowest possible energy state, known as the ground state, yet it remains in perpetual motion."</div>
-    </div>
-
-    <div class="question" data-answer="d">
-      <div class="q-num">绗?5 棰?/div>
-      <div class="q-text">What is the author's overall attitude toward the development of time crystals?</div>
-      <div class="options">
-        <div class="option" data-value="a">A. Highly skeptical, believing the technology will never be practical.</div>
-        <div class="option" data-value="b">B. Indifferent, treating it as just another scientific novelty.</div>
-        <div class="option" data-value="c">C. Overwhelmingly enthusiastic, predicting immediate commercial use.</div>
-        <div class="option" data-value="d">D. Cautiously optimistic, acknowledging progress while noting remaining challenges.</div>
-      </div>
-      <div class="explanation-text">鉁?<strong>姝ｇ‘绛旀锛欴</strong>銆傚叏鏂囨渶鍚庝竴娈靛钩琛′簡涔愯鍜岃皑鎱庯細涓€鏂归潰鑲畾 break through 鐨勯噷绋嬬鎰忎箟锛屽彟涓€鏂归潰涔熸壙璁よ繕闇€瑙ｅ喅"cryogenic cooling銆乧arefully controlled environments"绛夐毦棰橈紝浣撶幇"璋ㄦ厧涔愯"鐨勬€佸害銆?/div>
-    </div>
+    <div class="explanation-text">✅ <strong>正确答案：C</strong>。文章指出，时间晶体的核心特征是：其组成粒子在时间维度上周期性地"滴答"运动，且无需外部能量输入（...its atoms oscillate or "tick" in a repeated cycle over time, and crucially, they do so without any external energy source.）。</div>
   </div>
 
-  <div class="actions">
-    <button class="btn btn-primary" onclick="submitAll('questions-1')">馃摑 鎻愪氦绛旀</button>
-    <button class="btn btn-secondary" onclick="resetAll('questions-1')">馃攧 閲嶆柊绛旈</button>
+  <div class="question" data-answer="b">
+    <div class="q-num">第 2 题</div>
+    <div class="q-text">The term "Floquet engineering" (paragraph 3) refers to:</div>
+    <div class="options">
+      <div class="option" data-value="a">A. A method to cool quantum systems to extremely low temperatures.</div>
+      <div class="option" data-value="b">B. A technique that uses periodic driving pulses to stabilize time crystals.</div>
+      <div class="option" data-value="c">C. A process of arranging atoms into a spatial crystal lattice.</div>
+      <div class="option" data-value="d">D. A system to enhance the energy input for quantum devices.</div>
+    </div>
+    <div class="explanation-text">✅ <strong>正确答案：B</strong>。第三段明确说明："The new design...leverages a technique called 'Floquet engineering,' where periodic driving pulses are applied to a quantum system to stabilize and manipulate the time-crystalline order."</div>
   </div>
-  <div class="score-bar" id="score-1">鉁?0/5 (0%)</div>
+
+  <div class="question" data-answer="c">
+    <div class="q-num">第 3 题</div>
+    <div class="q-text">According to the passage, what is the most promising application of time crystals?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Commercial consumer electronics such as smartphones.</div>
+      <div class="option" data-value="b">B. Large-scale power generation without energy input.</div>
+      <div class="option" data-value="c">C. Ultra-precise timing references for quantum computing and sensing.</div>
+      <div class="option" data-value="d">D. A replacement for traditional batteries in portable devices.</div>
+    </div>
+    <div class="explanation-text">✅ <strong>正确答案：C</strong>。第四段指出："Their most promising application lies in quantum computing and precision sensing...it could serve as an ultra-precise timing reference."</div>
+  </div>
+
+  <div class="question" data-answer="b">
+    <div class="q-num">第 4 题</div>
+    <div class="q-text">Why does the author mention that a time crystal "violates no laws of physics"?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. To highlight that time crystals are purely theoretical.</div>
+      <div class="option" data-value="b">B. To clarify that perpetual motion in the ground state is physically allowed.</div>
+      <div class="option" data-value="c">C. To suggest that time crystals are a form of perpetual motion machine.</div>
+      <div class="option" data-value="d">D. To argue that current physics laws need revision.</div>
+    </div>
+    <div class="explanation-text">✅ <strong>正确答案：B</strong>。第二段末尾解释："This violates no laws of physics because the system is already in its lowest possible energy state, known as the ground state, yet it remains in perpetual motion."</div>
+  </div>
+
+  <div class="question" data-answer="d">
+    <div class="q-num">第 5 题</div>
+    <div class="q-text">What is the author's overall attitude toward the development of time crystals?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Highly skeptical, believing the technology will never be practical.</div>
+      <div class="option" data-value="b">B. Indifferent, treating it as just another scientific novelty.</div>
+      <div class="option" data-value="c">C. Overwhelmingly enthusiastic, predicting immediate commercial use.</div>
+      <div class="option" data-value="d">D. Cautiously optimistic, acknowledging progress while noting remaining challenges.</div>
+    </div>
+    <div class="explanation-text">✅ <strong>正确答案：D</strong>。全文最后一段平衡了乐观和谨慎：一方面肯定 breakthrough 的里程碑意义，另一方面也承认还需解决"cryogenic cooling、carefully controlled environments"等难题，体现"谨慎乐观"的态度。</div>
+  </div>
 </div>
 
-<!-- ============ Passage 2: Society/Humanity ============ -->
+<!-- Passage 2: Society -->
 <div class="passage">
+  <span class="tag tag-human">🌍 社会 · 医疗与偏见</span>
   <h2>The Social Paradox of Weight-Loss Medications</h2>
-  <div class="tag">馃實 绀句細 路 鍖荤枟涓庡亸瑙?/div>
-
-  <div class="reading-text">
-    <p>GLP-1 receptor agonists such as Ozempic and Wegovy have been hailed as revolutionary treatments for obesity and type 2 diabetes. By mimicking a natural hormone that regulates appetite and blood sugar, these drugs have helped millions of people lose substantial amounts of weight. However, a surprising new study published in May 2026 reveals a troubling social phenomenon: individuals who shed pounds using these medications may actually encounter more social stigma than those who achieve similar results through traditional diet and exercise.</p>
-
-    <p>The study, conducted by a team of sociologists and public health researchers, surveyed over 1,200 participants and presented them with scenarios of individuals who lost weight through various methods. When the weight loss was attributed to GLP-1 drugs, participants rated the individuals as lazier and less disciplined compared to those who lost the same amount of weight through conventional means. The researchers coined the term "pharmaceutical stigma" to describe this phenomenon, wherein medical assistance for weight management is perceived by others as a shortcut or an admission of failure.</p>
-
-    <p>This finding is particularly concerning given the already pervasive stigma surrounding obesity itself. People with obesity frequently face discrimination in employment, healthcare, and social interactions. The study suggests that weight-loss medications, rather than alleviating this burden, may simply shift the target of prejudice. Instead of being judged for being overweight, users of these drugs may be judged for how they lost it鈥攁ccused of taking "the easy way out."</p>
-
-    <p>Interestingly, the research also found that this bias was not limited to the general public. Even among healthcare professionals, there were subtle but measurable biases against patients using pharmacotherapy for weight loss. This raises serious questions about the quality of care that these patients might receive, as well as the broader cultural narratives around personal responsibility and health. The authors argue that society needs to reframe its understanding of obesity as a complex chronic disease rather than a simple failure of willpower.</p>
-
-    <p>The implications of this study extend beyond weight management. As medical science continues to develop pharmacological solutions for conditions that are traditionally addressed through behavioral change鈥攕uch as addiction, mental health disorders, and even aging鈥攕ociety may need to grapple with an expanding frontier of pharmaceutical stigma. The researchers conclude that combating this form of prejudice will require both public education and a more nuanced conversation about the legitimate role of medication in achieving health outcomes.</p>
+  <div class="text">
+    <p>GLP-1 receptor agonists such as Ozempic and Wegovy have been hailed as revolutionary treatments for obesity and type 2 diabetes. By mimicking a natural hormone that regulates appetite and blood sugar, these drugs have helped millions of people lose substantial amounts of weight. However, a surprising new study published in May 2026 reveals a troubling social <span class="vocab">paradox</span>: individuals who shed pounds using these medications may actually encounter more social <span class="vocab">stigma</span> than those who achieve similar results through traditional diet and exercise.</p>
+    <p>The study, conducted by a team of sociologists and public health researchers, surveyed over 1,200 participants and presented them with scenarios of individuals who lost weight through various methods. When the weight loss was <span class="vocab">attributed</span> to GLP-1 drugs, participants rated the individuals as lazier and less disciplined compared to those who lost the same amount of weight through conventional means. The researchers coined the term "pharmaceutical stigma" to describe this phenomenon, wherein medical assistance for weight management is perceived by others as a shortcut or an admission of failure.</p>
+    <p>This finding is particularly concerning given the already <span class="vocab">pervasive</span> stigma surrounding obesity itself. People with obesity frequently face <span class="vocab">discrimination</span> in employment, healthcare, and social interactions. The study suggests that weight-loss medications, rather than <span class="vocab">alleviating</span> this burden, may simply shift the target of prejudice. Instead of being judged for being overweight, users of these drugs may be judged for how they lost it — accused of taking "the easy way out."</p>
+    <p>Interestingly, the research also found that this bias was not limited to the general public. Even among healthcare professionals, there were subtle but measurable biases against patients using <span class="vocab">pharmacotherapy</span> for weight loss. This raises serious questions about the quality of care that these patients might receive, as well as the broader cultural narratives around personal responsibility and health. The authors argue that society needs to reframe its understanding of obesity as a complex chronic disease rather than a simple failure of willpower.</p>
+    <p>The implications of this study extend beyond weight management. As medical science continues to develop pharmacological solutions for conditions that are traditionally addressed through behavioral change — such as addiction, mental health disorders, and even aging — society may need to grapple with an expanding frontier of pharmaceutical stigma. The researchers conclude that combating this form of prejudice will require both public education and a more <span class="vocab">nuanced</span> conversation about the legitimate role of medication in achieving health outcomes.</p>
   </div>
-
   <div class="vocab-box">
-    <h3>馃摎 鏍稿績璇嶆眹</h3>
-    <div class="vocab-item"><span class="vocab-word">paradox</span> <span class="vocab-phonetic">/藞p忙r蓹d蓱藧ks/</span> 鈥?n. 鎮栬锛岀煕鐩?/div>
-    <div class="vocab-item"><span class="vocab-word">stigma</span> <span class="vocab-phonetic">/藞st瑟伞m蓹/</span> 鈥?n. 姹″悕锛岃€昏颈</div>
-    <div class="vocab-item"><span class="vocab-word">pervasive</span> <span class="vocab-phonetic">/p蓹r藞ve瑟s瑟v/</span> 鈥?adj. 鏅亶鐨勶紝娓楅€忕殑</div>
-    <div class="vocab-item"><span class="vocab-word">attribute</span> <span class="vocab-phonetic">/蓹藞tr瑟bju藧t/</span> 鈥?v. 褰掑洜浜?/div>
-    <div class="vocab-item"><span class="vocab-word">discrimination</span> <span class="vocab-phonetic">/d瑟藢skr瑟m瑟藞ne瑟蕛n/</span> 鈥?n. 姝ц</div>
-    <div class="vocab-item"><span class="vocab-word">alleviate</span> <span class="vocab-phonetic">/蓹藞li藧vie瑟t/</span> 鈥?v. 缂撹В锛屽噺杞?/div>
-    <div class="vocab-item"><span class="vocab-word">pharmacotherapy</span> <span class="vocab-phonetic">/藢f蓱藧rm蓹ko蕣藞胃er蓹pi/</span> 鈥?n. 鑽墿娌荤枟</div>
-    <div class="vocab-item"><span class="vocab-word">nuanced</span> <span class="vocab-phonetic">/藞nu藧蓱藧nst/</span> 鈥?adj. 缁嗗井宸埆鐨勶紝缁嗚嚧鐨?/div>
+    <strong>📝 核心词汇</strong><br>
+    paradox /ˈpærədɑːks/ n. 悖论，矛盾<br>
+    stigma /ˈstɪɡmə/ n. 污名，耻辱<br>
+    attribute /əˈtrɪbjuːt/ v. 归因于<br>
+    pervasive /pərˈveɪsɪv/ adj. 普遍的，渗透的<br>
+    discrimination /dɪˌskrɪmɪˈneɪʃn/ n. 歧视<br>
+    alleviate /əˈliːvieɪt/ v. 缓解，减轻<br>
+    pharmacotherapy /ˌfɑːrməkoʊˈθerəpi/ n. 药物治疗<br>
+    nuanced /ˈnuːɑːnst/ adj. 细微差别的，细致的
   </div>
 
-  <div class="question-block" id="questions-2">
-    <div class="question" data-answer="c">
-      <div class="q-num">绗?1 棰?/div>
-      <div class="q-text">What is the "troubling social phenomenon" revealed by the new study?</div>
-      <div class="options">
-        <div class="option" data-value="a">A. GLP-1 drugs cause more severe side effects than previously thought.</div>
-        <div class="option" data-value="b">B. Most people cannot afford weight-loss medications.</div>
-        <div class="option" data-value="c">C. People who lose weight using medication face more social stigma than those using diet and exercise.</div>
-        <div class="option" data-value="d">D. Weight-loss drugs are not as effective as traditional methods.</div>
-      </div>
-      <div class="explanation-text">鉁?<strong>姝ｇ‘绛旀锛欳</strong>銆傜涓€娈垫湯灏炬€荤粨锛?individuals who shed pounds using these medications may actually encounter more social stigma than those who achieve similar results through traditional diet and exercise."</div>
+  <div class="question" data-answer="c">
+    <div class="q-num">第 1 题</div>
+    <div class="q-text">What is the "troubling social phenomenon" revealed by the new study?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. GLP-1 drugs cause more severe side effects than previously thought.</div>
+      <div class="option" data-value="b">B. Most people cannot afford weight-loss medications.</div>
+      <div class="option" data-value="c">C. People who lose weight using medication face more social stigma than those using diet and exercise.</div>
+      <div class="option" data-value="d">D. Weight-loss drugs are not as effective as traditional methods.</div>
     </div>
-
-    <div class="question" data-answer="a">
-      <div class="q-num">绗?2 棰?/div>
-      <div class="q-text">The term "pharmaceutical stigma" (paragraph 2) refers to:</div>
-      <div class="options">
-        <div class="option" data-value="a">A. Negative judgments directed at individuals who use medication for weight loss.</div>
-        <div class="option" data-value="b">B. The side effects caused by taking weight-loss drugs.</div>
-        <div class="option" data-value="c">C. The high cost of pharmaceutical treatments for obesity.</div>
-        <div class="option" data-value="d">D. The difficulty of obtaining a prescription for GLP-1 drugs.</div>
-      </div>
-      <div class="explanation-text">鉁?<strong>姝ｇ‘绛旀锛欰</strong>銆傜浜屾鐮旂┒鑰呭畾涔夌殑"pharmaceutical stigma"鏄寚"medical assistance for weight management is perceived by others as a shortcut or an admission of failure"锛屽嵆瀵逛娇鐢ㄨ嵂鐗╁噺鑲ヨ€呯殑璐熼潰璇勫垽銆?/div>
-    </div>
-
-    <div class="question" data-answer="b">
-      <div class="q-num">绗?3 棰?/div>
-      <div class="q-text">What does the study reveal about healthcare professionals?</div>
-      <div class="options">
-        <div class="option" data-value="a">A. They strongly support the use of GLP-1 drugs for weight loss.</div>
-        <div class="option" data-value="b">B. They also exhibit subtle biases against patients using pharmacotherapy for weight loss.</div>
-        <div class="option" data-value="c">C. They are unaware of the stigma associated with weight-loss medications.</div>
-        <div class="option" data-value="d">D. They prefer medication over lifestyle changes for their patients.</div>
-      </div>
-      <div class="explanation-text">鉁?<strong>姝ｇ‘绛旀锛欱</strong>銆傜鍥涙鎸囧嚭锛?Even among healthcare professionals, there were subtle but measurable biases against patients using pharmacotherapy for weight loss."</div>
-    </div>
-
-    <div class="question" data-answer="d">
-      <div class="q-num">绗?4 棰?/div>
-      <div class="q-text">Which of the following best describes the author's suggestion for addressing pharmaceutical stigma?</div>
-      <div class="options">
-        <div class="option" data-value="a">A. Banning advertisements for weight-loss drugs.</div>
-        <div class="option" data-value="b">B. Encouraging people to only use diet and exercise.</div>
-        <div class="option" data-value="c">C. Restricting GLP-1 drug prescriptions to severe cases only.</div>
-        <div class="option" data-value="d">D. Public education and a more nuanced discussion about medication's role in health.</div>
-      </div>
-      <div class="explanation-text">鉁?<strong>姝ｇ‘绛旀锛欴</strong>銆傛枃绔犳渶鍚庝竴鍙ワ細"combating this form of prejudice will require both public education and a more nuanced conversation about the legitimate role of medication in achieving health outcomes."</div>
-    </div>
-
-    <div class="question" data-answer="c">
-      <div class="q-num">绗?5 棰?/div>
-      <div class="q-text">What broader implication does the study raise, according to the final paragraph?</div>
-      <div class="options">
-        <div class="option" data-value="a">A. Pharmaceutical solutions will eventually replace all lifestyle changes.</div>
-        <div class="option" data-value="b">B. Weight stigma will disappear as more drugs become available.</div>
-        <div class="option" data-value="c">C. Society needs to confront similar stigma regarding other conditions treated with medication.</div>
-        <div class="option" data-value="d">D. The healthcare system should prioritize medication over behavioral therapy.</div>
-      </div>
-      <div class="explanation-text">鉁?<strong>姝ｇ‘绛旀锛欳</strong>銆傛渶鍚庝竴娈垫寚鍑猴細杩欎竴闂涓嶉檺浜庡噺閲嶏紝"as medical science continues to develop pharmacological solutions for conditions...society may need to grapple with an expanding frontier of pharmaceutical stigma."</div>
-    </div>
+    <div class="explanation-text">✅ <strong>正确答案：C</strong>。第一段末尾总结："individuals who shed pounds using these medications may actually encounter more social stigma than those who achieve similar results through traditional diet and exercise."</div>
   </div>
 
-  <div class="actions">
-    <button class="btn btn-primary" onclick="submitAll('questions-2')">馃摑 鎻愪氦绛旀</button>
-    <button class="btn btn-secondary" onclick="resetAll('questions-2')">馃攧 閲嶆柊绛旈</button>
+  <div class="question" data-answer="a">
+    <div class="q-num">第 2 题</div>
+    <div class="q-text">The term "pharmaceutical stigma" (paragraph 2) refers to:</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Negative judgments directed at individuals who use medication for weight loss.</div>
+      <div class="option" data-value="b">B. The side effects caused by taking weight-loss drugs.</div>
+      <div class="option" data-value="c">C. The high cost of pharmaceutical treatments for obesity.</div>
+      <div class="option" data-value="d">D. The difficulty of obtaining a prescription for GLP-1 drugs.</div>
+    </div>
+    <div class="explanation-text">✅ <strong>正确答案：A</strong>。第二段研究者定义的"pharmaceutical stigma"是指"medical assistance for weight management is perceived by others as a shortcut or an admission of failure"，即对使用药物减肥者的负面评判。</div>
   </div>
-  <div class="score-bar" id="score-2">鉁?0/5 (0%)</div>
+
+  <div class="question" data-answer="b">
+    <div class="q-num">第 3 题</div>
+    <div class="q-text">What does the study reveal about healthcare professionals?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. They strongly support the use of GLP-1 drugs for weight loss.</div>
+      <div class="option" data-value="b">B. They also exhibit subtle biases against patients using pharmacotherapy for weight loss.</div>
+      <div class="option" data-value="c">C. They are unaware of the stigma associated with weight-loss medications.</div>
+      <div class="option" data-value="d">D. They prefer medication over lifestyle changes for their patients.</div>
+    </div>
+    <div class="explanation-text">✅ <strong>正确答案：B</strong>。第四段指出："Even among healthcare professionals, there were subtle but measurable biases against patients using pharmacotherapy for weight loss."</div>
+  </div>
+
+  <div class="question" data-answer="d">
+    <div class="q-num">第 4 题</div>
+    <div class="q-text">Which of the following best describes the author's suggestion for addressing pharmaceutical stigma?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Banning advertisements for weight-loss drugs.</div>
+      <div class="option" data-value="b">B. Encouraging people to only use diet and exercise.</div>
+      <div class="option" data-value="c">C. Restricting GLP-1 drug prescriptions to severe cases only.</div>
+      <div class="option" data-value="d">D. Public education and a more nuanced discussion about medication's role in health.</div>
+    </div>
+    <div class="explanation-text">✅ <strong>正确答案：D</strong>。文章最后一句："combating this form of prejudice will require both public education and a more nuanced conversation about the legitimate role of medication in achieving health outcomes."</div>
+  </div>
+
+  <div class="question" data-answer="c">
+    <div class="q-num">第 5 题</div>
+    <div class="q-text">What broader implication does the study raise, according to the final paragraph?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Pharmaceutical solutions will eventually replace all lifestyle changes.</div>
+      <div class="option" data-value="b">B. Weight stigma will disappear as more drugs become available.</div>
+      <div class="option" data-value="c">C. Society needs to confront similar stigma regarding other conditions treated with medication.</div>
+      <div class="option" data-value="d">D. The healthcare system should prioritize medication over behavioral therapy.</div>
+    </div>
+    <div class="explanation-text">✅ <strong>正确答案：C</strong>。最后一段指出：这一问题不限于减重，"as medical science continues to develop pharmacological solutions for conditions...society may need to grapple with an expanding frontier of pharmaceutical stigma."</div>
+  </div>
 </div>
 
-<p style="text-align:center; color:#888; font-size:13px; margin:32px 0 48px;">
-  馃摉 姣忔棩鍏骇闃呰 路 CET-6 Level 路 3563z/cet6-reading
-</p>
+<div class="result-bar" id="resultBar"></div>
+
+<div class="btn-group">
+  <button class="btn btn-primary" onclick="submitAll()">📝 提交答案</button>
+  <button class="btn btn-secondary" onclick="resetAll()">🔄 重新答题</button>
+</div>
+
+<div class="footer">
+  每日六级阅读 · 小约 🤖 为你精选<br>
+  CET-6 Daily Reading · &copy; 2026
+</div>
+</div>
 
 <script>
-function submitAll(questionSetId) {
-  let total = 0, correct = 0;
-  const container = document.getElementById(questionSetId) || document.querySelector('#' + questionSetId);
-  const questions = document.querySelectorAll('#' + questionSetId + ' .question');
-  questions.forEach(function(q) {
-    total++;
-    const answer = q.getAttribute('data-answer');
+let submitted = false;
+
+document.querySelectorAll('.option').forEach(el => {
+  el.addEventListener('click', function() {
+    if (submitted) return;
+    const siblings = this.parentElement.querySelectorAll('.option');
+    siblings.forEach(s => s.classList.remove('selected'));
+    this.classList.add('selected');
+  });
+});
+
+function submitAll() {
+  if (submitted) return;
+  submitted = true;
+  let total = 0;
+  let correct = 0;
+
+  document.querySelectorAll('.question').forEach(q => {
     const selected = q.querySelector('.option.selected');
-    const expl = q.querySelector('.explanation-text');
-    expl.classList.add('show');
+    const answer = q.getAttribute('data-answer');
+    const options = q.querySelectorAll('.option');
+    const explanation = q.querySelector('.explanation-text');
+
+    total++;
     if (selected) {
       const val = selected.getAttribute('data-value');
       if (val === answer) {
+        selected.classList.remove('selected');
         selected.classList.add('correct');
         correct++;
-        expl.className = 'explanation-text show correct';
       } else {
+        selected.classList.remove('selected');
         selected.classList.add('wrong');
-        expl.className = 'explanation-text show wrong';
-        q.querySelector('.option[data-value="' + answer + '"]').classList.add('correct');
+        options.forEach(o => {
+          if (o.getAttribute('data-value') === answer) {
+            o.classList.add('reveal-answer');
+          }
+        });
       }
     } else {
-      q.querySelector('.option[data-value="' + answer + '"]').classList.add('correct');
-      expl.className = 'explanation-text show wrong';
+      options.forEach(o => {
+        if (o.getAttribute('data-value') === answer) {
+          o.classList.add('reveal-answer');
+        }
+      });
     }
-    q.querySelectorAll('.option').forEach(function(o) { o.style.cursor = 'default'; o.onclick = null; });
+    explanation.classList.add('show');
   });
+
+  const bar = document.getElementById('resultBar');
   const pct = Math.round(correct / total * 100);
-  const scoreId = questionSetId === 'questions-1' ? 'score-1' : (questionSetId === 'questions-2' ? 'score-2' : '');
-  if (scoreId) {
-    document.getElementById(scoreId).textContent = '鉁?' + correct + '/' + total + ' (' + pct + '%)';
-  }
+  bar.textContent = `📊 得分：${correct}/${total} (${pct}%)${pct >= 60 ? ' 🎉 通过！' : ' 💪 继续加油！'}`;
+  bar.className = 'result-bar show ' + (pct >= 60 ? 'pass' : 'fail');
 }
 
-function resetAll(questionSetId) {
-  const questions = document.querySelectorAll('#' + questionSetId + ' .question');
-  questions.forEach(function(q) {
-    q.querySelectorAll('.option').forEach(function(o) {
-      o.classList.remove('selected', 'correct', 'wrong');
-      o.style.cursor = 'pointer';
-      o.onclick = function() { selectOption(this); };
-    });
-    const expl = q.querySelector('.explanation-text');
-    expl.classList.remove('show', 'correct', 'wrong');
+function resetAll() {
+  submitted = false;
+  document.querySelectorAll('.option').forEach(o => {
+    o.classList.remove('selected', 'correct', 'wrong', 'reveal-answer');
   });
-  const scoreId = questionSetId === 'questions-1' ? 'score-1' : (questionSetId === 'questions-2' ? 'score-2' : '');
-  if (scoreId) {
-    document.getElementById(scoreId).textContent = '鉁?0/5 (0%)';
-  }
+  document.querySelectorAll('.explanation-text').forEach(e => e.classList.remove('show'));
+  document.getElementById('resultBar').className = 'result-bar';
 }
-
-function selectOption(el) {
-  const question = el.closest('.question');
-  if (question.querySelector('.option.correct') || question.querySelector('.option.wrong')) return;
-  question.querySelectorAll('.option').forEach(function(o) { o.classList.remove('selected'); });
-  el.classList.add('selected');
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.option').forEach(function(o) {
-    o.onclick = function() { selectOption(this); };
-  });
-});
 </script>
-
 </body>
 </html>
