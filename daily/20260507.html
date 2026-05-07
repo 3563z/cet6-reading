@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>每日六级阅读 · 2026-05-07</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f5f7fa;
+    color: #1a1a2e;
+    padding: 16px;
+    line-height: 1.8;
+  }
+  .container { max-width: 520px; margin: 0 auto; }
+  .header { text-align: center; padding: 20px 0 12px; }
+  .header h1 { font-size: 20px; font-weight: 700; color: #1a1a2e; }
+  .header .date { font-size: 13px; color: #888; margin-top: 4px; }
+  .header .badge { display: inline-block; background: #e8f0fe; color: #1a73e8; font-size: 11px; padding: 2px 10px; border-radius: 12px; margin-top: 6px; }
+  .passage { background: #fff; border-radius: 14px; padding: 16px; margin: 12px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+  .passage .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 8px; margin-bottom: 10px; }
+  .tag-tech { background: #e3f2fd; color: #1565c0; }
+  .tag-human { background: #fce4ec; color: #c62828; }
+  .passage h2 { font-size: 16px; font-weight: 600; line-height: 1.5; margin-bottom: 10px; color: #1a1a2e; }
+  .passage .text { font-size: 14px; line-height: 1.8; color: #333; text-align: justify; margin-bottom: 14px; }
+  .passage .text p { margin-bottom: 10px; text-indent: 2em; }
+  .vocab { display: inline; color: #1a73e8; font-weight: 600; border-bottom: 1.5px solid #1a73e8; }
+  .vocab-box { background: #f0f4ff; border-radius: 10px; padding: 10px 12px; margin-bottom: 14px; font-size: 12px; }
+  .vocab-box strong { color: #1a73e8; }
+  .question { margin-bottom: 14px; }
+  .question .q-num { font-weight: 700; font-size: 13px; color: #1a73e8; margin-bottom: 4px; }
+  .question .q-text { font-size: 13.5px; color: #333; margin-bottom: 6px; }
+  .question .options { padding-left: 2px; }
+  .question .option { display: block; font-size: 13px; padding: 7px 8px; margin: 3px 0; border-radius: 8px; background: #f8f9fa; border: 1.5px solid transparent; cursor: pointer; }
+  .option.selected { background: #e8f0fe; border-color: #1a73e8; color: #1a73e8; }
+  .option.correct { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
+  .option.wrong { background: #fce8e6; border-color: #ea4335; color: #c5221f; }
+  .option.reveal-answer { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
+  .explanation-text { font-size: 12.5px; color: #555; margin-top: 4px; padding: 6px 8px; background: #f8f9fa; border-radius: 8px; display: none; }
+  .explanation-text.show { display: block; }
+  .btn-group { display: flex; gap: 8px; margin: 16px 0; }
+  .btn { flex: 1; padding: 12px; border: none; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; text-align: center; }
+  .btn-primary { background: #1a73e8; color: #fff; }
+  .btn-primary:active { background: #1557b0; }
+  .btn-secondary { background: #e8eaed; color: #444; }
+  .btn-secondary:active { background: #d2d4d8; }
+  .result-bar { text-align: center; padding: 12px; font-size: 14px; font-weight: 600; border-radius: 10px; margin: 12px 0; display: none; }
+  .result-bar.show { display: block; }
+  .result-bar.pass { background: #e6f4ea; color: #1e7e34; }
+  .result-bar.fail { background: #fce8e6; color: #c5221f; }
+  .footer { text-align: center; padding: 20px 0 24px; font-size: 11px; color: #aaa; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>📖 每日六级阅读</h1>
+  <div class="date">2026 年 5 月 7 日 · 星期四</div>
+  <div class="badge">🎯 CET-6 双篇深度训练</div>
+</div>
+
+<!-- Passage 1: Technology -->
+<div class="passage">
+  <span class="tag tag-tech">🔬 科技 · 人工智能</span>
+  <h2>AI vs Human Creativity: The Largest Comparison Ever Conducted</h2>
+  <div class="text">
+    <p>Can generative artificial intelligence systems genuinely create original ideas? A landmark study published in <em>Scientific Reports</em> has sought to answer this question at an <span class="vocab">unprecedented</span> scale, comparing the creative abilities of leading AI models — including ChatGPT, Claude, and Gemini — against more than 100,000 human participants. The findings reveal a surprising and <span class="vocab">nuanced</span> picture of where machines stand in relation to human creativity.</p>
+    <p>Researchers from the Université de Montréal, in collaboration with renowned AI pioneer Yoshua Bengio, evaluated several large language models using the Divergent Association Task (DAT), a well-established psychological test that measures divergent thinking — the ability to generate diverse and original ideas from a single prompt. Participants, whether human or AI, were asked to list ten words that are as unrelated in meaning as possible. A highly creative response might include words like "galaxy, fork, freedom, algae, harmonica, quantum, nostalgia, velvet, hurricane, photosynthesis."</p>
+    <p>The results marked a clear turning point. Some AI systems, particularly GPT-4, <span class="vocab">exceeded</span> the average human score on these creativity measures. "This result may be surprising — even unsettling," remarked Professor Karim Jerbi, the lead author. However, the study also revealed a critical <span class="vocab">distinction</span>: while AI outperformed the average person, the most creative humans — especially those in the top 10 percent — still maintained a clear and consistent advantage over even the strongest AI models. When researchers examined only the most creative half of human participants, their average scores surpassed every AI model tested.</p>
+    <p>The study went beyond simple word associations to explore real-world creative tasks, including composing haiku poetry, writing movie plot summaries, and producing short stories. The results followed the same pattern: AI could match or slightly exceed average human performance, but the most skilled human creators consistently delivered more original and <span class="vocab">compelling</span> work. The researchers also discovered that AI creativity can be adjusted by changing a parameter called "temperature" — lower settings produce safer, more conventional outputs, while higher temperatures generate more varied and <span class="vocab">exploratory</span> responses. Additionally, the way prompts were written significantly influenced AI output quality.</p>
+    <p>The researchers emphasize that these findings should not fuel fears of machines replacing human creators. Instead, they suggest that AI can serve as a tool to <span class="vocab">augment</span> human creativity rather than replace it. The study highlights that peak creativity remains a distinctly human strength, and that human guidance — through careful prompt design and interaction — remains essential to unlocking the best from AI systems. As AI continues to evolve, understanding its relationship with human creativity becomes ever more important for shaping the future of art, science, and innovation.</p>
+  </div>
+  <div class="vocab-box">
+    <strong>📝 核心词汇</strong><br>
+    unprecedented /ʌnˈpresɪdentɪd/ adj. 空前的，史无前例的<br>
+    nuanced /ˈnuːɑːnst/ adj. 细致的，有细微差别的<br>
+    exceed /ɪkˈsiːd/ v. 超过，超越<br>
+    distinction /dɪˈstɪŋkʃn/ n. 区别，差异<br>
+    compelling /kəmˈpelɪŋ/ adj. 引人入胜的，令人信服的<br>
+    exploratory /ɪkˈsplɔːrətɔːri/ adj. 探索性的<br>
+    augment /ɔːɡˈment/ v. 增强，补充<br>
+    divergent /daɪˈvɜːrdʒənt/ adj. 发散的，分叉的
+  </div>
+
+  <div class="question" data-answer="c">
+    <div class="q-num">第 1 题</div>
+    <div class="q-text">What was the main finding of the study comparing AI and human creativity?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. AI models completely surpassed all human participants in creativity.</div>
+      <div class="option" data-value="b">B. Humans still outperformed AI in every creativity measure tested.</div>
+      <div class="option" data-value="c">C. AI exceeded average human scores but fell short of the most creative humans.</div>
+      <div class="option" data-value="d">D. There was no significant difference between AI and human creativity.</div>
+    </div>
+    <div class="explanation-text">✅ <strong>正确答案：C</strong>。文章指出：AI "exceeded the average human score"，但"the most creative humans — especially those in the top 10 percent — still maintained a clear and consistent advantage"。AI超过了人类平均水平，但顶尖人类创造力仍领先。</div>
+  </div>
+
+  <div class="question" data-answer="a">
+    <div class="q-num">第 2 题</div>
+    <div class="q-text">The Divergent Association Task (DAT) measures creativity by:</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Asking participants to list words that are semantically unrelated.</div>
+      <div class="option" data-value="b">B. Having participants write a short story about a given topic.</div>
+      <div class="option" data-value="c">C. Asking participants to solve complex mathematical problems.</div>
+      <div class="option" data-value="d">D. Testing participants' vocabulary size and grammar knowledge.</div>
+    </div>
+    <div class="explanation-text">✅ <strong>正确答案：A</strong>。第二段说明：DAT要求参与者列出十个"as unrelated in meaning as possible"的单词，即语义上尽可能不相关的词，以此来衡量发散性思维能力。</div>
+  </div>
+
+  <div class="question" data-answer="b">
+    <div class="q-num">第 3 题</div>
+    <div class="q-text">What does the "temperature" parameter do in AI creativity?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. It controls how fast the AI processes information.</div>
+      <div class="option" data-value="b">A. Lower settings produce safer outputs; higher settings generate more exploratory responses.</div>
+      <div class="option" data-value="c">C. It determines whether the AI can access the internet.</div>
+      <div class="option" data-value="d">D. It adjusts how many words the AI can generate at once.</div>
+    </div>
+    <div class="explanation-text">✅ <strong>正确答案：B</strong>。第四段说明：lower temperature settings produce "safer, more conventional outputs"，higher temperatures generate "more varied and exploratory responses"。</div>
+  </div>
+
+  <div class="question" data-answer="d">
+    <div class="q-num">第 4 题</div>
+    <div class="q-text">According to the passage, what role does human guidance play in AI creativity?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. It is unnecessary as AI can generate creative content autonomously.</div>
+      <div class="option" data-value="b">B. It only matters for simple tasks like word associations.</div>
+      <div class="option" data-value="c">C. It limits AI's creative potential by imposing human biases.</div>
+      <div class="option" data-value="d">D. It remains essential through careful prompt design and interaction.</div>
+    </div>
+    <div class="explanation-text">✅ <strong>正确答案：D</strong>。最后一段指出："human guidance — through careful prompt design and interaction — remains essential to unlocking the best from AI systems"。</div>
+  </div>
+
+  <div class="question" data-answer="b">
+    <div class="q-num">第 5 题</div>
+    <div class="q-text">What is the authors' overall recommendation regarding AI and creativity?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. AI will soon replace human creators in all creative fields.</div>
+      <div class="option" data-value="b">B. AI should be viewed as a tool to augment, not replace, human creativity.</div>
+      <div class="option" data-value="c">C. Humans should stop pursuing creative careers as AI has surpassed them.</div>
+      <div class="option" data-value="d">D. Creativity tests should no longer be used to compare humans and AI.</div>
+    </div>
+    <div class="explanation-text">✅ <strong>正确答案：B</strong>。最后一段明确指出：AI can "serve as a tool to augment human creativity rather than replace it"，强调AI是增强而非替代人类创造力的工具。</div>
+  </div>
+</div>
+
+<!-- Passage 2: Society -->
+<div class="passage">
+  <span class="tag tag-human">🌍 社会 · 心理健康</span>
+  <h2>Loneliness and Memory: A Surprising Link in Older Adults</h2>
+  <div class="text">
+    <p>Feeling lonely may affect how well older adults remember things, but it does not appear to make memory decline happen faster over time. This <span class="vocab">counterintuitive</span> conclusion comes from a large European study published in the journal <em>Aging & Mental Health</em>, which followed more than 10,000 adults aged 65 to 94 across 12 European countries over a seven-year period. The findings add a new layer of <span class="vocab">complexity</span> to our understanding of how social and emotional factors influence cognitive health in aging.</p>
+    <p>At the start of the study, participants who reported higher levels of loneliness scored lower on both immediate and delayed memory tests. They were asked to recall as many words as possible from a list of ten that was read aloud within one minute. Those in the high-loneliness group consistently performed worse than those with lower loneliness levels. However, a surprising pattern emerged over time: although they started at a <span class="vocab">disadvantage</span>, individuals with higher loneliness did not experience faster memory decline. Their rate of decline was similar to those in the low and average loneliness groups over the seven-year period.</p>
+    <p>Loneliness has become an increasingly <span class="vocab">prominent</span> public health concern. Previous research has linked it to a wide range of negative health outcomes, including heart disease, depression, weakened immune function, and even shorter lifespan. The relationship between loneliness and dementia risk, however, has remained <span class="vocab">controversial</span>. Some earlier studies suggested that loneliness accelerates cognitive decline, while others found no clear connection. This large-scale study aimed to resolve some of that uncertainty by carefully tracking memory changes over time while controlling for other factors such as physical activity, social engagement, depression, and chronic health conditions.</p>
+    <p>The researchers also discovered interesting regional patterns. The highest levels of loneliness were reported in Southern European countries (12 percent), followed by Eastern Europe (9 percent), Northern Europe (9 percent), and Central Europe (6 percent). Participants in the high-loneliness group were more likely to be older, female, and in poorer overall health, with higher rates of depression, high blood pressure, and diabetes. These <span class="vocab">demographic</span> patterns suggest that loneliness often coexists with other health challenges, making it difficult to isolate its specific effects on cognition.</p>
+    <p>The study's lead author, Dr. Luis Carlos Venegas-Sanabria, emphasized that these findings do not mean loneliness is harmless for brain health. Rather, the fact that lonely individuals start with lower memory scores is itself a significant concern. The researchers propose that routine screening for loneliness could become part of standard cognitive health assessments for older adults. By identifying and addressing loneliness early, healthcare providers may be able to support healthier aging — even if loneliness does not directly accelerate memory decline. "The study <span class="vocab">underscores</span> the importance of addressing loneliness as a significant factor in the context of cognitive performance in older adults," Dr. Venegas-Sanabria concluded.</p>
+  </div>
+  <div class="vocab-box">
+    <strong>📝 核心词汇</strong><br>
+    counterintuitive /ˌkaʊntərɪnˈtjuːɪtɪv/ adj. 反直觉的<br>
+    complexity /kəmˈpleksəti/ n. 复杂性<br>
+    disadvantage /ˌdɪsədˈvæntɪdʒ/ n. 劣势，不利条件<br>
+    prominent /ˈprɑːmɪnənt/ adj. 突出的，显著的<br>
+    controversial /ˌkɑːntrəˈvɜːrʃl/ adj. 有争议的<br>
+    demographic /ˌdeməˈɡræfɪk/ adj. 人口统计的<br>
+    underscore /ˌʌndərˈskɔːr/ v. 强调，突出<br>
+    cognitive /ˈkɑːɡnətɪv/ adj. 认知的
+  </div>
+
+  <div class="question" data-answer="c">
+    <div class="q-num">第 1 题</div>
+    <div class="q-text">What was the most surprising finding of the study about loneliness and memory?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Lonely people had better memory than non-lonely people.</div>
+      <div class="option" data-value="b">B. Loneliness had no effect on memory whatsoever.</div>
+      <div class="option" data-value="c">C. Loneliness affected initial memory but did not speed up memory decline.</div>
+      <div class="option" data-value="d">D. Loneliness caused memory to improve over time.</div>
+    </div>
+    <div class="explanation-text">✅ <strong>正确答案：C</strong>。文章和作者都强调这是"a surprising outcome"：loneliness影响初始记忆分数（lower scores at the start），但并未加速记忆的衰退速度（did not experience faster memory decline）。</div>
+  </div>
+
+  <div class="question" data-answer="b">
+    <div class="q-num">第 2 题</div>
+    <div class="q-text">How was memory measured in the study?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Participants were asked to solve puzzles and riddles.</div>
+      <div class="option" data-value="b">B. Participants recalled words from a list both immediately and after a delay.</div>
+      <div class="option" data-value="c">C. Participants were tested on their ability to recognize faces.</div>
+      <div class="option" data-value="d">D. Participants kept a daily diary of what they remembered.</div>
+    </div>
+    <div class="explanation-text">✅ <strong>正确答案：B</strong>。第二段说明测量方法："asked to recall as many words as possible from a list of ten...both immediate and delayed recall." 第四段也提到即时和延迟记忆任务。</div>
+  </div>
+
+  <div class="question" data-answer="a">
+    <div class="q-num">第 3 题</div>
+    <div class="q-text">Which region in Europe reported the highest levels of loneliness among older adults?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Southern Europe.</div>
+      <div class="option" data-value="b">B. Central Europe.</div>
+      <div class="option" data-value="c">C. Northern Europe.</div>
+      <div class="option" data-value="d">D. Eastern Europe.</div>
+    </div>
+    <div class="explanation-text">✅ <strong>正确答案：A</strong>。第四段指出："The highest levels of loneliness were reported in Southern European countries (12 percent)." 南欧（12%）高于东欧（9%）、北欧（9%）和中欧（6%）。</div>
+  </div>
+
+  <div class="question" data-answer="d">
+    <div class="q-num">第 4 题</div>
+    <div class="q-text">What does the author suggest about the relationship between loneliness and other health issues?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Loneliness is completely independent of other health conditions.</div>
+      <div class="option" data-value="b">B. Health issues are the main cause of loneliness in older adults.</div>
+      <div class="option" data-value="c">C. Loneliness is more harmful than any physical disease.</div>
+      <div class="option" data-value="d">D. Loneliness often coexists with other health challenges, making its effects hard to isolate.</div>
+    </div>
+    <div class="explanation-text">✅ <strong>正确答案：D</strong>。第四段说明：high-loneliness群体有更高的depression、高血压、糖尿病患病率，且"loneliness often coexists with other health challenges, making it difficult to isolate its specific effects"。</div>
+  </div>
+
+  <div class="question" data-answer="b">
+    <div class="q-num">第 5 题</div>
+    <div class="q-text">What practical recommendation do the researchers make based on the study's findings?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Lonely older adults should be prescribed memory-enhancing medication.</div>
+      <div class="option" data-value="b">B. Routine screening for loneliness should become part of cognitive health assessments.</div>
+      <div class="option" data-value="c">C. Older adults should move to countries with lower loneliness rates.</div>
+      <div class="option" data-value="d">D. Memory tests are unnecessary for lonely older adults.</div>
+    </div>
+    <div class="explanation-text">✅ <strong>正确答案：B</strong>。最后一段明确建议："routine screening for loneliness could become part of standard cognitive health assessments for older adults"，通过早期识别来支持健康老龄化。（注意：最后一段可读性优先，已回答完题目解读，此处展示错误答案，保持之前样式。正确参考最后一段：'routing screening for loneliness could become part of standard cognitive health assessments'。）</div>
+  </div>
+</div>
+
+<div class="result-bar" id="resultBar"></div>
+<div class="btn-group">
+  <button class="btn btn-primary" onclick="submitAll()">📝 提交答案</button>
+  <button class="btn btn-secondary" onclick="resetAll()">🔄 重新答题</button>
+</div>
+
+<div class="footer">📚 CET-6 每日阅读 · 坚持练习，稳步提升</div>
+
+</div>
+
+<script>
+let submitted = false;
+
+document.querySelectorAll('.option').forEach(opt => {
+  opt.addEventListener('click', function() {
+    if (submitted) return;
+    this.parentElement.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+    this.classList.add('selected');
+  });
+});
+
+function submitAll() {
+  if (submitted) return;
+  submitted = true;
+
+  let total = 0;
+  let correct = 0;
+
+  document.querySelectorAll('.question').forEach(q => {
+    const answer = q.getAttribute('data-answer');
+    const selected = q.querySelector('.option.selected');
+    const options = q.querySelectorAll('.option');
+    const explanation = q.querySelector('.explanation-text');
+
+    options.forEach(opt => {
+      const val = opt.getAttribute('data-value');
+      if (val === answer) {
+        opt.classList.add('reveal-answer');
+      }
+    });
+
+    if (selected) {
+      const val = selected.getAttribute('data-value');
+      if (val === answer) {
+        selected.classList.add('correct');
+        correct++;
+      } else {
+        selected.classList.add('wrong');
+      }
+    }
+
+    total++;
+    explanation.classList.add('show');
+  });
+
+  const bar = document.getElementById('resultBar');
+  const pct = Math.round((correct / total) * 100);
+  bar.textContent = `🎯 得分：${correct}/${total} (${pct}%) ${pct >= 60 ? '✅ 合格' : '❌ 需加油'}`;
+  bar.className = 'result-bar show ' + (pct >= 60 ? 'pass' : 'fail');
+}
+
+function resetAll() {
+  submitted = false;
+  document.querySelectorAll('.option').forEach(opt => {
+    opt.classList.remove('selected', 'correct', 'wrong', 'reveal-answer');
+  });
+  document.querySelectorAll('.explanation-text').forEach(e => e.classList.remove('show'));
+  const bar = document.getElementById('resultBar');
+  bar.className = 'result-bar';
+  bar.textContent = '';
+}
+</script>
+</body>
+</html>
