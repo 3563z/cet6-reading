@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CET-6 智能刷题系统 · 原创版</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <style>
+        :root { --primary: #2c3e50; --accent: #3498db; --highlight-red: #e74c3c; --highlight-green: #27ae60; --bg: #f0f2f5; --text: #2c3e50; --sidebar-w: 260px; }
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: 'Segoe UI', "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); height: 100vh; overflow: hidden; }
+        #app { display: flex; height: 100%; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #999; }
+        .sidebar { width: var(--sidebar-w); background: var(--primary); color: #bdc3c7; display: flex; flex-direction: column; flex-shrink: 0; user-select: none; }
+        .sidebar-header { padding: 18px 20px; background: #243342; font-weight: bold; color: white; border-bottom: 1px solid #34495e; font-size: 1.1em; }
+        .nav-scroll { flex: 1; overflow-y: auto; }
+        .nav-group-title { padding: 12px 20px; cursor: pointer; display: flex; justify-content: space-between; font-size: 14px; background: rgba(255,255,255,0.05); border-bottom: 1px solid #34495e; transition: 0.3s; }
+        .nav-group-title:hover { background: rgba(255,255,255,0.1); color: white; }
+        .nav-sub { display: none; background: #1a252f; }
+        .nav-sub.open { display: block; }
+        .nav-item { padding: 10px 20px 10px 35px; cursor: pointer; font-size: 13px; border-bottom: 1px solid #2c3e50; transition: 0.2s; }
+        .nav-item:hover { background: #2c3e50; color: white; }
+        .nav-item.active { color: white; background: var(--accent); border-left: 4px solid white; }
+        .main-area { flex: 1; display: flex; flex-direction: column; position: relative; background: #fff; }
+        .paper-nav-bar { height: 55px; background: #fff; border-bottom: 1px solid #ddd; display: flex; align-items: center; padding: 0 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); z-index: 10; gap: 8px; flex-wrap: wrap; }
+        .anchor-btn { padding: 5px 12px; font-size: 12px; color: #666; background: #f5f5f5; border-radius: 15px; cursor: pointer; transition: 0.2s; border: 1px solid #eee; white-space: nowrap; }
+        .anchor-btn:hover { background: #eee; color: var(--accent); }
+        .reset-btn { margin-left: auto; padding: 6px 15px; background: #95a5a6; color: white; border-radius: 4px; font-size: 12px; cursor: pointer; border:none; transition: 0.3s; }
+        .reset-btn:hover { background: #7f8c8d; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .scroll-container { flex: 1; overflow-y: auto; scroll-behavior: smooth; padding: 20px 40px; background: var(--bg); }
+        .paper-content { max-width: 900px; margin: 0 auto; background: white; min-height: 100%; box-shadow: 0 0 15px rgba(0,0,0,0.05); padding: 45px; border-radius: 8px; }
+        .paper-title { text-align: center; margin-bottom: 35px; padding-bottom: 25px; border-bottom: 2px solid #eee; font-size: 1.8em; }
+        .section-header { margin: 40px 0 20px; padding: 12px 18px; background: #f8f9fa; border-left: 5px solid var(--primary); font-size: 18px; font-weight: bold; color: var(--primary); }
+        .text-passage { font-size: 16px; line-height: 1.9; text-align: justify; margin-bottom: 25px; color: #333; }
+        .q-item { margin-bottom: 25px; border-bottom: 1px dashed #eee; padding-bottom: 18px; }
+        .q-stem { font-weight: 600; margin-bottom: 12px; font-size: 15.5px; }
+        .radio-label { display: flex; align-items: flex-start; padding: 8px; cursor: pointer; border-radius: 6px; transition: 0.2s; font-size: 15px; margin-bottom: 4px; }
+        .radio-label:hover { background: #f0f7ff; }
+        .radio-label input { margin-top: 4px; margin-right: 10px; width: 16px; height: 16px; flex-shrink: 0; }
+        .highlight-red { color: var(--highlight-red); font-weight: bold; background-color: rgba(231, 76, 60, 0.1); border-bottom: 2px solid var(--highlight-red); cursor: pointer; padding: 0 2px; }
+        .highlight-green { color: var(--highlight-green); font-weight: bold; background-color: rgba(39, 174, 96, 0.1); border-bottom: 2px solid var(--highlight-green); cursor: pointer; padding: 0 2px; }
+        .cloze-blank { border-bottom: 2px solid var(--primary); font-weight: bold; padding: 0 8px; color: var(--accent); }
+        .banked-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; background: #f8f9fa; padding: 20px; border: 1px solid #e1e4e8; border-radius: 8px; margin-top: 30px; }
+        .match-input { width: 55px; margin-left: 10px; padding: 4px; text-align: center; border: 1px solid #ccc; border-radius: 4px; text-transform: uppercase; font-weight: bold; color: var(--accent); }
+        textarea { width: 100%; min-height: 180px; padding: 15px; border: 1px solid #ddd; border-radius: 6px; resize: vertical; font-family: inherit; font-size: 15px; line-height: 1.6; }
+        .drawer-handle { position: fixed; right: 0; top: 30%; width: 36px; padding: 15px 8px; background: var(--accent); color: white; cursor: pointer; border-radius: 8px 0 0 8px; writing-mode: vertical-rl; z-index: 100; font-size: 14px; box-shadow: -2px 0 5px rgba(0,0,0,0.1); }
+        .drawer { position: fixed; right: -360px; top: 0; width: 360px; height: 100%; background: white; box-shadow: -5px 0 25px rgba(0,0,0,0.15); transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 200; display: flex; flex-direction: column; }
+        .drawer.open { right: 0; }
+        .drawer-tabs { display: flex; background: #f8f9fa; border-bottom: 1px solid #ddd; }
+        .d-tab { flex: 1; text-align: center; padding: 15px 0; cursor: pointer; font-size: 14px; font-weight: bold; color: #7f8c8d; }
+        .d-tab.active { color: var(--accent); background: white; border-bottom: 3px solid var(--accent); }
+        .drawer-body { flex: 1; overflow-y: auto; padding: 20px; }
+        .ans-box { text-align: center; background: #f0f5ff; padding: 6px; border-radius: 4px; border: 1px solid #d6e4ff; }
+        .ans-idx { font-size: 11px; color: #7f8c8d; display: block; margin-bottom: 2px; }
+        .ans-val { font-weight: bold; color: var(--accent); font-size: 15px; }
+        .vocab-item { display: flex; justify-content: space-between; align-items: center; padding: 12px; border-bottom: 1px dashed #eee; transition: 0.2s; }
+        .vocab-item:hover { background: #fffcf0; }
+        .vocab-word { font-weight: bold; color: var(--highlight-red); font-size: 15px; }
+        .vocab-del { cursor: pointer; color: #95a5a6; font-size: 12px; border: 1px solid #eee; padding: 2px 6px; border-radius: 4px; }
+        .vocab-del:hover { background: #e74c3c; color: white; border-color: #e74c3c; }
+        .loading-overlay { position: absolute; top:0; left:0; width:100%; height:100%; background:rgba(255,255,255,0.9); display:flex; flex-direction:column; justify-content:center; align-items:center; z-index:50; }
+        .spinner { width: 40px; height: 40px; border: 4px solid #f3f3f3; border-top: 4px solid var(--accent); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 10px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        /* TTS 播放器样式 */
+        .tts-bar { background: #f0f7ff; border: 1px solid #d6e4ff; border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+        .tts-btn { padding: 8px 18px; border: none; border-radius: 20px; font-size: 14px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+        .tts-play { background: var(--accent); color: white; }
+        .tts-play:hover { background: #2980b9; }
+        .tts-play:disabled { background: #a0c4e8; cursor: not-allowed; }
+        .tts-stop { background: #e74c3c; color: white; }
+        .tts-stop:hover { background: #c0392b; }
+        .tts-status { font-size: 13px; color: #666; flex: 1; }
+        .tts-script { display: none; background: #fafafa; border: 1px dashed #ddd; border-radius: 6px; padding: 16px; margin-bottom: 20px; font-size: 14px; line-height: 1.8; color: #555; max-height: 300px; overflow-y: auto; }
+        .tts-script.show { display: block; }
+        .show-script-btn { font-size: 12px; color: var(--accent); cursor: pointer; background: none; border: 1px solid var(--accent); border-radius: 4px; padding: 3px 10px; }
+        .show-script-btn:hover { background: #e8f0fe; }
+        .listening-qs { margin-top: 12px; }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="sidebar">
+        <div class="sidebar-header"><span>📚 CET-6 原创刷题系统</span></div>
+        <div class="nav-scroll">
+            <div v-for="(group, gIdx) in navList" :key="gIdx">
+                <div class="nav-group-title" @click="toggleGroup(gIdx)">
+                    <span>{{ group.category }}</span>
+                    <span>{{ group.isOpen ? '▼' : '▶' }}</span>
+                </div>
+                <div class="nav-sub" :class="{ open: group.isOpen }">
+                    <div class="nav-item" v-for="(item, iIdx) in group.items" :key="iIdx"
+                         :class="{ active: currentItem === item }" 
+                         @click="loadPaper(item, group.folder)">
+                        {{ item.name }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-area">
+        <div class="paper-nav-bar" v-if="paperData">
+            <span style="font-weight:bold; font-size:13px; color:#7f8c8d;">快速跳转:</span>
+            <div class="anchor-btn" v-for="(sec, idx) in paperData.sections" :key="idx" @click="scrollToSection(idx)">
+                {{ sec.navName || sec.type }}
+            </div>
+            <button class="reset-btn" @click="confirmReset">🧹 清空答题卡</button>
+        </div>
+
+        <div class="scroll-container" ref="scrollBox" @dblclick="handleDoubleClick">
+            <div v-if="isLoading" class="loading-overlay">
+                <div class="spinner"></div>
+                <div>正在拼命加载试卷...</div>
+            </div>
+            
+            <div class="paper-content" v-if="paperData">
+                <h1 class="paper-title">{{ paperData.title }}</h1>
+                <div v-for="(section, index) in paperData.sections" :key="index" :id="'sec-' + index">
+                    <div class="section-header">{{ section.name }}</div>
+                    <component :is="'com-' + section.type" :data="section" :ref="'secComp' + index"></component>
+                </div>
+                <div style="height: 100px; text-align:center; color:#ccc; margin-top:50px; font-size:14px; border-top:1px solid #eee; padding-top:20px;">
+                    © CET-6 Smart Practice System · 📝 勤学苦练，顶峰相见
+                </div>
+            </div>
+            
+            <div v-else-if="!isLoading" style="text-align: center; margin-top: 150px; color: #999;">
+                <div style="font-size: 50px; margin-bottom: 20px;">📖</div>
+                <h2>请从左侧目录选择一套试卷开始练习</h2>
+                <p>支持 Ctrl+B 标记重点(绿色)，双击标记生词(红色)，听力使用浏览器语音合成播放</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="drawer-handle" @click="drawerOpen = !drawerOpen">答案 & 我的生词</div>
+    <div class="drawer" :class="{ open: drawerOpen }">
+        <div class="drawer-tabs">
+            <div class="d-tab" :class="{ active: activeTab === 'answer' }" @click="activeTab = 'answer'">参考答案</div>
+            <div class="d-tab" :class="{ active: activeTab === 'vocab' }" @click="activeTab = 'vocab'">我的笔记 ({{vocabList.length}})</div>
+            <div style="padding:15px; cursor:pointer; color:#999;" @click="drawerOpen = false">✕</div>
+        </div>
+        <div class="drawer-body" v-show="activeTab === 'answer'">
+            <div v-if="paperData">
+                <div v-for="(section, index) in paperData.sections" :key="index" style="margin-bottom:30px;">
+                    <div style="font-size:12px; color:#3498db; font-weight:bold; margin-bottom:10px; border-bottom:1px solid #eee; padding-bottom:5px;">{{ section.name }}</div>
+                    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px;">
+                        <template v-if="section.type === 'listening'">
+                            <template v-for="group in section.groups">
+                                <div v-for="q in group.questions" :key="q.id" class="ans-box">
+                                    <span class="ans-idx">{{ q.id }}</span>
+                                    <span class="ans-val">{{ q.answer }}</span>
+                                </div>
+                            </template>
+                        </template>
+                        <template v-else-if="section.articles">
+                            <template v-for="art in section.articles">
+                                <div v-for="q in art.questions" :key="q.id" class="ans-box">
+                                    <span class="ans-idx">{{ q.id }}</span>
+                                    <span class="ans-val">{{ q.answer }}</span>
+                                </div>
+                            </template>
+                        </template>
+                        <template v-else-if="section.questions">
+                            <div v-for="q in section.questions" :key="q.id" class="ans-box">
+                                <span class="ans-idx">{{ q.id }}</span>
+                                <span class="ans-val">{{ q.answer }}</span>
+                            </div>
+                        </template>
+                    </div>
+                    <div v-if="section.referenceAnswer">
+                        <button style="border:1px solid #eee; background:white; color:#666; cursor:pointer; font-size:12px; padding:4px 10px; border-radius:4px; margin-top:10px;" @click="$set(section, 'showRef', !section.showRef)">
+                            {{ section.showRef ? '收起详情' : '查看范文/解析' }}
+                        </button>
+                        <div v-if="section.showRef" style="white-space: pre-wrap; font-size:13px; color:#555; background:#f9f9f9; padding:15px; margin-top:8px; border-radius:4px; line-height:1.6;">
+                            {{ section.referenceAnswer }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-else style="text-align:center; color:#999; margin-top:50px">请先加载试卷</div>
+        </div>
+        <div class="drawer-body" v-show="activeTab === 'vocab'">
+            <div v-if="vocabList.length > 0">
+                <div v-for="(word, idx) in vocabList" :key="idx" class="vocab-item">
+                    <span class="vocab-word">{{ word }}</span>
+                    <span class="vocab-del" @click="removeVocab(word)">删除</span>
+                </div>
+                <button style="width:100%; padding:12px; background:var(--accent); color:white; border:none; cursor:pointer; margin-top:20px; border-radius:6px; font-weight:bold;" @click="copyVocab">📋 复制生词本</button>
+            </div>
+            <div v-else style="text-align:center;color:#999;margin-top:50px">暂无记录<br><small>双击文本变红，Ctrl+B变绿</small></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const commonProps = ['data'];
+
+    Vue.component('com-writing', { props: commonProps, template: `<div><div class="text-passage" v-html="data.description"></div><textarea placeholder="Please write your essay here..."></textarea></div>` });
+
+    // 听力组件：使用 Web Speech API (TTS) 播放脚本
+    Vue.component('com-listening', {
+        props: commonProps,
+        template: `
+        <div>
+            <div v-for="(group, i) in data.groups" :key="i" style="margin-bottom:30px;">
+                <div style="background:#f1f3f4; padding:8px 15px; margin:0 0 15px; border-left:4px solid var(--accent); font-weight:bold; font-size:14px;">{{ group.title }}</div>
+                <div class="tts-bar">
+                    <button class="tts-btn tts-play" :disabled="ttsPlaying[i]" @click="playScript(i, $event)">▶ {{ ttsPlaying[i] ? '播放中...' : '播放听力' }}</button>
+                    <button class="tts-btn tts-stop" v-if="ttsPlaying[i]" @click="stopScript(i)">⏹ 停止</button>
+                    <button class="show-script-btn" @click="showScript[i] = !showScript[i]">{{ showScript[i] ? '隐藏原文' : '显示原文' }}</button>
+                    <span class="tts-status">{{ ttsStatus[i] || '点击播放听录音' }}</span>
+                </div>
+                <div class="tts-script" :class="{ show: showScript[i] }" v-html="group.script || '(暂无原文)'"></div>
+                <div class="listening-qs">
+                    <div v-for="q in group.questions" :key="q.id" class="q-item">
+                        <div class="q-stem">{{ q.id }}. {{ q.text || 'Listen and choose the best answer:' }}</div>
+                        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                            <label v-for="(opt, idx) in q.options" :key="idx" class="radio-label">
+                                <input type="radio" :name="'L'+q.id"> <span>{{ opt }}</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`,
+        data() {
+            return {
+                ttsPlaying: {},
+                ttsStatus: {},
+                showScript: {},
+                utterances: {}
+            };
+        },
+        mounted() {
+            this.data.groups.forEach((g, i) => {
+                this.$set(this.ttsPlaying, i, false);
+                this.$set(this.ttsStatus, i, '');
+                this.$set(this.showScript, i, false);
+            });
+        },
+        methods: {
+            playScript(i, event) {
+                const btn = event.currentTarget;
+                btn.disabled = true;
+                const group = this.data.groups[i];
+                const script = group.script || '';
+                if (!script.trim()) { this.ttsStatus[i] = '⚠️ 暂无脚本'; btn.disabled = false; return; }
+
+                if (!window.speechSynthesis) { this.ttsStatus[i] = '⚠️ 浏览器不支持语音合成'; btn.disabled = false; return; }
+
+                window.speechSynthesis.cancel();
+                this.ttsPlaying[i] = true;
+                this.ttsStatus[i] = '🔊 播放中...';
+
+                const utterance = new SpeechSynthesisUtterance(script);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9;
+                utterance.pitch = 1.0;
+
+                utterance.onend = () => {
+                    this.ttsPlaying[i] = false;
+                    this.ttsStatus[i] = '✅ 播放完毕';
+                    btn.disabled = false;
+                };
+                utterance.onerror = (e) => {
+                    this.ttsPlaying[i] = false;
+                    this.ttsStatus[i] = '❌ 播放出错';
+                    btn.disabled = false;
+                };
+
+                this.utterances[i] = utterance;
+                window.speechSynthesis.speak(utterance);
+            },
+            stopScript(i) {
+                window.speechSynthesis.cancel();
+                this.ttsPlaying[i] = false;
+                this.ttsStatus[i] = '⏹ 已停止';
+                // Re-enable all play buttons
+                this.$el.querySelectorAll('.tts-play').forEach(b => b.disabled = false);
+            }
+        },
+        beforeDestroy() {
+            window.speechSynthesis.cancel();
+        }
+    });
+
+    Vue.component('com-banked-cloze', {
+        props: commonProps,
+        template: `
+        <div>
+            <div class="text-passage">
+                <p v-for="(para, idx) in formattedParagraphs" :key="idx" v-html="para"></p>
+            </div>
+            <div class="banked-grid">
+                <div v-for="(word, idx) in data.options" :key="idx" style="font-size:14px;">
+                    <b style="color:var(--accent); width:25px; display:inline-block;">[{{ String.fromCharCode(65+idx) }}]</b> {{ word }}
+                </div>
+            </div>
+            <div style="margin-top:30px; display:flex; flex-wrap:wrap; gap:15px; padding:20px; background:#f4f7f6; border-radius:8px;">
+                <div v-for="q in data.questions" :key="q.id" style="display:flex; align-items:center;">
+                    <span style="font-weight:bold; margin-right:5px;">{{q.id}}.</span>
+                    <input class="match-input" maxlength="1">
+                </div>
+            </div>
+        </div>`,
+        computed: {
+            formattedParagraphs() {
+                let rawParas = Array.isArray(this.data.paragraphs) ? this.data.paragraphs : (this.data.passage ? this.data.passage.split('\n') : []);
+                const ids = this.data.questions.map(q => q.id);
+                const regex = new RegExp(`\\b(${ids.join('|')})\\b`, 'g');
+                return rawParas.map(para => para.replace(regex, '<span class="cloze-blank">$1</span>'));
+            }
+        }
+    });
+
+    Vue.component('com-matching', { props: commonProps, template: `
+        <div>
+            <div class="text-passage" v-html="data.passage"></div>
+            <div style="margin-top:30px;">
+                <div v-for="q in data.questions" :key="q.id" class="q-item" style="display:flex; align-items:flex-start; gap:15px;">
+                    <div style="flex:1;"><b style="color:var(--accent)">{{ q.id }}.</b> {{ q.text }}</div>
+                    <input class="match-input" type="text" maxlength="1" placeholder="[ ]">
+                </div>
+            </div>
+        </div>` 
+    });
+    
+    Vue.component('com-careful-reading', { 
+        props: commonProps, 
+        template: `
+        <div>
+            <div v-for="(art, aIdx) in (data.articles || [{passage: data.passage, questions: data.questions}])" :key="aIdx" style="margin-bottom:50px; border-bottom:2px solid #f0f0f0; padding-bottom:30px;">
+                <div class="text-passage" v-html="art.passage"></div>
+                <div v-for="q in art.questions" :key="q.id" class="q-item">
+                    <div class="q-stem">{{ q.id }}. {{ q.text }}</div>
+                    <div>
+                        <label v-for="(opt, idx) in q.options" :key="idx" class="radio-label">
+                            <input type="radio" :name="'R'+q.id"> <span>{{ opt }}</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>` 
+    });
+
+    Vue.component('com-translation', { props: commonProps, template: `<div><div class="text-passage" style="background:#fefefe; padding:25px; border:1px solid #eee; border-radius:8px;">{{ data.content }}</div><textarea style="margin-top:20px;" placeholder="Type your translation here..."></textarea></div>` });
+
+    new Vue({
+        el: '#app',
+        data: {
+            navList: [], 
+            paperData: null, 
+            currentItem: null, 
+            drawerOpen: false, 
+            activeTab: 'answer', 
+            vocabList: [],
+            isLoading: false, 
+            tempPaper: null, 
+            tempListening: null, 
+            waitingForListening: false
+        },
+        created() {
+            window.loadPaperData = (data) => { this.tempPaper = data; this.checkAndRender(); };
+            window.loadListeningData = (data) => { this.tempListening = data; this.checkAndRender(); };
+            window.loadQuizList = (list) => { this.navList = list.map(g => ({...g, isOpen: false})); };
+
+            const saved = localStorage.getItem('cet6_vocab_pro');
+            if (saved) this.vocabList = JSON.parse(saved);
+            this.loadScript('json/list.js');
+
+            window.addEventListener('keydown', this.handleKeyDown);
+        },
+        methods: {
+            toggleGroup(i) { this.navList[i].isOpen = !this.navList[i].isOpen; },
+            
+            loadPaper(item, folder) {
+                this.currentItem = item;
+                this.paperData = null;
+                this.isLoading = true;
+                this.tempPaper = null;
+                this.tempListening = null;
+                
+                const basePath = 'json/' + (folder ? folder + '/' : '');
+                if (item.listeningFile) {
+                    this.waitingForListening = true;
+                    this.loadScript(basePath + item.file);
+                    this.loadScript(basePath + item.listeningFile);
+                } else {
+                    this.waitingForListening = false;
+                    this.loadScript(basePath + item.file);
+                }
+            },
+            
+            checkAndRender() {
+                if (this.waitingForListening) {
+                    if (!this.tempPaper || !this.tempListening) return;
+                } else {
+                    if (!this.tempPaper) return;
+                }
+                const finalData = JSON.parse(JSON.stringify(this.tempPaper));
+                if (this.tempListening) finalData.sections.splice(1, 0, this.tempListening);
+                this.paperData = finalData;
+                this.isLoading = false;
+                this.$nextTick(() => { if(this.$refs.scrollBox) this.$refs.scrollBox.scrollTop = 0; });
+            },
+
+            loadScript(u) { 
+                const s = document.createElement('script'); 
+                s.src = u + '?t=' + Date.now(); 
+                document.body.appendChild(s); 
+            },
+
+            scrollToSection(i) { 
+                const el = document.getElementById('sec-'+i);
+                if (el) el.scrollIntoView({behavior:'smooth'}); 
+            },
+
+            handleKeyDown(e) {
+                if (e.ctrlKey && (e.key === 'b' || e.key === 'B')) {
+                    e.preventDefault();
+                    this.applyHighlight('highlight-green');
+                }
+            },
+
+            handleDoubleClick(e) {
+                if (['INPUT', 'TEXTAREA', 'BUTTON'].includes(e.target.tagName)) return;
+                if (e.target.classList.contains('highlight-red') || e.target.classList.contains('highlight-green')) {
+                    const word = e.target.innerText;
+                    this.removeVocab(word);
+                    const textNode = document.createTextNode(word);
+                    e.target.parentNode.replaceChild(textNode, e.target);
+                    return;
+                }
+                this.applyHighlight('highlight-red');
+            },
+
+            applyHighlight(className) {
+                const sel = window.getSelection();
+                const text = sel.toString().trim();
+                if (!text || text.length > 100 || !/[a-zA-Z\u4e00-\u9fa5]/.test(text)) return;
+                const range = sel.getRangeAt(0);
+                const span = document.createElement('span');
+                span.className = className;
+                span.textContent = text;
+                range.deleteContents();
+                range.insertNode(span);
+                this.addVocab(text);
+                sel.removeAllRanges();
+            },
+
+            confirmReset() {
+                if (confirm('确定要清空当前试卷的所有答案吗？')) {
+                    const container = this.$refs.scrollBox;
+                    const radios = container.querySelectorAll('input[type="radio"]');
+                    radios.forEach(r => r.checked = false);
+                    const inputs = container.querySelectorAll('input[type="text"]');
+                    inputs.forEach(i => i.value = '');
+                    const textareas = container.querySelectorAll('textarea');
+                    textareas.forEach(t => t.value = '');
+                    alert('已清空所有作答记录');
+                }
+            },
+
+            addVocab(w) { 
+                if(!this.vocabList.includes(w)) { 
+                    this.vocabList.unshift(w); 
+                    this.saveVocab(); 
+                } 
+            },
+            
+            removeVocab(w) { 
+                this.vocabList = this.vocabList.filter(v => v !== w); 
+                this.saveVocab(); 
+            },
+            
+            saveVocab() { localStorage.setItem('cet6_vocab_pro', JSON.stringify(this.vocabList)); },
+            
+            copyVocab() { 
+                const text = this.vocabList.join('\n');
+                navigator.clipboard.writeText(text).then(() => alert('生词列表已复制到剪贴板')); 
+            }
+        }
+    });
+</script>
+</body>
+</html>
