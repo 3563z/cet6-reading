@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>每日六级阅读 · 2026-05-10</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f5f7fa;
+    color: #1a1a2e;
+    padding: 16px;
+    line-height: 1.8;
+  }
+  .container { max-width: 520px; margin: 0 auto; }
+  .header { text-align: center; padding: 24px 0 16px; }
+  .header h1 { font-size: 22px; font-weight: 700; color: #1a1a2e; }
+  .header .date { font-size: 14px; color: #888; margin-top: 4px; }
+  .header .badge { display: inline-block; background: #e8f0fe; color: #1a73e8; font-size: 12px; padding: 2px 10px; border-radius: 12px; margin-top: 8px; }
+  .passage { background: #fff; border-radius: 16px; padding: 20px; margin: 16px 0; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .passage .tag { display: inline-block; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 8px; margin-bottom: 12px; }
+  .tag-tech { background: #e3f2fd; color: #1565c0; }
+  .tag-human { background: #fce4ec; color: #c62828; }
+  .passage h2 { font-size: 18px; font-weight: 600; line-height: 1.5; margin-bottom: 12px; color: #1a1a2e; }
+  .passage .text { font-size: 15px; line-height: 1.9; color: #333; text-align: justify; margin-bottom: 16px; }
+  .passage .text p { margin-bottom: 12px; text-indent: 2em; }
+  .vocab { display: inline; color: #1a73e8; font-weight: 600; border-bottom: 2px solid #1a73e8; cursor: help; }
+  .vocab-box { background: #f0f4ff; border-radius: 10px; padding: 12px 14px; margin-bottom: 16px; font-size: 13px; }
+  .vocab-box strong { color: #1a73e8; }
+  .vocab-box .word { display: inline-block; margin-right: 12px; }
+  .question { margin-bottom: 18px; }
+  .question .q-num { font-weight: 700; font-size: 14px; color: #1a73e8; margin-bottom: 6px; }
+  .question .q-text { font-size: 14.5px; color: #333; margin-bottom: 8px; }
+  .question .options { padding-left: 4px; }
+  .question .option { display: block; font-size: 14px; padding: 8px 10px; margin: 4px 0; border-radius: 8px; background: #f8f9fa; border: 1.5px solid transparent; transition: all 0.15s; cursor: pointer; }
+  .question .option:hover { background: #e8f0fe; }
+  .question .option.selected { background: #e8f0fe; border-color: #1a73e8; color: #1a73e8; }
+  .question .option.correct { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
+  .question .option.wrong { background: #fce8e6; border-color: #ea4335; color: #c5221f; }
+  .question .option.reveal-correct { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
+  .explanation-text { display: none; padding: 10px 12px; background: #f0f4ff; border-radius: 8px; font-size: 13px; color: #555; margin-top: 8px; line-height: 1.7; border-left: 3px solid #1a73e8; }
+  .explanation-text.show { display: block; }
+  .question .option.no-click { pointer-events: none; }
+  .btn-group { display: flex; gap: 10px; margin: 20px 0; }
+  .btn { flex: 1; padding: 14px; border: none; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center; }
+  .btn-primary { background: #1a73e8; color: #fff; }
+  .btn-primary:active { background: #1557b0; }
+  .btn-primary:disabled { background: #a0c4f1; cursor: not-allowed; }
+  .btn-secondary { background: #e8eaed; color: #444; }
+  .btn-secondary:active { background: #d2d4d8; }
+  .result-bar { display: none; margin: 16px 0; padding: 16px; background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); text-align: center; }
+  .result-bar.show { display: block; }
+  .result-bar .score { font-size: 28px; font-weight: 700; }
+  .result-bar .score.pass { color: #34a853; }
+  .result-bar .score.fail { color: #ea4335; }
+  .result-bar .detail { font-size: 14px; color: #666; margin-top: 4px; }
+  .result-bar .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin: 0 3px; }
+  .result-bar .dot.correct-dot { background: #34a853; }
+  .result-bar .dot.wrong-dot { background: #ea4335; }
+  .result-bar .dot.unanswered-dot { background: #ddd; }
+  .footer { text-align: center; padding: 24px 0 32px; font-size: 12px; color: #aaa; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>📖 每日六级阅读</h1>
+  <div class="date">2026 年 5 月 10 日 · 星期日</div>
+  <div class="badge">🎯 CET-6 双篇深度训练</div>
+</div>
+
+<!-- Passage 1: Tech/Science -->
+<div class="passage">
+  <span class="tag tag-tech">🔬 科技 · 前沿</span>
+  <h2>Quantum Leap: Stable Encryption Over 120 Kilometers Points to a Secure Future</h2>
+
+  <div class="text">
+    <p>In a significant breakthrough for quantum communication, scientists have demonstrated a remarkably stable quantum encryption system that worked across more than 120 kilometers of optical fiber. Using tiny semiconductor quantum dots that emit single particles of light — known as photons — researchers at a joint European-Chinese collaboration achieved what many experts considered a crucial milestone on the path toward an unhackable global communication network. The findings, published in the journal <em>Nature Photonics</em>, mark a decisive step beyond laboratory-scale demonstrations toward <span class="vocab">practical</span>, real-world quantum communication infrastructure.</p>
+
+    <p>The core of the system lies in the quantum dots themselves — nanoscale semiconductor crystals that can be precisely tuned to emit individual photons on demand. Unlike conventional lasers that emit billions of photons at once, quantum dots can be engineered to release exactly one photon at a time, making them an ideal source for quantum key distribution (QKD), a method that uses the principles of quantum mechanics to secure data transmission. In conventional encryption, a sufficiently powerful computer could <span class="vocab">theoretically</span> break any code given enough time. Quantum key distribution, by contrast, relies on a fundamental property of the quantum world: the act of measuring a quantum state inevitably <span class="vocab">disturbs</span> it. This means that any attempt by an eavesdropper to intercept the encryption key would be instantly detectable, rendering the communication effectively impervious to <span class="vocab">interception</span>.</p>
+
+    <p>However, previous attempts to use quantum dots for long-distance QKD have been plagued by stability problems. The single-photon sources were notoriously difficult to maintain over extended periods, with their performance <span class="vocab">degrading</span> rapidly due to environmental noise and temperature <span class="vocab">fluctuations</span>. The research team overcame this challenge by developing a sophisticated feedback-control system that continuously adjusts the quantum dot's operating conditions, maintaining stable single-photon emission for over 24 hours. This represents a dramatic improvement over earlier systems that could only <span class="vocab">sustain</span> stable operation for minutes at a time. The encrypted transmission achieved a record-low error rate of less than 1%, and the system successfully exchanged encryption keys at a rate of over 100,000 bits per second — fast enough for practical applications such as secure video conferencing and financial transactions.</p>
+
+    <p>The implications of this achievement are far-reaching. While current QKD systems based on <span class="vocab">attenuated</span> laser pulses have been deployed in limited commercial settings — such as protecting banking networks in Switzerland and government communications in China — they suffer from fundamental limitations related to security and speed. Quantum dot-based sources offer both higher security guarantees and the potential for much faster key generation rates. The researchers estimate that with further refinement, quantum dot QKD systems could be deployed in metropolitan-scale networks within three to five years, bringing ultra-secure communication to cities. Beyond encryption, stable quantum dot sources could also serve as building blocks for <span class="vocab">emerging</span> technologies like quantum repeaters and quantum networks, eventually forming the backbone of a future quantum internet. As one physicist involved in the project remarked, "We've moved beyond asking whether quantum communication is possible — now we're asking how quickly we can build it at scale."</p>
+  </div>
+
+  <div class="vocab-box">
+    <strong>📝 核心词汇</strong><br>
+    practical /ˈpræktɪkl/ adj. 实际的；实用的<br>
+    theoretically /ˌθɪəˈretɪkli/ adv. 理论上<br>
+    disturb /dɪˈstɜːb/ v. 干扰；扰乱<br>
+    interception /ˌɪntəˈsepʃn/ n. 拦截；截获<br>
+    degrade /dɪˈɡreɪd/ v. 退化；降级<br>
+    fluctuation /ˌflʌktʃuˈeɪʃn/ n. 波动；起伏<br>
+    sustain /səˈsteɪn/ v. 维持；支撑<br>
+    attenuated /əˈtenjueɪtɪd/ adj. 衰减的；减弱的<br>
+    emerging /ɪˈmɜːdʒɪŋ/ adj. 新兴的；出现的<br>
+    milestone /ˈmaɪlstəʊn/ n. 里程碑；重要事件
+  </div>
+
+  <!-- Q1 -->
+  <div class="question" data-answer="c">
+    <div class="q-num">第 1 题</div>
+    <div class="q-text">What makes quantum key distribution fundamentally different from conventional encryption according to the passage?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. It uses much longer encryption keys than traditional methods</div>
+      <div class="option" data-value="b">B. It relies on mathematical complexity rather than physical principles</div>
+      <div class="option" data-value="c">C. Any eavesdropping attempt disturbs the quantum state and becomes detectable</div>
+      <div class="option" data-value="d">D. It requires no optical fiber and works through the air</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：C。第二段解释量子密钥分发(QKD)利用量子力学的本质属性——测量量子态必然对其造成干扰，因此任何窃听行为都会被立刻发现。</div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="question" data-answer="b">
+    <div class="q-num">第 2 题</div>
+    <div class="q-text">The word \"<strong>degrading</strong>\" in paragraph 3 is closest in meaning to:</div>
+    <div class="options">
+      <div class="option" data-value="a">A. improving steadily</div>
+      <div class="option" data-value="b">B. deteriorating in quality</div>
+      <div class="option" data-value="c">C. expanding in scope</div>
+      <div class="option" data-value="d">D. remaining unchanged</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：B。\"degrade\"在此意为\"退化、性能下降\"，文中指单光子源的性能会因环境噪声和温度波动而迅速退化。</div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="question" data-answer="c">
+    <div class="q-num">第 3 题</div>
+    <div class="q-text">What key challenge did the research team overcome in their quantum dot QKD system?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Quantum dots were too expensive to manufacture at scale</div>
+      <div class="option" data-value="b">B. The optical fiber could only transmit over 50 kilometers</div>
+      <div class="option" data-value="c">C. Maintaining stable single-photon emission over long periods</div>
+      <div class="option" data-value="d">D. Integrating the system with existing internet infrastructure</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：C。第三段指出之前量子点QKD系统的核心问题是稳定性——只能稳定运行数分钟，研究团队通过开发先进反馈控制系统实现了超过24小时的稳定运行。</div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="question" data-answer="d">
+    <div class="q-num">第 4 题</div>
+    <div class="q-text">According to the passage, which of the following is mentioned as a potential application of quantum dot-based QKD systems?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Replacing all existing internet protocols</div>
+      <div class="option" data-value="b">B. Curing diseases through quantum computing</div>
+      <div class="option" data-value="c">C. Eliminating the need for passwords entirely</div>
+      <div class="option" data-value="d">D. Protecting metropolitan-scale communication networks</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：D。第四段提到研究者预计量子点QKD系统未来三到五年内可以部署在城市级网络中，为城市通信提供超安全保护。</div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="question" data-answer="a">
+    <div class="q-num">第 5 题</div>
+    <div class="q-text">What is the author's main purpose in writing this passage?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. To report a significant advancement in quantum communication technology</div>
+      <div class="option" data-value="b">B. To argue that classical encryption is no longer useful</div>
+      <div class="option" data-value="c">C. To compare different types of semiconductor materials</div>
+      <div class="option" data-value="d">D. To criticize the slow pace of quantum research</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：A。整篇文章围绕量子通信领域的一项重大突破——量子点稳定加密传输超120公里——展开，介绍了技术原理、克服的挑战和未来应用前景。</div>
+  </div>
+</div>
+
+<!-- Passage 2: Society/Humanities -->
+<div class="passage">
+  <span class="tag tag-human">🌍 社会 · 人文</span>
+  <h2>Your Conversations with AI May Not Be as Private as You Think</h2>
+
+  <div class="text">
+    <p>Every day, millions of people turn to AI chatbots like ChatGPT, Claude, and Grok for help with everything from composing emails and writing code to seeking emotional support and discussing personal problems. But a <span class="vocab">revealing</span> new study has raised troubling questions about just how private those conversations really are. Researchers at IMDEA Networks Institute in Spain have discovered that major AI platforms <span class="vocab">incorporate</span> tracking technologies from companies including Meta, Google, and TikTok — raising the possibility that intimate details shared with an AI could be used for targeted advertising, user profiling, or data monetization in ways users never anticipated.</p>
+
+    <p>The study, which analyzed the network traffic of several popular AI chatbots, found that these platforms use various types of trackers — small pieces of code embedded in web pages and mobile applications that collect data about user behavior. These trackers can capture a surprising amount of information: the topics of conversation, the length of interactions, the device being used, the user's approximate location, and in some cases even fragments of the actual prompts typed into the chatbot. What makes this particularly alarming is the <span class=\"vocab\">discrepancy</span> between user expectations and actual practice. In a survey conducted alongside the technical analysis, 72% of respondents said they believed their AI conversations were private, and most were unaware that their chat data could be shared with third parties for advertising and analytics purposes. As one of the study's lead researchers explained, "Users treat these chatbots as <span class=\"vocab\">confidential</span> advisors — they share deeply personal information they would never post on social media — but the reality is that this data may be flowing through the same advertising <span class=\"vocab\">infrastructure</span> that tracks their browsing habits."</p>
+
+    <p>The implications for privacy are <span class=\"vocab\">profound</span>. Unlike a traditional web search, where revealing a health condition or financial concern through a search query is concerning enough, a conversation with an AI chatbot often involves extended, multi-turn <span class=\"vocab\">disclosures</span> that build up a detailed profile. A person might tell a chatbot about their mental health struggles, workplace conflicts, relationship problems, or political views — information that, in combination with existing advertising profiles, could paint an extraordinarily <span class=\"vocab\">intimate</span> portrait of an individual. Privacy advocates argue that current regulations, including Europe's GDPR and California's CCPA, were designed for an earlier era of data collection and may not adequately address the unique challenges posed by conversational AI. Unlike a website whose privacy policy might state it uses cookies, an AI chatbot's data practices are often far less transparent, buried in lengthy terms of service that few users read.</p>
+
+    <p>In response to the study, some AI companies have announced plans to <span class=\"vocab\">enhance</span> their privacy protections. OpenAI, for instance, has introduced an option to disable chat history and model training on user conversations, while Anthropic has emphasized its commitment to minimizing data retention. However, critics argue that these measures are <span class=\"vocab\">insufficient</span>, as the presence of third-party trackers operates independently of such settings. The researchers call for clearer regulatory guidelines <span class=\"vocab\">specifically</span> addressing AI chatbot privacy, as well as technical standards that prevent third-party tracking in AI interactions altogether. Until then, they advise users to treat their AI conversations with the same caution they would apply to any online activity involving sensitive information — a sobering reminder that even the most helpful digital assistant may not be as discreet as it appears.</p>
+  </div>
+
+  <div class="vocab-box">
+    <strong>📝 核心词汇</strong><br>
+    revealing /rɪˈviːlɪŋ/ adj. 发人深省的；揭示性的<br>
+    incorporate /ɪnˈkɔːpəreɪt/ v. 包含；纳入<br>
+    discrepancy /dɪsˈkrepənsi/ n. 差异；不符<br>
+    confidential /ˌkɒnfɪˈdenʃl/ adj. 机密的；保密的<br>
+    infrastructure /ˈɪnfrəstrʌktʃə(r)/ n. 基础设施<br>
+    profound /prəˈfaʊnd/ adj. 深远的；深刻的<br>
+    disclosure /dɪsˈkləʊʒə(r)/ n. 披露；透露<br>
+    intimate /ˈɪntɪmət/ adj. 私密的；亲密的<br>
+    enhance /ɪnˈhɑːns/ v. 增强；提高<br>
+    insufficient /ˌɪnsəˈfɪʃnt/ adj. 不足的；不充分的<br>
+    specifically /spəˈsɪfɪkli/ adv. 具体地；专门地
+  </div>
+
+  <!-- Q6 -->
+  <div class="question" data-answer="d">
+    <div class="q-num">第 6 题</div>
+    <div class="q-text">What did the IMDEA Networks Institute study discover about major AI chatbot platforms?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. They are all developed by the same parent company</div>
+      <div class="option" data-value="b">B. They do not store any user conversation data</div>
+      <div class="option" data-value="c">C. They are completely free of any form of advertising</div>
+      <div class="option" data-value="d">D. They incorporate tracking technologies from companies like Meta and Google</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：D。第一段明确指出研究发现主流AI平台嵌入了来自Meta、Google、TikTok等公司的追踪技术，可能收集用户与AI的对话数据。</div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="question" data-answer="c">
+    <div class="q-num">第 7 题</div>
+    <div class="q-text">The word \"<strong>discrepancy</strong>\" in paragraph 2 is closest in meaning to:</div>
+    <div class="options">
+      <div class="option" data-value="a">A. strong agreement</div>
+      <div class="option" data-value="b">B. partial similarity</div>
+      <div class="option" data-value="c">C. notable difference or inconsistency</div>
+      <div class="option" data-value="d">D. logical connection</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：C。\"discrepancy\"意为\"差异、不一致\"，文中指用户对隐私的期望与实际数据使用方式之间存在显著落差。</div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="question" data-answer="a">
+    <div class="q-num">第 8 题</div>
+    <div class="q-text">According to the survey mentioned in the passage, what percentage of users believed their AI conversations were private?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. 72%</div>
+      <div class="option" data-value="b">B. 50%</div>
+      <div class="option" data-value="c">C. 38%</div>
+      <div class="option" data-value="d">D. 91%</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：A。第二段指出伴随技术分析的调查中，72%的受访者认为他们的AI对话是私密的，且大多数人不知道聊天数据可能被共享。</div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="question" data-answer="d">
+    <div class="q-num">第 9 题</div>
+    <div class="q-text">Why does the author argue that AI conversations pose a greater privacy risk than traditional web searches?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. AI chatbots are more popular than search engines</div>
+      <div class="option" data-value="b">B. Chatbots store data on the user's device rather than online</div>
+      <div class="option" data-value="c">C. Search engines do not use any trackers at all</div>
+      <div class="option" data-value="d">D. AI conversations involve extended multi-turn disclosures that build detailed profiles</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：D。第三段解释与关键词搜索不同，AI对话通常是多轮深入的交流，用户会透露大量个人信息（如心理健康、工作冲突、政治观点等），汇集成极为详细的个人画像。</div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="question" data-answer="b">
+    <div class="q-num">第 10 题</div>
+    <div class="q-text">What do researchers recommend as a solution to the AI chatbot privacy problem?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Banning all AI chatbots until further notice</div>
+      <div class="option" data-value="b">B. Clearer regulations and technical standards to prevent third-party tracking</div>
+      <div class="option" data-value="c">C. Requiring users to read terms of service before each conversation</div>
+      <div class="option" data-value="d">D. Moving all AI services to open-source platforms</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：B。最后一段研究者呼吁制定更清晰专门针对AI聊天机器人隐私的监管指南，以及防止第三方跟踪的技术标准。</div>
+  </div>
+</div>
+
+<div class="btn-group">
+  <button class="btn btn-primary" onclick="submitAll()" id="submitBtn">📝 提交答案</button>
+  <button class="btn btn-secondary" onclick="resetAll()">🔄 重新答题</button>
+</div>
+
+<div class="result-bar" id="resultBar">
+  <div class="score" id="scoreText">0 / 10 (0%)</div>
+  <div class="detail" id="detailText"></div>
+  <div style="margin-top: 10px;" id="dotContainer"></div>
+</div>
+
+<div class="footer">
+  每日六级阅读 · 小约 🤖 为你精选<br>
+  CET-6 Daily Reading · © 2026
+</div>
+</div>
+
+<script>
+let submitted = false;
+const totalQuestions = 10;
+
+function selectOption(el) {
+  if (submitted) return;
+  const parent = el.closest('.options');
+  parent.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function submitAll() {
+  if (submitted) return;
+  submitted = true;
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = '✅ 已提交';
+
+  let correctCount = 0;
+
+  document.querySelectorAll('.question').forEach(q => {
+    const answer = q.getAttribute('data-answer');
+    const selected = q.querySelector('.option.selected');
+    const opts = q.querySelectorAll('.option');
+    const explanation = q.querySelector('.explanation-text');
+
+    opts.forEach(o => o.classList.add('no-click'));
+
+    if (selected) {
+      const val = selected.getAttribute('data-value');
+      if (val === answer) {
+        selected.classList.add('correct');
+        correctCount++;
+      } else {
+        selected.classList.add('wrong');
+        opts.forEach(o => {
+          if (o.getAttribute('data-value') === answer) o.classList.add('reveal-correct');
+        });
+      }
+    } else {
+      opts.forEach(o => {
+        if (o.getAttribute('data-value') === answer) o.classList.add('reveal-correct');
+      });
+    }
+
+    if (explanation) explanation.classList.add('show');
+  });
+
+  const pct = Math.round((correctCount / totalQuestions) * 100);
+  const pass = pct >= 60;
+  const scoreEl = document.getElementById('scoreText');
+  scoreEl.textContent = `${correctCount} / ${totalQuestions} (${pct}%)`;
+  scoreEl.className = 'score ' + (pass ? 'pass' : 'fail');
+
+  document.getElementById('detailText').textContent = pass ? '🎉 通过！继续加油！' : '💪 未通过，再练一次吧！';
+
+  const dotContainer = document.getElementById('dotContainer');
+  dotContainer.innerHTML = '';
+  document.querySelectorAll('.question').forEach(q => {
+    const dot = document.createElement('span');
+    dot.className = 'dot';
+    const selected = q.querySelector('.option.selected');
+    const answer = q.getAttribute('data-answer');
+    if (!selected) {
+      dot.classList.add('unanswered-dot');
+    } else if (selected.getAttribute('data-value') === answer) {
+      dot.classList.add('correct-dot');
+    } else {
+      dot.classList.add('wrong-dot');
+    }
+    dotContainer.appendChild(dot);
+  });
+
+  document.getElementById('resultBar').classList.add('show');
+}
+
+function resetAll() {
+  submitted = false;
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = false;
+  btn.textContent = '📝 提交答案';
+  document.querySelectorAll('.option').forEach(o => {
+    o.classList.remove('selected', 'correct', 'wrong', 'reveal-correct', 'no-click');
+  });
+  document.querySelectorAll('.explanation-text').forEach(e => e.classList.remove('show'));
+  document.getElementById('resultBar').classList.remove('show');
+}
+</script>
+</body>
+</html>
