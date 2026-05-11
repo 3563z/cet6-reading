@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>每日六级阅读 · 2026-05-11</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f5f7fa;
+    color: #1a1a2e;
+    padding: 16px;
+    line-height: 1.8;
+  }
+  .container { max-width: 520px; margin: 0 auto; }
+  .header { text-align: center; padding: 24px 0 16px; }
+  .header h1 { font-size: 22px; font-weight: 700; color: #1a1a2e; }
+  .header .date { font-size: 14px; color: #888; margin-top: 4px; }
+  .header .badge { display: inline-block; background: #e8f0fe; color: #1a73e8; font-size: 12px; padding: 2px 10px; border-radius: 12px; margin-top: 8px; }
+  .passage { background: #fff; border-radius: 16px; padding: 20px; margin: 16px 0; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .passage .tag { display: inline-block; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 8px; margin-bottom: 12px; }
+  .tag-tech { background: #e3f2fd; color: #1565c0; }
+  .tag-human { background: #fce4ec; color: #c62828; }
+  .passage h2 { font-size: 18px; font-weight: 600; line-height: 1.5; margin-bottom: 12px; color: #1a1a2e; }
+  .passage .text { font-size: 15px; line-height: 1.9; color: #333; text-align: justify; margin-bottom: 16px; }
+  .passage .text p { margin-bottom: 12px; text-indent: 2em; }
+  .vocab { display: inline; color: #1a73e8; font-weight: 600; border-bottom: 2px solid #1a73e8; cursor: help; }
+  .vocab-box { background: #f0f4ff; border-radius: 10px; padding: 12px 14px; margin-bottom: 16px; font-size: 13px; line-height: 1.9; }
+  .vocab-box strong { color: #1a73e8; }
+  .vocab-box .word { display: inline-block; margin-right: 12px; }
+  .question { margin-bottom: 18px; }
+  .question .q-num { font-weight: 700; font-size: 14px; color: #1a73e8; margin-bottom: 6px; }
+  .question .q-text { font-size: 14.5px; color: #333; margin-bottom: 8px; }
+  .question .options { padding-left: 4px; }
+  .question .option {
+    display: block;
+    font-size: 14px;
+    padding: 8px 10px;
+    margin: 4px 0;
+    border-radius: 8px;
+    background: #f8f9fa;
+    border: 1.5px solid transparent;
+    transition: all 0.15s;
+    cursor: pointer;
+  }
+  .question .option:hover { background: #e8f0fe; }
+  .question .option.selected { background: #e8f0fe; border-color: #1a73e8; color: #1a73e8; }
+  .question .option.correct { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
+  .question .option.wrong { background: #fce8e6; border-color: #ea4335; color: #c5221f; }
+  .question .option.reveal-correct { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
+  .question .option.no-click { pointer-events: none; }
+  .explanation-text {
+    display: none;
+    padding: 10px 12px;
+    background: #f0f4ff;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #555;
+    margin-top: 8px;
+    line-height: 1.7;
+    border-left: 3px solid #1a73e8;
+  }
+  .explanation-text.show { display: block; }
+  .btn-group { display: flex; gap: 10px; margin: 20px 0; }
+  .btn {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .btn-primary { background: #1a73e8; color: #fff; }
+  .btn-primary:active { background: #1557b0; }
+  .btn-primary:disabled { background: #a0c4f1; cursor: not-allowed; }
+  .btn-secondary { background: #e8eaed; color: #444; }
+  .btn-secondary:active { background: #d2d4d8; }
+  .result-bar {
+    display: none;
+    margin: 16px 0;
+    padding: 16px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    text-align: center;
+  }
+  .result-bar.show { display: block; }
+  .result-bar .score { font-size: 28px; font-weight: 700; }
+  .result-bar .score.pass { color: #34a853; }
+  .result-bar .score.fail { color: #ea4335; }
+  .result-bar .detail { font-size: 14px; color: #666; margin-top: 4px; }
+  .result-bar .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin: 0 3px; }
+  .result-bar .dot.correct-dot { background: #34a853; }
+  .result-bar .dot.wrong-dot { background: #ea4335; }
+  .result-bar .dot.unanswered-dot { background: #ddd; }
+  .footer { text-align: center; padding: 24px 0 32px; font-size: 12px; color: #aaa; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>📖 每日六级阅读</h1>
+  <div class="date">2026 年 5 月 11 日 · 星期一</div>
+  <div class="badge">🎯 CET-6 双篇深度训练</div>
+</div>
+
+<!-- ==================== Passage 1: Tech ==================== -->
+<div class="passage">
+  <span class="tag tag-tech">🔬 科技 · 生命科学</span>
+  <h2>AI-Powered Drug Discovery: From Algorithm to Clinical Reality</h2>
+
+  <div class="text">
+    <p>The traditional drug discovery pipeline has long been notorious for its inefficiency: it typically takes over a decade and costs upwards of two billion dollars to bring a single new drug to market, with a staggering 90% of candidates failing during clinical trials. However, the integration of artificial intelligence into pharmaceutical research is beginning to transform this landscape in ways that were <span class="vocab">unimaginable</span> just a few years ago. From identifying novel drug targets to predicting molecular behavior and even designing entirely new molecules, AI is accelerating every stage of the process.</p>
+
+    <p>At the forefront of this revolution is deep learning-based protein structure prediction. Since the release of AlphaFold by DeepMind in 2021, which <span class="vocab">revolutionized</span> our ability to predict protein folding from amino acid sequences, the field has moved at breathtaking speed. In 2025, researchers at the University of Cambridge announced that they had used an AI model to design a novel class of antibiotics capable of targeting multidrug-resistant bacteria — a feat that had <span class="vocab">eluded</span> scientists for decades using conventional methods. The AI system <span class="vocab">analyzed</span> over 100 million potential molecular structures in silico, narrowing them down to just 12 candidates for laboratory testing, five of which showed potent antibacterial activity. This represents a success rate <span class="vocab">unprecedented</span> in early-stage drug discovery.</p>
+
+    <p>Beyond antibiotics, AI-driven drug development is making strides in oncology, neurology, and rare genetic disorders. A particularly promising approach involves generative AI models that can create drug molecules from scratch, rather than merely screening existing compound libraries. These models are trained on vast datasets of known molecular structures and their biological activities, allowing them to learn the underlying "rules" of effective drug design. In one <span class="vocab">landmark</span> example, an AI system designed a candidate drug for a rare form of liver cancer that reached Phase II clinical trials in just 18 months — less than half the typical development timeline. What is more, the molecule was entirely novel, sharing no structural similarity with any known drug, demonstrating that AI can explore chemical <span class="vocab">territory</span> that human scientists would never have considered.</p>
+
+    <p>Nevertheless, experts caution against <span class="vocab">overhyping</span> these achievements. Many AI-designed drugs are still in the early stages of clinical testing, and the <span class="vocab">regulatory</span> framework for evaluating AI-generated therapeutics remains under development. There are also concerns about bias in training data, which could lead to AI systems that perform well on common disease targets but poorly on rare conditions affecting underrepresented populations. Furthermore, the "black box" nature of deep learning models raises questions about <span class="vocab">interpretability</span>: if an AI recommends a molecule, how can researchers be sure it will be safe in the long term? Despite these challenges, the trajectory is clear. AI is not merely a tool for drug discovery — it is fundamentally reshaping how we think about the creation of new medicines, bringing us closer to a future where lifesaving treatments can be designed on demand.</p>
+  </div>
+
+  <div class="vocab-box">
+    <strong>📝 核心词汇</strong><br>
+    unimaginable /ˌʌnɪˈmædʒɪnəbl/ adj. 难以想象的<br>
+    revolutionize /ˌrevəˈluːʃənaɪz/ v. 彻底改革<br>
+    elude /ɪˈluːd/ v. 躲避；使……无法达到<br>
+    analyze /ˈænəlaɪz/ v. 分析<br>
+    unprecedented /ʌnˈpresɪdentɪd/ adj. 前所未有的<br>
+    landmark /ˈlændmɑːk/ n./adj. 里程碑(式的)<br>
+    territory /ˈterətri/ n. 领域；疆域<br>
+    overhype /ˌəʊvəˈhaɪp/ v. 过度炒作<br>
+    regulatory /ˈreɡjələtəri/ adj. 监管的<br>
+    interpretability /ɪnˌtɜːprɪtəˈbɪləti/ n. 可解释性
+  </div>
+
+  <!-- Q1 -->
+  <div class="question" data-answer="b">
+    <div class="q-num">第 1 题</div>
+    <div class="q-text">What makes the AI-designed antibiotics mentioned in paragraph 2 particularly significant?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. They were cheaper to produce than traditional antibiotics</div>
+      <div class="option" data-value="b">B. They were effective against multidrug-resistant bacteria, which had been a long-standing challenge</div>
+      <div class="option" data-value="c">C. They were the first antibiotics ever designed by a computer</div>
+      <div class="option" data-value="d">D. They eliminated the need for laboratory testing entirely</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：B。第二段指出 AI 设计的抗生素能够"target multidrug-resistant bacteria"，而这一目标"had eluded scientists for decades"，说明这是长期未能解决的难题。</div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="question" data-answer="a">
+    <div class="q-num">第 2 题</div>
+    <div class="q-text">According to the passage, the success rate of AI-designed candidates for the antibiotic study was:</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Higher than conventional early-stage drug discovery</div>
+      <div class="option" data-value="b">B. Lower than traditional screening methods</div>
+      <div class="option" data-value="c">C. Exactly the same as random molecular selection</div>
+      <div class="option" data-value="d">D. Around 50% of tested candidates showing activity</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：A。12 个候选分子中有 5 个显示强抗菌活性，这在早期阶段是"unprecedented success rate"（前所未有），远高于传统方法。</div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="question" data-answer="d">
+    <div class="q-num">第 3 题</div>
+    <div class="q-text">The word "<strong>landmark</strong>" in paragraph 3 is closest in meaning to:</div>
+    <div class="options">
+      <div class="option" data-value="a">A. traditional and conventional</div>
+      <div class="option" data-value="b">B. controversial and debated</div>
+      <div class="option" data-value="c">C. preliminary and incomplete</div>
+      <div class="option" data-value="d">D. significant and groundbreaking</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：D。"landmark"意为"里程碑式的"，文中指 AI 设计肝癌候选药物仅用 18 个月就进入 II 期临床试验，是一个重要突破。</div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="question" data-answer="c">
+    <div class="q-num">第 4 题</div>
+    <div class="q-text">What concern does the author raise about AI-designed drugs?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. They are too expensive for pharmaceutical companies to develop</div>
+      <div class="option" data-value="b">B. They are less effective than drugs designed by human scientists</div>
+      <div class="option" data-value="c">C. The "black box" nature of AI models makes long-term safety difficult to verify</div>
+      <div class="option" data-value="d">D. Regulatory agencies have already approved too many AI-designed drugs</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：C。末段指出深度学习的"black box"特性引发可解释性问题——如果 AI 推荐一种分子，研究者如何确保其长期安全性？</div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="question" data-answer="b">
+    <div class="q-num">第 5 题</div>
+    <div class="q-text">What is the author's overall assessment of AI in drug discovery?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. It is a passing trend with little real impact</div>
+      <div class="option" data-value="b">B. It is fundamentally transforming the field but faces significant challenges</div>
+      <div class="option" data-value="c">C. It has already solved all major problems in pharmaceutical research</div>
+      <div class="option" data-value="d">D. It should be abandoned in favor of traditional methods</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：B。作者既列举了 AI 在药物发现中的革命性成果（AlphaFold、新型抗生素、18个月进入II期临床），又指出过度炒作、监管框架不完善、可解释性等挑战，取客观平衡态度。</div>
+  </div>
+</div>
+
+<!-- ==================== Passage 2: Society ==================== -->
+<div class="passage">
+  <span class="tag tag-human">🌍 社会 · 经济</span>
+  <h2>The Four-Day Work Week: A Global Experiment in Progress</h2>
+
+  <div class="text">
+    <p>Since the dawn of the Industrial Revolution, the five-day, 40-hour work week has stood as an almost <span class="vocab">sacrosanct</span> pillar of modern employment. Recently, however, this long-standing convention has come under unprecedented scrutiny. A growing global movement advocating for a four-day work week — with no reduction in pay — has gained remarkable momentum, driven by a combination of post-pandemic shifts in work culture, advances in productivity-enhancing technology, and a re-evaluation of what constitutes a healthy work-life balance.</p>
+
+    <p>The results from large-scale trials have been striking. The most comprehensive study to date, conducted across 61 companies in the United Kingdom in 2022, involved approximately 2,900 employees transitioning to a four-day week over a six-month period. The findings, published in a peer-reviewed journal, were overwhelmingly positive: 91% of the participating companies decided to continue the four-day week after the trial ended. Revenue remained <span class="vocab">stable</span> or actually increased for 92% of businesses, while employee burnout rates dropped by 71% and anxiety and fatigue levels decreased significantly. Moreover, job satisfaction and work-life balance scores saw <span class="vocab">substantial</span> improvements. Contrary to fears that reduced hours would lead to lower productivity, many companies reported that employees became more efficient, <span class="vocab">streamlining</span> workflows and reducing unproductive meetings and distractions.</p>
+
+    <p>However, the four-day week model is not a one-size-fits-all solution. Critics point out that its success depends heavily on the nature of the work and the industry. For knowledge workers — software engineers, designers, consultants — the model has proven highly effective, as their output is often measured by results rather than hours spent at a desk. For sectors such as retail, hospitality, healthcare, and education, where staffing schedules must cover extended operating hours, the transition is far more challenging. A hospital cannot simply close its doors for three days a week, and a school cannot <span class="vocab">condense</span> five days of curriculum into four without <span class="vocab">compromising</span> educational quality. These sectors may require alternative models, such as rotating shifts or compressed hours, rather than a universal four-day schedule.</p>
+
+    <p>Despite these complexities, the momentum behind work week reduction continues to build. Several countries, including Iceland, Spain, and Belgium, have launched or expanded national pilot programs. In 2025, Japan — a nation historically known for its <span class="vocab">grueling</span> work culture and the concept of "karoshi" (death from overwork) — announced a government-backed initiative to encourage companies to adopt a four-day week, with financial <span class="vocab">incentives</span> for small and medium-sized enterprises. Meanwhile, a growing body of research is exploring how to adapt the model for industries where continuous coverage is essential. The four-day week is no longer a fringe idea or a temporary experiment; it represents a fundamental rethinking of the relationship between work and life in the 21st century.</p>
+  </div>
+
+  <div class="vocab-box">
+    <strong>📝 核心词汇</strong><br>
+    sacrosanct /ˈsækrəʊsæŋkt/ adj. 神圣不可侵犯的<br>
+    stable /ˈsteɪbl/ adj. 稳定的<br>
+    substantial /səbˈstænʃl/ adj. 大量的；显著的<br>
+    streamline /ˈstriːmlaɪn/ v. 精简；提高效率<br>
+    condense /kənˈdens/ v. 压缩；浓缩<br>
+    compromise /ˈkɒmprəmaɪz/ v. 妥协；损害<br>
+    grueling /ˈɡruːəlɪŋ/ adj. 使人筋疲力尽的<br>
+    incentive /ɪnˈsentɪv/ n. 激励；奖励<br>
+    peer-reviewed /pɪə rɪˈvjuːd/ adj. 经同行评议的<br>
+    burnout /ˈbɜːnaʊt/ n. 职业倦怠
+  </div>
+
+  <!-- Q6 -->
+  <div class="question" data-answer="d">
+    <div class="q-num">第 6 题</div>
+    <div class="q-text">What does the UK trial of the four-day work week demonstrate?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Most companies experienced a significant drop in revenue</div>
+      <div class="option" data-value="b">B. Employee productivity decreased in knowledge industries</div>
+      <div class="option" data-value="c">C. The model succeeded primarily in the healthcare sector</div>
+      <div class="option" data-value="d">D. The majority of companies continued the policy with positive business outcomes</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：D。91% 的参与公司决定继续实行四天工作制，92% 的公司收入稳定或增长，员工倦怠率下降 71%，说明效果积极。</div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="question" data-answer="b">
+    <div class="q-num">第 7 题</div>
+    <div class="q-text">The word "<strong>grueling</strong>" in the last paragraph most probably means:</div>
+    <div class="options">
+      <div class="option" data-value="a">A. relaxed and easygoing</div>
+      <div class="option" data-value="b">B. extremely tiring and demanding</div>
+      <div class="option" data-value="c">C. flexible and adaptable</div>
+      <div class="option" data-value="d">D. short and efficient</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：B。"grueling"意为"令人筋疲力尽的"，结合后文"karoshi"（过劳死）可知用来描述日本以高强度工作文化闻名。</div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="question" data-answer="c">
+    <div class="q-num">第 8 题</div>
+    <div class="q-text">According to the passage, which industries face the greatest difficulty in adopting a four-day week?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Software development and IT services</div>
+      <div class="option" data-value="b">B. Financial consulting and investment banking</div>
+      <div class="option" data-value="c">C. Healthcare, education, and retail</div>
+      <div class="option" data-value="d">D. Architecture and engineering design</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：C。第三段明确指出零售、酒店、医疗、教育等行业因需要持续运营或覆盖长时间，过渡难度最大。</div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="question" data-answer="a">
+    <div class="q-num">第 9 题</div>
+    <div class="q-text">What is the author's attitude toward the future of the four-day work week?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Cautiously optimistic about its expansion</div>
+      <div class="option" data-value="b">B. Completely skeptical that it will ever be widely adopted</div>
+      <div class="option" data-value="c">C. Unconcerned and indifferent to the outcome</div>
+      <div class="option" data-value="d">D. Enthusiastic about it as a universal solution</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：A。末段既指出四天工作制势头持续增长、多国开展试点，又强调需探索替代模式以适应不同行业，表明审慎乐观态度。</div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="question" data-answer="b">
+    <div class="q-num">第 10 题</div>
+    <div class="q-text">Japan's decision to encourage the four-day work week is significant because:</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Japan was the first country to experiment with shorter work weeks</div>
+      <div class="option" data-value="b">B. Japan has a historically intense work culture associated with overwork-related deaths</div>
+      <div class="option" data-value="c">C. Japanese companies have already been using four-day weeks for decades</div>
+      <div class="option" data-value="d">D. Japan faces no economic pressure from work hour reductions</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：B。日本以"karoshi"（过劳死）闻名，其政府支持四天工作制意义重大，标志着一个以高强度工作文化著称的国家开始反思。</div>
+  </div>
+</div>
+
+<!-- Buttons -->
+<div class="btn-group">
+  <button class="btn btn-primary" id="submitBtn" onclick="submitAll()">📝 提交答案</button>
+  <button class="btn btn-secondary" id="resetBtn" onclick="resetAll()">🔄 重新答题</button>
+</div>
+
+<!-- Result Bar -->
+<div class="result-bar" id="resultBar">
+  <div class="score" id="scoreText">0 / 10 (0%)</div>
+  <div class="detail" id="detailText"></div>
+  <div style="margin-top: 8px;" id="dotContainer"></div>
+</div>
+
+<div class="footer">
+  CET-6 每日阅读 · 小约 🤖<br>
+  素材来源：ScienceDaily · 仅供学习参考
+</div>
+
+</div>
+
+<script>
+var submitted = false;
+
+document.querySelectorAll('.option').forEach(function(opt) {
+  opt.addEventListener('click', function() {
+    if (submitted) return;
+    var question = this.closest('.question');
+    question.querySelectorAll('.option').forEach(function(o) {
+      o.classList.remove('selected');
+    });
+    this.classList.add('selected');
+  });
+});
+
+function submitAll() {
+  if (submitted) return;
+  submitted = true;
+
+  var questions = document.querySelectorAll('.question');
+  var correctCount = 0;
+  var total = questions.length;
+  var dots = [];
+
+  questions.forEach(function(q) {
+    var answer = q.getAttribute('data-answer');
+    var selected = q.querySelector('.option.selected');
+    var options = q.querySelectorAll('.option');
+    var explanation = q.querySelector('.explanation-text');
+
+    options.forEach(function(o) { o.classList.add('no-click'); });
+
+    if (explanation) explanation.classList.add('show');
+
+    options.forEach(function(o) {
+      if (o.getAttribute('data-value') === answer) {
+        o.classList.add('reveal-correct');
+      }
+    });
+
+    if (selected) {
+      if (selected.getAttribute('data-value') === answer) {
+        selected.classList.add('correct');
+        correctCount++;
+        dots.push('correct');
+      } else {
+        selected.classList.add('wrong');
+        dots.push('wrong');
+      }
+    } else {
+      dots.push('unanswered');
+    }
+  });
+
+  var pct = Math.round((correctCount / total) * 100);
+  var pass = pct >= 60;
+  var resultBar = document.getElementById('resultBar');
+  resultBar.classList.add('show');
+
+  var scoreText = document.getElementById('scoreText');
+  scoreText.textContent = correctCount + ' / ' + total + ' (' + pct + '%)';
+  scoreText.className = 'score ' + (pass ? 'pass' : 'fail');
+
+  document.getElementById('detailText').textContent = pass ? '🎉 通过！表现不错！' : '💪 再接再厉，60% 为合格线！';
+
+  var dotContainer = document.getElementById('dotContainer');
+  dotContainer.innerHTML = '';
+  dots.forEach(function(d) {
+    var span = document.createElement('span');
+    span.className = 'dot ' + d + '-dot';
+    dotContainer.appendChild(span);
+  });
+
+  document.getElementById('submitBtn').disabled = true;
+  document.getElementById('resetBtn').scrollIntoView({ behavior: 'smooth' });
+}
+
+function resetAll() {
+  submitted = false;
+
+  document.querySelectorAll('.question').forEach(function(q) {
+    q.querySelectorAll('.option').forEach(function(o) {
+      o.classList.remove('selected', 'correct', 'wrong', 'reveal-correct', 'no-click');
+    });
+    var exp = q.querySelector('.explanation-text');
+    if (exp) exp.classList.remove('show');
+  });
+
+  document.getElementById('resultBar').classList.remove('show');
+  document.getElementById('submitBtn').disabled = false;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
