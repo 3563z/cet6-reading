@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>每日六级阅读 · 2026-05-12</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f5f7fa;
+    color: #1a1a2e;
+    padding: 16px;
+    line-height: 1.8;
+  }
+  .container { max-width: 520px; margin: 0 auto; }
+  .header { text-align: center; padding: 24px 0 16px; }
+  .header h1 { font-size: 22px; font-weight: 700; color: #1a1a2e; }
+  .header .date { font-size: 14px; color: #888; margin-top: 4px; }
+  .header .badge { display: inline-block; background: #e8f0fe; color: #1a73e8; font-size: 12px; padding: 2px 10px; border-radius: 12px; margin-top: 8px; }
+  .passage { background: #fff; border-radius: 16px; padding: 20px; margin: 16px 0; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .passage .tag { display: inline-block; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 8px; margin-bottom: 12px; }
+  .tag-tech { background: #e3f2fd; color: #1565c0; }
+  .tag-human { background: #fce4ec; color: #c62828; }
+  .passage h2 { font-size: 18px; font-weight: 600; line-height: 1.5; margin-bottom: 12px; color: #1a1a2e; }
+  .passage .text { font-size: 15px; line-height: 1.9; color: #333; text-align: justify; margin-bottom: 16px; }
+  .passage .text p { margin-bottom: 12px; text-indent: 2em; }
+  .vocab { display: inline; color: #1a73e8; font-weight: 600; border-bottom: 2px solid #1a73e8; cursor: help; }
+  .vocab-box { background: #f0f4ff; border-radius: 10px; padding: 12px 14px; margin-bottom: 16px; font-size: 13px; line-height: 1.9; }
+  .vocab-box strong { color: #1a73e8; }
+  .vocab-box .word { display: inline-block; margin-right: 12px; }
+  .question { margin-bottom: 18px; }
+  .question .q-num { font-weight: 700; font-size: 14px; color: #1a73e8; margin-bottom: 6px; }
+  .question .q-text { font-size: 14.5px; color: #333; margin-bottom: 8px; }
+  .question .options { padding-left: 4px; }
+  .question .option {
+    display: block;
+    font-size: 14px;
+    padding: 8px 10px;
+    margin: 4px 0;
+    border-radius: 8px;
+    background: #f8f9fa;
+    border: 1.5px solid transparent;
+    transition: all 0.15s;
+    cursor: pointer;
+  }
+  .question .option:hover { background: #e8f0fe; }
+  .question .option.selected { background: #e8f0fe; border-color: #1a73e8; color: #1a73e8; }
+  .question .option.correct { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
+  .question .option.wrong { background: #fce8e6; border-color: #ea4335; color: #c5221f; }
+  .question .option.reveal-correct { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
+  .question .option.no-click { pointer-events: none; }
+  .explanation-text {
+    display: none;
+    padding: 10px 12px;
+    background: #f0f4ff;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #555;
+    margin-top: 8px;
+    line-height: 1.7;
+    border-left: 3px solid #1a73e8;
+  }
+  .explanation-text.show { display: block; }
+  .btn-group { display: flex; gap: 10px; margin: 20px 0; }
+  .btn {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .btn-primary { background: #1a73e8; color: #fff; }
+  .btn-primary:active { background: #1557b0; }
+  .btn-primary:disabled { background: #a0c4f1; cursor: not-allowed; }
+  .btn-secondary { background: #e8eaed; color: #444; }
+  .btn-secondary:active { background: #d2d4d8; }
+  .result-bar {
+    display: none;
+    margin: 16px 0;
+    padding: 16px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    text-align: center;
+  }
+  .result-bar.show { display: block; }
+  .result-bar .score { font-size: 28px; font-weight: 700; }
+  .result-bar .score.pass { color: #34a853; }
+  .result-bar .score.fail { color: #ea4335; }
+  .result-bar .detail { font-size: 14px; color: #666; margin-top: 4px; }
+  .result-bar .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin: 0 3px; }
+  .result-bar .dot.correct-dot { background: #34a853; }
+  .result-bar .dot.wrong-dot { background: #ea4335; }
+  .result-bar .dot.unanswered-dot { background: #ddd; }
+  .footer { text-align: center; padding: 24px 0 32px; font-size: 12px; color: #aaa; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>📖 每日六级阅读</h1>
+  <div class="date">2026 年 5 月 12 日 · 星期二</div>
+  <div class="badge">🎯 CET-6 双篇深度训练</div>
+</div>
+
+<!-- ==================== Passage 1: Tech ==================== -->
+<div class="passage">
+  <span class="tag tag-tech">🔬 科技 · 材料科学</span>
+  <h2>Carbon Nanotube Fibers: A Serious Rival to Copper Wiring</h2>
+
+  <div class="text">
+    <p>For more than a century, copper has been the undisputed king of electrical wiring. Its excellent conductivity, relatively low cost, and ease of manufacture have made it the material of choice for everything from household circuits to the complex wiring harnesses of electric vehicles and aircraft. However, a team of Spanish researchers has now <span class="vocab">demonstrated</span> a scalable manufacturing process for carbon nanotube (CNT) fibers that could challenge copper's long-standing dominance. Their findings, published in the journal <em>Science</em>, represent what many experts are calling a <span class="vocab">breakthrough</span> in materials engineering.</p>
+
+    <p>Carbon nanotubes are microscopic cylindrical structures made entirely of carbon atoms arranged in a hexagonal lattice. First <span class="vocab">discovered</span> in 1991, they have long been celebrated for their extraordinary strength and remarkable electrical properties. Individually, a single carbon nanotube can carry an electric current more efficiently than copper. The central challenge, however, has always been translating this nanoscale performance into a macroscale fiber — essentially weaving billions of individual nanotubes into a thread that preserves their exceptional properties. Previous attempts often resulted in fibers with conductivity several orders of magnitude lower than copper, limiting their practical applications.</p>
+
+    <p>The Spanish team's approach involved a novel chemical vapor deposition process that produces CNT fibers with electrical conductivity directly comparable to that of copper and aluminum. By carefully controlling the growth conditions — including temperature, pressure, and the flow of carbon-containing gases — the researchers were able to create fibers where the individual nanotubes were densely packed and highly aligned, dramatically reducing electrical resistance. The resulting fibers exhibited a conductivity of over 80% that of copper, while being roughly one-sixth the weight. For industries such as aerospace and electric vehicles, where every kilogram of weight saved translates directly into greater fuel <span class="vocab">efficiency</span> or longer battery range, this combination of lightweight and high conductivity is <span class="vocab">transformative</span>.</p>
+
+    <p>The potential applications are wide-ranging. In electric vehicles, replacing copper wiring with CNT fibers could reduce overall vehicle weight by tens of kilograms, potentially extending driving range by 5–10%. In aircraft, weight savings would be even more dramatic, leading to <span class="vocab">substantial</span> reductions in fuel consumption and carbon emissions. Drones and other unmanned aerial vehicles could fly longer missions with the same battery capacity. Beyond transportation, CNT fibers could also find applications in consumer electronics, making devices lighter and more flexible. Despite the <span class="vocab">promising</span> results, the researchers acknowledge that significant hurdles remain. Scaling the manufacturing process from the laboratory to industrial production will require further investment and engineering <span class="vocab">innovation</span>. Questions also remain about the long-term durability and environmental impact of CNT fibers. Nevertheless, the study marks a decisive step toward a future where the materials that power our world may look very different from the copper wires that have served us for so long.</p>
+  </div>
+
+  <div class="vocab-box">
+    <strong>📝 核心词汇</strong><br>
+    demonstrate /ˈdemənstreɪt/ v. 展示；证明<br>
+    breakthrough /ˈbreɪkθruː/ n. 突破<br>
+    discover /dɪˈskʌvə(r)/ v. 发现<br>
+    efficiency /ɪˈfɪʃnsi/ n. 效率<br>
+    transformative /trænsˈfɔːmətɪv/ adj. 变革性的<br>
+    substantial /səbˈstænʃl/ adj. 大量的；实质性的<br>
+    promising /ˈprɒmɪsɪŋ/ adj. 有前途的；有希望的<br>
+    innovation /ˌɪnəˈveɪʃn/ n. 创新<br>
+    hexagonal /hekˈsæɡənl/ adj. 六边形的<br>
+    align /əˈlaɪn/ v. 排列；对齐
+  </div>
+
+  <!-- Q1 -->
+  <div class="question" data-answer="c">
+    <div class="q-num">第 1 题</div>
+    <div class="q-text">What has been the biggest obstacle to practical use of carbon nanotube fibers?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Carbon nanotubes are too expensive to produce</div>
+      <div class="option" data-value="b">B. Individual nanotubes cannot conduct electricity</div>
+      <div class="option" data-value="c">C. Scaling nanoscale properties to usable fibers has been extremely difficult</div>
+      <div class="option" data-value="d">D. Carbon nanotubes were only discovered recently</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：C。第二段指出核心挑战在于"translating this nanoscale performance into a macroscale fiber"，即把单个纳米管的优异性能扩展到宏观纤维。</div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="question" data-answer="d">
+    <div class="q-num">第 2 题</div>
+    <div class="q-text">According to the passage, what key feature of the Spanish team's manufacturing process improved conductivity?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Using cheaper raw materials than previous methods</div>
+      <div class="option" data-value="b">B. Adding copper to the carbon nanotube mixture</div>
+      <div class="option" data-value="c">C. Reducing the length of individual nanotubes</div>
+      <div class="option" data-value="d">D. Producing densely packed and well-aligned nanotubes</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：D。第三段指出研究者通过精确控制生长条件，使纳米管"densely packed and highly aligned"，从而大幅降低电阻。</div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="question" data-answer="b">
+    <div class="q-num">第 3 题</div>
+    <div class="q-text">The word "<strong>transformative</strong>" in paragraph 3 is closest in meaning to:</div>
+    <div class="options">
+      <div class="option" data-value="a">A. gradual and predictable</div>
+      <div class="option" data-value="b">B. radically changing the existing situation</div>
+      <div class="option" data-value="c">C. expensive and difficult to implement</div>
+      <div class="option" data-value="d">D. purely theoretical at this stage</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：B。"transformative"意为"变革性的"。文中说明 CNT 纤维兼具轻量和高导电性，对需要减重的行业具有变革意义。</div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="question" data-answer="a">
+    <div class="q-num">第 4 题</div>
+    <div class="q-text">What advantage do carbon nanotube fibers offer over copper for electric vehicles?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. They are lighter, which could increase driving range</div>
+      <div class="option" data-value="b">B. They are cheaper to manufacture at scale</div>
+      <div class="option" data-value="c">C. They are easier to recycle than copper wires</div>
+      <div class="option" data-value="d">D. They conduct electricity at room temperature</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：A。第四段明确指出在电动汽车中用 CNT 纤维替换铜线可减轻数十公斤重量，"potentially extending driving range by 5–10%".</div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="question" data-answer="c">
+    <div class="q-num">第 5 题</div>
+    <div class="q-text">What is the author's attitude toward the future of CNT fibers?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Entirely skeptical that they will ever be useful</div>
+      <div class="option" data-value="b">B. Overwhelmingly enthusiastic without reservations</div>
+      <div class="option" data-value="c">C. Hopeful but aware of remaining challenges</div>
+      <div class="option" data-value="d">D. Disappointed by the slow pace of research</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：C。末段肯定了研究成果的突破性和应用前景，同时也指出规模化生产、耐久性和环境影响等问题仍需解决，态度平衡审慎。</div>
+  </div>
+</div>
+
+<!-- ==================== Passage 2: Society ==================== -->
+<div class="passage">
+  <span class="tag tag-human">🌍 社会 · 医疗</span>
+  <h2>The Social Paradox of Weight-Loss Drugs</h2>
+
+  <div class="text">
+    <p>In recent years, GLP-1 receptor agonists such as Ozempic and Wegovy have been <span class="vocab">celebrated</span> as game-changing medications for weight loss. Originally developed to treat type 2 diabetes, these drugs work by mimicking a natural hormone that regulates appetite, leading to significant and sustained weight reduction for many patients. Clinical trials and real-world evidence have consistently shown impressive results, with some patients losing 15% or more of their body weight. But beneath the headlines about medical breakthroughs lies a more <span class="vocab">complex</span> social story — one that researchers are only beginning to understand.</p>
+
+    <p>A study published in early 2026 has revealed a surprising social twist: people who lose substantial weight using these medications often encounter unexpected social <span class="vocab">consequences</span>. The research, conducted by a team of sociologists and public health experts, found that while most participants reported feeling healthier and more confident after weight loss, many also experienced strained relationships, jealousy from friends and colleagues, and even accusations of "taking the easy way out." Some participants described being treated differently by family members who had grown accustomed to their previous appearance. "It's as if people feel entitled to have an opinion about your body simply because you changed it," one participant commented. The study also documented instances of discrimination in workplace settings, where coworkers made <span class="vocab">dismissive</span> remarks about the medication-based approach to weight management.</p>
+
+    <p>The phenomenon highlights a deeper cultural tension surrounding weight loss. On one hand, society <span class="vocab">glorifies</span> thinness and places enormous pressure on individuals to conform to certain body ideals. On the other hand, there exists a widespread suspicion of "shortcuts" — methods that achieve weight loss without what is perceived as sufficient effort or sacrifice. This creates a paradoxical situation where people are simultaneously praised for losing weight and criticized for how they achieved it. The researchers argue that this reflects a deeply ingrained cultural belief that weight loss must be earned through <span class="vocab">discipline</span> and suffering to be considered legitimate. The availability of effective pharmacological interventions challenges this moral framework, forcing society to <span class="vocab">confront</span> uncomfortable questions about fairness, effort, and bodily autonomy.</p>
+
+    <p>The implications of these findings extend beyond individual experiences. As GLP-1 drugs become more widely available and affordable, potentially reshaping public health outcomes on a population scale, the social dynamics <span class="vocab">surrounding</span> their use will likely intensify. Healthcare providers, the researchers suggest, should prepare patients not only for the physical effects of weight-loss medications but also for the social and emotional challenges they may face. Employers and policymakers, too, need to be aware of potential discrimination against those who use these medications. Ultimately, the study serves as a reminder that medical innovations do not exist in a social vacuum — their impact is shaped as much by cultural attitudes and social norms as by their biochemical mechanisms. The real challenge of the weight-loss revolution may be less about biology and more about how we treat each other.</p>
+  </div>
+
+  <div class="vocab-box">
+    <strong>📝 核心词汇</strong><br>
+    celebrate /ˈselɪbreɪt/ v. 赞扬；庆祝<br>
+    complex /ˈkɒmpleks/ adj. 复杂的<br>
+    consequence /ˈkɒnsɪkwəns/ n. 后果；结果<br>
+    dismissive /dɪsˈmɪsɪv/ adj. 轻蔑的；不屑一顾的<br>
+    glorify /ˈɡlɔːrɪfaɪ/ v. 赞美；美化<br>
+    discipline /ˈdɪsəplɪn/ n. 自律；纪律<br>
+    confront /kənˈfrʌnt/ v. 面对；对抗<br>
+    surround /səˈraʊnd/ v. 围绕<br>
+    pharmacological /ˌfɑːməkəˈlɒdʒɪkl/ adj. 药理学的；药物的<br>
+    discrimination /dɪˌskrɪmɪˈneɪʃn/ n. 歧视
+  </div>
+
+  <!-- Q6 -->
+  <div class="question" data-answer="b">
+    <div class="q-num">第 6 题</div>
+    <div class="q-text">What does the 2026 study reveal about people who use GLP-1 drugs for weight loss?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. They all reported universally positive social experiences</div>
+      <div class="option" data-value="b">B. Many faced unexpected social challenges despite feeling healthier</div>
+      <div class="option" data-value="c">C. They lost less weight than people using traditional methods</div>
+      <div class="option" data-value="d">D. Most participants decided to stop using the medication</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：B。第二段指出虽然多数参与者感觉更健康自信，但许多人经历了关系紧张、嫉妒、被指责"走捷径"等社交挑战。</div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="question" data-answer="d">
+    <div class="q-num">第 7 题</div>
+    <div class="q-text">The word "<strong>dismissive</strong>" in paragraph 2 most nearly means:</div>
+    <div class="options">
+      <div class="option" data-value="a">A. supportive and encouraging</div>
+      <div class="option" data-value="b">B. curious and interested</div>
+      <div class="option" data-value="c">C. neutral and indifferent</div>
+      <div class="option" data-value="d">D. showing that something is unimportant or unworthy</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：D。"dismissive"意为"轻蔑的、不屑一顾的"，指同事对基于药物的减肥方法做出贬低性评论。</div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="question" data-answer="a">
+    <div class="q-num">第 8 题</div>
+    <div class="q-text">According to the passage, what "cultural tension" surrounds weight loss in society?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Society values thinness but also distrusts weight loss methods seen as shortcuts</div>
+      <div class="option" data-value="b">B. Society disapproves of weight loss regardless of the method used</div>
+      <div class="option" data-value="c">C. Society equally supports all approaches to weight management</div>
+      <div class="option" data-value="d">D. Society only values weight loss achieved through surgery</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：A。第三段指出社会一方面赞美瘦身，另一方面又怀疑"捷径"，认为减肥必须通过自律和吃苦才被认为是正当的。</div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="question" data-answer="b">
+    <div class="q-num">第 9 题</div>
+    <div class="q-text">What does the author mean by "medical innovations do not exist in a social vacuum" (last paragraph)?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Medical research is completely independent from social influences</div>
+      <div class="option" data-value="b">B. The impact of medical advances is deeply affected by social and cultural factors</div>
+      <div class="option" data-value="c">C. New medications should only be studied in laboratory settings</div>
+      <div class="option" data-value="d">D. Social media is the most important factor in drug development</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：B。末句总结道医疗创新的影响不仅取决于"biochemical mechanisms"，也取决于"cultural attitudes and social norms"，说明社会和文化的塑造作用同等重要。</div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="question" data-answer="c">
+    <div class="q-num">第 10 题</div>
+    <div class="q-text">What recommendation does the author make based on the study's findings?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. GLP-1 drugs should be banned due to their social side effects</div>
+      <div class="option" data-value="b">B. Weight loss should only be achieved through diet and exercise</div>
+      <div class="option" data-value="c">C. Healthcare providers and employers should prepare for social challenges associated with these drugs</div>
+      <div class="option" data-value="d">D. Patients should keep their medication use a secret from everyone</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：C。末段建议医护人员不仅要让患者了解药物的生理影响，也要为社交和情感挑战做好准备；雇主和决策者也应关注潜在的歧视问题。</div>
+  </div>
+</div>
+
+<!-- Buttons -->
+<div class="btn-group">
+  <button class="btn btn-primary" id="submitBtn" onclick="submitAll()">📝 提交答案</button>
+  <button class="btn btn-secondary" id="resetBtn" onclick="resetAll()">🔄 重新答题</button>
+</div>
+
+<!-- Result Bar -->
+<div class="result-bar" id="resultBar">
+  <div class="score" id="scoreText">0 / 10 (0%)</div>
+  <div class="detail" id="detailText"></div>
+  <div style="margin-top: 8px;" id="dotContainer"></div>
+</div>
+
+<div class="footer">
+  CET-6 每日阅读 · 小约 🤖<br>
+  素材来源：TechXplore · ScienceDaily · 仅供学习参考
+</div>
+
+</div>
+
+<script>
+var submitted = false;
+
+document.querySelectorAll('.option').forEach(function(opt) {
+  opt.addEventListener('click', function() {
+    if (submitted) return;
+    var question = this.closest('.question');
+    question.querySelectorAll('.option').forEach(function(o) {
+      o.classList.remove('selected');
+    });
+    this.classList.add('selected');
+  });
+});
+
+function submitAll() {
+  if (submitted) return;
+  submitted = true;
+
+  var questions = document.querySelectorAll('.question');
+  var correctCount = 0;
+  var total = questions.length;
+  var dots = [];
+
+  questions.forEach(function(q) {
+    var answer = q.getAttribute('data-answer');
+    var selected = q.querySelector('.option.selected');
+    var options = q.querySelectorAll('.option');
+    var explanation = q.querySelector('.explanation-text');
+
+    options.forEach(function(o) { o.classList.add('no-click'); });
+
+    if (explanation) explanation.classList.add('show');
+
+    options.forEach(function(o) {
+      if (o.getAttribute('data-value') === answer) {
+        o.classList.add('reveal-correct');
+      }
+    });
+
+    if (selected) {
+      if (selected.getAttribute('data-value') === answer) {
+        selected.classList.add('correct');
+        correctCount++;
+        dots.push('correct');
+      } else {
+        selected.classList.add('wrong');
+        dots.push('wrong');
+      }
+    } else {
+      dots.push('unanswered');
+    }
+  });
+
+  var pct = Math.round((correctCount / total) * 100);
+  var pass = pct >= 60;
+  var resultBar = document.getElementById('resultBar');
+  resultBar.classList.add('show');
+
+  var scoreText = document.getElementById('scoreText');
+  scoreText.textContent = correctCount + ' / ' + total + ' (' + pct + '%)';
+  scoreText.className = 'score ' + (pass ? 'pass' : 'fail');
+
+  document.getElementById('detailText').textContent = pass ? '🎉 通过！表现不错！' : '💪 再接再厉，60% 为合格线！';
+
+  var dotContainer = document.getElementById('dotContainer');
+  dotContainer.innerHTML = '';
+  dots.forEach(function(d) {
+    var span = document.createElement('span');
+    span.className = 'dot ' + d + '-dot';
+    dotContainer.appendChild(span);
+  });
+
+  document.getElementById('submitBtn').disabled = true;
+  document.getElementById('resetBtn').scrollIntoView({ behavior: 'smooth' });
+}
+
+function resetAll() {
+  submitted = false;
+
+  document.querySelectorAll('.question').forEach(function(q) {
+    q.querySelectorAll('.option').forEach(function(o) {
+      o.classList.remove('selected', 'correct', 'wrong', 'reveal-correct', 'no-click');
+    });
+    var exp = q.querySelector('.explanation-text');
+    if (exp) exp.classList.remove('show');
+  });
+
+  document.getElementById('resultBar').classList.remove('show');
+  document.getElementById('submitBtn').disabled = false;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
