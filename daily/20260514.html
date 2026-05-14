@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>每日六级阅读 · 2026-05-14</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f5f7fa;
+    color: #1a1a2e;
+    padding: 16px;
+    line-height: 1.8;
+  }
+  .container { max-width: 520px; margin: 0 auto; }
+  .header { text-align: center; padding: 24px 0 16px; }
+  .header h1 { font-size: 22px; font-weight: 700; color: #1a1a2e; }
+  .header .date { font-size: 14px; color: #888; margin-top: 4px; }
+  .header .badge { display: inline-block; background: #e8f0fe; color: #1a73e8; font-size: 12px; padding: 2px 10px; border-radius: 12px; margin-top: 8px; }
+  .passage { background: #fff; border-radius: 16px; padding: 20px; margin: 16px 0; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .passage .tag { display: inline-block; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 8px; margin-bottom: 12px; }
+  .tag-tech { background: #e3f2fd; color: #1565c0; }
+  .tag-human { background: #fce4ec; color: #c62828; }
+  .passage h2 { font-size: 18px; font-weight: 600; line-height: 1.5; margin-bottom: 12px; color: #1a1a2e; }
+  .passage .text { font-size: 15px; line-height: 1.9; color: #333; text-align: justify; margin-bottom: 16px; }
+  .passage .text p { margin-bottom: 12px; text-indent: 2em; }
+  .vocab { display: inline; color: #1a73e8; font-weight: 600; border-bottom: 2px solid #1a73e8; cursor: help; }
+  .vocab-box { background: #f0f4ff; border-radius: 10px; padding: 12px 14px; margin-bottom: 16px; font-size: 13px; }
+  .vocab-box strong { color: #1a73e8; }
+  .vocab-box .word { display: inline-block; margin-right: 12px; }
+  .question { margin-bottom: 18px; }
+  .question .q-num { font-weight: 700; font-size: 14px; color: #1a73e8; margin-bottom: 6px; }
+  .question .q-text { font-size: 14.5px; color: #333; margin-bottom: 8px; }
+  .question .options { padding-left: 4px; }
+  .question .option { display: block; font-size: 14px; padding: 8px 10px; margin: 4px 0; border-radius: 8px; background: #f8f9fa; border: 1.5px solid transparent; transition: all 0.15s; cursor: pointer; }
+  .question .option:hover { background: #e8f0fe; }
+  .question .option.selected { background: #e8f0fe; border-color: #1a73e8; }
+  .question .option.correct { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
+  .question .option.wrong { background: #fce8e6; border-color: #ea4335; color: #c5221f; }
+  .question .option.reveal-correct { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
+  .explanation-text { font-size: 13px; color: #666; margin-top: 6px; padding: 8px 10px; background: #f8f9fa; border-radius: 8px; display: none; }
+  .explanation-text.show { display: block; }
+  .btn-group { display: flex; gap: 10px; margin: 20px 0; }
+  .btn { flex: 1; padding: 14px; border: none; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center; }
+  .btn-primary { background: #1a73e8; color: #fff; }
+  .btn-primary:active { background: #1557b0; }
+  .btn-primary:disabled { background: #a0c4ff; cursor: not-allowed; }
+  .btn-secondary { background: #e8eaed; color: #444; }
+  .btn-secondary:active { background: #d2d4d8; }
+  .result-bar { display: none; text-align: center; padding: 16px; margin: 16px 0; border-radius: 12px; font-size: 16px; font-weight: 700; }
+  .result-bar.show { display: block; }
+  .result-bar.pass { background: #e6f4ea; color: #1e7e34; }
+  .result-bar.fail { background: #fce8e6; color: #c5221f; }
+  .footer { text-align: center; padding: 24px 0 32px; font-size: 12px; color: #aaa; }
+  .alert-msg { text-align: center; color: #ea4335; font-size: 13px; margin: 8px 0; display: none; }
+  .alert-msg.show { display: block; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>📖 每日六级阅读</h1>
+  <div class="date">2026 年 5 月 14 日 · 星期四</div>
+  <div class="badge">🎯 CET-6 双篇深度训练</div>
+</div>
+
+<!-- Passage 1: Tech -->
+<div class="passage">
+  <span class="tag tag-tech">🔬 科技 · 医疗</span>
+  <h2>Beyond the Scalpel: How AI Is Reshaping Medical Diagnostics</h2>
+
+  <div class="text">
+    <p>The integration of artificial intelligence into healthcare has accelerated dramatically over the past three years, with AI-powered diagnostic systems now operating in thousands of hospitals worldwide. From analyzing medical scans to predicting patient outcomes, these systems promise to revolutionize medicine by making diagnoses faster, more accurate, and more accessible. But as the technology becomes more deeply embedded in clinical practice, a nuanced picture is emerging — one that reveals both remarkable capabilities and troubling limitations.</p>
+
+    <p>In the field of <span class="vocab">radiology</span>, AI systems have achieved what many experts consider stunning results. A deep learning model developed at Stanford University demonstrated the ability to detect pneumonia from chest X-rays with a <span class="vocab">sensitivity</span> rate exceeding that of board-certified radiologists in a controlled study. Similarly, Google Health's AI model for breast cancer screening showed a 9.4% reduction in false negatives and a 5.7% reduction in false positives compared to human readers in a large-scale UK trial. These results have fueled optimism that AI can help address critical shortages of trained radiologists, particularly in developing nations where the ratio of radiologists to patients can be as low as 1 per million people.</p>
+
+    <p>Yet researchers have also identified significant challenges. A major concern is the <span class="vocab">generalizability</span> of AI diagnostic models — their ability to perform <span class="vocab">consistently</span> across different populations, healthcare settings, and imaging equipment. Studies have found that a model trained primarily on scans from European hospitals may see its accuracy <span class="vocab">deteriorate</span> by 15 to 30 percentage points when applied to data from Asian or African hospitals, due to differences in population demographics, disease prevalence, and imaging protocols. This <span class="vocab">disparity</span> raises serious questions about <span class="vocab">equity</span> in AI-assisted healthcare: if cutting-edge AI diagnostics are only reliable for certain populations, they risk widening rather than narrowing existing health inequalities.</p>
+
+    <p>Furthermore, the opaque nature of many AI systems — often described as "black boxes" — presents a fundamental challenge for clinical adoption. When a deep learning model flags a suspicious region on a scan, it frequently cannot explain <em>why</em> it made that determination, making it difficult for physicians to trust or <span class="vocab">verify</span> the output. Dr. Sarah Chen, a researcher at MIT's Clinical Machine Learning Group, explains: "We need AI systems that are not just accurate, but also <span class="vocab">interpretable</span>. A radiologist who disagrees with an AI's finding needs to understand its reasoning to make an informed clinical judgment." The push for "explainable AI" has become one of the most active areas of medical AI research, with regulators increasingly requiring transparency as a condition for clinical approval. As AI continues its <span class="vocab">integration</span> into medicine, the consensus among experts is clear: the goal is not to replace doctors, but to create a powerful partnership that combines human clinical judgment with machine precision — provided we can solve the puzzle of trust.</p>
+  </div>
+
+  <div class="vocab-box">
+    <strong>📝 核心词汇</strong><br>
+    radiology /ˌreɪdiˈɒlədʒi/ n. 放射学<br>
+    sensitivity /ˌsensəˈtɪvəti/ n. 灵敏度；敏感性<br>
+    generalizability /ˌdʒenrəlaɪzəˈbɪləti/ n. 普适性；可推广性<br>
+    consistently /kənˈsɪstəntli/ adv. 一致地；稳定地<br>
+    deteriorate /dɪˈtɪəriəreɪt/ v. 恶化；退化<br>
+    disparity /dɪˈspærəti/ n. 差异；悬殊<br>
+    equity /ˈekwəti/ n. 公平；公正<br>
+    verify /ˈverɪfaɪ/ v. 验证；核实<br>
+    interpretable /ɪnˈtɜːprɪtəbl/ adj. 可解释的；可理解的<br>
+    integration /ˌɪntɪˈɡreɪʃn/ n. 整合；一体化
+  </div>
+
+  <div class="question" data-answer="b">
+    <div class="q-num">第 1 题</div>
+    <div class="q-text">What does the author suggest about the performance of AI diagnostic models across different populations?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. They perform equally well in all regions</div>
+      <div class="option" data-value="b">B. Their accuracy can significantly decline when applied to different populations</div>
+      <div class="option" data-value="c">C. They only work effectively in European hospitals</div>
+      <div class="option" data-value="d">D. They consistently outperform human radiologists worldwide</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：B。文章指出AI诊断模型在迁移到不同人群时准确率可能下降15-30个百分点，存在普适性问题。</div>
+  </div>
+
+  <div class="question" data-answer="d">
+    <div class="q-num">第 2 题</div>
+    <div class="q-text">The word "<strong>deteriorate</strong>" in paragraph 3 is closest in meaning to:</div>
+    <div class="options">
+      <div class="option" data-value="a">A. improve significantly</div>
+      <div class="option" data-value="b">B. remain unchanged</div>
+      <div class="option" data-value="c">C. fluctuate randomly</div>
+      <div class="option" data-value="d">D. become worse</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：D。"deteriorate"意为"恶化、退化"，文中指模型在新数据上准确率下降。</div>
+  </div>
+
+  <div class="question" data-answer="c">
+    <div class="q-num">第 3 题</div>
+    <div class="q-text">What does Dr. Sarah Chen emphasize as essential for AI systems in clinical settings?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Faster processing speed than human doctors</div>
+      <div class="option" data-value="b">B. Lower cost compared to traditional methods</div>
+      <div class="option" data-value="c">C. The ability to explain their reasoning</div>
+      <div class="option" data-value="d">D. Complete autonomy from human oversight</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：C。Sarah Chen博士强调AI系统不仅要准确，还要"可解释"——医生需要理解AI的推理过程才能做出明智判断。</div>
+  </div>
+
+  <div class="question" data-answer="a">
+    <div class="q-num">第 4 题</div>
+    <div class="q-text">Which of the following is mentioned as a potential negative consequence of AI diagnostic systems' limited generalizability?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Widening existing health inequalities between populations</div>
+      <div class="option" data-value="b">B. Reducing the overall accuracy of all medical diagnoses</div>
+      <div class="option" data-value="c">C. Making healthcare more expensive for developing nations</div>
+      <div class="option" data-value="d">D. Causing radiologists to lose their jobs entirely</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：A。文章指出如果AI诊断仅对特定人群可靠，可能会加剧而非缩小现有的医疗不平等。</div>
+  </div>
+
+  <div class="question" data-answer="d">
+    <div class="q-num">第 5 题</div>
+    <div class="q-text">What is the author's conclusion about the future of AI in medicine?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. AI will eventually replace human doctors completely</div>
+      <div class="option" data-value="b">B. AI is too risky to be used in clinical settings</div>
+      <div class="option" data-value="c">C. Only explainable AI models should be developed</div>
+      <div class="option" data-value="d">D. The ideal is a partnership between human judgment and machine precision</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：D。文章最后指出目标不是替代医生，而是建立人类临床判断与机器精准度的有效合作关系，前提是解决信任问题。</div>
+  </div>
+</div>
+
+<!-- Passage 2: Society/Humanities -->
+<div class="passage">
+  <span class="tag tag-human">🌍 社会 · 经济</span>
+  <h2>The Four-Day Work Week: A Radical Idea Goes Mainstream</h2>
+
+  <div class="text">
+    <p>What began as a fringe idea championed by labor activists and progressive entrepreneurs has rapidly evolved into one of the most discussed workplace reforms of the decade. The four-day work week — in which employees work 80% of their usual hours while maintaining 100% of their salary, provided productivity targets are met — has been piloted by hundreds of companies and several national governments in recent years. The results, according to a growing body of evidence, have been remarkably positive, prompting renewed debate about whether the traditional five-day structure is an <span class="vocab">outdated</span> relic of industrial-era thinking.</p>
+
+    <p>The most comprehensive trial to date was conducted in the United Kingdom between 2022 and 2023, involving 61 companies and approximately 2,900 employees. The six-month pilot, organized by the non-profit organization 4 Day Week Global in <span class="vocab">collaboration</span> with researchers from Cambridge University and Boston College, produced striking results. Of the participating companies, 92% chose to continue the four-day schedule after the trial ended. Employee <span class="vocab">burnout</span> rates declined by 71%, while anxiety, fatigue, and sleep problems all decreased significantly. Most notably, company revenue remained stable — in fact, it increased by an average of 1.4% over the trial period — suggesting that workers were able to <span class="vocab">sustain</span> or even improve productivity despite working fewer hours. Similar trials in Iceland, New Zealand, Japan, and Spain have yielded comparable findings.</p>
+
+    <p>Proponents of the four-day week argue that it addresses multiple <span class="vocab">interconnected</span> challenges simultaneously. From an economic perspective, studies suggest that reduced working hours can boost <span class="vocab">productivity</span> per hour worked, as employees are more focused and motivated when their time at work is limited. For mental health, the extra day off provides employees with significantly more time for family, hobbies, rest, and personal development — factors that are consistently linked to psychological well-being. From an environmental standpoint, a four-day work week could reduce commuting emissions by 20% and office energy consumption correspondingly. Countries like Belgium have already enacted legislation granting workers the legal right to request a four-day schedule, though often with reduced pay — a compromise that advocates argue undermines the core principle of the reform.</p>
+
+    <p>Critics, however, caution against <span class="vocab">uncritical</span> enthusiasm. Some industries — particularly those <span class="vocab">reliant</span> on round-the-clock services, such as healthcare, hospitality, and emergency services — face structural obstacles to compressed schedules. Small businesses worry about maintaining customer coverage and managing cash flow during transitions. Furthermore, a study from Sweden's Lund University found that while a six-hour work day improved worker well-being, it also required additional hiring, raising labor costs by 15% in the organizations studied. The question, skeptics argue, is not whether a four-day week improves employee satisfaction — it clearly does — but whether the economic costs are <span class="vocab">feasible</span> at scale. As more governments and companies experiment with alternatives to the standard work week, what is emerging is not a one-size-fits-all solution, but rather a recognition that the question of how much we should work — and for whom — is undergoing a fundamental reevaluation.</p>
+  </div>
+
+  <div class="vocab-box">
+    <strong>📝 核心词汇</strong><br>
+    outdated /ˌaʊtˈdeɪtɪd/ adj. 过时的；陈旧的<br>
+    collaboration /kəˌlæbəˈreɪʃn/ n. 合作；协作<br>
+    burnout /ˈbɜːnaʊt/ n. 精疲力竭；倦怠<br>
+    sustain /səˈsteɪn/ v. 维持；支撑<br>
+    interconnected /ˌɪntəkəˈnektɪd/ adj. 相互关联的<br>
+    productivity /ˌprɒdʌkˈtɪvəti/ n. 生产力；生产效率<br>
+    uncritical /ʌnˈkrɪtɪkl/ adj. 不加批判的；盲目的<br>
+    reliant /rɪˈlaɪənt/ adj. 依赖的；依靠的<br>
+    feasible /ˈfiːzəbl/ adj. 可行的；行得通的<br>
+    legislation /ˌledʒɪsˈleɪʃn/ n. 立法；法规
+  </div>
+
+  <div class="question" data-answer="c">
+    <div class="q-num">第 6 题</div>
+    <div class="q-text">What was the key finding of the UK four-day work week trial?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Most companies returned to the five-day schedule after the trial</div>
+      <div class="option" data-value="b">B. Employee burnout rates increased due to compressed schedules</div>
+      <div class="option" data-value="c">C. The vast majority of companies continued with the four-day week and revenue remained stable</div>
+      <div class="option" data-value="d">D. Revenue dropped significantly despite improved employee well-being</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：C。英国试验中92%的公司在结束后继续执行四天工作制，且收入保持稳定甚至增长1.4%。</div>
+  </div>
+
+  <div class="question" data-answer="b">
+    <div class="q-num">第 7 题</div>
+    <div class="q-text">The word "<strong>sustain</strong>" in paragraph 2 most probably means:</div>
+    <div class="options">
+      <div class="option" data-value="a">A. dramatically increase</div>
+      <div class="option" data-value="b">B. maintain at a certain level</div>
+      <div class="option" data-value="c">C. completely transform</div>
+      <div class="option" data-value="d">D. gradually reduce</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：B。"sustain"意为"维持"，文中指员工虽然在更短时间内工作，仍能维持甚至提升生产力。</div>
+  </div>
+
+  <div class="question" data-answer="a">
+    <div class="q-num">第 8 题</div>
+    <div class="q-text">Which of the following is NOT mentioned as a potential benefit of the four-day work week?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Reducing the need for international trade</div>
+      <div class="option" data-value="b">B. Improving employees' mental health and well-being</div>
+      <div class="option" data-value="c">C. Boosting productivity per hour worked</div>
+      <div class="option" data-value="d">D. Reducing commuting emissions and energy consumption</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：A。文章提到了提升生产力、改善心理健康、减少通勤排放和环境效益，并未提及国际贸易相关影响。</div>
+  </div>
+
+  <div class="question" data-answer="d">
+    <div class="q-num">第 9 题</div>
+    <div class="q-text">What concern do critics raise about the four-day work week according to the passage?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Employees will demand even shorter working hours</div>
+      <div class="option" data-value="b">B. The quality of work always suffers with fewer hours</div>
+      <div class="option" data-value="c">C. Large corporations will benefit more than small businesses</div>
+      <div class="option" data-value="d">D. Some industries face structural obstacles and economic costs may be high at scale</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：D。批评者指出医疗、酒店等需要24小时服务的行业面临结构性障碍，且瑞典研究发现可能需要增加用工成本。</div>
+  </div>
+
+  <div class="question" data-answer="b">
+    <div class="q-num">第 10 题</div>
+    <div class="q-text">What is the author's overall attitude toward the four-day work week?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Strongly opposed, citing overwhelming evidence against it</div>
+      <div class="option" data-value="b">B. Balanced, acknowledging both the promising results and the practical challenges</div>
+      <div class="option" data-value="c">C. Enthusiastically supportive, dismissing all criticism as unfounded</div>
+      <div class="option" data-value="d">D. Indifferent, suggesting it is merely a passing trend</div>
+    </div>
+    <div class="explanation-text">✅ 正确答案：B。文章既展示了试验的积极成果（92%继续执行、收入稳定），也客观呈现了批评意见（行业障碍、成本问题），整体持平衡态度。</div>
+  </div>
+</div>
+
+<div class="alert-msg" id="alertMsg">⚠️ 请先完成所有题目再提交</div>
+
+<div class="btn-group">
+  <button class="btn btn-primary" id="submitBtn" onclick="submitAll()">📝 提交答案</button>
+  <button class="btn btn-secondary" onclick="resetAll()">🔄 重新答题</button>
+</div>
+
+<div class="result-bar" id="resultBar"></div>
+
+<div class="footer">
+  每日六级阅读 · 小约 🤖 为你精选<br>
+  CET-6 Daily Reading · © 2026
+</div>
+</div>
+
+<script>
+let submitted = false;
+
+function submitAll() {
+  if (submitted) return;
+  
+  const questions = document.querySelectorAll('.question');
+  let answered = 0;
+  let correct = 0;
+  
+  // Count answered questions
+  questions.forEach((q, index) => {
+    const selected = q.querySelector('.option.selected');
+    if (selected) answered++;
+  });
+  
+  if (answered < questions.length) {
+    document.getElementById('alertMsg').classList.add('show');
+    return;
+  }
+  document.getElementById('alertMsg').classList.remove('show');
+  
+  submitted = true;
+  document.getElementById('submitBtn').disabled = true;
+  
+  questions.forEach((q, index) => {
+    const answer = q.getAttribute('data-answer');
+    const selected = q.querySelector('.option.selected');
+    const userValue = selected ? selected.getAttribute('data-value') : '';
+    const isCorrect = userValue === answer;
+    
+    if (isCorrect) correct++;
+    
+    // Mark selected option
+    selected.classList.add(isCorrect ? 'correct' : 'wrong');
+    
+    // Show correct answer
+    q.querySelectorAll('.option').forEach(opt => {
+      if (opt.getAttribute('data-value') === answer && !isCorrect) {
+        opt.classList.add('reveal-correct');
+      }
+    });
+    
+    // Show explanation
+    q.querySelector('.explanation-text').classList.add('show');
+  });
+  
+  // Show result bar
+  const total = questions.length;
+  const pct = Math.round((correct / total) * 100);
+  const bar = document.getElementById('resultBar');
+  bar.textContent = `📊 得分：${correct}/${total}（${pct}%）${pct >= 60 ? ' ✅ 通过！' : ' ❌ 继续加油！'}`;
+  bar.className = 'result-bar show ' + (pct >= 60 ? 'pass' : 'fail');
+}
+
+function resetAll() {
+  submitted = false;
+  document.getElementById('submitBtn').disabled = false;
+  document.getElementById('resultBar').className = 'result-bar';
+  document.getElementById('alertMsg').classList.remove('show');
+  
+  document.querySelectorAll('.option').forEach(o => {
+    o.classList.remove('selected', 'correct', 'wrong', 'reveal-correct');
+  });
+  document.querySelectorAll('.explanation-text').forEach(e => {
+    e.classList.remove('show');
+  });
+}
+
+// Click handler for options
+document.querySelectorAll('.option').forEach(opt => {
+  opt.addEventListener('click', function() {
+    if (submitted) return;
+    const parent = this.closest('.question');
+    parent.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+    this.classList.add('selected');
+  });
+});
+</script>
+</body>
+</html>
