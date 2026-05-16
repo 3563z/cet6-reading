@@ -19,13 +19,11 @@
   h2 { font-size: 18px; font-weight: 600; line-height: 1.5; margin-bottom: 12px; }
   .audio-section { margin: 12px 0 20px; }
   .audio-section audio { width: 100%; border-radius: 8px; }
-
   .question-box {
     margin-bottom: 16px;
     border: 2px solid #e0e0e0; border-radius: 12px; padding: 14px;
   }
   .q-number { font-weight: 700; font-size: 15px; color: #888; margin-bottom: 8px; }
-
   .options { padding-left: 4px; }
   .option {
     display: block; font-size: 14px; padding: 10px 12px; margin: 5px 0;
@@ -37,25 +35,19 @@
   .option.correct { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
   .option.wrong { background: #fce8e6; border-color: #ea4335; color: #c5221f; }
   .option.reveal-correct { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
-
   .btn-group { display: flex; gap: 10px; margin: 16px 0; }
-  .btn { flex: 1; padding: 14px; border: none; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center; }
+  .btn { flex: 1; padding: 14px; border: none; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; text-align: center; }
   .btn-primary { background: #1a73e8; color: #fff; }
   .btn-primary:active { background: #1557b0; }
-  .btn-primary:disabled { background: #a0c4ff; cursor: not-allowed; }
   .btn-secondary { background: #e8eaed; color: #444; }
-  .btn-secondary:active { background: #d2d4d8; }
-
   .result-bar { display: none; text-align: center; padding: 16px; margin: 16px 0; border-radius: 12px; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
   .result-bar.show { display: block; }
   .result-bar .score { font-size: 28px; font-weight: 700; }
   .result-bar .score.pass { color: #34a853; }
   .result-bar .score.fail { color: #ea4335; }
-
   .transcript { display: none; margin-top: 16px; padding: 14px; background: #f8f9fa; border-radius: 10px; font-size: 14px; }
   .transcript.show { display: block; }
   .transcript h3 { font-size: 15px; color: #1a73e8; margin-bottom: 8px; }
-
   .footer { text-align: center; padding: 24px 0 32px; font-size: 12px; color: #aaa; }
 </style>
 </head>
@@ -64,7 +56,7 @@
 
 <div class="header">
   <h1>🎧 CET-6 听力</h1>
-  <div class="date">先听 → 再出题 → 自行作答</div>
+  <div class="date">全文 ~220 词 · 约 3 分钟</div>
 </div>
 
 <div class="passage">
@@ -79,56 +71,56 @@
 
   <div class="question-box">
     <div class="q-number">Question 1</div>
-    <div class="options" data-answer="a">
-      <div class="option" data-value="a">A. NASA</div>
-      <div class="option" data-value="b">B. The Pentagon</div>
-      <div class="option" data-value="c">C. Stanford University</div>
-      <div class="option" data-value="d">D. SpaceX</div>
+    <div class="options" data-answer="c">
+      <div class="option" data-value="a">A. It is cheaper to produce</div>
+      <div class="option" data-value="b">B. It is smaller in size</div>
+      <div class="option" data-value="c">C. It delivers much greater computing power</div>
+      <div class="option" data-value="d">D. It uses less electricity</div>
     </div>
   </div>
 
   <div class="question-box">
     <div class="q-number">Question 2</div>
-    <div class="options" data-answer="c">
-      <div class="option" data-value="a">A. Lower power consumption</div>
-      <div class="option" data-value="b">B. Smaller physical size</div>
-      <div class="option" data-value="c">C. Hundreds of times better performance</div>
-      <div class="option" data-value="d">D. Lower production costs</div>
+    <div class="options" data-answer="b">
+      <div class="option" data-value="a">A. They are designed for different purposes</div>
+      <div class="option" data-value="b">B. They must survive extreme space conditions</div>
+      <div class="option" data-value="c">C. NASA cannot afford to upgrade them</div>
+      <div class="option" data-value="d">D. They were built decades ago</div>
     </div>
   </div>
 
   <div class="question-box">
     <div class="q-number">Question 3</div>
-    <div class="options" data-answer="b">
-      <div class="option" data-value="a">A. They use older programming languages</div>
-      <div class="option" data-value="b">B. They must withstand extreme radiation and temperature changes</div>
-      <div class="option" data-value="c">C. NASA has limited funding for upgrades</div>
-      <div class="option" data-value="d">D. Modern chips are too large for spacecraft</div>
+    <div class="options" data-answer="a">
+      <div class="option" data-value="a">A. A special error-correction mechanism</div>
+      <div class="option" data-value="b">B. Thicker protective shielding</div>
+      <div class="option" data-value="c">C. Lower operating temperatures</div>
+      <div class="option" data-value="d">D. Simpler programming software</div>
     </div>
   </div>
 
   <div class="question-box">
     <div class="q-number">Question 4</div>
-    <div class="options" data-answer="a">
-      <div class="option" data-value="a">A. Detect and correct errors caused by radiation</div>
-      <div class="option" data-value="b">B. Communicate with Earth at faster speeds</div>
-      <div class="option" data-value="c">C. Generate its own power supply</div>
-      <div class="option" data-value="d">D. Repair itself automatically</div>
+    <div class="options" data-answer="d">
+      <div class="option" data-value="a">A. Limited fuel supply</div>
+      <div class="option" data-value="b">B. High equipment costs</div>
+      <div class="option" data-value="c">C. Extreme temperature changes</div>
+      <div class="option" data-value="d">D. Communication delays with Earth</div>
     </div>
   </div>
 
   <div class="question-box">
     <div class="q-number">Question 5</div>
-    <div class="options" data-answer="d">
-      <div class="option" data-value="a">A. Weather forecasting satellites</div>
-      <div class="option" data-value="b">B. Commercial airline navigation</div>
-      <div class="option" data-value="c">C. Underwater exploration vehicles</div>
-      <div class="option" data-value="d">D. Future missions to Mars and beyond</div>
+    <div class="options" data-answer="c">
+      <div class="option" data-value="a">A. Human astronauts will no longer be needed</div>
+      <div class="option" data-value="b">B. Travel time to Mars will be cut in half</div>
+      <div class="option" data-value="c">C. Spacecraft can make decisions on their own</div>
+      <div class="option" data-value="d">D. Communication with Earth will become instant</div>
     </div>
   </div>
 
   <div class="btn-group">
-    <button class="btn btn-primary" id="submitBtn" onclick="submitAll()">📝 提交答案</button>
+    <button class="btn btn-primary" onclick="submitAll()">📝 提交答案</button>
     <button class="btn btn-secondary" onclick="resetAll()">🔄 重新答题</button>
   </div>
 
@@ -138,59 +130,51 @@
 
   <div class="transcript" id="transcript">
     <h3>📝 听力原文</h3>
-    <p>Scientists at the National Aeronautics and Space Administration are testing a next-generation computer chip designed to give spacecraft the ability to operate far more independently in deep space. The radiation-hardened processor shows performance levels hundreds of times beyond current spaceflight computers. Current space computers are decades behind modern consumer technology because they must be built to withstand extreme radiation, temperature fluctuations, and cosmic rays. The new chip uses a special design that can detect and correct errors caused by radiation in real time, allowing it to run faster without crashing. According to NASA engineers, this breakthrough could enable future missions to Mars and beyond to make real-time decisions without waiting for instructions from Earth, which can take up to twenty minutes each way.</p>
+    <p>The National Aeronautics and Space Administration is testing a revolutionary new computer processor that could transform the way spacecraft operate in deep space. Unlike traditional space computers, which are decades behind modern consumer technology in terms of performance, this new radiation-hardened chip is designed to withstand the extreme conditions of space while delivering computing power hundreds of times greater than current systems. The secret lies in a special error-correction mechanism that can detect and fix problems caused by cosmic radiation in real time, allowing the processor to run at high speeds without crashing. Currently, space missions rely heavily on constant communication with Earth for decision making. However, as spacecraft travel farther into the solar system, the delay in communication becomes a critical problem. For a mission to Mars, for example, a signal can take up to twenty minutes to reach Earth, and another twenty minutes for a response to return. This means that if a spacecraft encounters an unexpected obstacle or needs to make a quick decision, it must either wait for instructions or rely on pre-programmed responses. The new chip would change this by enabling spacecraft to analyze situations and make decisions independently, vastly improving their ability to respond to unexpected challenges in real time.</p>
   </div>
 </div>
 
 <div class="footer">
-  点击播放 → 听完全文 → 题目从音频读出 → 自己点选项<br>
-  听完后提交
+  点击播放 → 听完原文 → 音频读题 → 自己选
 </div>
 </div>
 
 <script>
 document.querySelectorAll('.option').forEach(function(o) {
   o.onclick = function() {
-    var parent = this.closest('.options');
-    parent.querySelectorAll('.option').forEach(function(x) { x.classList.remove('selected'); });
+    var p = this.closest('.options');
+    p.querySelectorAll('.option').forEach(function(x) { x.classList.remove('selected'); });
     this.classList.add('selected');
   };
 });
 
 function submitAll() {
-  var correct = 0;
-  var questions = document.querySelectorAll('.question-box');
-
-  questions.forEach(function(qBox) {
-    var opts = qBox.querySelectorAll('.option');
-    var answer = qBox.querySelector('.options').getAttribute('data-answer');
-    var selected = qBox.querySelector('.option.selected');
-
+  var correct = 0, total = document.querySelectorAll('.question-box').length;
+  document.querySelectorAll('.question-box').forEach(function(q) {
+    var opts = q.querySelectorAll('.option');
+    var ans = q.querySelector('.options').getAttribute('data-answer');
+    var sel = q.querySelector('.option.selected');
     opts.forEach(function(o) {
-      o.classList.remove('correct', 'wrong', 'reveal-correct');
-      if (o.getAttribute('data-value') === answer) o.classList.add('reveal-correct');
+      o.classList.remove('correct','wrong','reveal-correct');
+      if (o.getAttribute('data-value') === ans) o.classList.add('reveal-correct');
     });
-
-    if (selected) {
-      var isCorrect = selected.getAttribute('data-value') === answer;
-      selected.classList.add(isCorrect ? 'correct' : 'wrong');
-      if (isCorrect) correct++;
+    if (sel) {
+      var ok = sel.getAttribute('data-value') === ans;
+      sel.classList.add(ok ? 'correct' : 'wrong');
+      if (ok) correct++;
     }
   });
-
   document.getElementById('transcript').classList.add('show');
-
-  var total = questions.length;
-  var pct = Math.round(correct / total * 100);
-  var scoreEl = document.getElementById('scoreDisplay');
-  scoreEl.textContent = correct + '/' + total + ' (' + pct + '%)';
-  scoreEl.className = 'score ' + (pct >= 60 ? 'pass' : 'fail');
+  var pct = Math.round(correct/total*100);
+  var e = document.getElementById('scoreDisplay');
+  e.textContent = correct+'/'+total+' ('+pct+'%)';
+  e.className = 'score ' + (pct>=60?'pass':'fail');
   document.getElementById('resultBar').classList.add('show');
 }
 
 function resetAll() {
   document.querySelectorAll('.option').forEach(function(o) {
-    o.classList.remove('selected', 'correct', 'wrong', 'reveal-correct');
+    o.classList.remove('selected','correct','wrong','reveal-correct');
   });
   document.getElementById('resultBar').classList.remove('show');
   document.getElementById('transcript').classList.remove('show');
