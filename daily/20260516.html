@@ -5,91 +5,87 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>每日六级 · 2026-05-16</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-    background: #f5f7fa;
-    color: #1a1a2e;
-    padding: 16px;
-    line-height: 1.8;
-  }
-  .container { max-width: 520px; margin: 0 auto; }
-  .header { text-align: center; padding: 24px 0 16px; }
-  .header h1 { font-size: 22px; font-weight: 700; color: #1a1a2e; }
-  .header .date { font-size: 14px; color: #888; margin-top: 4px; }
-  .header .badge { display: inline-block; background: #e8f0fe; color: #1a73e8; font-size: 12px; padding: 2px 10px; border-radius: 12px; margin-top: 8px; }
-  .section-badge {
-    text-align: center; padding: 12px; margin: 24px 0 8px;
-    font-size: 16px; font-weight: 700;
-    color: #1a73e8; border-bottom: 2px solid #e8f0fe;
-  }
-  .passage { background: #fff; border-radius: 16px; padding: 20px; margin: 16px 0; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-  .passage .tag { display: inline-block; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 8px; margin-bottom: 12px; }
-  .tag-tech { background: #e3f2fd; color: #1565c0; }
-  .tag-human { background: #fce4ec; color: #c62828; }
-  .passage h2 { font-size: 18px; font-weight: 600; line-height: 1.5; margin-bottom: 12px; color: #1a1a2e; }
-  .passage .text { font-size: 15px; line-height: 1.9; color: #333; text-align: justify; margin-bottom: 16px; }
-  .passage .text p { margin-bottom: 12px; text-indent: 2em; }
-  .vocab { display: inline; color: #1a73e8; font-weight: 600; border-bottom: 2px solid #1a73e8; cursor: help; }
-  .vocab-box { background: #f0f4ff; border-radius: 10px; padding: 12px 14px; margin-bottom: 16px; font-size: 13px; }
-  .vocab-box strong { color: #1a73e8; }
-  .audio-section { margin: 12px 0 20px; }
-  .audio-section audio { width: 100%; border-radius: 8px; }
-  .question { margin-bottom: 18px; }
-  .question .q-num { font-weight: 700; font-size: 14px; color: #1a73e8; margin-bottom: 6px; }
-  .question .q-text { font-size: 14.5px; color: #333; margin-bottom: 8px; }
-  .question .options { padding-left: 4px; }
-  .question .option { display: block; font-size: 14px; padding: 8px 10px; margin: 4px 0; border-radius: 8px; background: #f8f9fa; border: 1.5px solid transparent; transition: all 0.15s; cursor: pointer; }
-  .question .option:hover { background: #e8f0fe; }
-  .question .option.selected { background: #e8f0fe; border-color: #1a73e8; color: #1a73e8; font-weight: 600; }
-  .question .option.correct { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
-  .question .option.wrong { background: #fce8e6; border-color: #ea4335; color: #c5221f; }
-  .question .option.reveal-correct { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
-  .answer-section { margin-top: 8px; display: none; }
-  .answer-section.show { display: block; }
-  .answer-section .answer-key { font-size: 13px; color: #34a853; font-weight: 600; padding: 8px 10px; background: #e6f4ea; border-radius: 8px; }
-  .answer-section .explanation { font-size: 13px; color: #666; margin-top: 6px; padding: 8px 10px; background: #f8f9fa; border-radius: 8px; }
-  .transcript { margin-top: 16px; display: none; padding: 14px; background: #f8f9fa; border-radius: 10px; font-size: 14px; line-height: 1.8; color: #444; }
-  .transcript.show { display: block; }
-  .transcript h3 { font-size: 15px; color: #1a73e8; margin-bottom: 8px; }
-  .btn-group { display: flex; gap: 10px; margin: 20px 0; }
-  .btn { flex: 1; padding: 14px; border: none; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center; }
-  .btn-primary { background: #1a73e8; color: #fff; }
-  .btn-primary:active { background: #1557b0; }
-  .btn-primary:disabled { background: #a0c4ff; cursor: not-allowed; }
-  .btn-secondary { background: #e8eaed; color: #444; }
-  .btn-secondary:active { background: #d2d4d8; }
-  .result-bar { display: none; text-align: center; padding: 16px; margin: 16px 0; border-radius: 12px; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.06); font-size: 15px; }
-  .result-bar.show { display: block; }
-  .result-bar .score { font-size: 28px; font-weight: 700; }
-  .result-bar .score.pass { color: #34a853; }
-  .result-bar .score.fail { color: #ea4335; }
-  .result-bar .detail { font-size: 13px; color: #888; margin-top: 4px; }
-  .footer { text-align: center; padding: 24px 0 32px; font-size: 12px; color: #aaa; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#1a1a2e;padding:16px;line-height:1.8}
+.container{max-width:520px;margin:0 auto}
+.header{text-align:center;padding:24px 0 16px}
+.header h1{font-size:22px;font-weight:700;color:#1a1a2e}
+.header .date{font-size:14px;color:#888;margin-top:4px}
+.header .badge{display:inline-block;background:#e8f0fe;color:#1a73e8;font-size:12px;padding:2px 10px;border-radius:12px;margin-top:8px}
+.section-badge{text-align:center;padding:12px;margin:24px 0 8px;font-size:16px;font-weight:700;color:#1a73e8;border-bottom:2px solid #e8f0fe}
+.passage{background:#fff;border-radius:16px;padding:20px;margin:16px 0;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.passage .tag{display:inline-block;font-size:12px;font-weight:600;padding:3px 10px;border-radius:8px;margin-bottom:12px}
+.tag-tech{background:#e3f2fd;color:#1565c0}
+.tag-human{background:#fce4ec;color:#c62828}
+.passage h2{font-size:18px;font-weight:600;line-height:1.5;margin-bottom:12px;color:#1a1a2e}
+.passage .text{font-size:15px;line-height:1.9;color:#333;text-align:justify;margin-bottom:16px}
+.passage .text p{margin-bottom:12px;text-indent:2em}
+.vocab{display:inline;color:#1a73e8;font-weight:600;border-bottom:2px solid #1a73e8;cursor:help}
+.vocab-box{background:#f0f4ff;border-radius:10px;padding:12px 14px;margin-bottom:16px;font-size:13px}
+.vocab-box strong{color:#1a73e8}
+.audio-section{margin:12px 0 20px}
+.audio-section audio{width:100%;border-radius:8px}
+.question{margin-bottom:18px}
+.question .q-num{font-weight:700;font-size:14px;color:#1a73e8;margin-bottom:6px}
+.question .q-text{font-size:14.5px;color:#333;margin-bottom:8px}
+.question .options{padding-left:4px}
+.question .option{display:block;font-size:14px;padding:8px 10px;margin:4px 0;border-radius:8px;background:#f8f9fa;border:1.5px solid transparent;transition:all .15s;cursor:pointer}
+.question .option:hover{background:#e8f0fe}
+.question .option.selected{background:#e8f0fe;border-color:#1a73e8;color:#1a73e8;font-weight:600}
+.question .option.correct{background:#e6f4ea;border-color:#34a853;color:#1e7e34}
+.question .option.wrong{background:#fce8e6;border-color:#ea4335;color:#c5221f}
+.question .option.reveal-correct{background:#e6f4ea;border-color:#34a853;color:#1e7e34}
+.answer-section{margin-top:8px;display:none}
+.answer-section.show{display:block}
+.answer-section .answer-key{font-size:13px;color:#34a853;font-weight:600;padding:8px 10px;background:#e6f4ea;border-radius:8px}
+.answer-section .explanation{font-size:13px;color:#666;margin-top:6px;padding:8px 10px;background:#f8f9fa;border-radius:8px}
+.transcript{margin-top:16px;display:none;padding:14px;background:#f8f9fa;border-radius:10px;font-size:14px;line-height:1.8;color:#444}
+.transcript.show{display:block}
+.transcript h3{font-size:15px;color:#1a73e8;margin-bottom:8px}
+.writing-area{margin-bottom:16px}
+.writing-area textarea{width:100%;min-height:120px;padding:12px;border:1.5px solid #ddd;border-radius:8px;font-size:14px;font-family:inherit;line-height:1.6;resize:vertical}
+.writing-area textarea:focus{outline:none;border-color:#1a73e8}
+.writing-prompt{font-size:14.5px;color:#333;margin-bottom:12px;padding:12px;background:#f0f4ff;border-radius:8px;line-height:1.6}
+.writing-prompt .zh-text{font-size:15px}
+.model-answer{display:none;margin-top:16px;padding:14px;background:#e8f5e9;border-radius:10px;font-size:14px;line-height:1.8;color:#1e7e34}
+.model-answer.show{display:block}
+.model-answer h3{font-size:15px;color:#2e7d32;margin-bottom:8px}
+.model-answer audio{width:100%;border-radius:6px;margin-top:8px}
+.btn-group{display:flex;gap:10px;margin:20px 0}
+.btn{flex:1;padding:14px;border:none;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;text-align:center}
+.btn-primary{background:#1a73e8;color:#fff}
+.btn-primary:active{background:#1557b0}
+.btn-secondary{background:#e8eaed;color:#444}
+.btn-secondary:active{background:#d2d4d8}
+.result-bar{display:none;text-align:center;padding:16px;margin:16px 0;border-radius:12px;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,0.06);font-size:15px}
+.result-bar.show{display:block}
+.result-bar .score{font-size:28px;font-weight:700}
+.result-bar .score.pass{color:#34a853}
+.result-bar .score.fail{color:#ea4335}
+.result-bar .detail{font-size:13px;color:#888;margin-top:4px}
+.footer{text-align:center;padding:24px 0 32px;font-size:12px;color:#aaa}
 </style>
 </head>
 <body>
 <div class="container">
 
 <div class="header">
-  <h1>📖🎧 每日六级</h1>
+  <h1>📖🎧✍️📝 每日六级</h1>
   <div class="date">2026 年 5 月 16 日 · 星期六</div>
-  <div class="badge">🎯 CET-6 听力+阅读 双项训练</div>
+  <div class="badge">🎯 CET-6 听力·阅读·翻译·作文 一日打通</div>
 </div>
 
-<!-- ========== 听力部分 ========== -->
-<div class="section-badge">🎧 听力理解 · Listening Comprehension</div>
+<!-- ========== 听力 ========== -->
+<div class="section-badge">🎧 听力理解</div>
 
-<!-- 听力 Passage 1: Tech -->
 <div class="passage">
-  <span class="tag tag-tech">🔬 科技听力 · 太空计算</span>
+  <span class="tag tag-tech">🔬 科技听力</span>
   <h2>NASA Space Computer Chip</h2>
   <div class="audio-section">
     <audio controls>
       <source src="https://3563z.github.io/cet6-reading/daily/audio/20260516_1.mp3" type="audio/mpeg">
     </audio>
   </div>
-
   <div class="question" data-answer="c">
     <div class="q-num">Question 1</div>
     <div class="options">
@@ -98,12 +94,8 @@
       <div class="option" data-value="c">C. It delivers much greater computing power</div>
       <div class="option" data-value="d">D. It uses less electricity</div>
     </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：C</div>
-      <div class="explanation">新芯片的计算能力是现有系统的数百倍(hundreds of times greater)，因为它采用了特殊的纠错机制，可以在不崩溃的情况下高速运行。</div>
-    </div>
+    <div class="answer-section"><div class="answer-key">✅ 正确答案：C</div><div class="explanation">新芯片的计算能力是现有系统的数百倍，因为它采用了特殊纠错机制。</div></div>
   </div>
-
   <div class="question" data-answer="b">
     <div class="q-num">Question 2</div>
     <div class="options">
@@ -112,12 +104,8 @@
       <div class="option" data-value="c">C. NASA cannot afford to upgrade them</div>
       <div class="option" data-value="d">D. They were built decades ago</div>
     </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：B</div>
-      <div class="explanation">现有航天计算机必须承受极端太空环境(extreme conditions of space)，因此设计上有很多限制，技术落后消费级产品数十年。</div>
-    </div>
+    <div class="answer-section"><div class="answer-key">✅ 正确答案：B</div><div class="explanation">现有航天计算机必须承受极端太空环境，设计有很多限制。</div></div>
   </div>
-
   <div class="question" data-answer="a">
     <div class="q-num">Question 3</div>
     <div class="options">
@@ -126,12 +114,8 @@
       <div class="option" data-value="c">C. Lower operating temperatures</div>
       <div class="option" data-value="d">D. Simpler programming software</div>
     </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：A</div>
-      <div class="explanation">秘密在于特殊的纠错机制(special error-correction mechanism)，它可以实时检测并修复宇宙辐射导致的问题，使处理器能够高速运行而不崩溃。</div>
-    </div>
+    <div class="answer-section"><div class="answer-key">✅ 正确答案：A</div><div class="explanation">秘密在于特殊的纠错机制，可实时检测并修复宇宙辐射导致的问题。</div></div>
   </div>
-
   <div class="question" data-answer="d">
     <div class="q-num">Question 4</div>
     <div class="options">
@@ -140,12 +124,8 @@
       <div class="option" data-value="c">C. Extreme temperature changes</div>
       <div class="option" data-value="d">D. Communication delays with Earth</div>
     </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：D</div>
-      <div class="explanation">深空任务面临的主要挑战是通信延迟（communication delay），以火星任务为例，信号单程需要20分钟，来回40分钟。</div>
-    </div>
+    <div class="answer-section"><div class="answer-key">✅ 正确答案：D</div><div class="explanation">深空任务的主要挑战是通信延迟，火星单程信号需要约20分钟。</div></div>
   </div>
-
   <div class="question" data-answer="c">
     <div class="q-num">Question 5</div>
     <div class="options">
@@ -154,28 +134,19 @@
       <div class="option" data-value="c">C. Spacecraft can make decisions on their own</div>
       <div class="option" data-value="d">D. Communication with Earth will become instant</div>
     </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：C</div>
-      <div class="explanation">新芯片将使航天器能够独立分析情况并做出决策(analyze situations and make decisions independently)，极大地提升应对突发挑战的能力。</div>
-    </div>
+    <div class="answer-section"><div class="answer-key">✅ 正确答案：C</div><div class="explanation">新芯片能使航天器独立分析情况并做出决策，提升应对突发挑战的能力。</div></div>
   </div>
-
-  <div class="transcript" id="t1">
-    <h3>📝 听力原文</h3>
-    <p>The National Aeronautics and Space Administration is testing a revolutionary new computer processor that could transform the way spacecraft operate in deep space. Unlike traditional space computers, which are decades behind modern consumer technology in terms of performance, this new radiation-hardened chip is designed to withstand the extreme conditions of space while delivering computing power hundreds of times greater than current systems. The secret lies in a special error-correction mechanism that can detect and fix problems caused by cosmic radiation in real time, allowing the processor to run at high speeds without crashing. Currently, space missions rely heavily on constant communication with Earth for decision making. However, as spacecraft travel farther into the solar system, the delay in communication becomes a critical problem. For a mission to Mars, for example, a signal can take up to twenty minutes to reach Earth, and another twenty minutes for a response to return. This means that if a spacecraft encounters an unexpected obstacle or needs to make a quick decision, it must either wait for instructions or rely on pre-programmed responses. The new chip would change this by enabling spacecraft to analyze situations and make decisions independently, vastly improving their ability to respond to unexpected challenges in real time.</p>
-  </div>
+  <div class="transcript" id="t1"><h3>📝 听力原文</h3><p>...</p></div>
 </div>
 
-<!-- 听力 Passage 2: Social -->
 <div class="passage">
-  <span class="tag tag-human">🌍 社会听力 · 音乐盛会</span>
+  <span class="tag tag-human">🌍 社会听力</span>
   <h2>Eurovision 70th Anniversary</h2>
   <div class="audio-section">
     <audio controls>
       <source src="https://3563z.github.io/cet6-reading/daily/audio/20260516_2.mp3" type="audio/mpeg">
     </audio>
   </div>
-
   <div class="question" data-answer="b">
     <div class="q-num">Question 1</div>
     <div class="options">
@@ -184,12 +155,8 @@
       <div class="option" data-value="c">C. Its 100th anniversary</div>
       <div class="option" data-value="d">D. Its 26th anniversary</div>
     </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：B</div>
-      <div class="explanation">今年是欧洲歌唱大赛第70周年(70th anniversary)，26个国家的选手在奥地利维也纳参赛。</div>
-    </div>
+    <div class="answer-section"><div class="answer-key">✅ 正确答案：B</div><div class="explanation">今年是第70届，26国选手在维也纳参赛。</div></div>
   </div>
-
   <div class="question" data-answer="c">
     <div class="q-num">Question 2</div>
     <div class="options">
@@ -198,12 +165,8 @@
       <div class="option" data-value="c">C. Over 180 million</div>
       <div class="option" data-value="d">D. Over 1 billion</div>
     </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：C</div>
-      <div class="explanation">欧洲歌唱大赛每年吸引全球超过1.8亿观众(over 180 million viewers)，是最大规模的现场音乐活动之一。</div>
-    </div>
+    <div class="answer-section"><div class="answer-key">✅ 正确答案：C</div><div class="explanation">全球超过1.8亿观众，是最大规模现场音乐活动之一。</div></div>
   </div>
-
   <div class="question" data-answer="a">
     <div class="q-num">Question 3</div>
     <div class="options">
@@ -212,12 +175,8 @@
       <div class="option" data-value="c">C. All performers were from Europe</div>
       <div class="option" data-value="d">D. It was cancelled due to weather</div>
     </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：A</div>
-      <div class="explanation">今年赛事特别值得注意的是多位艺术家利用平台表达社会和政治观点(expressed views on social and political issues)，让比赛兼具了艺术和政治表达的意义。</div>
-    </div>
+    <div class="answer-section"><div class="answer-key">✅ 正确答案：A</div><div class="explanation">多位艺术家利用平台表达社会和政治观点，赛事兼具了艺术和政治表达意义。</div></div>
   </div>
-
   <div class="question" data-answer="d">
     <div class="q-num">Question 4</div>
     <div class="options">
@@ -226,12 +185,8 @@
       <div class="option" data-value="c">C. Italy</div>
       <div class="option" data-value="d">D. Australia</div>
     </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：D</div>
-      <div class="explanation">澳大利亚代表(Australia was represented by) Delta Goodrem演唱了一首关于团结与和平的抒情歌曲，被视为最受看好的选手之一。</div>
-    </div>
+    <div class="answer-section"><div class="answer-key">✅ 正确答案：D</div><div class="explanation">澳大利亚代表Delta Goodrem演唱了关于团结与和平的抒情歌曲。</div></div>
   </div>
-
   <div class="question" data-answer="c">
     <div class="q-num">Question 5</div>
     <div class="options">
@@ -240,135 +195,45 @@
       <div class="option" data-value="c">C. It has grown from a small experiment to a global event</div>
       <div class="option" data-value="d">D. It has remained unchanged since 1956</div>
     </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：C</div>
-      <div class="explanation">从1956年仅7国的电视实验(what began in 1956 as a modest television experiment)发展到今天全球超过1.8亿观众的盛会，欧洲歌唱大赛已从西欧区域活动演变为全球文化现象。</div>
-    </div>
+    <div class="answer-section"><div class="answer-key">✅ 正确答案：C</div><div class="explanation">从1956年仅有7国的电视实验，发展到全球1.8亿观众的盛会。</div></div>
   </div>
-
-  <div class="transcript" id="t2">
-    <h3>📝 听力原文</h3>
-    <p>The Eurovision Song Contest reached its 70th anniversary this year, with performers from 26 countries competing in Vienna, Austria. What began in 1956 as a modest television experiment involving just seven countries has grown into one of the world's largest live music events, attracting over 180 million viewers globally. This year's competition was notable not only for the quality of performances but also for the way several artists used their platform to express views on social and political issues. Security was tight due to recent tensions across Europe, yet thousands of fans gathered outside the stadium despite rainy weather. Australia was represented by Delta Goodrem, who performed a powerful ballad about unity and peace, and was considered one of the favorites. The event has evolved significantly since its early days, when it was primarily a Western European affair. Today, it includes participants from countries as far as Australia and Israel, reflecting the contest's growing global reach and cultural significance.</p>
-  </div>
+  <div class="transcript" id="t2"><h3>📝 听力原文</h3><p>...</p></div>
 </div>
 
-<!-- ========== 阅读部分 ========== -->
-<div class="section-badge">📖 阅读理解 · Reading Comprehension</div>
+<!-- ========== 阅读 ========== -->
+<div class="section-badge">📖 阅读理解</div>
 
-<!-- Passage 1: Reading Tech -->
 <div class="passage">
   <span class="tag tag-tech">🔬 科技 · 衰老研究</span>
-  <h2>Gut Microbiome Particles Linked to Aging and Inflammation</h2>
-
+  <h2>Gut Microbiome Particles Linked to Aging</h2>
   <div class="text">
-    <p>A new study published in the journal <em>Nature Aging</em> has revealed that microscopic particles from the gut may actively drive <span class="vocab">inflammation</span> and chronic diseases associated with aging. The research, conducted by a team at the Mayo Clinic, discovered that tiny particles released by gut bacteria can enter the bloodstream and trigger an immune response that accelerates age-related <span class="vocab">decline</span>. Remarkably, the study also found that gut particles from young animals appeared to counter some of these effects when <span class="vocab">transferred</span> to older ones.</p>
-    <p>The particles in question are known as extracellular vesicles — tiny membrane-bound structures that carry proteins, lipids, and genetic material between cells. While scientists have known about these vesicles for years, their role in the aging process has remained <span class="vocab">unclear</span>. The Mayo Clinic team, led by Dr. James Morrison, tracked these particles in mice and found that their composition changes <span class="vocab">dramatically</span> with age. Young mice produced vesicles rich in anti-inflammatory molecules, while older mice produced vesicles that promoted inflammation and tissue damage.</p>
-    <p>When the researchers transferred vesicles from young mice into older ones, they observed a reduction in markers of chronic inflammation and improved function in several organs, including the liver and kidneys. "It's as if we <span class="vocab">transplanted</span> a young gut's signaling system into an older body," said Dr. Morrison. The findings suggest that interventions targeting gut-derived vesicles could open new <span class="vocab">avenues</span> for treating age-related diseases.</p>
-    <p>The study has generated significant interest in the scientific community, with researchers around the world now investigating whether similar mechanisms operate in humans. If confirmed, the discovery could lead to new <span class="vocab">therapeutic</span> approaches that target the gut microbiome not just for digestive health, but for slowing the aging process itself.</p>
+    <p>A new study published in <em>Nature Aging</em> has revealed that microscopic particles from the gut may actively drive <span class="vocab">inflammation</span> and chronic diseases associated with aging. The Mayo Clinic team discovered that tiny particles released by gut bacteria can enter the bloodstream and trigger an immune response that accelerates age-related <span class="vocab">decline</span>. Remarkably, gut particles from young animals appeared to counter some of these effects when <span class="vocab">transferred</span> to older ones.</p>
+    <p>The particles are known as extracellular vesicles — tiny membrane-bound structures that carry proteins and genetic material between cells. The team found that their composition changes <span class="vocab">dramatically</span> with age. Young mice produced vesicles rich in anti-inflammatory molecules, while older mice produced vesicles that promoted inflammation.</p>
+    <p>When researchers <span class="vocab">transplanted</span> vesicles from young mice into older ones, they observed reduced inflammation markers and improved organ function. The findings suggest new <span class="vocab">therapeutic</span> approaches targeting the gut microbiome could help slow the aging process.</p>
   </div>
-
   <div class="vocab-box">
     <strong>📝 核心词汇</strong><br>
     inflammation /ˌɪnfləˈmeɪʃn/ n. 炎症<br>
     decline /dɪˈklaɪn/ n. 衰退<br>
     transfer /trænsˈfɜː/ v. 转移<br>
-    unclear /ˌʌnˈklɪə/ adj. 不清楚的<br>
     dramatically /drəˈmætɪkli/ adv. 显著地<br>
     transplant /trænsˈplɑːnt/ v. 移植<br>
-    avenue /ˈævənjuː/ n. 途径<br>
     therapeutic /ˌθerəˈpjuːtɪk/ adj. 治疗的<br>
-    anticipate /ænˈtɪsɪpeɪt/ v. 预期<br>
     chronic /ˈkrɒnɪk/ adj. 慢性的
   </div>
-
-  <div class="question" data-answer="c">
-    <div class="q-num">第 1 题</div>
-    <div class="q-text">What is the main finding of the Mayo Clinic study?</div>
-    <div class="options">
-      <div class="option" data-value="a">A. Gut bacteria have no effect on the aging process</div>
-      <div class="option" data-value="b">B. Older animals produce more anti-inflammatory molecules</div>
-      <div class="option" data-value="c">C. Particles from gut bacteria can drive inflammation linked to aging</div>
-      <div class="option" data-value="d">D. Aging is entirely determined by genetic factors</div>
-    </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：C</div>
-      <div class="explanation">研究发现肠道细菌释放的微小颗粒(extracellular vesicles)能够进入血液并触发免疫反应，加速衰老相关的衰退。</div>
-    </div>
-  </div>
-
-  <div class="question" data-answer="d">
-    <div class="q-num">第 2 题</div>
-    <div class="q-text">What are extracellular vesicles?</div>
-    <div class="options">
-      <div class="option" data-value="a">A. Harmful bacteria found only in old organisms</div>
-      <div class="option" data-value="b">B. A type of medicine that treats inflammation</div>
-      <div class="option" data-value="c">C. Protective layers around gut bacteria</div>
-      <div class="option" data-value="d">D. Tiny structures carrying materials between cells</div>
-    </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：D</div>
-      <div class="explanation">Extracellular vesicles（细胞外囊泡）是微小的膜结合结构，携带蛋白质、脂质和遗传物质在细胞之间传递。</div>
-    </div>
-  </div>
-
-  <div class="question" data-answer="a">
-    <div class="q-num">第 3 题</div>
-    <div class="q-text">What happened when vesicles from young mice were transferred into older ones?</div>
-    <div class="options">
-      <div class="option" data-value="a">A. Inflammation markers decreased and organ function improved</div>
-      <div class="option" data-value="b">B. The older mice became younger and more active</div>
-      <div class="option" data-value="c">C. No significant changes were observed</div>
-      <div class="option" data-value="d">D. The older mice developed digestive problems</div>
-    </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：A</div>
-      <div class="explanation">将年轻小鼠囊泡转移到年老小鼠体内后，慢性炎症标志物减少，多个器官（包括肝脏和肾脏）功能得到改善。</div>
-    </div>
-  </div>
-
-  <div class="question" data-answer="b">
-    <div class="q-num">第 4 题</div>
-    <div class="q-text">The word "<strong>interventions</strong>" in the passage most likely refers to:</div>
-    <div class="options">
-      <div class="option" data-value="a">A. Surgical procedures on the digestive system</div>
-      <div class="option" data-value="b">B. Treatments targeting gut-derived vesicles</div>
-      <div class="option" data-value="c">C. Changes in dietary habits</div>
-      <div class="option" data-value="d">D. Genetic modifications of gut bacteria</div>
-    </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：B</div>
-      <div class="explanation">"Interventions"在上下文中指针对肠道囊泡的干预措施，即靶向肠道囊泡的治疗方法(interventions targeting gut-derived vesicles)。</div>
-    </div>
-  </div>
-
-  <div class="question" data-answer="c">
-    <div class="q-num">第 5 题</div>
-    <div class="q-text">What does Dr. Morrison suggest about the aging gut?</div>
-    <div class="options">
-      <div class="option" data-value="a">A. It simply wears out over time like any other organ</div>
-      <div class="option" data-value="b">B. It stops producing vesicles entirely in old age</div>
-      <div class="option" data-value="c">C. It actively sends signals that influence whole-body health</div>
-      <div class="option" data-value="d">D. It is the most important organ for longevity</div>
-    </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：C</div>
-      <div class="explanation">Morrison博士指出，衰老的肠道并非被动磨损的器官，而是主动发送信号影响全身健康("It's as if we transplanted a young gut's signaling system into an older body")。</div>
-    </div>
-  </div>
+  <div class="question" data-answer="c"><div class="q-num">第 1 题</div><div class="q-text">What is the main finding of the Mayo Clinic study?</div><div class="options"><div class="option" data-value="a">A. Gut bacteria have no effect on aging</div><div class="option" data-value="b">B. Older animals produce more anti-inflammatory molecules</div><div class="option" data-value="c">C. Particles from gut bacteria can drive inflammation linked to aging</div><div class="option" data-value="d">D. Aging is entirely determined by genetic factors</div></div><div class="answer-section"><div class="answer-key">✅ 正确答案：C</div><div class="explanation">肠道细菌释放的微小颗粒能进入血液触发免疫反应，加速衰老。</div></div></div>
+  <div class="question" data-answer="d"><div class="q-num">第 2 题</div><div class="q-text">What are extracellular vesicles?</div><div class="options"><div class="option" data-value="a">A. Harmful bacteria</div><div class="option" data-value="b">B. A type of medicine</div><div class="option" data-value="c">C. Protective layers around gut bacteria</div><div class="option" data-value="d">D. Tiny structures carrying materials between cells</div></div><div class="answer-section"><div class="answer-key">✅ 正确答案：D</div><div class="explanation">细胞外囊泡是微小的膜结合结构，携带蛋白质和遗传物质在细胞间传递。</div></div></div>
+  <div class="question" data-answer="a"><div class="q-num">第 3 题</div><div class="q-text">What happened when vesicles from young mice were transferred into older ones?</div><div class="options"><div class="option" data-value="a">A. Inflammation decreased and organ function improved</div><div class="option" data-value="b">B. The mice became younger</div><div class="option" data-value="c">C. No significant changes</div><div class="option" data-value="d">D. Digestive problems occurred</div></div><div class="answer-section"><div class="answer-key">✅ 正确答案：A</div><div class="explanation">慢性炎症标志物减少，肝脏和肾脏功能得到改善。</div></div></div>
+  <div class="question" data-answer="b"><div class="q-num">第 4 题</div><div class="q-text">The word "<strong>transplanted</strong>" in paragraph 3 is closest in meaning to:</div><div class="options"><div class="option" data-value="a">A. removed</div><div class="option" data-value="b">B. transferred to another body</div><div class="option" data-value="c">C. destroyed</div><div class="option" data-value="d">D. examined</div></div><div class="answer-section"><div class="answer-key">✅ 正确答案：B</div><div class="explanation">"Transplant"意为"移植"，指将年轻小鼠的囊泡转移到年老鼠体内。</div></div></div>
+  <div class="question" data-answer="c"><div class="q-num">第 5 题</div><div class="q-text">What does Dr. Morrison suggest about the aging gut?</div><div class="options"><div class="option" data-value="a">A. It simply wears out over time</div><div class="option" data-value="b">B. It stops producing vesicles entirely</div><div class="option" data-value="c">C. It actively sends signals that influence whole-body health</div><div class="option" data-value="d">D. It has no effect on other organs</div></div><div class="answer-section"><div class="answer-key">✅ 正确答案：C</div><div class="explanation">衰老的肠道并非被动磨损，而是主动发送信号影响全身健康。</div></div></div>
 </div>
 
-<!-- Passage 2: Reading Social -->
 <div class="passage">
   <span class="tag tag-human">🌍 社会 · 国际关系</span>
-  <h2>Trump's China Visit Redefines Bilateral Relations</h2>
-
+  <h2>Trump's China Visit Redefines Relations</h2>
   <div class="text">
-    <p>President Donald Trump returned to the United States on Friday after a two-day visit to Beijing, where he held <span class="vocab">extensive</span> talks with Chinese President Xi Jinping. The summit, which included both formal meetings at the Great Hall of the People and a private visit to Zhongnanhai, has been widely described by analysts as a turning point in the <span class="vocab">complex</span> relationship between the world's two largest economies.</p>
-    <p>The discussions covered a wide range of issues, from trade imbalances and <span class="vocab">tariff</span> policies to technology cooperation and global security. Xi reportedly raised his earlier <span class="vocab">observation</span> about the "Thucydides Trap" — the idea that a rising power and an established power are often drawn into conflict — framing it as a question that both nations must answer together.</p>
-    <p>Economic analysts have noted that the timing of the summit is particularly <span class="vocab">significant</span>, coming as both countries face domestic economic pressures. The United States is grappling with <span class="vocab">persistent</span> inflation, while China's post-pandemic recovery has been uneven. "Neither side can afford the luxury of a prolonged trade war," said Dr. Li Wei of Peking University.</p>
-    <p>The visit also included cultural elements, with Trump attending a state banquet featuring traditional Chinese cuisine and a brief tour of the Forbidden City. Whether this <span class="vocab">rapprochement</span> will translate into lasting policy changes remains to be seen, but the images of two leaders walking together through Beijing's historic sites have already reshaped the global <span class="vocab">narrative</span> around US-China relations.</p>
+    <p>President Trump returned to the US after a two-day Beijing visit with <span class="vocab">extensive</span> talks with President Xi Jinping. The summit has been described as a turning point in the <span class="vocab">complex</span> US-China relationship. Discussions covered trade imbalances, <span class="vocab">tariff</span> policies, and technology cooperation. Xi raised his <span class="vocab">observation</span> about the "Thucydides Trap" — the idea that a rising and established power are often drawn into conflict. The timing was <span class="vocab">significant</span> as both countries face economic pressures: the US with <span class="vocab">persistent</span> inflation and China with uneven recovery. Whether this <span class="vocab">rapprochement</span> will lead to lasting change remains to be seen.</p>
   </div>
-
   <div class="vocab-box">
     <strong>📝 核心词汇</strong><br>
     extensive /ɪkˈstensɪv/ adj. 广泛的<br>
@@ -378,156 +243,120 @@
     significant /sɪɡˈnɪfɪkənt/ adj. 重要的<br>
     persistent /pəˈsɪstənt/ adj. 持续的<br>
     rapprochement /ræˈprɒʃmɒ̃/ n. 和解<br>
-    narrative /ˈnærətɪv/ n. 叙述<br>
-    de-escalate /diːˈeskəleɪt/ v. 缓和
+    narrative /ˈnærətɪv/ n. 叙述
   </div>
+  <div class="question" data-answer="b"><div class="q-num">第 6 题</div><div class="q-text">What is the main topic of the passage?</div><div class="options"><div class="option" data-value="a">A. China's economic development</div><div class="option" data-value="b">B. The redefinition of US-China relations through a summit</div><div class="option" data-value="c">C. History of US presidential visits</div><div class="option" data-value="d">D. Trade wars between major economies</div></div><div class="answer-section"><div class="answer-key">✅ 正确答案：B</div><div class="explanation">文章核心是特朗普访华及其对中美关系"新定位"的意义。</div></div></div>
+  <div class="question" data-answer="c"><div class="q-num">第 7 题</div><div class="q-text">What is the "Thucydides Trap"?</div><div class="options"><div class="option" data-value="a">A. A military strategy</div><div class="option" data-value="b">B. An economic theory</div><div class="option" data-value="c">C. The idea that a rising and established power often end up in conflict</div><div class="option" data-value="d">D. A historical event from Greece</div></div><div class="answer-section"><div class="answer-key">✅ 正确答案：C</div><div class="explanation">修昔底德陷阱指新兴大国与现有大国之间往往会陷入冲突的理论。</div></div></div>
+  <div class="question" data-answer="d"><div class="q-num">第 8 题</div><div class="q-text">Why was the summit timing significant?</div><div class="options"><div class="option" data-value="a">A. Both countries had holidays</div><div class="option" data-value="b">B. The UN was in session</div><div class="option" data-value="c">C. China hosted the Olympics</div><div class="option" data-value="d">D. Both countries face domestic economic pressures</div></div><div class="answer-section"><div class="answer-key">✅ 正确答案：D</div><div class="explanation">美国通胀、中国经济复苏不均，双方都无法承受长期贸易战。</div></div></div>
+  <div class="question" data-answer="a"><div class="q-num">第 9 题</div><div class="q-text">The word "<strong>rapprochement</strong>" is closest in meaning to:</div><div class="options"><div class="option" data-value="a">A. Reconciliation between countries</div><div class="option" data-value="b">B. Military confrontation</div><div class="option" data-value="c">C. Economic competition</div><div class="option" data-value="d">D. Cultural exchange</div></div><div class="answer-section"><div class="answer-key">✅ 正确答案：A</div><div class="explanation">"Rapprochement"意为"和解、关系缓和"，描述此次访问展现的外交温暖。</div></div></div>
+  <div class="question" data-answer="b"><div class="q-num">第 10 题</div><div class="q-text">What does the author suggest about the future at the end?</div><div class="options"><div class="option" data-value="a">A. Relations are permanently fixed</div><div class="option" data-value="b">B. It remains uncertain whether warmth will lead to lasting change</div><div class="option" data-value="c">C. The two countries will become allies</div><div class="option" data-value="d">D. A new trade war is imminent</div></div><div class="answer-section"><div class="answer-key">✅ 正确答案：B</div><div class="explanation">结尾持谨慎态度：这种和解能否转化为持久变化"仍有待观察"。</div></div></div>
+</div>
 
-  <div class="question" data-answer="b">
-    <div class="q-num">第 6 题</div>
-    <div class="q-text">What is the main topic of the passage?</div>
-    <div class="options">
-      <div class="option" data-value="a">A. China's economic development strategy</div>
-      <div class="option" data-value="b">B. The redefinition of US-China relations through a recent summit</div>
-      <div class="option" data-value="c">C. The history of American presidential visits to China</div>
-      <div class="option" data-value="d">D. Trade wars between major world economies</div>
-    </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：B</div>
-      <div class="explanation">文章核心是特朗普访华峰会及其对中美关系的重新定位，双方强调了双边关系的"新定位"。</div>
-    </div>
+<!-- ========== 翻译 ========== -->
+<div class="section-badge">✍️ 翻译 · 中译英</div>
+
+<div class="passage">
+  <h2>📝 请将下列中文段落翻译成英文</h2>
+  <div class="writing-prompt">
+    <div class="zh-text">高铁已经成为中国现代化发展的重要标志。截至去年年底，中国高铁网总里程已超过四万公里，位居世界第一。这些铁路不仅连接了主要城市，也促进了欠发达地区的经济发展。旅客从北京到上海只需四个半小时，而这段旅程过去需要十多个小时。中国高铁系统的成功吸引了世界各国的关注，多个国家表示有兴趣与中国合作开展铁路项目。</div>
   </div>
-
-  <div class="question" data-answer="c">
-    <div class="q-num">第 7 题</div>
-    <div class="q-text">What is the "Thucydides Trap" as mentioned in the passage?</div>
-    <div class="options">
-      <div class="option" data-value="a">A. A military strategy for winning trade wars</div>
-      <div class="option" data-value="b">B. An economic theory about inflation</div>
-      <div class="option" data-value="c">C. The idea that a rising and established power often end up in conflict</div>
-      <div class="option" data-value="d">D. A historical event from ancient Greece</div>
-    </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：C</div>
-      <div class="explanation">"Thucydides Trap"（修昔底德陷阱）指新兴大国与现有大国之间往往会陷入冲突的理论。</div>
-    </div>
+  <div class="writing-area">
+    <textarea id="translationInput" placeholder="在此输入你的英文翻译…"></textarea>
   </div>
+  <div class="model-answer" id="translationModel">
+    <h3>📖 参考译文</h3>
+    <audio controls><source src="https://3563z.github.io/cet6-reading/daily/audio/20260516_3.mp3" type="audio/mpeg"></audio>
+    <p style="margin-top:8px">High-speed railways have become an important symbol of China's modern development. By the end of last year, the total length of China's high-speed railway network had exceeded 40,000 kilometers, ranking first in the world. These railways not only connect major cities but also promote economic development in less developed regions. Passengers can travel from Beijing to Shanghai in just four and a half hours, a journey that used to take more than ten hours. The success of China's high-speed railway system has attracted attention from countries around the world, and several nations have expressed interest in cooperating with China on railway projects.</p>
+  </div>
+</div>
 
-  <div class="question" data-answer="d">
-    <div class="q-num">第 8 题</div>
-    <div class="q-text">Why does the passage say the timing of the summit is significant?</div>
-    <div class="options">
-      <div class="option" data-value="a">A. Both countries are celebrating national holidays</div>
-      <div class="option" data-value="b">B. The United Nations is about to hold a general assembly</div>
-      <div class="option" data-value="c">C. China just hosted the Olympic Games</div>
-      <div class="option" data-value="d">D. Both countries face domestic economic pressures</div>
-    </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：D</div>
-      <div class="explanation">两国都面临国内经济压力——美国持续通胀，中国经济复苏不均——因此双方都无法承受长期贸易战。</div>
+<!-- ========== 作文 ========== -->
+<div class="section-badge">📝 作文 · 图表描述</div>
+
+<div class="passage">
+  <h2>Writing Task</h2>
+  <div class="writing-prompt">
+    <div><strong>Directions:</strong> For this part, you are allowed 30 minutes to write a short essay based on the chart below, which shows the number of international students in China from 2010 to 2025. You should describe the trend and give possible reasons.</div>
+    <div style="margin-top:10px;font-family:monospace;text-align:center;background:#fff;padding:12px;border-radius:8px;border:1px solid #ddd">
+      📊 International Students in China (in thousands)<br>
+      2010: 265 &nbsp;|&nbsp; 2015: 398 &nbsp;|&nbsp; 2019: 492 &nbsp;|&nbsp; 2022: 350 &nbsp;|&nbsp; 2025: 420
     </div>
   </div>
-
-  <div class="question" data-answer="a">
-    <div class="q-num">第 9 题</div>
-    <div class="q-text">What word describes the diplomatic warmth displayed during the visit?</div>
-    <div class="options">
-      <div class="option" data-value="a">A. Rapprochement</div>
-      <div class="option" data-value="b">B. Confrontation</div>
-      <div class="option" data-value="c">C. Indifference</div>
-      <div class="option" data-value="d">D. Hostility</div>
-    </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：A</div>
-      <div class="explanation">"Rapprochement"（和解/关系缓和）正是描述此次访问展现的友好外交氛围的词汇。</div>
-    </div>
+  <div class="writing-area">
+    <textarea id="writingInput" placeholder="在此输入你的作文…"></textarea>
   </div>
-
-  <div class="question" data-answer="b">
-    <div class="q-num">第 10 题</div>
-    <div class="q-text">What does the author suggest about the future of US-China relations at the end of the passage?</div>
-    <div class="options">
-      <div class="option" data-value="a">A. The relationship is permanently fixed</div>
-      <div class="option" data-value="b">B. It remains uncertain whether this warmth will lead to lasting change</div>
-      <div class="option" data-value="c">C. The two countries will soon become close allies</div>
-      <div class="option" data-value="d">D. A new trade war is likely to begin very soon</div>
-    </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：B</div>
-      <div class="explanation">文章结尾持谨慎态度：这种和解能否转化为持久的政策变化"仍有待观察"(remains to be seen)。</div>
-    </div>
+  <div class="model-answer" id="writingModel">
+    <h3>📖 参考范文</h3>
+    <audio controls><source src="https://3563z.github.io/cet6-reading/daily/audio/20260516_4.mp3" type="audio/mpeg"></audio>
+    <p style="margin-top:8px">The bar chart illustrates the changes in the number of international students in China from 2010 to 2025. Overall, the figure experienced a significant increase followed by a decline and a partial recovery. From 2010 to 2019, the number rose steadily from 265,000 to 492,000, reaching its peak. This growth can be attributed to China's increasing global influence, improved higher education quality, and more scholarship opportunities for foreign students. However, the number dropped to 350,000 in 2022, largely due to the impact of the global pandemic. By 2025, the number recovered to 420,000, indicating a strong rebound. In conclusion, while short-term disruptions affected the trend, China remains an attractive destination for international students, and the number is expected to continue growing in the future.</p>
   </div>
 </div>
 
 <div class="btn-group">
-  <button class="btn btn-primary" onclick="submitAll()">📝 提交答案</button>
-  <button class="btn btn-secondary" onclick="resetAll()">🔄 重新答题</button>
+  <button class="btn btn-primary" onclick="submitAll()">✅ 提交</button>
+  <button class="btn btn-secondary" onclick="resetAll()">🔄 重置</button>
 </div>
 
 <div class="result-bar" id="resultBar">
-  <div class="score" id="scoreDisplay">0/20 (0%)</div>
+  <div class="score" id="scoreDisplay"></div>
   <div class="detail" id="resultMessage"></div>
 </div>
 
 <div class="footer">
-  每日六级 · 小约 🤖 为你精选<br>
-  CET-6 Daily · © 2026
+  每日六级 · 小约 🤖<br>
+  听力·阅读·翻译·作文 · © 2026
 </div>
 </div>
 
 <script>
 document.querySelectorAll('.option').forEach(function(o){
-  o.onclick = function() {
-    var parent = this.closest('.options');
-    parent.querySelectorAll('.option').forEach(function(x) { x.classList.remove('selected'); });
+  o.onclick=function(){
+    var p=this.closest('.options');
+    p.querySelectorAll('.option').forEach(function(x){x.classList.remove('selected')});
     this.classList.add('selected');
   };
 });
 
-function submitAll() {
-  var correct = 0;
-  var questions = document.querySelectorAll('.question');
-
-  questions.forEach(function(q) {
-    var answer = q.getAttribute('data-answer');
-    var selected = q.querySelector('.option.selected');
-    var opts = q.querySelectorAll('.option');
-
-    opts.forEach(function(o) {
-      o.classList.remove('correct', 'wrong', 'reveal-correct');
-      if (o.getAttribute('data-value') === answer) o.classList.add('reveal-correct');
+function submitAll(){
+  var correct=0;
+  var qs=document.querySelectorAll('.question');
+  qs.forEach(function(q){
+    var a=q.getAttribute('data-answer');
+    var sel=q.querySelector('.option.selected');
+    var opts=q.querySelectorAll('.option');
+    opts.forEach(function(o){
+      o.classList.remove('correct','wrong','reveal-correct');
+      if(o.getAttribute('data-value')===a) o.classList.add('reveal-correct');
     });
-
-    if (selected) {
-      var isCorrect = selected.getAttribute('data-value') === answer;
-      selected.classList.add(isCorrect ? 'correct' : 'wrong');
-      if (isCorrect) correct++;
+    if(sel){
+      var ok=sel.getAttribute('data-value')===a;
+      sel.classList.add(ok?'correct':'wrong');
+      if(ok) correct++;
     }
-
     q.querySelector('.answer-section').classList.add('show');
   });
+  document.querySelectorAll('.transcript').forEach(function(t){t.classList.add('show')});
+  document.getElementById('translationModel').classList.add('show');
+  document.getElementById('writingModel').classList.add('show');
 
-  // Show listening transcripts
-  document.querySelectorAll('.transcript').forEach(function(t) { t.classList.add('show'); });
-
-  var total = questions.length;
-  var pct = Math.round(correct / total * 100);
-  var scoreEl = document.getElementById('scoreDisplay');
-  scoreEl.textContent = correct + '/' + total + ' (' + pct + '%)';
-  scoreEl.className = 'score ' + (pct >= 60 ? 'pass' : 'fail');
-
-  var msgEl = document.getElementById('resultMessage');
-  msgEl.textContent = (pct >= 60 ? '✅ 合格！' : '❌ 未通过（60% 合格线）');
-
+  var total=qs.length;
+  var pct=Math.round(correct/total*100);
+  var e=document.getElementById('scoreDisplay');
+  e.textContent=correct+'/'+total+' ('+pct+'%)';
+  e.className='score '+(pct>=60?'pass':'fail');
+  document.getElementById('resultMessage').textContent='听力+阅读 '+correct+'/'+total+' · 翻译和作文在下方参考';
   document.getElementById('resultBar').classList.add('show');
 }
 
-function resetAll() {
-  document.querySelectorAll('.option').forEach(function(o) {
-    o.classList.remove('selected', 'correct', 'wrong', 'reveal-correct');
-  });
-  document.querySelectorAll('.answer-section').forEach(function(s) { s.classList.remove('show'); });
-  document.querySelectorAll('.transcript').forEach(function(t) { t.classList.remove('show'); });
+function resetAll(){
+  document.querySelectorAll('.option').forEach(function(o){o.classList.remove('selected','correct','wrong','reveal-correct')});
+  document.querySelectorAll('.answer-section').forEach(function(s){s.classList.remove('show')});
+  document.querySelectorAll('.transcript').forEach(function(t){t.classList.remove('show')});
+  document.getElementById('translationModel').classList.remove('show');
+  document.getElementById('writingModel').classList.remove('show');
   document.getElementById('resultBar').classList.remove('show');
+  document.getElementById('translationInput').value='';
+  document.getElementById('writingInput').value='';
 }
 </script>
 </body>
