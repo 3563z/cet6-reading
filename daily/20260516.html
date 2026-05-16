@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>每日六级阅读 · 2026-05-16</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f5f7fa;
+    color: #1a1a2e;
+    padding: 16px;
+    line-height: 1.8;
+  }
+  .container { max-width: 520px; margin: 0 auto; }
+  .header { text-align: center; padding: 24px 0 16px; }
+  .header h1 { font-size: 22px; font-weight: 700; color: #1a1a2e; }
+  .header .date { font-size: 14px; color: #888; margin-top: 4px; }
+  .header .badge { display: inline-block; background: #e8f0fe; color: #1a73e8; font-size: 12px; padding: 2px 10px; border-radius: 12px; margin-top: 8px; }
+  .passage { background: #fff; border-radius: 16px; padding: 20px; margin: 16px 0; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .passage .tag { display: inline-block; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 8px; margin-bottom: 12px; }
+  .tag-tech { background: #e3f2fd; color: #1565c0; }
+  .tag-human { background: #fce4ec; color: #c62828; }
+  .passage h2 { font-size: 18px; font-weight: 600; line-height: 1.5; margin-bottom: 12px; color: #1a1a2e; }
+  .passage .text { font-size: 15px; line-height: 1.9; color: #333; text-align: justify; margin-bottom: 16px; }
+  .passage .text p { margin-bottom: 12px; text-indent: 2em; }
+  .vocab { display: inline; color: #1a73e8; font-weight: 600; border-bottom: 2px solid #1a73e8; cursor: help; }
+  .vocab-box { background: #f0f4ff; border-radius: 10px; padding: 12px 14px; margin-bottom: 16px; font-size: 13px; }
+  .vocab-box strong { color: #1a73e8; }
+  .question { margin-bottom: 18px; }
+  .question .q-num { font-weight: 700; font-size: 14px; color: #1a73e8; margin-bottom: 6px; }
+  .question .q-text { font-size: 14.5px; color: #333; margin-bottom: 8px; }
+  .question .options { padding-left: 4px; }
+  .question .option { display: block; font-size: 14px; padding: 8px 10px; margin: 4px 0; border-radius: 8px; background: #f8f9fa; border: 1.5px solid transparent; transition: all 0.15s; cursor: pointer; }
+  .question .option:hover { background: #e8f0fe; }
+  .question .option.selected { background: #e8f0fe; border-color: #1a73e8; color: #1a73e8; font-weight: 600; }
+  .question .option.correct { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
+  .question .option.wrong { background: #fce8e6; border-color: #ea4335; color: #c5221f; }
+  .question .option.reveal-correct { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
+  .answer-section { margin-top: 8px; display: none; }
+  .answer-section.show { display: block; }
+  .answer-section .answer-key { font-size: 13px; color: #34a853; font-weight: 600; padding: 8px 10px; background: #e6f4ea; border-radius: 8px; }
+  .answer-section .explanation { font-size: 13px; color: #666; margin-top: 6px; padding: 8px 10px; background: #f8f9fa; border-radius: 8px; }
+  .btn-group { display: flex; gap: 10px; margin: 20px 0; }
+  .btn { flex: 1; padding: 14px; border: none; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center; }
+  .btn-primary { background: #1a73e8; color: #fff; }
+  .btn-primary:active { background: #1557b0; }
+  .btn-primary:disabled { background: #a0c4ff; cursor: not-allowed; }
+  .btn-secondary { background: #e8eaed; color: #444; }
+  .btn-secondary:active { background: #d2d4d8; }
+  .result-bar { display: none; text-align: center; padding: 16px; margin: 16px 0; border-radius: 12px; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.06); font-size: 15px; }
+  .result-bar.show { display: block; }
+  .result-bar .score { font-size: 28px; font-weight: 700; }
+  .result-bar .score.pass { color: #34a853; }
+  .result-bar .score.fail { color: #ea4335; }
+  .result-bar .detail { font-size: 13px; color: #888; margin-top: 4px; }
+  .footer { text-align: center; padding: 24px 0 32px; font-size: 12px; color: #aaa; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>📖 每日六级阅读</h1>
+  <div class="date">2026 年 5 月 16 日 · 星期六</div>
+  <div class="badge">🎯 CET-6 双篇深度训练</div>
+</div>
+
+<!-- Passage 1: Tech/Science -->
+<div class="passage">
+  <span class="tag tag-tech">🔬 科技 · 量子计算</span>
+  <h2>Quantum Computing Takes a Major Leap Toward Practical Reality</h2>
+
+  <div class="text">
+    <p>For decades, quantum computing has been a technology that always seemed to be five years away from being five years away. But a series of recent <span class="vocab">breakthroughs</span> has brought the field to what many researchers describe as a genuine turning point. In the past six months, three separate research groups have demonstrated quantum processors that can perform <span class="vocab">specific</span> calculations with error rates low enough to suggest practical applications may finally be within reach.</p>
+
+    <p>The most significant advance came from a team at the University of Oxford, which unveiled a quantum processor that ran a chemical simulation of a caffeine molecule — a task that would take the world's most powerful classical supercomputer thousands of years. Unlike earlier efforts that were largely theoretical, this simulation produced <span class="vocab">verifiable</span> results that matched experimental data. "This is not just a stunt," said Dr. Hannah Chen, lead researcher on the project. "We have proven that quantum systems can solve problems that are genuinely out of reach for classical computers, and the results are <span class="vocab">reliable</span> enough to be useful."</p>
+
+    <p>The key to this progress lies in quantum error correction — arguably the hardest challenge in the field. Qubits, the fundamental units of quantum information, are notoriously <span class="vocab">fragile</span>. They can be disturbed by the slightest change in temperature, electromagnetic waves, or even cosmic rays. For years, this instability meant that quantum calculations produced more errors than useful answers. But new error-correction techniques, developed independently by teams in China, the United States, and Europe, have dramatically <span class="vocab">suppressed</span> these errors, bringing the technology closer to what scientists call "quantum advantage" — the point at which quantum computers outperform classical ones on practical tasks.</p>
+
+    <p>The implications are profound. Quantum computers <span class="vocab">excel</span> at solving problems involving enormous numbers of variables interacting simultaneously — the kind of problems that appear in drug discovery, climate modeling, financial risk analysis, and materials science. Pharmaceutical companies are already partnering with quantum computing firms to simulate molecular interactions for new drug candidates, potentially cutting years off the development timeline. Similarly, climate scientists hope quantum models could produce far more <span class="vocab">accurate</span> predictions of global weather patterns and long-term climate change.</p>
+
+    <p>Despite the optimism, researchers urge patience. Current quantum processors still require <span class="vocab">specialized</span> cooling systems that bring them to temperatures colder than deep space. Scaling up from dozens of stable qubits to the millions needed for general-purpose computing will take years, perhaps decades. Nevertheless, the momentum is unmistakable. Investment in quantum computing reached a record $5.3 billion in the first quarter of 2026 alone. For the first time, the question is no longer whether quantum computing will work, but when — and how soon — it will begin to <span class="vocab">transform</span> our world.</p>
+  </div>
+
+  <div class="vocab-box">
+    <strong>📝 核心词汇</strong><br>
+    breakthrough /ˈbreɪkθruː/ n. 突破；重大进展<br>
+    specific /spəˈsɪfɪk/ adj. 特定的；具体的<br>
+    verifiable /ˈverɪfaɪəbl/ adj. 可验证的；可证实的<br>
+    reliable /rɪˈlaɪəbl/ adj. 可靠的；可信赖的<br>
+    fragile /ˈfrædʒaɪl/ adj. 脆弱的；易碎的<br>
+    suppress /səˈpres/ v. 抑制；压制<br>
+    excel /ɪkˈsel/ v. 擅长；突出<br>
+    accurate /ˈækjərət/ adj. 准确的；精确的<br>
+    specialized /ˈspeʃəlaɪzd/ adj. 专门的；专业化的<br>
+    transform /trænsˈfɔːm/ v. 改变；转变
+  </div>
+
+  <div class="question" data-answer="c">
+    <div class="q-num">第 1 题</div>
+    <div class="q-text">What is the main point the author makes about quantum computing in this passage?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Quantum computers are still purely theoretical and far from practical use</div>
+      <div class="option" data-value="b">B. The field has reached a genuine turning point with practical potential</div>
+      <div class="option" data-value="c">C. Classical supercomputers remain more powerful than quantum processors</div>
+      <div class="option" data-value="d">D. Error correction in quantum computing is no longer necessary</div>
+    </div>
+    <div class="answer-section">
+      <div class="answer-key">✅ 正确答案：B</div>
+      <div class="explanation">文章第一段就点明核心论点：一系列突破使量子计算达到了"真正的转折点"(genuine turning point)，具体表现为牛津大学的化学模拟、纠错技术进展、以及投资创纪录等事实支撑。</div>
+    </div>
+  </div>
+
+  <div class="question" data-answer="b">
+    <div class="q-num">第 2 题</div>
+    <div class="q-text">The word "<strong>suppressed</strong>" in paragraph 3 is closest in meaning to:</div>
+    <div class="options">
+      <div class="option" data-value="a">A. increased</div>
+      <div class="option" data-value="b">B. reduced or held back</div>
+      <div class="option" data-value="c">C. ignored</div>
+      <div class="option" data-value="d">D. transformed</div>
+    </div>
+    <div class="answer-section">
+      <div class="answer-key">✅ 正确答案：B</div>
+      <div class="explanation">"Suppressed"在此处意为"抑制、压制"，指新的纠错技术大幅降低了量子计算中的错误率。文中提到量子比特极其脆弱(fragile)，新纠错技术"dramatically suppressed these errors"，即大幅压制了错误。</div>
+    </div>
+  </div>
+
+  <div class="question" data-answer="d">
+    <div class="q-num">第 3 题</div>
+    <div class="q-text">What did the Oxford team achieve that was considered significant?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. They built the world's most powerful classical supercomputer</div>
+      <div class="option" data-value="b">B. They completely solved the problem of quantum decoherence</div>
+      <div class="option" data-value="c">C. They commercialized quantum computing for the pharmaceutical industry</div>
+      <div class="option" data-value="d">D. They simulated a caffeine molecule with results matching experimental data</div>
+    </div>
+    <div class="answer-section">
+      <div class="answer-key">✅ 正确答案：D</div>
+      <div class="explanation">牛津大学团队使用量子处理器完成了咖啡因分子的化学模拟——这项任务用经典超算需要数千年——而且产生了与实验数据匹配的可验证结果(verifiable results that matched experimental data)，被认为是一个里程碑式的突破。</div>
+    </div>
+  </div>
+
+  <div class="question" data-answer="c">
+    <div class="q-num">第 4 题</div>
+    <div class="q-text">According to the passage, what is the biggest challenge still facing quantum computing?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Lack of investment from technology companies</div>
+      <div class="option" data-value="b">B. Insufficient interest from the scientific community</div>
+      <div class="option" data-value="c">C. The difficulty of scaling from dozens to millions of stable qubits</div>
+      <div class="option" data-value="d">D. The inability to perform chemical simulations</div>
+    </div>
+    <div class="answer-section">
+      <div class="answer-key">✅ 正确答案：C</div>
+      <div class="explanation">文章最后一段指出，当前处理器需要极低温冷却系统，且从数十个稳定量子比特扩展到数百万个用于通用计算，仍需多年甚至数十年。这正是规模化(scaling up)的挑战，而非投资或兴趣不足。</div>
+    </div>
+  </div>
+
+  <div class="question" data-answer="a">
+    <div class="q-num">第 5 题</div>
+    <div class="q-text">What does the author imply by saying "The question is no longer whether quantum computing will work, but when" in the last paragraph?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Quantum computing is now seen as inevitable, with timing being the only uncertainty</div>
+      <div class="option" data-value="b">B. Researchers have given up on proving quantum computing can work</div>
+      <div class="option" data-value="c">C. The debate about whether quantum computing is useful has been settled in the negative</div>
+      <div class="option" data-value="d">D. Classical computing will soon be replaced entirely by quantum systems</div>
+    </div>
+    <div class="answer-section">
+      <div class="answer-key">✅ 正确答案：A</div>
+      <div class="explanation">作者暗示量子计算的可行性已不再有疑问，行业共识已经从"能不能行"转向"何时能够改变世界"。这一判断得到了投资创纪录($5.3B)、多家团队独立突破纠错技术等事实的支撑。</div>
+    </div>
+  </div>
+</div>
+
+<!-- Passage 2: Society/Humanities -->
+<div class="passage">
+  <span class="tag tag-human">🌍 社会 · 城市规划</span>
+  <h2>The 15-Minute City: Can Reshaping Neighborhoods Rebuild Community?</h2>
+
+  <div class="text">
+    <p>In cities across the globe, a <span class="vocab">controversial</span> urban planning concept is gaining momentum. The "15-minute city" — the idea that residents should be able to access most daily needs within a 15-minute walk or bike ride from their homes — has become one of the most debated topics in modern urban design. Proponents argue it could reduce carbon emissions, improve public health, and restore a sense of community that has been lost to car-centric development. Critics, however, warn it could lead to restrictions on <span class="vocab">personal</span> freedom and economic segregation.</p>
+
+    <p>The concept, popularized by Paris-based urbanist Carlos Moreno, proposes that neighborhoods should be designed as complete ecosystems. Within a quarter-hour of home, residents should find grocery stores, healthcare clinics, parks, schools, restaurants, and workplaces. The idea is not to confine people to small areas — city services and public transport still <span class="vocab">facilitate</span> longer journeys — but to reduce unnecessary travel and create vibrant local centers where neighbors actually know each other. Research from the University of Melbourne found that residents in such neighborhoods report 23% higher levels of social interaction and significantly lower rates of loneliness.</p>
+
+    <p>Despite its <span class="vocab">appeal</span> to environmentalists and urban planners, the 15-minute city has become surprisingly politicized. In the United Kingdom and the United States, conspiracy theories have claimed that the concept is a government plot to confine people to their neighborhoods and restrict movement. These claims, which have been repeatedly debunked by urban planning experts, have nevertheless influenced local elections and zoning debates. "It's an idea about creating convenience and reducing car dependency that has been <span class="vocab">weaponized</span> by misinformation," said Dr. Emily Park, a professor of urban studies at UCLA. "The irony is that the most common criticism comes from people who have never experienced what a well-designed neighborhood actually feels like."</p>
+
+    <p>Successful examples do exist. In Barcelona, Spain, the "superblock" program has converted groups of city blocks into car-free zones, with traffic redirected to surrounding streets. The result has been a 25% reduction in air pollution, a 17% decrease in traffic accidents, and a <span class="vocab">dramatic</span> increase in street-level social activity. Similar projects in Copenhagen and Melbourne have shown that when streets are reclaimed from cars, people naturally spend more time outdoors, patronize local businesses, and build <span class="vocab">meaningful</span> social connections with their neighbors.</p>
+
+    <p>The debate over the 15-minute city reflects a deeper <span class="vocab">tension</span> in modern urban life: how to balance individual mobility with community well-being. As cities continue to grow — the UN projects that 68% of the world's population will live in urban areas by 2050 — the question of how we design our neighborhoods will only become more urgent. Whether or not the 15-minute city becomes the standard model, its core insight — that the design of our physical environment profoundly shapes our social lives — seems likely to <span class="vocab">endure</span>.</p>
+  </div>
+
+  <div class="vocab-box">
+    <strong>📝 核心词汇</strong><br>
+    controversial /ˌkɒntrəˈvɜːʃl/ adj. 有争议的；引起争论的<br>
+    personal /ˈpɜːsənl/ adj. 个人的；私人的<br>
+    facilitate /fəˈsɪlɪteɪt/ v. 促进；使便利<br>
+    appeal /əˈpiːl/ n. 吸引力；魅力<br>
+    weaponize /ˈwepənaɪz/ v. 武器化；用作武器<br>
+    dramatic /drəˈmætɪk/ adj. 巨大的；戏剧性的<br>
+    meaningful /ˈmiːnɪŋfl/ adj. 有意义的；重要的<br>
+    tension /ˈtenʃn/ n. 紧张；对立<br>
+    endure /ɪnˈdjʊə/ v. 持久；持续<br>
+    genuinely /ˈdʒenjuɪnli/ adv. 真正地；确实地
+  </div>
+
+  <div class="question" data-answer="a">
+    <div class="q-num">第 6 题</div>
+    <div class="q-text">What is the core idea of the "15-minute city" concept?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Residents can reach most daily necessities within a 15-minute walk or bike ride</div>
+      <div class="option" data-value="b">B. Everyone must stay within 15 minutes of their home by car</div>
+      <div class="option" data-value="c">C. All city services should be centralized in one 15-minute zone</div>
+      <div class="option" data-value="d">D. Commuting time should be reduced to 15 minutes per day</div>
+    </div>
+    <div class="answer-section">
+      <div class="answer-key">✅ 正确答案：A</div>
+      <div class="explanation">"15分钟城市"的核心是居民能在步行或骑行15分钟范围内获取日常所需（杂货店、诊所、公园、学校等），目的在于减少不必要出行并创造活跃的本地社区中心。</div>
+    </div>
+  </div>
+
+  <div class="question" data-answer="b">
+    <div class="q-num">第 7 题</div>
+    <div class="q-text">What does the University of Melbourne research suggest about 15-minute neighborhoods?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. They are more expensive to live in</div>
+      <div class="option" data-value="b">B. They lead to higher social interaction and lower loneliness</div>
+      <div class="option" data-value="c">C. They significantly reduce property values</div>
+      <div class="option" data-value="d">D. They increase car ownership and usage</div>
+    </div>
+    <div class="answer-section">
+      <div class="answer-key">✅ 正确答案：B</div>
+      <div class="explanation">墨尔本大学的研究发现，这类社区的居民社交互动水平高出23%，孤独感发生率明显更低(lower rates of loneliness)。这支持了"街区设计影响社区关系"的核心论点。</div>
+    </div>
+  </div>
+
+  <div class="question" data-answer="d">
+    <div class="q-num">第 8 题</div>
+    <div class="q-text">What criticism has the 15-minute city faced, according to the passage?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. It is too expensive for cities to implement</div>
+      <div class="option" data-value="b">B. It has no measurable environmental benefits</div>
+      <div class="option" data-value="c">C. It only works in small towns, not large cities</div>
+      <div class="option" data-value="d">D. Conspiracy theories claim it restricts personal freedom</div>
+    </div>
+    <div class="answer-section">
+      <div class="answer-key">✅ 正确答案：D</div>
+      <div class="explanation">该概念在美国和英国遭遇了阴谋论攻击，被指控是政府限制居民行动自由的阴谋。尽管已被城市专家反复驳斥 (repeatedly debunked)，这些谣言仍然影响了地方选举和区域规划辩论。</div>
+    </div>
+  </div>
+
+  <div class="question" data-answer="a">
+    <div class="q-num">第 9 题</div>
+    <div class="q-text">What impact did Barcelona's "superblock" program have on air pollution?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. It reduced air pollution by 25%</div>
+      <div class="option" data-value="b">B. It had no measurable effect on air quality</div>
+      <div class="option" data-value="c">C. It increased air pollution due to traffic rerouting</div>
+      <div class="option" data-value="d">D. It eliminated air pollution entirely</div>
+    </div>
+    <div class="answer-section">
+      <div class="answer-key">✅ 正确答案：A</div>
+      <div class="explanation">巴塞罗那的"超级街区"(superblock)计划将成片的城市街区改造为无车区，结果空气污染降低25%，交通事故减少17%，街头社交活动大幅增加。这为15分钟城市理念提供了切实的证据支持。</div>
+    </div>
+  </div>
+
+  <div class="question" data-answer="c">
+    <div class="q-num">第 10 题</div>
+    <div class="q-text">What does the passage suggest will <strong>endure</strong> beyond the current debate?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. The conspiracy theories about restricting movement</div>
+      <div class="option" data-value="b">B. Car-centric urban planning as the dominant model</div>
+      <div class="option" data-value="c">C. The insight that physical environment shapes social life</div>
+      <div class="option" data-value="d">D. The 15-minute city as the universal standard</div>
+    </div>
+    <div class="answer-section">
+      <div class="answer-key">✅ 正确答案：C</div>
+      <div class="explanation">文章结尾指出，无论15分钟城市是否成为标准模式，其核心洞见——物理环境的设计深刻塑造了我们的社会生活(profoundly shapes our social lives)——很可能会持久存在(endure)。这是对概念本质价值的提炼。</div>
+    </div>
+  </div>
+</div>
+
+<div class="btn-group">
+  <button class="btn btn-primary" onclick="submitAll()">📝 提交答案</button>
+  <button class="btn btn-secondary" onclick="resetAll()">🔄 重新答题</button>
+</div>
+
+<div class="result-bar" id="resultBar">
+  <div class="score" id="scoreDisplay">0/10 (0%)</div>
+  <div class="detail" id="resultMessage"></div>
+</div>
+
+<div class="footer">
+  每日六级阅读 · 小约 🤖 为你精选<br>
+  CET-6 Daily Reading · © 2026
+</div>
+</div>
+
+<script>
+let submitted = false;
+
+document.querySelectorAll('.option').forEach(opt => {
+  opt.onclick = function() {
+    if (submitted) return;
+    const parent = this.closest('.options');
+    parent.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+    this.classList.add('selected');
+  };
+});
+
+function submitAll() {
+  if (submitted) {
+    document.querySelectorAll('.option').forEach(o => o.classList.remove('correct','wrong','reveal-correct'));
+    document.querySelectorAll('.answer-section').forEach(s => s.classList.remove('show'));
+    submitted = false;
+    document.getElementById('resultBar').classList.remove('show');
+    document.querySelector('.btn-primary').textContent = '📝 提交答案';
+    return;
+  }
+
+  let correct = 0;
+  const questions = document.querySelectorAll('.question');
+
+  questions.forEach(q => {
+    const answer = q.getAttribute('data-answer');
+    const selected = q.querySelector('.option.selected');
+    const opts = q.querySelectorAll('.option');
+    const ansSection = q.querySelector('.answer-section');
+
+    opts.forEach(o => {
+      o.classList.remove('correct','wrong','reveal-correct');
+      if (o.getAttribute('data-value') === answer) o.classList.add('reveal-correct');
+    });
+
+    if (selected) {
+      const selVal = selected.getAttribute('data-value');
+      const isCorrect = selVal === answer;
+      selected.classList.add(isCorrect ? 'correct' : 'wrong');
+      if (isCorrect) correct++;
+    }
+
+    ansSection.classList.add('show');
+  });
+
+  submitted = true;
+  document.querySelector('.btn-primary').textContent = '📝 再次提交';
+
+  const pct = Math.round((correct / questions.length) * 100);
+  const scoreEl = document.getElementById('scoreDisplay');
+  scoreEl.textContent = correct + '/' + questions.length + ' (' + pct + '%)';
+  scoreEl.className = 'score ' + (pct >= 60 ? 'pass' : 'fail');
+
+  const msgEl = document.getElementById('resultMessage');
+  msgEl.textContent = pct >= 60 ? '✅ 合格！继续加油！' : '❌ 未通过（60% 为合格线），再试一次吧！';
+
+  document.getElementById('resultBar').classList.add('show');
+}
+
+function resetAll() {
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('selected','correct','wrong','reveal-correct'));
+  document.querySelectorAll('.answer-section').forEach(s => s.classList.remove('show'));
+  submitted = false;
+  document.getElementById('resultBar').classList.remove('show');
+  document.querySelector('.btn-primary').textContent = '📝 提交答案';
+}
+</script>
+</body>
+</html>
