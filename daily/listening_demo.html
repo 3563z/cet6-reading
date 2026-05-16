@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>听力 Demo · CET-6 新交互</title>
+<title>听力 Demo · CET-6 音频驱动</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -19,39 +19,24 @@
   .passage { background: #fff; border-radius: 16px; padding: 20px; margin: 16px 0; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
   .tag { display: inline-block; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 8px; margin-bottom: 12px; background: #e3f2fd; color: #1565c0; }
   h2 { font-size: 18px; font-weight: 600; line-height: 1.5; margin-bottom: 12px; color: #1a1a2e; }
-
   .audio-section { margin: 12px 0 20px; }
   .audio-section audio { width: 100%; border-radius: 8px; }
 
   /* Phase indicator */
-  .phase-indicator {
+  .phase {
     text-align: center; padding: 16px; margin: 12px 0;
-    background: #e8f0fe; border-radius: 12px; font-size: 16px; font-weight: 600;
-    color: #1a73e8; transition: all 0.3s;
+    background: #e8f0fe; border-radius: 12px;
+    font-size: 15px; font-weight: 600; color: #1a73e8;
+    transition: all 0.3s;
   }
-  .phase-indicator.playing { background: #fff3e0; color: #e65100; }
-  .phase-indicator.waiting { background: #e8f5e9; color: #2e7d32; }
-  .phase-indicator.done { background: #f3e5f5; color: #7b1fa2; }
 
-  /* Question area */
   .question-box {
-    display: none; margin-bottom: 18px;
+    display: none; margin-bottom: 16px;
     border: 2px solid #e0e0e0; border-radius: 12px; padding: 14px;
     transition: all 0.3s;
   }
   .question-box.active { display: block; border-color: #1a73e8; background: #f8f9ff; }
-  .question-box.done { border-color: #34a853; }
-
   .q-number { font-weight: 700; font-size: 15px; color: #1a73e8; margin-bottom: 8px; }
-  .timer {
-    display: inline-block; font-size: 14px; font-weight: 700;
-    color: #e65100; background: #fff3e0;
-    padding: 2px 10px; border-radius: 8px; float: right;
-    transition: all 1s;
-  }
-  .timer.urgent { color: #c62828; background: #ffebee; animation: pulse 1s infinite; }
-  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
-
   .options { padding-left: 4px; }
   .option {
     display: block; font-size: 14px; padding: 10px 12px; margin: 5px 0;
@@ -63,21 +48,15 @@
   .option.correct { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
   .option.wrong { background: #fce8e6; border-color: #ea4335; color: #c5221f; }
   .option.reveal-correct { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
-
-  .result-area {
-    display: none; margin-top: 16px; padding: 16px;
-    background: #f0f4ff; border-radius: 12px;
-  }
+  .progress-bar { display: none; height: 4px; background: #e0e0e0; border-radius: 2px; margin: 12px 0; }
+  .progress-bar .fill { height: 100%; background: #1a73e8; border-radius: 2px; transition: width 1s linear; }
+  .result-area { display: none; margin-top: 16px; padding: 16px; background: #f0f4ff; border-radius: 12px; }
   .result-area.show { display: block; }
-
   .btn { padding: 14px 24px; border: none; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center; }
   .btn-primary { background: #1a73e8; color: #fff; width: 100%; }
   .btn-primary:active { background: #1557b0; }
   .btn-primary:disabled { background: #a0c4ff; cursor: not-allowed; }
-
   .footer { text-align: center; padding: 24px 0 32px; font-size: 12px; color: #aaa; }
-
-  /* Transcript */
   .transcript { display: none; margin-top: 16px; padding: 14px; background: #f8f9fa; border-radius: 10px; font-size: 14px; }
   .transcript.show { display: block; }
   .transcript h3 { font-size: 15px; color: #1a73e8; margin-bottom: 8px; }
@@ -87,8 +66,8 @@
 <div class="container">
 
 <div class="header">
-  <h1>🎧 CET-6 听力新模式 · Demo</h1>
-  <div class="date">模拟六级考试体验</div>
+  <h1>🎧 CET-6 听力体验</h1>
+  <div class="date">音频驱动 · 去倒计时版</div>
 </div>
 
 <div class="passage">
@@ -101,13 +80,13 @@
     </audio>
   </div>
 
-  <!-- Phase indicator -->
-  <div class="phase-indicator" id="phaseIndicator">🔊 点击播放 → 先听原文，再看题</div>
+  <div class="phase" id="phaseIndicator">🔊 点击播放，先听原文</div>
 
-  <!-- Questions (hidden initially, shown one by one) -->
+  <div class="progress-bar" id="progressBar"><div class="fill" id="progressFill"></div></div>
+
   <div id="questionsContainer">
     <div class="question-box" id="q1">
-      <div class="q-number">Question 1 <span class="timer" id="timer1">15s</span></div>
+      <div class="q-number">Question 1</div>
       <div class="options" data-answer="a">
         <div class="option" data-value="a">A. NASA</div>
         <div class="option" data-value="b">B. The Pentagon</div>
@@ -117,7 +96,7 @@
     </div>
 
     <div class="question-box" id="q2">
-      <div class="q-number">Question 2 <span class="timer" id="timer2">15s</span></div>
+      <div class="q-number">Question 2</div>
       <div class="options" data-answer="c">
         <div class="option" data-value="a">A. Lower power consumption</div>
         <div class="option" data-value="b">B. Smaller physical size</div>
@@ -127,7 +106,7 @@
     </div>
 
     <div class="question-box" id="q3">
-      <div class="q-number">Question 3 <span class="timer" id="timer3">15s</span></div>
+      <div class="q-number">Question 3</div>
       <div class="options" data-answer="b">
         <div class="option" data-value="a">A. They use older programming languages</div>
         <div class="option" data-value="b">B. They must withstand extreme radiation and temperature changes</div>
@@ -137,7 +116,7 @@
     </div>
 
     <div class="question-box" id="q4">
-      <div class="q-number">Question 4 <span class="timer" id="timer4">15s</span></div>
+      <div class="q-number">Question 4</div>
       <div class="options" data-answer="a">
         <div class="option" data-value="a">A. Detect and correct errors caused by radiation</div>
         <div class="option" data-value="b">B. Communicate with Earth at faster speeds</div>
@@ -147,7 +126,7 @@
     </div>
 
     <div class="question-box" id="q5">
-      <div class="q-number">Question 5 <span class="timer" id="timer5">15s</span></div>
+      <div class="q-number">Question 5</div>
       <div class="options" data-answer="d">
         <div class="option" data-value="a">A. Weather forecasting satellites</div>
         <div class="option" data-value="b">B. Commercial airline navigation</div>
@@ -157,18 +136,15 @@
     </div>
   </div>
 
-  <!-- Submit -->
   <div style="margin-top:16px;">
-    <button class="btn btn-primary" id="submitBtn" onclick="submitAll()" disabled>📝 提交答案（听完后方可提交）</button>
+    <button class="btn btn-primary" id="submitBtn" onclick="submitAll()" disabled>⏳ 音频未结束，请先听完</button>
   </div>
 
-  <!-- Results -->
   <div class="result-area" id="resultArea">
-    <div style="font-size:24px;font-weight:700;text-align:center;" id="scoreDisplay">0/5</div>
+    <div style="font-size:24px;font-weight:700;text-align:center;" id="scoreDisplay"></div>
     <div style="text-align:center;color:#888;margin:8px 0;" id="resultMessage"></div>
   </div>
 
-  <!-- Transcript -->
   <div class="transcript" id="transcript">
     <h3>📝 听力原文</h3>
     <p>Scientists at the National Aeronautics and Space Administration are testing a next-generation computer chip designed to give spacecraft the ability to operate far more independently in deep space. The radiation-hardened processor shows performance levels hundreds of times beyond current spaceflight computers. Current space computers are decades behind modern consumer technology because they must be built to withstand extreme radiation, temperature fluctuations, and cosmic rays. The new chip uses a special design that can detect and correct errors caused by radiation in real time, allowing it to run faster without crashing. According to NASA engineers, this breakthrough could enable future missions to Mars and beyond to make real-time decisions without waiting for instructions from Earth, which can take up to twenty minutes each way.</p>
@@ -176,124 +152,94 @@
 </div>
 
 <div class="footer">
-  CET-6 听力新模式 · 点击播放按钮开始<br>
-  正文 → 每题朗读 → 15秒作答
+  点击播放 → 音频自动控制节奏<br>
+  正文→每题→15秒作答间隙
 </div>
 </div>
 
 <script>
-// Timing data (generated by cet6_audio.py)
 var TIMINGS = [
-  { q: 1, announce: 17.6, answerStart: 21.7, answerEnd: 36.7 },
-  { q: 2, announce: 36.7, answerStart: 41.1, answerEnd: 56.1 },
-  { q: 3, announce: 56.1, answerStart: 60.2, answerEnd: 75.2 },
-  { q: 4, announce: 75.2, answerStart: 79.6, answerEnd: 94.6 },
-  { q: 5, announce: 94.6, answerStart: 100.1, answerEnd: 115.1 },
+  { q: 1, answerStart: 21.7, answerEnd: 36.7 },
+  { q: 2, answerStart: 41.1, answerEnd: 56.1 },
+  { q: 3, answerStart: 60.2, answerEnd: 75.2 },
+  { q: 4, answerStart: 79.6, answerEnd: 94.6 },
+  { q: 5, answerStart: 100.1, answerEnd: 115.1 },
 ];
 
 var audio = document.getElementById('listeningAudio');
-var currentQ = 0;       // 0 = no question shown yet
-var activeTimer = null; // current countdown interval
-var answered = {};      // { qNum: 'a'|'b'|... }
+var currentQ = 0;
+var answered = {};
 var submitted = false;
+var TOTAL = TIMINGS.length;
 
 audio.addEventListener('play', function() {
   document.getElementById('phaseIndicator').textContent = '🔊 正在播放听力原文……';
-  document.getElementById('phaseIndicator').className = 'phase-indicator playing';
+  document.getElementById('progressBar').style.display = 'block';
 });
 
 audio.addEventListener('timeupdate', function() {
   var t = audio.currentTime;
-  // Check if we need to show/hide questions
+
+  // Update progress bar
+  var pct = Math.min(100, (t / TIMINGS[TIMINGS.length-1].answerEnd) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+
   for (var i = 0; i < TIMINGS.length; i++) {
     var ti = TIMINGS[i];
-    if (t >= ti.announce && t < ti.answerEnd) {
-      showQuestion(i + 1);
-      if (t >= ti.answerStart && !answered[i + 1]) {
-        startCountdown(i + 1);
+    if (t >= ti.answerStart && t < ti.answerEnd) {
+      if (currentQ !== i + 1) {
+        showQuestion(i + 1);
       }
     }
     if (t >= ti.answerEnd && currentQ === i + 1) {
-      autoAdvance(i + 1);
+      advanceFrom(i + 1);
     }
   }
-  if (t >= TIMINGS[TIMINGS.length - 1].answerEnd) {
-    enableSubmit();
+
+  var lastEnd = TIMINGS[TIMINGS.length-1].answerEnd;
+  if (t >= lastEnd && currentQ === TOTAL) {
+    currentQ = TOTAL + 1;  // mark complete
+    document.getElementById('phaseIndicator').textContent = '✅ 听力部分结束，可以提交答案';
   }
 });
 
 audio.addEventListener('ended', function() {
-  document.getElementById('phaseIndicator').textContent = '✅ 音频播放完毕，可以提交答案';
-  document.getElementById('phaseIndicator').className = 'phase-indicator done';
-  enableSubmit();
+  document.getElementById('phaseIndicator').textContent = '✅ 听力部分结束，可以提交答案';
+  document.getElementById('submitBtn').disabled = false;
+  document.getElementById('submitBtn').textContent = '📝 提交答案';
 });
 
 function showQuestion(qNum) {
-  var el = document.getElementById('q' + qNum);
-  if (!el) return;
-  if (currentQ !== qNum) {
-    // Hide previous
-    if (currentQ > 0) {
-      var prev = document.getElementById('q' + currentQ);
-      if (prev) prev.classList.remove('active');
-    }
-    currentQ = qNum;
-    el.classList.add('active');
-    // Show phase indicator
-    document.getElementById('phaseIndicator').textContent = '🎯 第 ' + qNum + ' 题作答中……';
-    document.getElementById('phaseIndicator').className = 'phase-indicator waiting';
+  if (currentQ > 0 && currentQ <= TOTAL) {
+    document.getElementById('q' + currentQ).classList.remove('active');
+  }
+  currentQ = qNum;
+  document.getElementById('q' + qNum).classList.add('active');
+  document.getElementById('phaseIndicator').textContent = '🎯 第 ' + qNum + ' 题作答中……';
+  document.getElementById('submitBtn').disabled = true;
+  document.getElementById('submitBtn').textContent = '⏳ 第 ' + qNum + '/' + TOTAL + ' 题作答中';
+}
+
+function advanceFrom(qNum) {
+  document.getElementById('q' + qNum).classList.remove('active');
+
+  if (qNum < TOTAL) {
+    // Wait for next question to trigger via timeupdate
+  } else {
+    // All done
+    currentQ = TOTAL + 1;
+    document.getElementById('phaseIndicator').textContent = '✅ 听力部分结束，可以提交答案';
+    document.getElementById('submitBtn').disabled = false;
+    document.getElementById('submitBtn').textContent = '📝 提交答案';
   }
 }
 
-function startCountdown(qNum) {
-  if (activeTimer) return; // already running
-
-  var remain = 15;
-  var timerEl = document.getElementById('timer' + qNum);
-
-  activeTimer = setInterval(function() {
-    remain--;
-    if (timerEl) timerEl.textContent = remain + 's';
-    if (timerEl) timerEl.className = 'timer' + (remain <= 5 ? ' urgent' : '');
-
-    if (remain <= 0) {
-      clearInterval(activeTimer);
-      activeTimer = null;
-      if (timerEl) timerEl.textContent = '0s';
-      // Auto advance if not answered
-      if (!answered[qNum]) {
-        autoAdvance(qNum);
-      }
-    }
-  }, 1000);
-
-  if (timerEl) timerEl.textContent = '15s';
-}
-
-function autoAdvance(qNum) {
-  if (activeTimer) {
-    clearInterval(activeTimer);
-    activeTimer = null;
-  }
-  var el = document.getElementById('q' + qNum);
-  if (el) el.classList.remove('active');
-  currentQ = qNum + 1;
-
-  // Check if all questions have been shown
-  if (qNum >= TIMINGS.length) {
-    document.getElementById('phaseIndicator').textContent = '✅ 所有题目作答完毕';
-    document.getElementById('phaseIndicator').className = 'phase-indicator done';
-    enableSubmit();
-  }
-}
-
-// Option click binding
 document.querySelectorAll('.option').forEach(function(o) {
   o.onclick = function() {
     if (submitted) return;
     var qBox = this.closest('.question-box');
     var qNum = parseInt(qBox.id.replace('q', ''));
-    if (qNum !== currentQ) return; // not the active question
+    if (qNum !== currentQ) return;
 
     var opts = qBox.querySelectorAll('.option');
     opts.forEach(function(x) { x.classList.remove('selected'); });
@@ -301,11 +247,6 @@ document.querySelectorAll('.option').forEach(function(o) {
     answered[qNum] = this.getAttribute('data-value');
   };
 });
-
-function enableSubmit() {
-  document.getElementById('submitBtn').disabled = false;
-  document.getElementById('submitBtn').textContent = '📝 提交答案';
-}
 
 function submitAll() {
   if (submitted) {
@@ -315,11 +256,9 @@ function submitAll() {
   submitted = true;
 
   var correct = 0;
-  var total = TIMINGS.length;
-  var questions = document.querySelectorAll('.question-box');
 
-  questions.forEach(function(qBox) {
-    var qNum = parseInt(qBox.id.replace('q', ''));
+  for (var i = 1; i <= TOTAL; i++) {
+    var qBox = document.getElementById('q' + i);
     var opts = qBox.querySelectorAll('.option');
     var answer = qBox.querySelector('.options').getAttribute('data-answer');
     var selected = qBox.querySelector('.option.selected');
@@ -334,21 +273,15 @@ function submitAll() {
       selected.classList.add(isCorrect ? 'correct' : 'wrong');
       if (isCorrect) correct++;
     }
+    qBox.classList.add('active');
+  }
 
-    // Show answer
-    qBox.classList.add('done');
-    qBox.classList.remove('active');
-  });
-
-  // Show transcript
   document.getElementById('transcript').classList.add('show');
-
-  // Show score
-  document.getElementById('scoreDisplay').textContent = correct + '/' + total + ' (' + Math.round(correct/total*100) + '%)';
-  document.getElementById('scoreDisplay').style.color = correct/total >= 0.6 ? '#34a853' : '#ea4335';
-  document.getElementById('resultMessage').textContent = correct/total >= 0.6 ? '✅ 合格！' : '❌ 未通过（60% 合格线）';
+  document.getElementById('scoreDisplay').textContent = correct + '/' + TOTAL + ' (' + Math.round(correct/TOTAL*100) + '%)';
+  document.getElementById('scoreDisplay').style.color = correct/TOTAL >= 0.6 ? '#34a853' : '#ea4335';
+  document.getElementById('resultMessage').textContent = correct/TOTAL >= 0.6 ? '✅ 合格！' : '❌ 未通过（60% 合格线）';
   document.getElementById('resultArea').classList.add('show');
-
+  document.getElementById('phaseIndicator').textContent = '📊 得分：' + correct + '/' + TOTAL;
   document.getElementById('submitBtn').textContent = '🔄 重新答题';
   document.getElementById('submitBtn').disabled = false;
 }
@@ -357,27 +290,22 @@ function resetAll() {
   submitted = false;
   answered = {};
   currentQ = 0;
-  if (activeTimer) { clearInterval(activeTimer); activeTimer = null; }
+  audio.currentTime = 0;
 
-  document.querySelectorAll('.option').forEach(function(o) {
-    o.classList.remove('selected', 'correct', 'wrong', 'reveal-correct');
-  });
-  document.querySelectorAll('.question-box').forEach(function(q) {
-    q.classList.remove('active', 'done');
-  });
-  document.querySelectorAll('.timer').forEach(function(t) {
-    t.textContent = '15s';
-    t.className = 'timer';
-  });
+  for (var i = 1; i <= TOTAL; i++) {
+    var qBox = document.getElementById('q' + i);
+    qBox.classList.remove('active');
+    qBox.querySelectorAll('.option').forEach(function(o) {
+      o.classList.remove('selected', 'correct', 'wrong', 'reveal-correct');
+    });
+  }
 
   document.getElementById('resultArea').classList.remove('show');
   document.getElementById('transcript').classList.remove('show');
-  document.getElementById('phaseIndicator').textContent = '🔊 点击播放 → 先听原文，再看题';
-  document.getElementById('phaseIndicator').className = 'phase-indicator';
-  document.getElementById('submitBtn').textContent = '📝 提交答案（听完后方可提交）';
+  document.getElementById('progressBar').style.display = 'none';
+  document.getElementById('phaseIndicator').textContent = '🔊 点击播放，先听原文';
   document.getElementById('submitBtn').disabled = true;
-
-  audio.currentTime = 0;
+  document.getElementById('submitBtn').textContent = '⏳ 音频未结束，请先听完';
 }
 </script>
 </body>
