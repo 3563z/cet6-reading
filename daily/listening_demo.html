@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>听力 Demo · CET-6 音频驱动</title>
+<title>听力 Demo · CET-6</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -14,29 +14,26 @@
   .header { text-align: center; padding: 24px 0 16px; }
   .header h1 { font-size: 22px; font-weight: 700; color: #1a1a2e; }
   .header .date { font-size: 14px; color: #888; margin-top: 4px; }
-  .badge { display: inline-block; background: #e8f0fe; color: #1a73e8; font-size: 12px; padding: 2px 10px; border-radius: 12px; margin-top: 8px; }
-  .section-badge { text-align: center; padding: 12px; margin: 24px 0 8px; font-size: 16px; font-weight: 700; color: #1a73e8; border-bottom: 2px solid #e8f0fe; }
   .passage { background: #fff; border-radius: 16px; padding: 20px; margin: 16px 0; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
   .tag { display: inline-block; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 8px; margin-bottom: 12px; background: #e3f2fd; color: #1565c0; }
   h2 { font-size: 18px; font-weight: 600; line-height: 1.5; margin-bottom: 12px; color: #1a1a2e; }
   .audio-section { margin: 12px 0 20px; }
   .audio-section audio { width: 100%; border-radius: 8px; }
-
-  /* Phase indicator */
   .phase {
-    text-align: center; padding: 16px; margin: 12px 0;
+    text-align: center; padding: 14px; margin: 12px 0;
     background: #e8f0fe; border-radius: 12px;
     font-size: 15px; font-weight: 600; color: #1a73e8;
-    transition: all 0.3s;
   }
 
   .question-box {
-    display: none; margin-bottom: 16px;
+    margin-bottom: 16px;
     border: 2px solid #e0e0e0; border-radius: 12px; padding: 14px;
-    transition: all 0.3s;
+    transition: all 0.3s; opacity: 0.4;
   }
-  .question-box.active { display: block; border-color: #1a73e8; background: #f8f9ff; }
-  .q-number { font-weight: 700; font-size: 15px; color: #1a73e8; margin-bottom: 8px; }
+  .question-box.active { border-color: #1a73e8; background: #f8f9ff; opacity: 1; }
+  .q-number { font-weight: 700; font-size: 15px; color: #888; margin-bottom: 8px; }
+  .question-box.active .q-number { color: #1a73e8; }
+
   .options { padding-left: 4px; }
   .option {
     display: block; font-size: 14px; padding: 10px 12px; margin: 5px 0;
@@ -48,8 +45,10 @@
   .option.correct { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
   .option.wrong { background: #fce8e6; border-color: #ea4335; color: #c5221f; }
   .option.reveal-correct { background: #e6f4ea; border-color: #34a853; color: #1e7e34; }
+
   .progress-bar { display: none; height: 4px; background: #e0e0e0; border-radius: 2px; margin: 12px 0; }
   .progress-bar .fill { height: 100%; background: #1a73e8; border-radius: 2px; transition: width 1s linear; }
+
   .result-area { display: none; margin-top: 16px; padding: 16px; background: #f0f4ff; border-radius: 12px; }
   .result-area.show { display: block; }
   .btn { padding: 14px 24px; border: none; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center; }
@@ -67,7 +66,7 @@
 
 <div class="header">
   <h1>🎧 CET-6 听力体验</h1>
-  <div class="date">音频驱动 · 去倒计时版</div>
+  <div class="date">所有选项可见 · 音频驱动</div>
 </div>
 
 <div class="passage">
@@ -76,68 +75,66 @@
 
   <div class="audio-section">
     <audio id="listeningAudio" controls>
-      <source src="daily/audio/20260516_1.mp3" type="audio/mpeg">
+      <source src="https://3563z.github.io/cet6-reading/daily/audio/20260516_1.mp3" type="audio/mpeg">
     </audio>
   </div>
 
-  <div class="phase" id="phaseIndicator">🔊 点击播放，先听原文</div>
-
+  <div class="phase" id="phaseIndicator">🔊 点击播放</div>
   <div class="progress-bar" id="progressBar"><div class="fill" id="progressFill"></div></div>
 
-  <div id="questionsContainer">
-    <div class="question-box" id="q1">
-      <div class="q-number">Question 1</div>
-      <div class="options" data-answer="a">
-        <div class="option" data-value="a">A. NASA</div>
-        <div class="option" data-value="b">B. The Pentagon</div>
-        <div class="option" data-value="c">C. Stanford University</div>
-        <div class="option" data-value="d">D. SpaceX</div>
-      </div>
+  <!-- All questions visible from the start -->
+  <div class="question-box" id="q1">
+    <div class="q-number">Question 1</div>
+    <div class="options" data-answer="a">
+      <div class="option" data-value="a">A. NASA</div>
+      <div class="option" data-value="b">B. The Pentagon</div>
+      <div class="option" data-value="c">C. Stanford University</div>
+      <div class="option" data-value="d">D. SpaceX</div>
     </div>
+  </div>
 
-    <div class="question-box" id="q2">
-      <div class="q-number">Question 2</div>
-      <div class="options" data-answer="c">
-        <div class="option" data-value="a">A. Lower power consumption</div>
-        <div class="option" data-value="b">B. Smaller physical size</div>
-        <div class="option" data-value="c">C. Hundreds of times better performance</div>
-        <div class="option" data-value="d">D. Lower production costs</div>
-      </div>
+  <div class="question-box" id="q2">
+    <div class="q-number">Question 2</div>
+    <div class="options" data-answer="c">
+      <div class="option" data-value="a">A. Lower power consumption</div>
+      <div class="option" data-value="b">B. Smaller physical size</div>
+      <div class="option" data-value="c">C. Hundreds of times better performance</div>
+      <div class="option" data-value="d">D. Lower production costs</div>
     </div>
+  </div>
 
-    <div class="question-box" id="q3">
-      <div class="q-number">Question 3</div>
-      <div class="options" data-answer="b">
-        <div class="option" data-value="a">A. They use older programming languages</div>
-        <div class="option" data-value="b">B. They must withstand extreme radiation and temperature changes</div>
-        <div class="option" data-value="c">C. NASA has limited funding for upgrades</div>
-        <div class="option" data-value="d">D. Modern chips are too large for spacecraft</div>
-      </div>
+  <div class="question-box" id="q3">
+    <div class="q-number">Question 3</div>
+    <div class="options" data-answer="b">
+      <div class="option" data-value="a">A. They use older programming languages</div>
+      <div class="option" data-value="b">B. They must withstand extreme radiation and temperature changes</div>
+      <div class="option" data-value="c">C. NASA has limited funding for upgrades</div>
+      <div class="option" data-value="d">D. Modern chips are too large for spacecraft</div>
     </div>
+  </div>
 
-    <div class="question-box" id="q4">
-      <div class="q-number">Question 4</div>
-      <div class="options" data-answer="a">
-        <div class="option" data-value="a">A. Detect and correct errors caused by radiation</div>
-        <div class="option" data-value="b">B. Communicate with Earth at faster speeds</div>
-        <div class="option" data-value="c">C. Generate its own power supply</div>
-        <div class="option" data-value="d">D. Repair itself automatically</div>
-      </div>
+  <div class="question-box" id="q4">
+    <div class="q-number">Question 4</div>
+    <div class="options" data-answer="a">
+      <div class="option" data-value="a">A. Detect and correct errors caused by radiation</div>
+      <div class="option" data-value="b">B. Communicate with Earth at faster speeds</div>
+      <div class="option" data-value="c">C. Generate its own power supply</div>
+      <div class="option" data-value="d">D. Repair itself automatically</div>
     </div>
+  </div>
 
-    <div class="question-box" id="q5">
-      <div class="q-number">Question 5</div>
-      <div class="options" data-answer="d">
-        <div class="option" data-value="a">A. Weather forecasting satellites</div>
-        <div class="option" data-value="b">B. Commercial airline navigation</div>
-        <div class="option" data-value="c">C. Underwater exploration vehicles</div>
-        <div class="option" data-value="d">D. Future missions to Mars and beyond</div>
-      </div>
+  <div class="question-box" id="q5">
+    <div class="q-number">Question 5</div>
+    <div class="options" data-answer="d">
+      <div class="option" data-value="a">A. Weather forecasting satellites</div>
+      <div class="option" data-value="b">B. Commercial airline navigation</div>
+      <div class="option" data-value="c">C. Underwater exploration vehicles</div>
+      <div class="option" data-value="d">D. Future missions to Mars and beyond</div>
     </div>
   </div>
 
   <div style="margin-top:16px;">
-    <button class="btn btn-primary" id="submitBtn" onclick="submitAll()" disabled>⏳ 音频未结束，请先听完</button>
+    <button class="btn btn-primary" id="submitBtn" onclick="submitAll()" disabled>⏳ 请先听完音频</button>
   </div>
 
   <div class="result-area" id="resultArea">
@@ -152,8 +149,8 @@
 </div>
 
 <div class="footer">
-  点击播放 → 音频自动控制节奏<br>
-  正文→每题→15秒作答间隙
+  点击播放 → 音频控制节奏<br>
+  高亮的那一题是当前在做的
 </div>
 </div>
 
@@ -173,41 +170,36 @@ var submitted = false;
 var TOTAL = TIMINGS.length;
 
 audio.addEventListener('play', function() {
-  document.getElementById('phaseIndicator').textContent = '🔊 正在播放听力原文……';
+  document.getElementById('phaseIndicator').textContent = '🔊 请听原文……';
   document.getElementById('progressBar').style.display = 'block';
 });
 
 audio.addEventListener('timeupdate', function() {
   var t = audio.currentTime;
-
-  // Update progress bar
   var pct = Math.min(100, (t / TIMINGS[TIMINGS.length-1].answerEnd) * 100);
   document.getElementById('progressFill').style.width = pct + '%';
 
   for (var i = 0; i < TIMINGS.length; i++) {
     var ti = TIMINGS[i];
     if (t >= ti.answerStart && t < ti.answerEnd) {
-      if (currentQ !== i + 1) {
-        showQuestion(i + 1);
-      }
+      if (currentQ !== i + 1) showQuestion(i + 1);
     }
-    if (t >= ti.answerEnd && currentQ === i + 1) {
-      advanceFrom(i + 1);
-    }
+    if (t >= ti.answerEnd && currentQ === i + 1) advanceFrom(i + 1);
   }
 
-  var lastEnd = TIMINGS[TIMINGS.length-1].answerEnd;
-  if (t >= lastEnd && currentQ === TOTAL) {
-    currentQ = TOTAL + 1;  // mark complete
-    document.getElementById('phaseIndicator').textContent = '✅ 听力部分结束，可以提交答案';
+  if (t >= TIMINGS[TIMINGS.length-1].answerEnd && currentQ === TOTAL) {
+    currentQ = TOTAL + 1;
+    finishListening();
   }
 });
 
-audio.addEventListener('ended', function() {
-  document.getElementById('phaseIndicator').textContent = '✅ 听力部分结束，可以提交答案';
+audio.addEventListener('ended', finishListening);
+
+function finishListening() {
+  document.getElementById('phaseIndicator').textContent = '✅ 听力结束，可以提交';
   document.getElementById('submitBtn').disabled = false;
   document.getElementById('submitBtn').textContent = '📝 提交答案';
-});
+}
 
 function showQuestion(qNum) {
   if (currentQ > 0 && currentQ <= TOTAL) {
@@ -215,23 +207,14 @@ function showQuestion(qNum) {
   }
   currentQ = qNum;
   document.getElementById('q' + qNum).classList.add('active');
-  document.getElementById('phaseIndicator').textContent = '🎯 第 ' + qNum + ' 题作答中……';
-  document.getElementById('submitBtn').disabled = true;
-  document.getElementById('submitBtn').textContent = '⏳ 第 ' + qNum + '/' + TOTAL + ' 题作答中';
+  document.getElementById('phaseIndicator').textContent = '🎯 第 ' + qNum + ' 题';
+  document.getElementById('submitBtn').textContent = '🎯 第 ' + qNum + '/' + TOTAL + ' 题';
 }
 
 function advanceFrom(qNum) {
   document.getElementById('q' + qNum).classList.remove('active');
-
-  if (qNum < TOTAL) {
-    // Wait for next question to trigger via timeupdate
-  } else {
-    // All done
-    currentQ = TOTAL + 1;
-    document.getElementById('phaseIndicator').textContent = '✅ 听力部分结束，可以提交答案';
-    document.getElementById('submitBtn').disabled = false;
-    document.getElementById('submitBtn').textContent = '📝 提交答案';
-  }
+  if (qNum < TOTAL) { /* wait for next timeupdate */ }
+  else { currentQ = TOTAL + 1; finishListening(); }
 }
 
 document.querySelectorAll('.option').forEach(function(o) {
@@ -249,12 +232,8 @@ document.querySelectorAll('.option').forEach(function(o) {
 });
 
 function submitAll() {
-  if (submitted) {
-    resetAll();
-    return;
-  }
+  if (submitted) { resetAll(); return; }
   submitted = true;
-
   var correct = 0;
 
   for (var i = 1; i <= TOTAL; i++) {
@@ -281,17 +260,13 @@ function submitAll() {
   document.getElementById('scoreDisplay').style.color = correct/TOTAL >= 0.6 ? '#34a853' : '#ea4335';
   document.getElementById('resultMessage').textContent = correct/TOTAL >= 0.6 ? '✅ 合格！' : '❌ 未通过（60% 合格线）';
   document.getElementById('resultArea').classList.add('show');
-  document.getElementById('phaseIndicator').textContent = '📊 得分：' + correct + '/' + TOTAL;
+  document.getElementById('phaseIndicator').textContent = '📊 ' + correct + '/' + TOTAL;
   document.getElementById('submitBtn').textContent = '🔄 重新答题';
   document.getElementById('submitBtn').disabled = false;
 }
 
 function resetAll() {
-  submitted = false;
-  answered = {};
-  currentQ = 0;
-  audio.currentTime = 0;
-
+  submitted = false; answered = {}; currentQ = 0; audio.currentTime = 0;
   for (var i = 1; i <= TOTAL; i++) {
     var qBox = document.getElementById('q' + i);
     qBox.classList.remove('active');
@@ -299,13 +274,12 @@ function resetAll() {
       o.classList.remove('selected', 'correct', 'wrong', 'reveal-correct');
     });
   }
-
   document.getElementById('resultArea').classList.remove('show');
   document.getElementById('transcript').classList.remove('show');
   document.getElementById('progressBar').style.display = 'none';
-  document.getElementById('phaseIndicator').textContent = '🔊 点击播放，先听原文';
+  document.getElementById('phaseIndicator').textContent = '🔊 点击播放';
   document.getElementById('submitBtn').disabled = true;
-  document.getElementById('submitBtn').textContent = '⏳ 音频未结束，请先听完';
+  document.getElementById('submitBtn').textContent = '⏳ 请先听完音频';
 }
 </script>
 </body>
