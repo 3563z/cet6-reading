@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>每日六级阅读 · 2026-05-16</title>
+<title>每日六级 · 2026-05-16</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -18,6 +18,11 @@
   .header h1 { font-size: 22px; font-weight: 700; color: #1a1a2e; }
   .header .date { font-size: 14px; color: #888; margin-top: 4px; }
   .header .badge { display: inline-block; background: #e8f0fe; color: #1a73e8; font-size: 12px; padding: 2px 10px; border-radius: 12px; margin-top: 8px; }
+  .section-badge {
+    text-align: center; padding: 12px; margin: 24px 0 8px;
+    font-size: 16px; font-weight: 700;
+    color: #1a73e8; border-bottom: 2px solid #e8f0fe;
+  }
   .passage { background: #fff; border-radius: 16px; padding: 20px; margin: 16px 0; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
   .passage .tag { display: inline-block; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 8px; margin-bottom: 12px; }
   .tag-tech { background: #e3f2fd; color: #1565c0; }
@@ -28,6 +33,8 @@
   .vocab { display: inline; color: #1a73e8; font-weight: 600; border-bottom: 2px solid #1a73e8; cursor: help; }
   .vocab-box { background: #f0f4ff; border-radius: 10px; padding: 12px 14px; margin-bottom: 16px; font-size: 13px; }
   .vocab-box strong { color: #1a73e8; }
+  .audio-section { margin: 12px 0 20px; }
+  .audio-section audio { width: 100%; border-radius: 8px; }
   .question { margin-bottom: 18px; }
   .question .q-num { font-weight: 700; font-size: 14px; color: #1a73e8; margin-bottom: 6px; }
   .question .q-text { font-size: 14.5px; color: #333; margin-bottom: 8px; }
@@ -42,6 +49,9 @@
   .answer-section.show { display: block; }
   .answer-section .answer-key { font-size: 13px; color: #34a853; font-weight: 600; padding: 8px 10px; background: #e6f4ea; border-radius: 8px; }
   .answer-section .explanation { font-size: 13px; color: #666; margin-top: 6px; padding: 8px 10px; background: #f8f9fa; border-radius: 8px; }
+  .transcript { margin-top: 16px; display: none; padding: 14px; background: #f8f9fa; border-radius: 10px; font-size: 14px; line-height: 1.8; color: #444; }
+  .transcript.show { display: block; }
+  .transcript h3 { font-size: 15px; color: #1a73e8; margin-bottom: 8px; }
   .btn-group { display: flex; gap: 10px; margin: 20px 0; }
   .btn { flex: 1; padding: 14px; border: none; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center; }
   .btn-primary { background: #1a73e8; color: #fff; }
@@ -62,221 +72,407 @@
 <div class="container">
 
 <div class="header">
-  <h1>📖 每日六级阅读</h1>
+  <h1>📖🎧 每日六级</h1>
   <div class="date">2026 年 5 月 16 日 · 星期六</div>
-  <div class="badge">🎯 CET-6 双篇深度训练</div>
+  <div class="badge">🎯 CET-6 听力+阅读双项训练</div>
 </div>
 
-<!-- Passage 1: Tech/Science -->
-<div class="passage">
-  <span class="tag tag-tech">🔬 科技 · 量子计算</span>
-  <h2>Quantum Computing Takes a Major Leap Toward Practical Reality</h2>
+<!-- ========== 听力部分 ========== -->
+<div class="section-badge">🎧 听力理解 · Listening Comprehension</div>
 
-  <div class="text">
-    <p>For decades, quantum computing has been a technology that always seemed to be five years away from being five years away. But a series of recent <span class="vocab">breakthroughs</span> has brought the field to what many researchers describe as a genuine turning point. In the past six months, three separate research groups have demonstrated quantum processors that can perform <span class="vocab">specific</span> calculations with error rates low enough to suggest practical applications may finally be within reach.</p>
+<!-- 听力 Passage 1: Tech -->
+<div class="passage listening">
+  <span class="tag tag-tech">🔬 科技听力 · 太空计算</span>
+  <h2>NASA's Next-Gen Space Computer Chip</h2>
 
-    <p>The most significant advance came from a team at the University of Oxford, which unveiled a quantum processor that ran a chemical simulation of a caffeine molecule — a task that would take the world's most powerful classical supercomputer thousands of years. Unlike earlier efforts that were largely theoretical, this simulation produced <span class="vocab">verifiable</span> results that matched experimental data. "This is not just a stunt," said Dr. Hannah Chen, lead researcher on the project. "We have proven that quantum systems can solve problems that are genuinely out of reach for classical computers, and the results are <span class="vocab">reliable</span> enough to be useful."</p>
-
-    <p>The key to this progress lies in quantum error correction — arguably the hardest challenge in the field. Qubits, the fundamental units of quantum information, are notoriously <span class="vocab">fragile</span>. They can be disturbed by the slightest change in temperature, electromagnetic waves, or even cosmic rays. For years, this instability meant that quantum calculations produced more errors than useful answers. But new error-correction techniques, developed independently by teams in China, the United States, and Europe, have dramatically <span class="vocab">suppressed</span> these errors, bringing the technology closer to what scientists call "quantum advantage" — the point at which quantum computers outperform classical ones on practical tasks.</p>
-
-    <p>The implications are profound. Quantum computers <span class="vocab">excel</span> at solving problems involving enormous numbers of variables interacting simultaneously — the kind of problems that appear in drug discovery, climate modeling, financial risk analysis, and materials science. Pharmaceutical companies are already partnering with quantum computing firms to simulate molecular interactions for new drug candidates, potentially cutting years off the development timeline. Similarly, climate scientists hope quantum models could produce far more <span class="vocab">accurate</span> predictions of global weather patterns and long-term climate change.</p>
-
-    <p>Despite the optimism, researchers urge patience. Current quantum processors still require <span class="vocab">specialized</span> cooling systems that bring them to temperatures colder than deep space. Scaling up from dozens of stable qubits to the millions needed for general-purpose computing will take years, perhaps decades. Nevertheless, the momentum is unmistakable. Investment in quantum computing reached a record $5.3 billion in the first quarter of 2026 alone. For the first time, the question is no longer whether quantum computing will work, but when — and how soon — it will begin to <span class="vocab">transform</span> our world.</p>
+  <div class="audio-section">
+    <audio id="audio-1" controls>
+      <source src="daily/audio/20260516_1.mp3" type="audio/mpeg">
+    </audio>
   </div>
 
-  <div class="vocab-box">
-    <strong>📝 核心词汇</strong><br>
-    breakthrough /ˈbreɪkθruː/ n. 突破；重大进展<br>
-    specific /spəˈsɪfɪk/ adj. 特定的；具体的<br>
-    verifiable /ˈverɪfaɪəbl/ adj. 可验证的；可证实的<br>
-    reliable /rɪˈlaɪəbl/ adj. 可靠的；可信赖的<br>
-    fragile /ˈfrædʒaɪl/ adj. 脆弱的；易碎的<br>
-    suppress /səˈpres/ v. 抑制；压制<br>
-    excel /ɪkˈsel/ v. 擅长；突出<br>
-    accurate /ˈækjərət/ adj. 准确的；精确的<br>
-    specialized /ˈspeʃəlaɪzd/ adj. 专门的；专业化的<br>
-    transform /trænsˈfɔːm/ v. 改变；转变
-  </div>
-
-  <div class="question" data-answer="c">
+  <div class="question" data-answer="b">
     <div class="q-num">第 1 题</div>
-    <div class="q-text">What is the main point the author makes about quantum computing in this passage?</div>
+    <div class="q-text">What is the main advantage of NASA's new computer chip?</div>
     <div class="options">
-      <div class="option" data-value="a">A. Quantum computers are still purely theoretical and far from practical use</div>
-      <div class="option" data-value="b">B. The field has reached a genuine turning point with practical potential</div>
-      <div class="option" data-value="c">C. Classical supercomputers remain more powerful than quantum processors</div>
-      <div class="option" data-value="d">D. Error correction in quantum computing is no longer necessary</div>
+      <div class="option" data-value="a">A. It is cheaper to produce than current chips</div>
+      <div class="option" data-value="b">B. It can operate hundreds of times faster than current space computers</div>
+      <div class="option" data-value="c">C. It uses less power than any existing processor</div>
+      <div class="option" data-value="d">D. It can communicate with Earth instantly</div>
     </div>
     <div class="answer-section">
       <div class="answer-key">✅ 正确答案：B</div>
-      <div class="explanation">文章第一段就点明核心论点：一系列突破使量子计算达到了"真正的转折点"(genuine turning point)，具体表现为牛津大学的化学模拟、纠错技术进展、以及投资创纪录等事实支撑。</div>
-    </div>
-  </div>
-
-  <div class="question" data-answer="b">
-    <div class="q-num">第 2 题</div>
-    <div class="q-text">The word "<strong>suppressed</strong>" in paragraph 3 is closest in meaning to:</div>
-    <div class="options">
-      <div class="option" data-value="a">A. increased</div>
-      <div class="option" data-value="b">B. reduced or held back</div>
-      <div class="option" data-value="c">C. ignored</div>
-      <div class="option" data-value="d">D. transformed</div>
-    </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：B</div>
-      <div class="explanation">"Suppressed"在此处意为"抑制、压制"，指新的纠错技术大幅降低了量子计算中的错误率。文中提到量子比特极其脆弱(fragile)，新纠错技术"dramatically suppressed these errors"，即大幅压制了错误。</div>
-    </div>
-  </div>
-
-  <div class="question" data-answer="d">
-    <div class="q-num">第 3 题</div>
-    <div class="q-text">What did the Oxford team achieve that was considered significant?</div>
-    <div class="options">
-      <div class="option" data-value="a">A. They built the world's most powerful classical supercomputer</div>
-      <div class="option" data-value="b">B. They completely solved the problem of quantum decoherence</div>
-      <div class="option" data-value="c">C. They commercialized quantum computing for the pharmaceutical industry</div>
-      <div class="option" data-value="d">D. They simulated a caffeine molecule with results matching experimental data</div>
-    </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：D</div>
-      <div class="explanation">牛津大学团队使用量子处理器完成了咖啡因分子的化学模拟——这项任务用经典超算需要数千年——而且产生了与实验数据匹配的可验证结果(verifiable results that matched experimental data)，被认为是一个里程碑式的突破。</div>
+      <div class="explanation">新芯片的性能比现有航天计算机提升数百倍。目前太空中的计算机因为要承受极端辐射、温度变化和宇宙射线，技术远落后于消费级产品。</div>
     </div>
   </div>
 
   <div class="question" data-answer="c">
-    <div class="q-num">第 4 题</div>
-    <div class="q-text">According to the passage, what is the biggest challenge still facing quantum computing?</div>
+    <div class="q-num">第 2 题</div>
+    <div class="q-text">Why are current space computers so far behind modern technology?</div>
     <div class="options">
-      <div class="option" data-value="a">A. Lack of investment from technology companies</div>
-      <div class="option" data-value="b">B. Insufficient interest from the scientific community</div>
-      <div class="option" data-value="c">C. The difficulty of scaling from dozens to millions of stable qubits</div>
-      <div class="option" data-value="d">D. The inability to perform chemical simulations</div>
+      <div class="option" data-value="a">A. NASA lacks funding for new technology</div>
+      <div class="option" data-value="b">B. Space agencies prefer older, reliable systems</div>
+      <div class="option" data-value="c">C. They must withstand extreme radiation and temperature changes</div>
+      <div class="option" data-value="d">D. Modern chips cannot fit inside spacecraft</div>
     </div>
     <div class="answer-section">
       <div class="answer-key">✅ 正确答案：C</div>
-      <div class="explanation">文章最后一段指出，当前处理器需要极低温冷却系统，且从数十个稳定量子比特扩展到数百万个用于通用计算，仍需多年甚至数十年。这正是规模化(scaling up)的挑战，而非投资或兴趣不足。</div>
+      <div class="explanation">航天计算机必须承受极端辐射、温度波动和宇宙射线，因此设计上有很多限制，导致其技术水平落后消费级产品数十年。</div>
     </div>
   </div>
 
   <div class="question" data-answer="a">
-    <div class="q-num">第 5 题</div>
-    <div class="q-text">What does the author imply by saying "The question is no longer whether quantum computing will work, but when" in the last paragraph?</div>
+    <div class="q-num">第 3 题</div>
+    <div class="q-text">How does the new chip handle radiation-related problems?</div>
     <div class="options">
-      <div class="option" data-value="a">A. Quantum computing is now seen as inevitable, with timing being the only uncertainty</div>
-      <div class="option" data-value="b">B. Researchers have given up on proving quantum computing can work</div>
-      <div class="option" data-value="c">C. The debate about whether quantum computing is useful has been settled in the negative</div>
-      <div class="option" data-value="d">D. Classical computing will soon be replaced entirely by quantum systems</div>
+      <div class="option" data-value="a">A. It detects and corrects errors in real time</div>
+      <div class="option" data-value="b">B. It uses thicker shielding material</div>
+      <div class="option" data-value="c">C. It avoids radiation by staying in low orbit</div>
+      <div class="option" data-value="d">D. It shuts down temporarily when radiation is detected</div>
     </div>
     <div class="answer-section">
       <div class="answer-key">✅ 正确答案：A</div>
-      <div class="explanation">作者暗示量子计算的可行性已不再有疑问，行业共识已经从"能不能行"转向"何时能够改变世界"。这一判断得到了投资创纪录($5.3B)、多家团队独立突破纠错技术等事实的支撑。</div>
+      <div class="explanation">新芯片采用了特殊设计，可以实时检测并纠正辐射导致的错误(detect and correct errors caused by radiation in real time)，使其可以在不崩溃的情况下高速运行。</div>
     </div>
+  </div>
+
+  <div class="question" data-answer="d">
+    <div class="q-num">第 4 题</div>
+    <div class="q-text">What benefit could this chip bring to future Mars missions?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Reducing launch costs significantly</div>
+      <div class="option" data-value="b">B. Enabling faster communication with Earth</div>
+      <div class="option" data-value="c">C. Eliminating the need for human astronauts</div>
+      <div class="option" data-value="d">D. Allowing spacecraft to make real-time decisions independently</div>
+    </div>
+    <div class="answer-section">
+      <div class="answer-key">✅ 正确答案：D</div>
+      <div class="explanation">未来火星任务可以自主做出实时决策，无需等待地球指令——每程通信延迟可能长达20分钟(up to twenty minutes each way)，自主决策能力至关重要。</div>
+    </div>
+  </div>
+
+  <div class="question" data-answer="b">
+    <div class="q-num">第 5 题</div>
+    <div class="q-text">The word "<strong>withstand</strong>" in the passage is closest in meaning to:</div>
+    <div class="options">
+      <div class="option" data-value="a">A. avoid</div>
+      <div class="option" data-value="b">B. endure or resist</div>
+      <div class="option" data-value="c">C. measure</div>
+      <div class="option" data-value="d">D. generate</div>
+    </div>
+    <div class="answer-section">
+      <div class="answer-key">✅ 正确答案：B</div>
+      <div class="explanation">"Withstand"意为"承受、抵抗"，指航天计算机必须能够耐受极端辐射和温度波动。文中"withstand extreme radiation, temperature fluctuations, and cosmic rays"正描述了芯片需要承受的恶劣太空环境。</div>
+    </div>
+  </div>
+
+  <div class="transcript" id="transcript-1">
+    <h3>📝 听力原文</h3>
+    <p>Scientists at the National Aeronautics and Space Administration are testing a next-generation computer chip designed to give spacecraft the ability to operate far more independently in deep space. The radiation-hardened processor, known as the High-Performance Spaceflight Computing chip, is showing performance levels hundreds of times beyond current spaceflight computers. Current space computers are decades behind modern consumer technology because they must be built to withstand extreme radiation, temperature fluctuations, and cosmic rays. The new chip uses a special design that can detect and correct errors caused by radiation in real time, allowing it to run faster without crashing. According to NASA engineers, this breakthrough could enable future missions to Mars and beyond to make real-time decisions without waiting for instructions from Earth, which can take up to twenty minutes each way.</p>
   </div>
 </div>
 
-<!-- Passage 2: Society/Humanities -->
+<!-- 听力 Passage 2: Society -->
+<div class="passage listening">
+  <span class="tag tag-human">🌍 社会听力 · 欧洲歌唱大赛</span>
+  <h2>Eurovision Song Contest 70th Grand Final</h2>
+
+  <div class="audio-section">
+    <audio id="audio-2" controls>
+      <source src="daily/audio/20260516_2.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <div class="question" data-answer="d">
+    <div class="q-num">第 6 题</div>
+    <div class="q-text">Where was this year's Eurovision grand final held?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Paris, France</div>
+      <div class="option" data-value="b">B. London, United Kingdom</div>
+      <div class="option" data-value="c">C. Berlin, Germany</div>
+      <div class="option" data-value="d">D. Vienna, Austria</div>
+    </div>
+    <div class="answer-section">
+      <div class="answer-key">✅ 正确答案：D</div>
+      <div class="explanation">今年的决赛在奥地利维也纳举行(Eurovision Song Contest reached its seventieth grand final in Vienna, Austria)。这是该赛事70年来规模最大的决赛之一。</div>
+    </div>
+  </div>
+
+  <div class="question" data-answer="a">
+    <div class="q-num">第 7 题</div>
+    <div class="q-text">How many countries participated in this year's grand final?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. 26</div>
+      <div class="option" data-value="b">B. 56</div>
+      <div class="option" data-value="c">C. 180</div>
+      <div class="option" data-value="d">D. 70</div>
+    </div>
+    <div class="answer-section">
+      <div class="answer-key">✅ 正确答案：A</div>
+      <div class="explanation">共有26个国家的选手参加了决赛(with performers from twenty-six countries competing for the title)。180百万是电视观众人数，而非参赛国家数。</div>
+    </div>
+  </div>
+
+  <div class="question" data-answer="b">
+    <div class="q-num">第 8 题</div>
+    <div class="q-text">What did some performers use their shows for this year?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Promoting their new albums</div>
+      <div class="option" data-value="b">B. Expressing views on social issues</div>
+      <div class="option" data-value="c">C. Criticizing other contestants</div>
+      <div class="option" data-value="d">D. Announcing their retirement</div>
+    </div>
+    <div class="answer-section">
+      <div class="answer-key">✅ 正确答案：B</div>
+      <div class="explanation">今年有多位歌手利用表演表达对社会问题的立场(several artists used their performances to express views on social issues)，让这场音乐赛事兼具了政治表达的意义。</div>
+    </div>
+  </div>
+
+  <div class="question" data-answer="c">
+    <div class="q-num">第 9 题</div>
+    <div class="q-text">How many viewers worldwide does the Eurovision Song Contest attract?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. 26 million</div>
+      <div class="option" data-value="b">B. 70 million</div>
+      <div class="option" data-value="c">C. Over 180 million</div>
+      <div class="option" data-value="d">D. Over 1 billion</div>
+    </div>
+    <div class="answer-section">
+      <div class="answer-key">✅ 正确答案：C</div>
+      <div class="explanation">欧洲歌唱大赛吸引了全球超过1.8亿观众(attracting over one hundred and eighty million viewers worldwide)，是世界上规模最大的现场音乐活动之一。</div>
+    </div>
+  </div>
+
+  <div class="question" data-answer="a">
+    <div class="q-num">第 10 题</div>
+    <div class="q-text">What did Delta Goodrem perform at the contest?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. A ballad about unity and peace</div>
+      <div class="option" data-value="b">B. A fast-paced dance song</div>
+      <div class="option" data-value="c">C. A classical music piece</div>
+      <div class="option" data-value="d">D. A traditional Australian folk song</div>
+    </div>
+    <div class="answer-section">
+      <div class="answer-key">✅ 正确答案：A</div>
+      <div class="explanation">澳大利亚代表Delta Goodrem演唱了一首关于团结与和平的抒情歌曲(a powerful ballad about unity and peace in troubled times)，是本次比赛最受看好的选手之一。</div>
+    </div>
+  </div>
+
+  <div class="transcript" id="transcript-2">
+    <h3>📝 听力原文</h3>
+    <p>The Eurovision Song Contest reached its seventieth grand final in Vienna, Austria, with performers from twenty-six countries competing for the title. This year's event featured a mix of pop music and political statements, as several artists used their performances to express views on social issues. The contest, which began in 1956, has grown into one of the world's largest live music events, attracting over one hundred and eighty million viewers worldwide. Security was tight this year due to recent tensions across Europe, and rainy weather did not stop thousands of fans from gathering outside the stadium. Australia's representative, Delta Goodrem, was among the favorites, performing a powerful ballad about unity and peace in troubled times.</p>
+  </div>
+</div>
+
+<!-- ========== 阅读部分 ========== -->
+<div class="section-badge">📖 阅读理解 · Reading Comprehension</div>
+
+<!-- Passage 1: Reading Tech -->
 <div class="passage">
-  <span class="tag tag-human">🌍 社会 · 城市规划</span>
-  <h2>The 15-Minute City: Can Reshaping Neighborhoods Rebuild Community?</h2>
+  <span class="tag tag-tech">🔬 科技 · 衰老研究</span>
+  <h2>Gut Microbiome Particles Linked to Aging and Inflammation</h2>
 
   <div class="text">
-    <p>In cities across the globe, a <span class="vocab">controversial</span> urban planning concept is gaining momentum. The "15-minute city" — the idea that residents should be able to access most daily needs within a 15-minute walk or bike ride from their homes — has become one of the most debated topics in modern urban design. Proponents argue it could reduce carbon emissions, improve public health, and restore a sense of community that has been lost to car-centric development. Critics, however, warn it could lead to restrictions on <span class="vocab">personal</span> freedom and economic segregation.</p>
+    <p>A new study published in the journal <em>Nature Aging</em> has revealed that microscopic particles from the gut may actively drive <span class="vocab">inflammation</span> and chronic diseases associated with aging. The research, conducted by a team at the Mayo Clinic, discovered that tiny particles released by gut bacteria can enter the bloodstream and trigger an immune response that accelerates age-related <span class="vocab">decline</span>. Remarkably, the study also found that gut particles from young animals appeared to counter some of these effects when <span class="vocab">transferred</span> to older ones.</p>
 
-    <p>The concept, popularized by Paris-based urbanist Carlos Moreno, proposes that neighborhoods should be designed as complete ecosystems. Within a quarter-hour of home, residents should find grocery stores, healthcare clinics, parks, schools, restaurants, and workplaces. The idea is not to confine people to small areas — city services and public transport still <span class="vocab">facilitate</span> longer journeys — but to reduce unnecessary travel and create vibrant local centers where neighbors actually know each other. Research from the University of Melbourne found that residents in such neighborhoods report 23% higher levels of social interaction and significantly lower rates of loneliness.</p>
+    <p>The particles in question are known as extracellular vesicles — tiny membrane-bound structures that carry proteins, lipids, and genetic material between cells. While scientists have known about these vesicles for years, their role in the aging process has remained <span class="vocab">unclear</span>. The Mayo Clinic team, led by Dr. James Morrison, tracked these particles in mice and found that their composition changes <span class="vocab">dramatically</span> with age. Young mice produced vesicles rich in anti-inflammatory molecules, while older mice produced vesicles that promoted inflammation and tissue damage.</p>
 
-    <p>Despite its <span class="vocab">appeal</span> to environmentalists and urban planners, the 15-minute city has become surprisingly politicized. In the United Kingdom and the United States, conspiracy theories have claimed that the concept is a government plot to confine people to their neighborhoods and restrict movement. These claims, which have been repeatedly debunked by urban planning experts, have nevertheless influenced local elections and zoning debates. "It's an idea about creating convenience and reducing car dependency that has been <span class="vocab">weaponized</span> by misinformation," said Dr. Emily Park, a professor of urban studies at UCLA. "The irony is that the most common criticism comes from people who have never experienced what a well-designed neighborhood actually feels like."</p>
+    <p>When the researchers transferred vesicles from young mice into older ones, they observed a reduction in markers of chronic inflammation and improved function in several organs, including the liver and kidneys. "It's as if we <span class="vocab">transplanted</span> a young gut's signaling system into an older body," said Dr. Morrison. "The aging gut isn't just a passive organ that wears out over time — it's actively sending signals that influence the health of the entire body." The findings suggest that interventions targeting gut-derived vesicles could open new <span class="vocab">avenues</span> for treating age-related diseases.</p>
 
-    <p>Successful examples do exist. In Barcelona, Spain, the "superblock" program has converted groups of city blocks into car-free zones, with traffic redirected to surrounding streets. The result has been a 25% reduction in air pollution, a 17% decrease in traffic accidents, and a <span class="vocab">dramatic</span> increase in street-level social activity. Similar projects in Copenhagen and Melbourne have shown that when streets are reclaimed from cars, people naturally spend more time outdoors, patronize local businesses, and build <span class="vocab">meaningful</span> social connections with their neighbors.</p>
-
-    <p>The debate over the 15-minute city reflects a deeper <span class="vocab">tension</span> in modern urban life: how to balance individual mobility with community well-being. As cities continue to grow — the UN projects that 68% of the world's population will live in urban areas by 2050 — the question of how we design our neighborhoods will only become more urgent. Whether or not the 15-minute city becomes the standard model, its core insight — that the design of our physical environment profoundly shapes our social lives — seems likely to <span class="vocab">endure</span>.</p>
+    <p>The study has generated significant interest in the scientific community, with researchers around the world now investigating whether similar mechanisms operate in humans. If confirmed, the discovery could lead to new <span class="vocab">therapeutic</span> approaches that target the gut microbiome not just for digestive health, but for slowing the aging process itself. "We've known for years that the gut microbiome is important for health," said Dr. Morrison. "But this study suggests it may play a far more active role in how we age than anyone previously <span class="vocab">anticipated</span>."</p>
   </div>
 
   <div class="vocab-box">
     <strong>📝 核心词汇</strong><br>
-    controversial /ˌkɒntrəˈvɜːʃl/ adj. 有争议的；引起争论的<br>
-    personal /ˈpɜːsənl/ adj. 个人的；私人的<br>
-    facilitate /fəˈsɪlɪteɪt/ v. 促进；使便利<br>
-    appeal /əˈpiːl/ n. 吸引力；魅力<br>
-    weaponize /ˈwepənaɪz/ v. 武器化；用作武器<br>
-    dramatic /drəˈmætɪk/ adj. 巨大的；戏剧性的<br>
-    meaningful /ˈmiːnɪŋfl/ adj. 有意义的；重要的<br>
-    tension /ˈtenʃn/ n. 紧张；对立<br>
-    endure /ɪnˈdjʊə/ v. 持久；持续<br>
-    genuinely /ˈdʒenjuɪnli/ adv. 真正地；确实地
+    inflammation /ˌɪnfləˈmeɪʃn/ n. 炎症；发炎<br>
+    decline /dɪˈklaɪn/ n. 衰退；下降<br>
+    transfer /trænsˈfɜː/ v. 转移；转运<br>
+    unclear /ˌʌnˈklɪə/ adj. 不清楚的；不明确的<br>
+    dramatically /drəˈmætɪkli/ adv. 显著地；巨大地<br>
+    transplant /trænsˈplɑːnt/ v. 移植；转移<br>
+    avenue /ˈævənjuː/ n. 途径；方法<br>
+    therapeutic /ˌθerəˈpjuːtɪk/ adj. 治疗的；疗愈的<br>
+    anticipate /ænˈtɪsɪpeɪt/ v. 预期；预料<br>
+    chronic /ˈkrɒnɪk/ adj. 慢性的；长期的
   </div>
 
-  <div class="question" data-answer="a">
-    <div class="q-num">第 6 题</div>
-    <div class="q-text">What is the core idea of the "15-minute city" concept?</div>
+  <div class="question" data-answer="c">
+    <div class="q-num">第 11 题</div>
+    <div class="q-text">What is the main finding of the Mayo Clinic study?</div>
     <div class="options">
-      <div class="option" data-value="a">A. Residents can reach most daily necessities within a 15-minute walk or bike ride</div>
-      <div class="option" data-value="b">B. Everyone must stay within 15 minutes of their home by car</div>
-      <div class="option" data-value="c">C. All city services should be centralized in one 15-minute zone</div>
-      <div class="option" data-value="d">D. Commuting time should be reduced to 15 minutes per day</div>
+      <div class="option" data-value="a">A. Gut bacteria have no effect on the aging process</div>
+      <div class="option" data-value="b">B. Older animals produce more anti-inflammatory molecules</div>
+      <div class="option" data-value="c">C. Particles from gut bacteria can drive inflammation linked to aging</div>
+      <div class="option" data-value="d">D. Aging is entirely determined by genetic factors</div>
     </div>
     <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：A</div>
-      <div class="explanation">"15分钟城市"的核心是居民能在步行或骑行15分钟范围内获取日常所需（杂货店、诊所、公园、学校等），目的在于减少不必要出行并创造活跃的本地社区中心。</div>
-    </div>
-  </div>
-
-  <div class="question" data-answer="b">
-    <div class="q-num">第 7 题</div>
-    <div class="q-text">What does the University of Melbourne research suggest about 15-minute neighborhoods?</div>
-    <div class="options">
-      <div class="option" data-value="a">A. They are more expensive to live in</div>
-      <div class="option" data-value="b">B. They lead to higher social interaction and lower loneliness</div>
-      <div class="option" data-value="c">C. They significantly reduce property values</div>
-      <div class="option" data-value="d">D. They increase car ownership and usage</div>
-    </div>
-    <div class="answer-section">
-      <div class="answer-key">✅ 正确答案：B</div>
-      <div class="explanation">墨尔本大学的研究发现，这类社区的居民社交互动水平高出23%，孤独感发生率明显更低(lower rates of loneliness)。这支持了"街区设计影响社区关系"的核心论点。</div>
+      <div class="answer-key">✅ 正确答案：C</div>
+      <div class="explanation">研究发现肠道细菌释放的微小颗粒(extracellular vesicles)能够进入血液并触发免疫反应，加速衰老相关的衰退。这表胆肠道在衰老过程中扮演了活跃的角色，而非被动器官。</div>
     </div>
   </div>
 
   <div class="question" data-answer="d">
-    <div class="q-num">第 8 题</div>
-    <div class="q-text">What criticism has the 15-minute city faced, according to the passage?</div>
+    <div class="q-num">第 12 题</div>
+    <div class="q-text">What are extracellular vesicles?</div>
     <div class="options">
-      <div class="option" data-value="a">A. It is too expensive for cities to implement</div>
-      <div class="option" data-value="b">B. It has no measurable environmental benefits</div>
-      <div class="option" data-value="c">C. It only works in small towns, not large cities</div>
-      <div class="option" data-value="d">D. Conspiracy theories claim it restricts personal freedom</div>
+      <div class="option" data-value="a">A. Harmful bacteria found only in old organisms</div>
+      <div class="option" data-value="b">B. A type of medicine that treats inflammation</div>
+      <div class="option" data-value="c">C. Protective layers around gut bacteria</div>
+      <div class="option" data-value="d">D. Tiny structures carrying materials between cells</div>
     </div>
     <div class="answer-section">
       <div class="answer-key">✅ 正确答案：D</div>
-      <div class="explanation">该概念在美国和英国遭遇了阴谋论攻击，被指控是政府限制居民行动自由的阴谋。尽管已被城市专家反复驳斥 (repeatedly debunked)，这些谣言仍然影响了地方选举和区域规划辩论。</div>
+      <div class="explanation">Extracellular vesicles（细胞外囊泡）是微小的膜结合结构，携带蛋白质、脂质和遗传物质在细胞之间传递。文中用"tiny membrane-bound structures that carry proteins, lipids, and genetic material between cells"给出了明确定义。</div>
     </div>
   </div>
 
   <div class="question" data-answer="a">
-    <div class="q-num">第 9 题</div>
-    <div class="q-text">What impact did Barcelona's "superblock" program have on air pollution?</div>
+    <div class="q-num">第 13 题</div>
+    <div class="q-text">What happened when vesicles from young mice were transferred into older ones?</div>
     <div class="options">
-      <div class="option" data-value="a">A. It reduced air pollution by 25%</div>
-      <div class="option" data-value="b">B. It had no measurable effect on air quality</div>
-      <div class="option" data-value="c">C. It increased air pollution due to traffic rerouting</div>
-      <div class="option" data-value="d">D. It eliminated air pollution entirely</div>
+      <div class="option" data-value="a">A. Inflammation markers decreased and organ function improved</div>
+      <div class="option" data-value="b">B. The older mice became younger and more active</div>
+      <div class="option" data-value="c">C. No significant changes were observed</div>
+      <div class="option" data-value="d">D. The older mice developed digestive problems</div>
     </div>
     <div class="answer-section">
       <div class="answer-key">✅ 正确答案：A</div>
-      <div class="explanation">巴塞罗那的"超级街区"(superblock)计划将成片的城市街区改造为无车区，结果空气污染降低25%，交通事故减少17%，街头社交活动大幅增加。这为15分钟城市理念提供了切实的证据支持。</div>
+      <div class="explanation">实验发现，将年轻小鼠的囊泡转移到年老小鼠体内后，慢性炎症标志物减少，多个器官（包括肝脏和肾脏）功能得到改善。这表胆年轻肠道的信号系统可以对衰老过程产生正面影响。</div>
+    </div>
+  </div>
+
+  <div class="question" data-answer="b">
+    <div class="q-num">第 14 题</div>
+    <div class="q-text">What does the word "<strong>interventions</strong>" in paragraph 3 most likely refer to?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Surgical procedures on the digestive system</div>
+      <div class="option" data-value="b">B. Treatments targeting gut-derived vesicles</div>
+      <div class="option" data-value="c">C. Changes in dietary habits</div>
+      <div class="option" data-value="d">D. Genetic modifications of gut bacteria</div>
+    </div>
+    <div class="answer-section">
+      <div class="answer-key">✅ 正确答案：B</div>
+      <div class="explanation">"Interventions"在上下文中指针对肠道囊泡的干预措施。文中提到"interventions targeting gut-derived vesicles could open new avenues for treating age-related diseases"，即靶向肠道囊泡的治疗方法。</div>
     </div>
   </div>
 
   <div class="question" data-answer="c">
-    <div class="q-num">第 10 题</div>
-    <div class="q-text">What does the passage suggest will <strong>endure</strong> beyond the current debate?</div>
+    <div class="q-num">第 15 题</div>
+    <div class="q-text">What does Dr. Morrison suggest about the aging gut?</div>
     <div class="options">
-      <div class="option" data-value="a">A. The conspiracy theories about restricting movement</div>
-      <div class="option" data-value="b">B. Car-centric urban planning as the dominant model</div>
-      <div class="option" data-value="c">C. The insight that physical environment shapes social life</div>
-      <div class="option" data-value="d">D. The 15-minute city as the universal standard</div>
+      <div class="option" data-value="a">A. It simply wears out over time like any other organ</div>
+      <div class="option" data-value="b">B. It stops producing vesicles entirely in old age</div>
+      <div class="option" data-value="c">C. It actively sends signals that influence whole-body health</div>
+      <div class="option" data-value="d">D. It is the most important organ for longevity</div>
     </div>
     <div class="answer-section">
       <div class="answer-key">✅ 正确答案：C</div>
-      <div class="explanation">文章结尾指出，无论15分钟城市是否成为标准模式，其核心洞见——物理环境的设计深刻塑造了我们的社会生活(profoundly shapes our social lives)——很可能会持久存在(endure)。这是对概念本质价值的提炼。</div>
+      <div class="explanation">Morrison博士指出，衰老的肠道并非被动磨损的器官，而是主动发送信号影响全身健康("The aging gut isn't just a passive organ that wears out over time — it's actively sending signals that influence the health of the entire body")。</div>
+    </div>
+  </div>
+</div>
+
+<!-- Passage 2: Reading Social -->
+<div class="passage">
+  <span class="tag tag-human">🌍 社会 · 国际关系</span>
+  <h2>Trump's China Visit Redefines Bilateral Relations</h2>
+
+  <div class="text">
+    <p>President Donald Trump returned to the United States on Friday after a two-day visit to Beijing, where he held <span class="vocab">extensive</span> talks with Chinese President Xi Jinping. The summit, which included both formal meetings at the Great Hall of the People and a private visit to Zhongnanhai, has been widely described by analysts as a turning point in the <span class="vocab">complex</span> relationship between the world's two largest economies. Both sides issued a joint statement emphasizing a "new positioning" of bilateral ties.</p>
+
+    <p>The discussions covered a wide range of issues, from trade imbalances and <span class="vocab">tariff</span> policies to technology cooperation and global security. While details of the private meeting between the two leaders remain undisclosed, public statements from both sides suggested a mutual desire to de-escalate trade tensions that have characterized their relationship in recent years. Xi reportedly raised his earlier <span class="vocab">observation</span> about the "Thucydides Trap" — the idea that a rising power and an established power are often drawn into conflict — framing it as a question that both nations must answer together.</p>
+
+    <p>Economic analysts have noted that the timing of the summit is particularly <span class="vocab">significant</span>, coming as both countries face domestic economic pressures. The United States is grappling with <span class="vocab">persistent</span> inflation and a manufacturing slowdown, while China's post-pandemic recovery has been uneven. "Neither side can afford the luxury of a prolonged trade war," said Dr. Li Wei, a professor of international relations at Peking University. "This summit signals a pragmatic <span class="vocab">shift</span> in approach from both sides."</p>
+
+    <p>The visit also included cultural elements, with Trump attending a state banquet featuring traditional Chinese cuisine and a brief tour of the Forbidden City. American media noted the striking contrast between this diplomatic warmth and the confrontational rhetoric that dominated the two countries' relationship during the previous administration. Whether this <span class="vocab">rapprochement</span> will translate into lasting policy changes remains to be seen, but the images of two leaders walking together through Beijing's historic sites have already reshaped the global <span class="vocab">narrative</span> around US-China relations.</p>
+  </div>
+
+  <div class="vocab-box">
+    <strong>📝 核心词汇</strong><br>
+    extensive /ɪkˈstensɪv/ adj. 广泛的；大量的<br>
+    complex /ˈkɒmpleks/ adj. 复杂的<br>
+    tariff /ˈtærɪf/ n. 关税<br>
+    observation /ˌɒbzəˈveɪʃn/ n. 观察；评论<br>
+    significant /sɪɡˈnɪfɪkənt/ adj. 重要的；意义重大的<br>
+    persistent /pəˈsɪstənt/ adj. 持续的；顽固的<br>
+    shift /ʃɪft/ n. 转变；变化<br>
+    rapprochement /ræˈprɒʃmɒ̃/ n. 和解；关系缓和<br>
+    narrative /ˈnærətɪv/ n. 叙述；叙事<br>
+    de-escalate /diːˈeskəleɪt/ v. 缓和；降级
+  </div>
+
+  <div class="question" data-answer="b">
+    <div class="q-num">第 16 题</div>
+    <div class="q-text">What is the main topic of the passage?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. China's economic development strategy</div>
+      <div class="option" data-value="b">B. The redefinition of US-China relations through a recent summit</div>
+      <div class="option" data-value="c">C. The history of American presidential visits to China</div>
+      <div class="option" data-value="d">D. Trade wars between major world economies</div>
+    </div>
+    <div class="answer-section">
+      <div class="answer-key">✅ 正确答案：B</div>
+      <div class="explanation">文章核心是特朗普访华峰会及其对中美关系的重新定位。双方发布的联合声明强调了双边关系的"新定位"(new positioning)，分析家将其描述为两国关系的转折点。</div>
+    </div>
+  </div>
+
+  <div class="question" data-answer="c">
+    <div class="q-num">第 17 题</div>
+    <div class="q-text">What is the "Thucydides Trap" as mentioned in the passage?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. A military strategy for winning trade wars</div>
+      <div class="option" data-value="b">B. An economic theory about inflation</div>
+      <div class="option" data-value="c">C. The idea that a rising and established power often end up in conflict</div>
+      <div class="option" data-value="d">D. A historical event from ancient Greece</div>
+    </div>
+    <div class="answer-section">
+      <div class="answer-key">✅ 正确答案：C</div>
+      <div class="explanation">"Thucydides Trap"（修昔底德陷阱）指新兴大国与现有大国之间往往会陷入冲突的理论。习近平在会谈中引用了这一概念，将其作为一个双方必须共同回答的问题提出。</div>
+    </div>
+  </div>
+
+  <div class="question" data-answer="d">
+    <div class="q-num">第 18 题</div>
+    <div class="q-text">Why does the passage say the timing of the summit is significant?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Both countries are celebrating national holidays</div>
+      <div class="option" data-value="b">B. The United Nations is about to hold a general assembly</div>
+      <div class="option" data-value="c">C. China just hosted the Olympic Games</div>
+      <div class="option" data-value="d">D. Both countries face domestic economic pressures</div>
+    </div>
+    <div class="answer-section">
+      <div class="answer-key">✅ 正确答案：D</div>
+      <div class="explanation">峰会时机重要，因为两国都面临国内经济压力：美国持续通胀和制造业放缓，中国经济复苏不均。分析师指出双方都"无法承受长期贸易战的奢侈"。</div>
+    </div>
+  </div>
+
+  <div class="question" data-answer="a">
+    <div class="q-num">第 19 题</div>
+    <div class="q-text">What word describes the diplomatic warmth displayed during the visit?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. Rapprochement</div>
+      <div class="option" data-value="b">B. Confrontation</div>
+      <div class="option" data-value="c">C. Indifference</div>
+      <div class="option" data-value="d">D. Hostility</div>
+    </div>
+    <div class="answer-section">
+      <div class="answer-key">✅ 正确答案：A</div>
+      <div class="explanation">"Rapprochement"（和解/关系缓和）正是描述此次访问展现的友好外交氛围的词汇。文中提到这次外交温暖与此前两国关系的对抗性言论形成鲜明对比(striking contrast between diplomatic warmth and confrontational rhetoric)。</div>
+    </div>
+  </div>
+
+  <div class="question" data-answer="b">
+    <div class="q-num">第 20 题</div>
+    <div class="q-text">What does the author suggest about the future of US-China relations at the end of the passage?</div>
+    <div class="options">
+      <div class="option" data-value="a">A. The relationship is permanently fixed and will not change</div>
+      <div class="option" data-value="b">B. It remains uncertain whether this warmth will lead to lasting change</div>
+      <div class="option" data-value="c">C. The two countries will soon become close allies</div>
+      <div class="option" data-value="d">D. A new trade war is likely to begin very soon</div>
+    </div>
+    <div class="answer-section">
+      <div class="answer-key">✅ 正确答案：B</div>
+      <div class="explanation">文章结尾持谨慎态度：这种和解是否能转化为持久的政策变化"仍有待观察"(Whether this rapprochement will translate into lasting policy changes remains to be seen)，虽然两国领导人携手走过北京历史景点的画面已经改变了全球对中美关系的叙事。</div>
     </div>
   </div>
 </div>
@@ -287,13 +483,13 @@
 </div>
 
 <div class="result-bar" id="resultBar">
-  <div class="score" id="scoreDisplay">0/10 (0%)</div>
+  <div class="score" id="scoreDisplay">0/20 (0%)</div>
   <div class="detail" id="resultMessage"></div>
 </div>
 
 <div class="footer">
-  每日六级阅读 · 小约 🤖 为你精选<br>
-  CET-6 Daily Reading · © 2026
+  每日六级 · 小约 🤖 为你精选<br>
+  CET-6 Daily Listening & Reading · © 2026
 </div>
 </div>
 
@@ -313,6 +509,7 @@ function submitAll() {
   if (submitted) {
     document.querySelectorAll('.option').forEach(o => o.classList.remove('correct','wrong','reveal-correct'));
     document.querySelectorAll('.answer-section').forEach(s => s.classList.remove('show'));
+    document.querySelectorAll('.transcript').forEach(t => t.classList.remove('show'));
     submitted = false;
     document.getElementById('resultBar').classList.remove('show');
     document.querySelector('.btn-primary').textContent = '📝 提交答案';
@@ -346,13 +543,20 @@ function submitAll() {
   submitted = true;
   document.querySelector('.btn-primary').textContent = '📝 再次提交';
 
+  // Show listening transcripts
+  document.querySelectorAll('.transcript').forEach(t => t.classList.add('show'));
+
   const pct = Math.round((correct / questions.length) * 100);
   const scoreEl = document.getElementById('scoreDisplay');
   scoreEl.textContent = correct + '/' + questions.length + ' (' + pct + '%)';
   scoreEl.className = 'score ' + (pct >= 60 ? 'pass' : 'fail');
 
   const msgEl = document.getElementById('resultMessage');
-  msgEl.textContent = pct >= 60 ? '✅ 合格！继续加油！' : '❌ 未通过（60% 为合格线），再试一次吧！';
+  const listeningQs = 10;
+  const readingQs = 10;
+  const listeningCorrect = Math.min(correct, listeningQs);
+  const readingCorrect = Math.max(0, correct - listeningQs);
+  msgEl.textContent = '🎧 听力 ' + listeningCorrect + '/10  ·  📖 阅读 ' + readingCorrect + '/10  ' + (pct >= 60 ? '✅ 合格！' : '❌ 未通过（60% 合格线）');
 
   document.getElementById('resultBar').classList.add('show');
 }
@@ -360,6 +564,7 @@ function submitAll() {
 function resetAll() {
   document.querySelectorAll('.option').forEach(o => o.classList.remove('selected','correct','wrong','reveal-correct'));
   document.querySelectorAll('.answer-section').forEach(s => s.classList.remove('show'));
+  document.querySelectorAll('.transcript').forEach(t => t.classList.remove('show'));
   submitted = false;
   document.getElementById('resultBar').classList.remove('show');
   document.querySelector('.btn-primary').textContent = '📝 提交答案';
