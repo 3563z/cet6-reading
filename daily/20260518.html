@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>每日六级 · 20260518</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#1a1a2e;padding:16px;line-height:1.8}
+.container{max-width:520px;margin:0 auto}
+.header{text-align:center;padding:24px 0 16px}
+.header h1{font-size:22px;font-weight:700;color:#1a1a2e}
+.header .date{font-size:14px;color:#888;margin-top:4px}
+.header .badge{display:inline-block;background:#e8f0fe;color:#1a73e8;font-size:12px;padding:2px 10px;border-radius:12px;margin-top:8px}
+.section-badge{text-align:center;padding:12px;margin:24px 0 8px;font-size:16px;font-weight:700;color:#1a73e8;border-bottom:2px solid #e8f0fe}
+.passage{background:#fff;border-radius:16px;padding:20px;margin:16px 0;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.passage .tag{display:inline-block;font-size:12px;font-weight:600;padding:3px 10px;border-radius:8px;margin-bottom:12px}
+.tag-tech{background:#e3f2fd;color:#1565c0}
+.tag-human{background:#fce4ec;color:#c62828}
+.passage h2{font-size:18px;font-weight:600;line-height:1.5;margin-bottom:12px;color:#1a1a2e}
+.passage .text{font-size:15px;line-height:1.9;color:#333;text-align:justify;margin-bottom:16px}
+.passage .text p{margin-bottom:12px;text-indent:2em}
+.vocab{display:inline;color:#1a73e8;font-weight:600;border-bottom:2px solid #1a73e8;cursor:help}
+.vocab-box{background:#f0f4ff;border-radius:10px;padding:12px 14px;margin-bottom:16px;font-size:13px}
+.vocab-box strong{color:#1a73e8}
+.audio-section{margin:12px 0 20px}
+.audio-section audio{width:100%;border-radius:8px}
+.question{margin-bottom:18px}
+.question .q-num{font-weight:700;font-size:14px;color:#1a73e8;margin-bottom:6px}
+.question .options{padding-left:4px}
+.question .option{display:block;font-size:14px;padding:8px 10px;margin:4px 0;border-radius:8px;background:#f8f9fa;border:1.5px solid transparent;transition:all .15s;cursor:pointer}
+.question .option:hover{background:#e8f0fe}
+.question .option.selected{background:#e8f0fe;border-color:#1a73e8;color:#1a73e8;font-weight:600}
+.question .option.correct{background:#e6f4ea;border-color:#34a853;color:#1e7e34}
+.question .option.wrong{background:#fce8e6;border-color:#ea4335;color:#c5221f}
+.question .option.reveal-correct{background:#e6f4ea;border-color:#34a853;color:#1e7e34}
+.answer-section{margin-top:8px;display:none}
+.answer-section.show{display:block}
+.answer-section .answer-key{font-size:13px;color:#34a853;font-weight:600;padding:8px 10px;background:#e6f4ea;border-radius:8px}
+.answer-section .explanation{font-size:13px;color:#666;margin-top:6px;padding:8px 10px;background:#f8f9fa;border-radius:8px}
+.transcript{margin-top:16px;display:none;padding:14px;background:#f8f9fa;border-radius:10px;font-size:14px;line-height:1.8;color:#444}
+.transcript.show{display:block}
+.transcript h3{font-size:15px;color:#1a73e8;margin-bottom:8px}
+.writing-area{margin-bottom:16px}
+.writing-area textarea{width:100%;min-height:120px;padding:12px;border:1.5px solid #ddd;border-radius:8px;font-size:14px;font-family:inherit;line-height:1.6;resize:vertical}
+.writing-area textarea:focus{outline:none;border-color:#1a73e8}
+.writing-prompt{font-size:14.5px;color:#333;margin-bottom:12px;padding:12px;background:#f0f4ff;border-radius:8px;line-height:1.6}
+.writing-prompt .zh-text{font-size:15px}
+.model-answer{display:none;margin-top:16px;padding:14px;background:#e8f5e9;border-radius:10px;font-size:14px;line-height:1.8;color:#1e7e34}
+.model-answer.show{display:block}
+.model-answer h3{font-size:15px;color:#2e7d32;margin-bottom:8px}
+.model-answer audio{width:100%;border-radius:6px;margin-top:8px}
+.btn-group{display:flex;gap:10px;margin:20px 0}
+.btn{flex:1;padding:14px;border:none;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;text-align:center}
+.btn-primary{background:#1a73e8;color:#fff}
+.btn-primary:active{background:#1557b0}
+.btn-secondary{background:#e8eaed;color:#444}
+.btn-secondary:active{background:#d2d4d8}
+.result-bar{display:none;text-align:center;padding:16px;margin:16px 0;border-radius:12px;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,0.06);font-size:15px}
+.result-bar.show{display:block}
+.result-bar .score{font-size:28px;font-weight:700}
+.result-bar .score.pass{color:#34a853}
+.result-bar .score.fail{color:#ea4335}
+.result-bar .detail{font-size:13px;color:#888;margin-top:4px}
+.footer{text-align:center;padding:24px 0 32px;font-size:12px;color:#aaa}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+  <h1>📖🎧✍️📝 每日六级</h1>
+  <div class="date">2026 年 5 月 18 日 · </div>
+  <div class="badge">🎯 CET-6 听力·阅读·翻译·作文 一日打通</div>
+</div>
+
+<div class="section-badge">🎧 听力理解</div>
+<div class="passage">
+  <span class="tag tag-tech">🔬 科技听力</span>
+  <h2>Artificial Neurons That Talk to the Brain</h2>
+  <div class="audio-section"><audio controls><source src="https://3563z.github.io/cet6-reading/daily/audio/20260518_1.mp3" type="audio/mpeg"></audio></div>
+  <div class="question" data-answer="b">
+<div class="q-num">Question 1</div>
+<div class="options">
+<div class="option" data-value="a">A. A. The history of silicon-based computing.</div>
+<div class="option" data-value="b">B. B. A breakthrough in artificial neurons that interact with living brain cells.</div>
+<div class="option" data-value="c">C. C. The limitations of modern AI systems.</div>
+<div class="option" data-value="d">D. D. A new method for printing electronic circuits.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：B. B. A breakthrough in artificial neurons that interact with living brain cells.</div><div class="explanation">正确答案：B. B. A breakthrough in artificial neurons that interact with living brain cells.</div></div>
+</div>
+<div class="question" data-answer="c">
+<div class="q-num">Question 2</div>
+<div class="options">
+<div class="option" data-value="a">A. A. They were too expensive to manufacture.</div>
+<div class="option" data-value="b">B. B. They could not be printed on flexible surfaces.</div>
+<div class="option" data-value="c">C. C. They produced signals that were too slow or too simple.</div>
+<div class="option" data-value="d">D. D. They required too much energy to operate.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：C. C. They produced signals that were too slow or too simple.</div><div class="explanation">正确答案：C. C. They produced signals that were too slow or too simple.</div></div>
+</div>
+<div class="question" data-answer="b">
+<div class="q-num">Question 3</div>
+<div class="options">
+<div class="option" data-value="a">A. A. The brain is about twenty times more efficient.</div>
+<div class="option" data-value="b">B. B. The brain is roughly one hundred thousand times more efficient.</div>
+<div class="option" data-value="c">C. C. Digital computers are actually more efficient.</div>
+<div class="option" data-value="d">D. D. The two are roughly equal in efficiency.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：B. B. The brain is roughly one hundred thousand times more efficient.</div><div class="explanation">正确答案：B. B. The brain is roughly one hundred thousand times more efficient.</div></div>
+</div>
+<div class="question" data-answer="b">
+<div class="q-num">Question 4</div>
+<div class="options">
+<div class="option" data-value="a">A. A. They rely on traditional silicon chips.</div>
+<div class="option" data-value="b">B. B. They use printable inks that include molybdenum disulfide and graphene.</div>
+<div class="option" data-value="c">C. C. They require extreme temperatures to function.</div>
+<div class="option" data-value="d">D. D. They are made from metal oxides, which are slow.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：B. B. They use printable inks that include molybdenum disulfide and graphene.</div><div class="explanation">正确答案：B. B. They use printable inks that include molybdenum disulfide and graphene.</div></div>
+</div>
+<div class="question" data-answer="b">
+<div class="q-num">Question 5</div>
+<div class="options">
+<div class="option" data-value="a">A. A. Highly skeptical, believing it will never work in humans.</div>
+<div class="option" data-value="b">B. B. Cautiously optimistic, seeing potential but acknowledging challenges.</div>
+<div class="option" data-value="c">C. C. Completely indifferent to its practical applications.</div>
+<div class="option" data-value="d">D. D. Overwhelmingly enthusiastic, claiming it will replace silicon computing immediately.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：B. B. Cautiously optimistic, seeing potential but acknowledging challenges.</div><div class="explanation">正确答案：B. B. Cautiously optimistic, seeing potential but acknowledging challenges.</div></div>
+</div>
+
+  <div class="transcript" id="t1"><h3>📝 听力原文</h3><p>Good morning, everyone. Today I'd like to discuss a remarkable breakthrough in brain-inspired computing. Researchers at Northwestern University have created artificial neurons that can communicate directly with living brain cells. This represents a significant step toward merging electronic devices with the human nervous system.<br><br>So, what makes this achievement different from previous attempts? In the past, artificial neurons generally produced signals that were either too slow or too simple to interact with real brain tissue. What's crucial about the Northwestern approach is that their printed neurons generate electrical signals that closely match the timing and shape of natural neural activity. When tested on slices of mouse cerebellum, these artificial signals reliably activated real neurons and triggered natural neural circuits.<br><br>However, the implications go far beyond laboratory experiments. Professor Mark Hersam, who led the study, points out that modern AI systems consume enormous amounts of energy. In fact, training large AI models requires gigawatt-scale data centers, some of which are now powered by dedicated nuclear power plants. The human brain, by contrast, performs complex tasks using only about twenty watts of power. This means the brain is roughly one hundred thousand times more energy efficient than a digital computer.<br><br>The team achieved this by using printable electronic inks made from molybdenum disulfide and graphene. These materials are deposited onto flexible polymer surfaces, creating devices that can produce a wide variety of signals, including single spikes and bursting patterns. Because each artificial neuron can generate more complex signals, fewer components are needed to perform advanced tasks.<br><br>Looking ahead, Hersam believes this technology could lead to brain-machine interfaces and neuroprosthetics that help restore hearing, vision, or movement. He also sees it as a pathway toward a new generation of energy-efficient computing hardware. While significant challenges remain, the direction is clear: the future of computing may look far more biological than silicon-based.</p></div>
+</div>
+
+<div class="passage">
+  <span class="tag tag-human">🌍 社会听力</span>
+  <h2>AI and the Primary Care Crisis</h2>
+  <div class="audio-section"><audio controls><source src="https://3563z.github.io/cet6-reading/daily/audio/20260518_2.mp3" type="audio/mpeg"></audio></div>
+  <div class="question" data-answer="b">
+<div class="q-num">Question 1</div>
+<div class="options">
+<div class="option" data-value="a">A. A. The high cost of health insurance in America.</div>
+<div class="option" data-value="b">B. B. The shortage of primary care physicians.</div>
+<div class="option" data-value="c">C. C. The inefficiency of AI in medical diagnosis.</div>
+<div class="option" data-value="d">D. D. The declining quality of hospital care.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：B. B. The shortage of primary care physicians.</div><div class="explanation">正确答案：B. B. The shortage of primary care physicians.</div></div>
+</div>
+<div class="question" data-answer="b">
+<div class="q-num">Question 2</div>
+<div class="options">
+<div class="option" data-value="a">A. A. The training period is too long.</div>
+<div class="option" data-value="b">B. B. Primary care doctors earn much less than specialists.</div>
+<div class="option" data-value="c">C. C. There are fewer job opportunities in primary care.</div>
+<div class="option" data-value="d">D. D. The work is considered less prestigious.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：B. B. Primary care doctors earn much less than specialists.</div><div class="explanation">正确答案：B. B. Primary care doctors earn much less than specialists.</div></div>
+</div>
+<div class="question" data-answer="b">
+<div class="q-num">Question 3</div>
+<div class="options">
+<div class="option" data-value="a">A. A. Patients visit a clinic where AI performs diagnoses.</div>
+<div class="option" data-value="b">B. B. Patients chat with an AI agent, which sends a summary to a doctor.</div>
+<div class="option" data-value="c">C. C. AI replaces doctors entirely for routine checkups.</div>
+<div class="option" data-value="d">D. D. Patients receive prescriptions directly from the AI system.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：B. B. Patients chat with an AI agent, which sends a summary to a doctor.</div><div class="explanation">正确答案：B. B. Patients chat with an AI agent, which sends a summary to a doctor.</div></div>
+</div>
+<div class="question" data-answer="b">
+<div class="q-num">Question 4</div>
+<div class="options">
+<div class="option" data-value="a">A. A. AI is too expensive for most hospitals.</div>
+<div class="option" data-value="b">B. B. AI may lack the personal insight that comes from long-term relationships.</div>
+<div class="option" data-value="c">C. C. AI takes too long to process patient information.</div>
+<div class="option" data-value="d">D. D. AI cannot communicate with patients at all.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：B. B. AI may lack the personal insight that comes from long-term relationships.</div><div class="explanation">正确答案：B. B. AI may lack the personal insight that comes from long-term relationships.</div></div>
+</div>
+<div class="question" data-answer="c">
+<div class="q-num">Question 5</div>
+<div class="options">
+<div class="option" data-value="a">A. A. The speaker believes AI will completely replace doctors.</div>
+<div class="option" data-value="b">B. B. The speaker thinks AI is useless for medical purposes.</div>
+<div class="option" data-value="c">C. C. The speaker sees AI as a helpful but imperfect solution.</div>
+<div class="option" data-value="d">D. D. The speaker considers AI the only solution to the crisis.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：C. C. The speaker sees AI as a helpful but imperfect solution.</div><div class="explanation">正确答案：C. C. The speaker sees AI as a helpful but imperfect solution.</div></div>
+</div>
+
+  <div class="transcript" id="t2"><h3>📝 听力原文</h3><p>Today, I want to talk about a growing crisis in American healthcare and an unexpected solution. Roughly seventeen percent of adults in the United States do not have a primary care physician. This shortage is particularly severe in some states, where patients have reported waiting a year and a half or even two years for an appointment.<br><br>Why is this happening? Several factors have contributed to the problem. First, primary care doctors earn significantly less than specialists ? about thirty to fifty percent less than surgeons or cardiologists. As a result, fewer medical students choose primary care as their specialty. Furthermore, the workload for primary care physicians has been increasing steadily for at least twenty years. Many describe their days as packed with complex patient visits, followed by evenings spent updating medical records.<br><br>In response to this crisis, some hospital networks have turned to artificial intelligence. Mass General Brigham, one of the largest hospital chains in the country, launched an AI-supported program called Care Connect. Here's how it works: patients download an app and spend about ten minutes chatting with an AI agent about their symptoms. The AI then sends a summary and a suggested diagnosis to a primary care doctor, who can see the patient by video, often within a day or two.<br><br>However, this approach has drawn criticism. Some experts worry that AI systems may miss important details about overlapping medical conditions. They also point out that AI cannot assess whether patients can afford follow-up care or understand their family situations, things that primary care physicians come to understand through long-term relationships.<br><br>Despite these concerns, patients like Tammy MacDonald, who was turned away by ten different practices, have found the system helpful. She describes it as a logical short-term solution. The debate over AI in healthcare is far from settled, but one thing is clear: the shortage of primary care doctors is not going away, and technology will likely play an increasingly important role in addressing it.</p></div>
+</div>
+
+<div class="section-badge">📖 阅读理解</div>
+<div class="passage">
+  <span class="tag tag-tech">🔬 科技</span>
+  <h2>Artificial Neurons: Bridging Electronics and the Brain</h2>
+  <div class="vocab-box"><strong>📝 核心词汇</strong><br>significance <span style="color:#666;font-family:'Times New Roman',serif">/s???n?f?k?ns/</span> <span style="color:#333">n. ??????</span><br>interface <span style="color:#666;font-family:'Times New Roman',serif">/??nt?rfe?s/</span> <span style="color:#333">n. ??????v. ?????</span><br>consuming <span style="color:#666;font-family:'Times New Roman',serif">/k?n?sju?m??/</span> <span style="color:#333">adj. ???????</span><br>magnitude <span style="color:#666;font-family:'Times New Roman',serif">/?m??n?tju?d/</span> <span style="color:#333">n. ???????importance</span><br>deposit <span style="color:#666;font-family:'Times New Roman',serif">/d??p?z?t/</span> <span style="color:#333">v. ??????n. ?????</span><br>paradigm <span style="color:#666;font-family:'Times New Roman',serif">/?p?r?da?m/</span> <span style="color:#333">n. ?????</span><br>novel <span style="color:#666;font-family:'Times New Roman',serif">/?n?vl/</span> <span style="color:#333">adj. ????n. ??</span><br>crucial <span style="color:#666;font-family:'Times New Roman',serif">/?kru??l/</span> <span style="color:#333">adj. ????????</span><br></div>
+  <div class="text"><p>Engineers at Northwestern University have achieved what was once considered science fiction: they have created artificial neurons that can directly interact with living brain cells. These flexible, low-cost devices produce electrical signals that closely resemble those generated by real neurons, allowing them to activate biological brain tissue in laboratory experiments.</p><p>The significance of this breakthrough lies in its potential applications. One promising direction is brain-machine interfaces ? devices that could help restore hearing, vision, or movement in patients with neurological damage. By bridging the gap between electronics and the nervous system, artificial neurons could lead to a new generation of neuroprosthetic implants.</p><p>However, computing efficiency may be an even more important motivation. Professor Mark Hersam, who led the study, argues that modern AI systems consume staggering amounts of power. Training large AI models now requires gigawatt-scale data centers, some of which rely on dedicated nuclear power plants. For context, the human brain operates on roughly twenty watts ? about the same as a dim light bulb. This makes the brain approximately five orders of magnitude more efficient than even the most advanced digital computers.</p><p>To replicate the brain's efficiency, Hersam's team used a novel approach. Instead of traditional silicon, they built their artificial neurons using printable electronic inks containing molybdenum disulfide and graphene. These materials were deposited onto flexible polymer surfaces using aerosol jet printing. A key insight was that the team deliberately left some polymer in place, using it to create conductive filaments that produce sudden electrical spikes, closely mirroring how real neurons fire.</p><p>When tested on slices of mouse cerebellum, the artificial signals reliably activated real neurons. The timing and duration of the electrical spikes matched natural neural activity more closely than any previous attempt. This represents a crucial step toward electronics that can truly integrate with the brain, opening the door to both medical applications and a new paradigm of energy-efficient computing inspired by nature's most remarkable machine.</p></div>
+  <div class="question" data-answer="b">
+<div class="q-num">第 一 题</div>
+<div class="options">
+<div class="option" data-value="a">A. A. They have built the most powerful silicon computer chip ever created.</div>
+<div class="option" data-value="b">B. B. They have created artificial neurons that interact with living brain cells.</div>
+<div class="option" data-value="c">C. C. They have developed a new treatment for neurological diseases.</div>
+<div class="option" data-value="d">D. D. They have successfully printed human brain tissue in a laboratory.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：B. B. They have created artificial neurons that interact with living brain cells.</div><div class="explanation">正确答案：B. B. They have created artificial neurons that interact with living brain cells.</div></div>
+</div>
+<div class="question" data-answer="a">
+<div class="q-num">第 二 题</div>
+<div class="options">
+<div class="option" data-value="a">A. A. To illustrate how energy-inefficient AI systems have become.</div>
+<div class="option" data-value="b">B. B. To suggest that the brain is a weak computing system.</div>
+<div class="option" data-value="c">C. C. To argue that computers should use less electricity.</div>
+<div class="option" data-value="d">D. D. To prove that artificial neurons use the same amount of power.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：A. A. To illustrate how energy-inefficient AI systems have become.</div><div class="explanation">正确答案：A. A. To illustrate how energy-inefficient AI systems have become.</div></div>
+</div>
+<div class="question" data-answer="b">
+<div class="q-num">第 三 题</div>
+<div class="options">
+<div class="option" data-value="a">A. A. They were too expensive for widespread use.</div>
+<div class="option" data-value="b">B. B. They could not produce signals that matched natural neural activity closely enough.</div>
+<div class="option" data-value="c">C. C. They were successful but never tested on animals.</div>
+<div class="option" data-value="d">D. D. They relied on the same materials as the Northwestern approach.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：B. B. They could not produce signals that matched natural neural activity closely enough.</div><div class="explanation">正确答案：B. B. They could not produce signals that matched natural neural activity closely enough.</div></div>
+</div>
+<div class="question" data-answer="c">
+<div class="q-num">第 四 题</div>
+<div class="options">
+<div class="option" data-value="a">A. A. fictional and imaginative</div>
+<div class="option" data-value="b">B. B. traditional and well-established</div>
+<div class="option" data-value="c">C. C. new and original</div>
+<div class="option" data-value="d">D. D. complex and difficult</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：C. C. new and original</div><div class="explanation">正确答案：C. C. new and original</div></div>
+</div>
+<div class="question" data-answer="b">
+<div class="q-num">第 五 题</div>
+<div class="options">
+<div class="option" data-value="a">A. A. Traditional silicon computing is becoming obsolete and should be replaced.</div>
+<div class="option" data-value="b">B. B. Artificial neurons that interact with brain cells could transform computing and medicine.</div>
+<div class="option" data-value="c">C. C. The human brain is a mystery that scientists are only beginning to understand.</div>
+<div class="option" data-value="d">D. D. Printing technology has advanced to the point where it can produce electronic devices.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：B. B. Artificial neurons that interact with brain cells could transform computing and medicine.</div><div class="explanation">正确答案：B. B. Artificial neurons that interact with brain cells could transform computing and medicine.</div></div>
+</div>
+
+</div>
+
+<div class="passage">
+  <span class="tag tag-human">🌍 社会</span>
+  <h2>Can AI Solve the Doctor Shortage?</h2>
+  <div class="vocab-box"><strong>📝 核心词汇</strong><br>shortage <span style="color:#666;font-family:'Times New Roman',serif">/????rt?d?/</span> <span style="color:#333">n. ?????</span><br>specialist <span style="color:#666;font-family:'Times New Roman',serif">/?spe??l?st/</span> <span style="color:#333">n. ???????</span><br>unconventional <span style="color:#666;font-family:'Times New Roman',serif">/??nk?n?ven??nl/</span> <span style="color:#333">adj. ?????????</span><br>controversial <span style="color:#666;font-family:'Times New Roman',serif">/?k?ntr??v??r?l/</span> <span style="color:#333">adj. ????</span><br>assess <span style="color:#666;font-family:'Times New Roman',serif">/??ses/</span> <span style="color:#333">v. ?????</span><br>circumstance <span style="color:#666;font-family:'Times New Roman',serif">/?s??rk?mst?ns/</span> <span style="color:#333">n. ????????</span><br>substitute <span style="color:#666;font-family:'Times New Roman',serif">/?s?bst?tju?t/</span> <span style="color:#333">n. ???????</span><br>relieve <span style="color:#666;font-family:'Times New Roman',serif">/r??li?v/</span> <span style="color:#333">v. ?????</span><br></div>
+  <div class="text"><p>For millions of Americans, finding a primary care doctor has become nearly impossible. Roughly seventeen percent of adults in the United States currently lack a primary care physician, and the situation is worsening. In Massachusetts, for instance, patients have reported being told they would need to wait a year and a half for an appointment, even when they have private health insurance.</p><p>The root causes of this shortage are well documented. Primary care doctors earn significantly less than specialists ? on average, thirty to fifty percent less than surgeons or cardiologists. This pay gap discourages medical students from entering the field. Meanwhile, the workload for primary care physicians has increased dramatically over the past two decades, with many spending evenings completing paperwork after long days of patient care.</p><p>In response, some healthcare systems are exploring unconventional solutions. Mass General Brigham, one of the nation's largest hospital networks, launched an AI-supported program called Care Connect. Patients interact with an AI agent that collects information about their symptoms, then sends a summary to a primary care doctor who can see them by video, often within days rather than months.</p><p>Nevertheless, the use of AI in this context remains controversial. While supporters highlight its ability to reduce wait times and ease doctor burnout, critics argue that AI systems cannot fully assess a patient's circumstances. An AI tool might miss important details about overlapping health conditions, and it cannot understand whether a patient can afford follow-up care or has family support.</p><p>Despite these limitations, early users have reported positive experiences. Tammy MacDonald, who was turned away by ten different practices, described the program as a logical short-term solution. As the shortage of primary care doctors continues to grow, AI-assisted care may become an increasingly common feature of the healthcare landscape, even if it remains a imperfect substitute for the traditional doctor-patient relationship.</p></div>
+  <div class="question" data-answer="b">
+<div class="q-num">第 一 题</div>
+<div class="options">
+<div class="option" data-value="a">A. A. About thirty percent.</div>
+<div class="option" data-value="b">B. B. Roughly seventeen percent.</div>
+<div class="option" data-value="c">C. C. Approximately ten percent.</div>
+<div class="option" data-value="d">D. D. Nearly fifty percent.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：B. B. Roughly seventeen percent.</div><div class="explanation">正确答案：B. B. Roughly seventeen percent.</div></div>
+</div>
+<div class="question" data-answer="b">
+<div class="q-num">第 二 题</div>
+<div class="options">
+<div class="option" data-value="a">A. A. The training is more difficult than for other specialties.</div>
+<div class="option" data-value="b">B. B. Primary care doctors earn considerably less than specialists.</div>
+<div class="option" data-value="c">C. C. There are fewer job openings in primary care.</div>
+<div class="option" data-value="d">D. D. Primary care doctors have less flexible working hours.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：B. B. Primary care doctors earn considerably less than specialists.</div><div class="explanation">正确答案：B. B. Primary care doctors earn considerably less than specialists.</div></div>
+</div>
+<div class="question" data-answer="c">
+<div class="q-num">第 三 题</div>
+<div class="options">
+<div class="option" data-value="a">A. A. It is easily replaced by AI technology.</div>
+<div class="option" data-value="b">B. B. It has become less important in modern healthcare.</div>
+<div class="option" data-value="c">C. C. It provides insights that AI cannot currently replicate.</div>
+<div class="option" data-value="d">D. D. It is the main cause of the current doctor shortage.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：C. C. It provides insights that AI cannot currently replicate.</div><div class="explanation">正确答案：C. C. It provides insights that AI cannot currently replicate.</div></div>
+</div>
+<div class="question" data-answer="c">
+<div class="q-num">第 四 题</div>
+<div class="options">
+<div class="option" data-value="a">A. A. scientifically proven</div>
+<div class="option" data-value="b">B. B. widely accepted</div>
+<div class="option" data-value="c">C. C. causing disagreement</div>
+<div class="option" data-value="d">D. D. completely new</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：C. C. causing disagreement</div><div class="explanation">正确答案：C. C. causing disagreement</div></div>
+</div>
+<div class="question" data-answer="b">
+<div class="q-num">第 五 题</div>
+<div class="options">
+<div class="option" data-value="a">A. A. To criticize hospitals for not hiring enough doctors.</div>
+<div class="option" data-value="b">B. B. To discuss the primary care shortage and one AI-based solution.</div>
+<div class="option" data-value="c">C. C. To argue that AI should replace all primary care doctors.</div>
+<div class="option" data-value="d">D. D. To compare healthcare systems in different states.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：B. B. To discuss the primary care shortage and one AI-based solution.</div><div class="explanation">正确答案：B. B. To discuss the primary care shortage and one AI-based solution.</div></div>
+</div>
+
+</div>
+
+<div class="section-badge">✏️ 翻译 · 中译英</div>
+<div class="passage">
+  <span class="tag tag-human">🌍 社会</span>
+  <div class="writing-prompt"><div class="zh-text">??????????????????????????????AI??????????????????????????????????AI??????????????????????????????????????????AI?????????????????????????????????????????????</div></div>
+  <div class="writing-area"><textarea id="translationInput" placeholder="在此输入你的翻译…"></textarea></div>
+  <div class="model-answer" id="translationModel">
+    <h3>📖 参考译文</h3>
+    <audio controls><source src="https://3563z.github.io/cet6-reading/daily/audio/20260518_3.mp3" type="audio/mpeg"></audio>
+    <p style="margin-top:8px">Artificial intelligence is transforming China's healthcare industry. By analyzing vast amounts of medical imaging data, AI systems can help doctors diagnose diseases more quickly and accurately. For instance, in the radiology departments of some hospitals, AI tools have been used to detect early-stage lung cancer, with an accuracy rate that even surpasses that of experienced radiologists. However, experts point out that AI can only serve as an?? tool and cannot completely replace the professional judgment of doctors. In the future, human-machine collaboration will become the main trend in medical development.</p>
+  </div>
+</div>
+
+<div class="section-badge">📝 写作</div>
+<div class="passage">
+  <span class="tag tag-human">✍️</span>
+  <div class="writing-prompt"><div class="zh-text">Directions: For this part, you are allowed 30 minutes to write an essay on the topic: &quot;The Impact of Artificial Intelligence on Daily Life&quot;. You should discuss both the benefits and potential concerns, using specific examples to support your argument. You should write at least 150 words but no more than 200 words.</div></div>
+  <div class="writing-area"><textarea id="writingInput" placeholder="在此输入你的作文…"></textarea></div>
+  <div class="model-answer" id="writingModel">
+    <h3>📖 参考范文</h3>
+    <audio controls><source src="https://3563z.github.io/cet6-reading/daily/audio/20260518_4.mp3" type="audio/mpeg"></audio>
+    <p style="margin-top:8px">Artificial intelligence has become an inseparable part of modern daily life, bringing both remarkable benefits and legitimate concerns. In my view, while AI offers tremendous convenience, we must approach its integration with thoughtful caution.
+
+On the positive side, AI has made everyday tasks significantly easier. For instance, smart recommendation systems help us discover movies, music, and products tailored to our preferences. Meanwhile, AI-powered navigation apps optimize our travel routes based on real-time traffic, saving countless hours. These applications demonstrate how AI can enhance productivity and personalization in ways that were unimaginable a decade ago.
+
+However, the rapid adoption of AI also raises serious issues. A major concern is data privacy. Many AI services rely on collecting vast amounts of personal information, and users often have little control over how their data is used or shared. Furthermore, automation threatens certain jobs, as AI systems replace human workers in areas such as customer service and data entry. If left unregulated, this trend could widen economic inequality.
+
+In conclusion, AI is a powerful tool that has already improved many aspects of daily life. Yet its potential risks demand careful regulation and ethical consideration. Only by striking a balance between innovation and protection can we ensure that AI serves humanity rather than the other way around.</p>
+  </div>
+</div>
+
+<div class="btn-group">
+  <button class="btn btn-primary" onclick="submitAll()">✅ 提交</button>
+  <button class="btn btn-secondary" onclick="resetAll()">🔄 重置</button>
+</div>
+
+<div class="result-bar" id="resultBar">
+  <div class="score" id="scoreDisplay"></div>
+  <div class="detail" id="resultMessage"></div>
+</div>
+
+<div class="footer">每日六级 · 小约 🤖<br>听力·阅读·翻译·作文 · © 2026</div>
+</div>
+
+<script>
+document.querySelectorAll('.option').forEach(function(o){
+  o.onclick=function(){
+    var p=this.closest('.options');
+    p.querySelectorAll('.option').forEach(function(x){x.classList.remove('selected')});
+    this.classList.add('selected');
+  };
+});
+
+function submitAll(){
+  var correct=0,qs=document.querySelectorAll('.question');
+  qs.forEach(function(q){
+    var a=q.getAttribute('data-answer'),sel=q.querySelector('.option.selected');
+    var opts=q.querySelectorAll('.option');
+    opts.forEach(function(o){
+      o.classList.remove('correct','wrong','reveal-correct');
+      if(o.getAttribute('data-value')===a) o.classList.add('reveal-correct');
+    });
+    if(sel){var ok=sel.getAttribute('data-value')===a;sel.classList.add(ok?'correct':'wrong');if(ok) correct++;}
+    q.querySelector('.answer-section').classList.add('show');
+  });
+  document.querySelectorAll('.transcript').forEach(function(t){t.classList.add('show')});
+  document.getElementById('translationModel').classList.add('show');
+  document.getElementById('writingModel').classList.add('show');
+  var total=qs.length,pct=Math.round(correct/total*100);
+  var e=document.getElementById('scoreDisplay');
+  e.textContent=correct+'/'+total+' ('+pct+'%)';
+  e.className='score '+(pct>=60?'pass':'fail');
+  document.getElementById('resultMessage').textContent='听力+阅读 '+correct+'/'+total+' · 翻译和作文在下方参考';
+  document.getElementById('resultBar').classList.add('show');
+}
+
+function resetAll(){
+  document.querySelectorAll('.option').forEach(function(o){o.classList.remove('selected','correct','wrong','reveal-correct')});
+  document.querySelectorAll('.answer-section').forEach(function(s){s.classList.remove('show')});
+  document.querySelectorAll('.transcript').forEach(function(t){t.classList.remove('show')});
+  document.getElementById('translationModel').classList.remove('show');
+  document.getElementById('writingModel').classList.remove('show');
+  document.getElementById('resultBar').classList.remove('show');
+  document.getElementById('translationInput').value='';
+  document.getElementById('writingInput').value='';
+}
+</script>
+</body>
+</html>
