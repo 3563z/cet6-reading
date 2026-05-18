@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>六级练习数据看板</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#1a1a2e;padding:16px}
+.container{max-width:800px;margin:0 auto}
+.header{text-align:center;padding:32px 0 16px}
+.header h1{font-size:24px;font-weight:700}
+.header .sub{font-size:14px;color:#888;margin-top:4px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:20px 0}
+.stat-card{background:#fff;border-radius:12px;padding:16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.stat-card .num{font-size:28px;font-weight:700;color:#1a73e8}
+.stat-card .label{font-size:13px;color:#888;margin-top:4px}
+.chart-section{background:#fff;border-radius:16px;padding:20px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.chart-section h2{font-size:16px;font-weight:600;margin-bottom:16px;color:#333}
+.chart-wrap{height:280px}
+.day-list{background:#fff;border-radius:16px;padding:20px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.day-list h2{font-size:16px;font-weight:600;margin-bottom:12px;color:#333}
+.day-item{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #eee;font-size:14px}
+.day-item:last-child{border-bottom:none}
+.day-item .date{color:#1a73e8;font-weight:600}
+.day-item .qcount{color:#666}
+.tag-badge{display:inline-block;font-size:12px;padding:2px 8px;border-radius:6px;margin:2px}
+.tag-tech{background:#e3f2fd;color:#1565c0}
+.tag-human{background:#fce4ec;color:#c62828}
+.footer{text-align:center;padding:32px 0 16px;font-size:12px;color:#aaa}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>📊 六级练习数据看板</h1>
+    <div class="sub" id="summary"></div>
+  </div>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="chart-section">
+    <h2>📅 每日题量</h2>
+    <div class="chart-wrap"><canvas id="dailyChart"></canvas></div>
+  </div>
+
+  <div class="chart-section">
+    <h2>🔤 选项分布（所有题目汇总）</h2>
+    <div class="chart-wrap"><canvas id="answerChart"></canvas></div>
+  </div>
+
+  <div class="chart-section">
+    <h2>🏷️ 话题标签统计</h2>
+    <div class="chart-wrap"><canvas id="tagChart"></canvas></div>
+  </div>
+
+  <div class="chart-section" id="writingSection" style="display:none">
+    <h2>✍️ 翻译与写作</h2>
+    <div id="writingContent"></div>
+  </div>
+
+  <div class="day-list" id="dayList">
+    <h2>📋 每日明细</h2>
+  </div>
+
+  <div class="footer">
+    每日六级 · 数据看板 · 数据从 daily/*.html 自动生成
+  </div>
+</div>
+
+<script>
+fetch('./data.json')
+  .then(r => r.json())
+  .then(data => {
+    renderStats(data);
+    renderDayList(data);
+    renderDailyChart(data);
+    renderAnswerChart(data);
+    renderTagChart(data);
+    renderWritingSection(data);
+  });
+
+function renderStats(data) {
+  const total = data.reduce((s, d) => s + d.totalQuestions, 0);
+  const allAnswers = data.flatMap(d => d.questions.map(q => q.answer));
+  const counts = {};
+  allAnswers.forEach(a => counts[a] = (counts[a] || 0) + 1);
+  const abc = ['A', 'B', 'C', 'D'].map(l => counts[l] || 0);
+  const mostCommon = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
+
+  document.getElementById('summary').textContent =
+    `${data.length} 天 · ${total} 道题 · 覆盖 ${new Set(data.flatMap(d => d.tags.map(t => t.label))).size} 个话题`;
+
+  document.getElementById('stats').innerHTML = `
+    <div class="stat-card"><div class="num">${data.length}</div><div class="label">📆 天数</div></div>
+    <div class="stat-card"><div class="num">${total}</div><div class="label">📝 总题量</div></div>
+    <div class="stat-card"><div class="num">${Math.round(total / data.length)}</div><div class="label">📊 日均题量</div></div>
+    <div class="stat-card"><div class="num">${mostCommon[0]}</div><div class="label">🎯 最常见选项</div></div>
+  `;
+}
+
+function renderDayList(data) {
+  const el = document.getElementById('dayList');
+  data.forEach(d => {
+    const tags = d.tags.map(t =>
+      `<span class="tag-badge ${t.class}">${t.label}</span>`
+    ).join('');
+    const parts = [...new Set(d.sections.map(s => s.match(/[🎧📖]/)?.[0] || ''))].join('+');
+    el.innerHTML += `
+      <div class="day-item">
+        <span class="date">${formatDate(d.date)}</span>
+        <span>${tags}</span>
+        <span class="qcount">${d.totalQuestions} 题${parts ? ' · ' + parts : ''}</span>
+      </div>
+    `;
+  });
+}
+
+function renderDailyChart(data) {
+  new Chart(document.getElementById('dailyChart'), {
+    type: 'bar',
+    data: {
+      labels: data.map(d => formatDate(d.date).slice(5)),
+      datasets: [
+        {
+          label: '听力',
+          data: data.map(d => d.listeningCount),
+          backgroundColor: '#e3f2fd',
+          borderColor: '#1a73e8',
+          borderWidth: 1
+        },
+        {
+          label: '阅读',
+          data: data.map(d => d.readingCount),
+          backgroundColor: '#fce4ec',
+          borderColor: '#c62828',
+          borderWidth: 1
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: { beginAtZero: true, ticks: { stepSize: 5 } }
+      },
+      plugins: {
+        legend: { position: 'top' }
+      }
+    }
+  });
+}
+
+function renderAnswerChart(data) {
+  const all = data.flatMap(d => d.questions.map(q => q.answer));
+  const counts = { A: 0, B: 0, C: 0, D: 0 };
+  all.forEach(a => { if (counts[a] !== undefined) counts[a]++ });
+
+  new Chart(document.getElementById('answerChart'), {
+    type: 'doughnut',
+    data: {
+      labels: Object.keys(counts).map(l => `${l} (${counts[l]} 题)`),
+      datasets: [{
+        data: Object.values(counts),
+        backgroundColor: ['#e3f2fd', '#e8f5e9', '#fff3e0', '#fce4ec'],
+        borderColor: ['#1a73e8', '#34a853', '#f9ab00', '#ea4335'],
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom' }
+      }
+    }
+  });
+}
+
+function renderTagChart(data) {
+  const tagCounts = {};
+  data.forEach(d => {
+    d.tags.forEach(t => {
+      const label = t.label.replace(/[🔬🌍🔤✍️📝]/g, '').trim();
+      tagCounts[label] = (tagCounts[label] || 0) + 1;
+    });
+  });
+  const sorted = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]);
+
+  new Chart(document.getElementById('tagChart'), {
+    type: 'bar',
+    data: {
+      labels: sorted.map(s => s[0]),
+      datasets: [{
+        label: '出现次数',
+        data: sorted.map(s => s[1]),
+        backgroundColor: '#e8f0fe',
+        borderColor: '#1a73e8',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        x: { beginAtZero: true, ticks: { stepSize: 1 } }
+      },
+      plugins: {
+        legend: { display: false }
+      }
+    }
+  });
+}
+
+function renderWritingSection(data) {
+  const hasWriting = data.filter(d => d.writing || d.translation);
+  if (!hasWriting.length) return;
+  document.getElementById('writingSection').style.display = 'block';
+  const el = document.getElementById('writingContent');
+  hasWriting.forEach(d => {
+    let html = `<div style="margin-bottom:16px"><strong style="color:#1a73e8">${formatDate(d.date)}</strong>`;
+    if (d.translation) {
+      html += `<details style="margin-top:8px"><summary>📝 翻译</summary>
+        <div style="padding:10px;background:#f0f4ff;border-radius:8px;margin:8px 0;font-size:14px">
+          <div style="color:#666;font-size:12px">中文原文</div>
+          <div>${escHtml(d.translation.chinese)}</div>
+        </div>
+        <div style="padding:10px;background:#e8f5e9;border-radius:8px;margin:8px 0;font-size:14px">
+          <div style="color:#666;font-size:12px">参考译文</div>
+          <div>${escHtml(d.translation.english)}</div>
+        </div></details>`;
+    }
+    if (d.writing) {
+      html += `<details style="margin-top:8px"><summary>✏️ 写作</summary>
+        <div style="padding:10px;background:#f0f4ff;border-radius:8px;margin:8px 0;font-size:14px">
+          <div style="color:#666;font-size:12px">题目</div>
+          <div>${escHtml(d.writing.prompt)}</div>
+        </div>
+        <div style="padding:10px;background:#e8f5e9;border-radius:8px;margin:8px 0;font-size:14px">
+          <div style="color:#666;font-size:12px">参考范文</div>
+          <div>${escHtml(d.writing.essay)}</div>
+        </div></details>`;
+    }
+    html += '</div>';
+    el.innerHTML += html;
+  });
+}
+
+function escHtml(s) {
+  if (!s) return '';
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function formatDate(d) {
+  return `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6, 8)}`;
+}
+</script>
+</body>
+</html>
