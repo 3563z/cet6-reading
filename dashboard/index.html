@@ -28,6 +28,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
 .tag-badge{display:inline-block;font-size:12px;padding:2px 8px;border-radius:6px;margin:2px}
 .tag-tech{background:#e3f2fd;color:#1565c0}
 .tag-human{background:#fce4ec;color:#c62828}
+.btn{padding:10px 16px;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s}
+.btn:active{opacity:.8}
 .footer{text-align:center;padding:32px 0 16px;font-size:12px;color:#aaa}
 </style>
 </head>
@@ -62,6 +64,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
 
   <div class="chart-section" id="myRecordsSection" style="display:none">
     <h2>🙋 我的答题记录</h2>
+    <div style="display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap">
+      <button class="btn" onclick="syncToGitHub()" style="background:#1a73e8;color:#fff">⬆️ 同步到仓库</button>
+      <button class="btn" onclick="setGitHubToken()" style="background:#e8eaed;color:#444">🔑 设置 Token</button>
+      <span id="tokenStatus" style="font-size:12px;color:#888;align-self:center"></span>
+    </div>
     <div class="stats" id="myStats"></div>
     <div class="chart-wrap" style="height:220px"><canvas id="myScoreChart"></canvas></div>
     <div id="myRecordsList" style="margin-top:12px"></div>
@@ -77,51 +84,91 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
 </div>
 
 <script>
+// ===== GitHub API 配置 =====
+var GH_TOKEN_KEY = 'cet6_gh_token';
+var GH_REPO = '3563z/cet6-reading';
+var GH_BRANCH = 'main';
+var SCORES_PATH = 'data/scores.json';
+
+function getGHtoken() { return localStorage.getItem(GH_TOKEN_KEY); }
+
+function setGitHubToken() {
+  var cur = getGHtoken() || '';
+  var hint = cur ? cur.substring(0,6) + '...' + cur.slice(-4) : '未设置';
+  var t = prompt('输入 GitHub Personal Access Token\n当前: ' + hint, cur);
+  if (t) { localStorage.setItem(GH_TOKEN_KEY, t); document.getElementById('tokenStatus').textContent = '✅ Token 已设置'; }
+}
+
+function ghUpload(path, content, msg) {
+  var token = getGHtoken();
+  if (!token) { alert('请先设置 Token'); return Promise.reject(); }
+  var api = 'https://api.github.com/repos/' + GH_REPO + '/contents/' + path;
+  var b64 = btoa(unescape(encodeURIComponent(content)));
+  return fetch(api, { headers: { 'Authorization': 'token ' + token } })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var body = { message: msg, content: b64, branch: GH_BRANCH };
+      if (data.sha) body.sha = data.sha;
+      return fetch(api, { method: 'PUT', headers: { 'Authorization': 'token ' + token, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    });
+}
+
+function loadRemoteScores() {
+  return fetch('https://raw.githubusercontent.com/' + GH_REPO + '/' + GH_BRANCH + '/' + SCORES_PATH)
+    .then(function(r) { return r.ok ? r.json() : []; }).catch(function() { return []; });
+}
+
+function syncToGitHub() {
+  var records = [];
+  for (var i = 0; i < localStorage.length; i++) {
+    var key = localStorage.key(i);
+    if (key && key.startsWith('cet6_records_')) {
+      try { records.push(JSON.parse(localStorage.getItem(key))); } catch(e) {}
+    }
+  }
+  if (!records.length) { alert('没有本地记录'); return; }
+  var el = document.getElementById('tokenStatus');
+  el.textContent = '⏳ 同步中...';
+  loadRemoteScores().then(function(remote) {
+    var m = {};
+    remote.forEach(function(r) { m[r.date] = r; });
+    records.forEach(function(r) { m[r.date] = r; });
+    var all = Object.values(m).sort(function(a,b) { return a.date.localeCompare(b.date); });
+    return ghUpload(SCORES_PATH, JSON.stringify(all, null, 2), 'chore: sync quiz scores');
+  }).then(function() {
+    el.textContent = '✅ 同步成功！' + records.length + ' 条已保存';
+  }).catch(function() {
+    el.textContent = '❌ 同步失败';
+  });
+}
+
+// ===== 主渲染 =====
 fetch('./data.json')
-  .then(r => r.json())
-  .then(data => {
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
     renderStats(data);
     renderDayList(data);
     renderDailyChart(data);
     renderAnswerChart(data);
     renderTagChart(data);
-    renderWritingSection(data);
-    renderMyRecords(data);
+    renderWriting(data);
+    renderMyRecords();
   });
 
 function renderStats(data) {
-  const total = data.reduce((s, d) => s + d.totalQuestions, 0);
-  const allAnswers = data.flatMap(d => d.questions.map(q => q.answer));
-  const counts = {};
-  allAnswers.forEach(a => counts[a] = (counts[a] || 0) + 1);
-  const abc = ['A', 'B', 'C', 'D'].map(l => counts[l] || 0);
-  const mostCommon = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
-
-  document.getElementById('summary').textContent =
-    `${data.length} 天 · ${total} 道题 · 覆盖 ${new Set(data.flatMap(d => d.tags.map(t => t.label))).size} 个话题`;
-
-  document.getElementById('stats').innerHTML = `
-    <div class="stat-card"><div class="num">${data.length}</div><div class="label">📆 天数</div></div>
-    <div class="stat-card"><div class="num">${total}</div><div class="label">📝 总题量</div></div>
-    <div class="stat-card"><div class="num">${Math.round(total / data.length)}</div><div class="label">📊 日均题量</div></div>
-    <div class="stat-card"><div class="num">${mostCommon[0]}</div><div class="label">🎯 最常见选项</div></div>
-  `;
+  var total = data.reduce(function(s, d) { return s + d.totalQuestions; }, 0);
+  document.getElementById('summary').textContent = data.length + ' 天 · ' + total + ' 道题';
+  document.getElementById('stats').innerHTML =
+    '<div class="stat-card"><div class="num">' + data.length + '</div><div class="label">📆 天数</div></div>' +
+    '<div class="stat-card"><div class="num">' + total + '</div><div class="label">📝 总题量</div></div>' +
+    '<div class="stat-card"><div class="num">' + Math.round(total / data.length) + '</div><div class="label">📊 日均题量</div></div>';
 }
 
 function renderDayList(data) {
-  const el = document.getElementById('dayList');
-  data.forEach(d => {
-    const tags = d.tags.map(t =>
-      `<span class="tag-badge ${t.class}">${t.label}</span>`
-    ).join('');
-    const parts = [...new Set(d.sections.map(s => s.match(/[🎧📖]/)?.[0] || ''))].join('+');
-    el.innerHTML += `
-      <div class="day-item">
-        <span class="date">${formatDate(d.date)}</span>
-        <span>${tags}</span>
-        <span class="qcount">${d.totalQuestions} 题${parts ? ' · ' + parts : ''}</span>
-      </div>
-    `;
+  var el = document.getElementById('dayList');
+  data.forEach(function(d) {
+    var tags = d.tags.map(function(t) { return '<span class="tag-badge ' + t.class + '">' + t.label + '</span>'; }).join('');
+    el.innerHTML += '<div class="day-item"><span class="date">' + fmt(d.date) + '</span><span>' + tags + '</span><span class="qcount">' + d.totalQuestions + ' 题</span></div>';
   });
 }
 
@@ -129,218 +176,128 @@ function renderDailyChart(data) {
   new Chart(document.getElementById('dailyChart'), {
     type: 'bar',
     data: {
-      labels: data.map(d => formatDate(d.date).slice(5)),
+      labels: data.map(function(d) { return fmt(d.date).slice(5); }),
       datasets: [
-        {
-          label: '听力',
-          data: data.map(d => d.listeningCount),
-          backgroundColor: '#e3f2fd',
-          borderColor: '#1a73e8',
-          borderWidth: 1
-        },
-        {
-          label: '阅读',
-          data: data.map(d => d.readingCount),
-          backgroundColor: '#fce4ec',
-          borderColor: '#c62828',
-          borderWidth: 1
-        }
+        { label: '听力', data: data.map(function(d) { return d.listeningCount; }), backgroundColor: '#e3f2fd', borderColor: '#1a73e8', borderWidth: 1 },
+        { label: '阅读', data: data.map(function(d) { return d.readingCount; }), backgroundColor: '#fce4ec', borderColor: '#c62828', borderWidth: 1 }
       ]
     },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        y: { beginAtZero: true, ticks: { stepSize: 5 } }
-      },
-      plugins: {
-        legend: { position: 'top' }
-      }
-    }
+    options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, ticks: { stepSize: 5 } } } }
   });
 }
 
 function renderAnswerChart(data) {
-  const all = data.flatMap(d => d.questions.map(q => q.answer));
-  const counts = { A: 0, B: 0, C: 0, D: 0 };
-  all.forEach(a => { if (counts[a] !== undefined) counts[a]++ });
-
+  var counts = { A: 0, B: 0, C: 0, D: 0 };
+  data.forEach(function(d) { d.questions.forEach(function(q) { if (counts[q.answer]) counts[q.answer]++; else counts[q.answer] = 1; }); });
   new Chart(document.getElementById('answerChart'), {
     type: 'doughnut',
     data: {
-      labels: Object.keys(counts).map(l => `${l} (${counts[l]} 题)`),
-      datasets: [{
-        data: Object.values(counts),
-        backgroundColor: ['#e3f2fd', '#e8f5e9', '#fff3e0', '#fce4ec'],
-        borderColor: ['#1a73e8', '#34a853', '#f9ab00', '#ea4335'],
-        borderWidth: 2
-      }]
+      labels: ['A (' + counts.A + ')', 'B (' + counts.B + ')', 'C (' + counts.C + ')', 'D (' + counts.D + ')'],
+      datasets: [{ data: [counts.A, counts.B, counts.C, counts.D], backgroundColor: ['#e3f2fd','#e8f5e9','#fff3e0','#fce4ec'], borderColor: ['#1a73e8','#34a853','#f9ab00','#ea4335'], borderWidth: 2 }]
     },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { position: 'bottom' }
-      }
-    }
+    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
   });
 }
 
 function renderTagChart(data) {
-  const tagCounts = {};
-  data.forEach(d => {
-    d.tags.forEach(t => {
-      const label = t.label.replace(/[🔬🌍🔤✍️📝]/g, '').trim();
-      tagCounts[label] = (tagCounts[label] || 0) + 1;
-    });
-  });
-  const sorted = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]);
-
+  var t = {};
+  data.forEach(function(d) { d.tags.forEach(function(tag) { var label = tag.label.replace(/[🔬🌍🔤✍️📝]/g,'').trim(); t[label] = (t[label] || 0) + 1; }); });
+  var sorted = Object.entries(t).sort(function(a,b) { return b[1] - a[1]; });
   new Chart(document.getElementById('tagChart'), {
     type: 'bar',
-    data: {
-      labels: sorted.map(s => s[0]),
-      datasets: [{
-        label: '出现次数',
-        data: sorted.map(s => s[1]),
-        backgroundColor: '#e8f0fe',
-        borderColor: '#1a73e8',
-        borderWidth: 1
-      }]
-    },
-    options: {
-      indexAxis: 'y',
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        x: { beginAtZero: true, ticks: { stepSize: 1 } }
-      },
-      plugins: {
-        legend: { display: false }
-      }
-    }
+    data: { labels: sorted.map(function(s) { return s[0]; }), datasets: [{ label: '次数', data: sorted.map(function(s) { return s[1]; }), backgroundColor: '#e8f0fe', borderColor: '#1a73e8', borderWidth: 1 }] },
+    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, scales: { x: { beginAtZero: true, ticks: { stepSize: 1 } } }, plugins: { legend: { display: false } } }
   });
 }
 
-function renderWritingSection(data) {
-  const hasWriting = data.filter(d => d.writing || d.translation);
-  if (!hasWriting.length) return;
+function renderWriting(data) {
+  var has = data.filter(function(d) { return d.writing || d.translation; });
+  if (!has.length) return;
   document.getElementById('writingSection').style.display = 'block';
-  const el = document.getElementById('writingContent');
-  hasWriting.forEach(d => {
-    let html = `<div style="margin-bottom:16px"><strong style="color:#1a73e8">${formatDate(d.date)}</strong>`;
+  var el = document.getElementById('writingContent');
+  has.forEach(function(d) {
+    var h = '<div style="margin-bottom:16px"><strong style="color:#1a73e8">' + fmt(d.date) + '</strong>';
     if (d.translation) {
-      html += `<details style="margin-top:8px"><summary>📝 翻译</summary>
-        <div style="padding:10px;background:#f0f4ff;border-radius:8px;margin:8px 0;font-size:14px">
-          <div style="color:#666;font-size:12px">中文原文</div>
-          <div>${escHtml(d.translation.chinese)}</div>
-        </div>
-        <div style="padding:10px;background:#e8f5e9;border-radius:8px;margin:8px 0;font-size:14px">
-          <div style="color:#666;font-size:12px">参考译文</div>
-          <div>${escHtml(d.translation.english)}</div>
-        </div></details>`;
+      h += '<details style="margin-top:8px"><summary>📝 翻译</summary>' +
+        '<div style="padding:10px;background:#f0f4ff;border-radius:8px;margin:8px 0;font-size:14px"><div style="color:#666;font-size:12px">中文原文</div><div>' + esc(d.translation.chinese) + '</div></div>' +
+        '<div style="padding:10px;background:#e8f5e9;border-radius:8px;margin:8px 0;font-size:14px"><div style="color:#666;font-size:12px">参考译文</div><div>' + esc(d.translation.english) + '</div></div></details>';
     }
     if (d.writing) {
-      html += `<details style="margin-top:8px"><summary>✏️ 写作</summary>
-        <div style="padding:10px;background:#f0f4ff;border-radius:8px;margin:8px 0;font-size:14px">
-          <div style="color:#666;font-size:12px">题目</div>
-          <div>${escHtml(d.writing.prompt)}</div>
-        </div>
-        <div style="padding:10px;background:#e8f5e9;border-radius:8px;margin:8px 0;font-size:14px">
-          <div style="color:#666;font-size:12px">参考范文</div>
-          <div>${escHtml(d.writing.essay)}</div>
-        </div></details>`;
+      h += '<details style="margin-top:8px"><summary>✏️ 写作</summary>' +
+        '<div style="padding:10px;background:#f0f4ff;border-radius:8px;margin:8px 0;font-size:14px"><div style="color:#666;font-size:12px">题目</div><div>' + esc(d.writing.prompt) + '</div></div>' +
+        '<div style="padding:10px;background:#e8f5e9;border-radius:8px;margin:8px 0;font-size:14px"><div style="color:#666;font-size:12px">参考范文</div><div>' + esc(d.writing.essay) + '</div></div></details>';
     }
-    html += '</div>';
-    el.innerHTML += html;
+    h += '</div>';
+    el.innerHTML += h;
   });
 }
 
-function renderMyRecords(data) {
-  // Read all cet6_records_* from localStorage
-  var records = [];
+// ===== 我的答题记录 =====
+function renderMyRecords() {
+  // Read local
+  var local = [];
   for (var i = 0; i < localStorage.length; i++) {
     var key = localStorage.key(i);
     if (key && key.startsWith('cet6_records_')) {
-      try {
-        var val = JSON.parse(localStorage.getItem(key));
-        records.push(val);
-      } catch(e) {}
+      try { local.push(JSON.parse(localStorage.getItem(key))); } catch(e) {}
     }
   }
-  if (!records.length) return;
 
+  if (getGHtoken()) document.getElementById('tokenStatus').textContent = '🔑 Token 已设置';
+
+  // Load remote, merge, render
+  loadRemoteScores().then(function(remote) {
+    var m = {};
+    remote.forEach(function(r) { m[r.date] = r; });
+    local.forEach(function(r) { m[r.date] = r; });
+    showScores(Object.values(m).sort(function(a,b) { return a.date.localeCompare(b.date); }));
+  }).catch(function() {
+    showScores(local);
+  });
+}
+
+function showScores(records) {
+  if (!records.length) return;
   document.getElementById('myRecordsSection').style.display = 'block';
 
-  // Parse scores
-  records.sort(function(a, b) { return a.date.localeCompare(b.date); });
-  var scoreData = records.map(function(r) {
+  // Parse
+  var s = records.map(function(r) {
     var m = r.score.match(/^(\d+)\/(\d+)/);
-    return { date: r.date, correct: m ? parseInt(m[1]) : 0, total: m ? parseInt(m[2]) : 0, pct: m ? Math.round(parseInt(m[1])/parseInt(m[2])*100) : 0 };
+    return { date: r.date, correct: m ? parseInt(m[1]) : 0, total: m ? parseInt(m[2]) : 0, pct: m ? Math.round(parseInt(m[1])/parseInt(m[2])*100) : 0, raw: r };
   });
-  var avgPct = Math.round(scoreData.reduce(function(s, d) { return s + d.pct; }, 0) / scoreData.length);
+  var avg = Math.round(s.reduce(function(a, d) { return a + d.pct; }, 0) / s.length);
 
-  // Stats cards
-  document.getElementById('myStats').innerHTML = `
-    <div class="stat-card"><div class="num">${records.length}</div><div class="label">🎯 答题次数</div></div>
-    <div class="stat-card"><div class="num">${avgPct}%</div><div class="label">📈 平均正确率</div></div>
-    <div class="stat-card"><div class="num">${scoreData.reduce(function(s, d) { return s + d.correct; }, 0)}</div><div class="label">✅ 累计正确</div></div>
-    <div class="stat-card"><div class="num">${scoreData.reduce(function(s, d) { return s + d.total; }, 0)}</div><div class="label">📝 累计答题</div></div>
-  `;
+  document.getElementById('myStats').innerHTML =
+    '<div class="stat-card"><div class="num">' + records.length + '</div><div class="label">🎯 答题次数</div></div>' +
+    '<div class="stat-card"><div class="num">' + avg + '%</div><div class="label">📈 平均正确率</div></div>' +
+    '<div class="stat-card"><div class="num">' + s.reduce(function(a, d) { return a + d.correct; }, 0) + '</div><div class="label">✅ 累计正确</div></div>' +
+    '<div class="stat-card"><div class="num">' + s.reduce(function(a, d) { return a + d.total; }, 0) + '</div><div class="label">📝 累计答题</div></div>';
 
-  // Score trend chart
+  // Chart (if 2+ records)
   var chartEl = document.getElementById('myScoreChart');
-  if (chartEl && records.length >= 2) {
+  if (chartEl && s.length >= 2) {
     new Chart(chartEl, {
       type: 'line',
       data: {
-        labels: scoreData.map(function(d) { return formatDate(d.date).slice(5); }),
-        datasets: [{
-          label: '正确率',
-          data: scoreData.map(function(d) { return d.pct; }),
-          borderColor: '#34a853',
-          backgroundColor: 'rgba(52,168,83,0.1)',
-          fill: true,
-          tension: 0.3,
-          pointRadius: 5,
-          pointBackgroundColor: '#34a853'
-        }]
+        labels: s.map(function(d) { return fmt(d.date).slice(5); }),
+        datasets: [{ label: '正确率', data: s.map(function(d) { return d.pct; }), borderColor: '#34a853', backgroundColor: 'rgba(52,168,83,0.1)', fill: true, tension: 0.3, pointRadius: 5, pointBackgroundColor: '#34a853' }]
       },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: { y: { min: 0, max: 100, ticks: { callback: function(v) { return v + '%'; } } } },
-        plugins: { legend: { display: false } }
-      }
+      options: { responsive: true, maintainAspectRatio: false, scales: { y: { min: 0, max: 100, ticks: { callback: function(v) { return v + '%'; } } } }, plugins: { legend: { display: false } } }
     });
   }
 
-  // Records list
+  // List
   var listEl = document.getElementById('myRecordsList');
-  listEl.innerHTML = '<div style="font-size:13px;color:#888;margin-bottom:8px">按日期倒序 · 数据存在当前浏览器 localStorage</div>';
-  records.reverse().forEach(function(r) {
-    var pct = 0;
-    var m = r.score.match(/^(\d+)\/(\d+)/);
-    if (m) pct = Math.round(parseInt(m[1])/parseInt(m[2])*100);
-    var color = pct >= 60 ? '#34a853' : '#ea4335';
-    listEl.innerHTML += `
-      <div class="day-item">
-        <span class="date">${formatDate(r.date)}</span>
-        <span style="color:${color};font-weight:600">${r.score}</span>
-        <span style="color:#888;font-size:12px">${new Date(r.timestamp).toLocaleString('zh-CN', {month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'})}</span>
-      </div>
-    `;
+  listEl.innerHTML = '<div style="font-size:13px;color:#888;margin-bottom:8px">按日期倒序 · 本地 + 远程数据</div>';
+  records.slice().reverse().forEach(function(r) {
+    var match = r.score.match(/^(\d+)\/(\d+)/);
+    var pct = match ? Math.round(parseInt(match[1])/parseInt(match[2])*100) : 0;
+    listEl.innerHTML += '<div class="day-item"><span class="date">' + fmt(r.date) + '</span><span style="color:' + (pct>=60?'#34a853':'#ea4335') + ';font-weight:600">' + r.score + '</span></div>';
   });
 }
 
-function escHtml(s) {
-  if (!s) return '';
-  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-}
-
-function formatDate(d) {
-  return `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6, 8)}`;
-}
+function esc(s) { if (!s) return ''; return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function fmt(d) { return d.slice(0,4) + '-' + d.slice(4,6) + '-' + d.slice(6,8); }
 </script>
 </body>
 </html>
