@@ -181,5 +181,29 @@ function resetAll() {
   document.getElementById('listeningAudio').currentTime = 0;
 }
 </script>
+
+<script>
+(function(){
+  try {
+    var origSubmit = window.submitAll;
+    if (origSubmit) {
+      window.submitAll = function() {
+        origSubmit();
+        try {
+          var e = document.getElementById('scoreDisplay');
+          if (e && e.textContent) {
+            var key = 'cet6_records_' + document.title.replace(/[^0-9]/g,'').slice(0,8);
+            localStorage.setItem(key, JSON.stringify({
+              score: e.textContent,
+              date: key.replace('cet6_records_',''),
+              timestamp: Date.now()
+            }));
+          }
+        } catch(ex) {}
+      };
+    }
+  } catch(e) {}
+})();
+</script>
 </body>
 </html>
