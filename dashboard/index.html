@@ -60,6 +60,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
     <div id="writingContent"></div>
   </div>
 
+  <div class="chart-section" id="myRecordsSection" style="display:none">
+    <h2>🙋 我的答题记录</h2>
+    <div class="stats" id="myStats"></div>
+    <div class="chart-wrap" style="height:220px"><canvas id="myScoreChart"></canvas></div>
+    <div id="myRecordsList" style="margin-top:12px"></div>
+  </div>
+
   <div class="day-list" id="dayList">
     <h2>📋 每日明细</h2>
   </div>
@@ -79,6 +86,7 @@ fetch('./data.json')
     renderAnswerChart(data);
     renderTagChart(data);
     renderWritingSection(data);
+    renderMyRecords(data);
   });
 
 function renderStats(data) {
@@ -245,6 +253,83 @@ function renderWritingSection(data) {
     }
     html += '</div>';
     el.innerHTML += html;
+  });
+}
+
+function renderMyRecords(data) {
+  // Read all cet6_records_* from localStorage
+  var records = [];
+  for (var i = 0; i < localStorage.length; i++) {
+    var key = localStorage.key(i);
+    if (key && key.startsWith('cet6_records_')) {
+      try {
+        var val = JSON.parse(localStorage.getItem(key));
+        records.push(val);
+      } catch(e) {}
+    }
+  }
+  if (!records.length) return;
+
+  document.getElementById('myRecordsSection').style.display = 'block';
+
+  // Parse scores
+  records.sort(function(a, b) { return a.date.localeCompare(b.date); });
+  var scoreData = records.map(function(r) {
+    var m = r.score.match(/^(\d+)\/(\d+)/);
+    return { date: r.date, correct: m ? parseInt(m[1]) : 0, total: m ? parseInt(m[2]) : 0, pct: m ? Math.round(parseInt(m[1])/parseInt(m[2])*100) : 0 };
+  });
+  var avgPct = Math.round(scoreData.reduce(function(s, d) { return s + d.pct; }, 0) / scoreData.length);
+
+  // Stats cards
+  document.getElementById('myStats').innerHTML = `
+    <div class="stat-card"><div class="num">${records.length}</div><div class="label">🎯 答题次数</div></div>
+    <div class="stat-card"><div class="num">${avgPct}%</div><div class="label">📈 平均正确率</div></div>
+    <div class="stat-card"><div class="num">${scoreData.reduce(function(s, d) { return s + d.correct; }, 0)}</div><div class="label">✅ 累计正确</div></div>
+    <div class="stat-card"><div class="num">${scoreData.reduce(function(s, d) { return s + d.total; }, 0)}</div><div class="label">📝 累计答题</div></div>
+  `;
+
+  // Score trend chart
+  var chartEl = document.getElementById('myScoreChart');
+  if (chartEl && records.length >= 2) {
+    new Chart(chartEl, {
+      type: 'line',
+      data: {
+        labels: scoreData.map(function(d) { return formatDate(d.date).slice(5); }),
+        datasets: [{
+          label: '正确率',
+          data: scoreData.map(function(d) { return d.pct; }),
+          borderColor: '#34a853',
+          backgroundColor: 'rgba(52,168,83,0.1)',
+          fill: true,
+          tension: 0.3,
+          pointRadius: 5,
+          pointBackgroundColor: '#34a853'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: { y: { min: 0, max: 100, ticks: { callback: function(v) { return v + '%'; } } } },
+        plugins: { legend: { display: false } }
+      }
+    });
+  }
+
+  // Records list
+  var listEl = document.getElementById('myRecordsList');
+  listEl.innerHTML = '<div style="font-size:13px;color:#888;margin-bottom:8px">按日期倒序 · 数据存在当前浏览器 localStorage</div>';
+  records.reverse().forEach(function(r) {
+    var pct = 0;
+    var m = r.score.match(/^(\d+)\/(\d+)/);
+    if (m) pct = Math.round(parseInt(m[1])/parseInt(m[2])*100);
+    var color = pct >= 60 ? '#34a853' : '#ea4335';
+    listEl.innerHTML += `
+      <div class="day-item">
+        <span class="date">${formatDate(r.date)}</span>
+        <span style="color:${color};font-weight:600">${r.score}</span>
+        <span style="color:#888;font-size:12px">${new Date(r.timestamp).toLocaleString('zh-CN', {month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'})}</span>
+      </div>
+    `;
   });
 }
 
