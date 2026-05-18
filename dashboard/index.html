@@ -65,9 +65,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
   <div class="chart-section" id="myRecordsSection" style="display:none">
     <h2>🙋 我的答题记录</h2>
     <div style="display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap">
-      <button class="btn" onclick="syncToGitHub()" style="background:#1a73e8;color:#fff">⬆️ 同步到仓库</button>
-      <button class="btn" onclick="setGitHubToken()" style="background:#e8eaed;color:#444">🔑 设置 Token</button>
-      <span id="tokenStatus" style="font-size:12px;color:#888;align-self:center"></span>
+      <span style="font-size:12px;color:#888;align-self:center">数据存在当前浏览器 localStorage</span>
     </div>
     <div class="stats" id="myStats"></div>
     <div class="chart-wrap" style="height:220px"><canvas id="myScoreChart"></canvas></div>
@@ -84,64 +82,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Micr
 </div>
 
 <script>
-// ===== GitHub API 配置 =====
-var GH_TOKEN_KEY = 'cet6_gh_token';
-var GH_REPO = '3563z/cet6-reading';
-var GH_BRANCH = 'main';
-var SCORES_PATH = 'data/scores.json';
-
-function getGHtoken() { return localStorage.getItem(GH_TOKEN_KEY); }
-
-function setGitHubToken() {
-  var cur = getGHtoken() || '';
-  var hint = cur ? cur.substring(0,6) + '...' + cur.slice(-4) : '未设置';
-  var t = prompt('输入 GitHub Personal Access Token\n当前: ' + hint, cur);
-  if (t) { localStorage.setItem(GH_TOKEN_KEY, t); document.getElementById('tokenStatus').textContent = '✅ Token 已设置'; }
-}
-
-function ghUpload(path, content, msg) {
-  var token = getGHtoken();
-  if (!token) { alert('请先设置 Token'); return Promise.reject(); }
-  var api = 'https://api.github.com/repos/' + GH_REPO + '/contents/' + path;
-  var b64 = btoa(unescape(encodeURIComponent(content)));
-  return fetch(api, { headers: { 'Authorization': 'token ' + token } })
-    .then(function(r) { return r.json(); })
-    .then(function(data) {
-      var body = { message: msg, content: b64, branch: GH_BRANCH };
-      if (data.sha) body.sha = data.sha;
-      return fetch(api, { method: 'PUT', headers: { 'Authorization': 'token ' + token, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
-    });
-}
-
-function loadRemoteScores() {
-  return fetch('https://raw.githubusercontent.com/' + GH_REPO + '/' + GH_BRANCH + '/' + SCORES_PATH)
-    .then(function(r) { return r.ok ? r.json() : []; }).catch(function() { return []; });
-}
-
-function syncToGitHub() {
-  var records = [];
-  for (var i = 0; i < localStorage.length; i++) {
-    var key = localStorage.key(i);
-    if (key && key.startsWith('cet6_records_')) {
-      try { records.push(JSON.parse(localStorage.getItem(key))); } catch(e) {}
-    }
-  }
-  if (!records.length) { alert('没有本地记录'); return; }
-  var el = document.getElementById('tokenStatus');
-  el.textContent = '⏳ 同步中...';
-  loadRemoteScores().then(function(remote) {
-    var m = {};
-    remote.forEach(function(r) { m[r.date] = r; });
-    records.forEach(function(r) { m[r.date] = r; });
-    var all = Object.values(m).sort(function(a,b) { return a.date.localeCompare(b.date); });
-    return ghUpload(SCORES_PATH, JSON.stringify(all, null, 2), 'chore: sync quiz scores');
-  }).then(function() {
-    el.textContent = '✅ 同步成功！' + records.length + ' 条已保存';
-  }).catch(function() {
-    el.textContent = '❌ 同步失败';
-  });
-}
-
 // ===== 主渲染 =====
 fetch('./data.json')
   .then(function(r) { return r.json(); })
@@ -243,17 +183,7 @@ function renderMyRecords() {
     }
   }
 
-  if (getGHtoken()) document.getElementById('tokenStatus').textContent = '🔑 Token 已设置';
-
-  // Load remote, merge, render
-  loadRemoteScores().then(function(remote) {
-    var m = {};
-    remote.forEach(function(r) { m[r.date] = r; });
-    local.forEach(function(r) { m[r.date] = r; });
-    showScores(Object.values(m).sort(function(a,b) { return a.date.localeCompare(b.date); }));
-  }).catch(function() {
-    showScores(local);
-  });
+  showScores(local);
 }
 
 function showScores(records) {
