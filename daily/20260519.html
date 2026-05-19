@@ -2,441 +2,234 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>每日六级 · 20260519</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CET-6 每日练习 - 2026年5月19日 星期二</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#1a1a2e;padding:16px;line-height:1.8}
-.container{max-width:520px;margin:0 auto}
-.header{text-align:center;padding:24px 0 16px}
-.header h1{font-size:22px;font-weight:700;color:#1a1a2e}
-.header .date{font-size:14px;color:#888;margin-top:4px}
-.header .badge{display:inline-block;background:#e8f0fe;color:#1a73e8;font-size:12px;padding:2px 10px;border-radius:12px;margin-top:8px}
-.section-badge{text-align:center;padding:12px;margin:24px 0 8px;font-size:16px;font-weight:700;color:#1a73e8;border-bottom:2px solid #e8f0fe}
-.passage{background:#fff;border-radius:16px;padding:20px;margin:16px 0;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
-.passage .tag{display:inline-block;font-size:12px;font-weight:600;padding:3px 10px;border-radius:8px;margin-bottom:12px}
-.tag-tech{background:#e3f2fd;color:#1565c0}
-.tag-human{background:#fce4ec;color:#c62828}
-.passage h2{font-size:18px;font-weight:600;line-height:1.5;margin-bottom:12px;color:#1a1a2e}
-.passage .text{font-size:15px;line-height:1.9;color:#333;text-align:justify;margin-bottom:16px}
-.passage .text p{margin-bottom:12px;text-indent:2em}
-.vocab{display:inline;color:#1a73e8;font-weight:600;border-bottom:2px solid #1a73e8;cursor:help}
-.vocab-box{background:#f0f4ff;border-radius:10px;padding:12px 14px;margin-bottom:16px;font-size:13px}
-.vocab-box strong{color:#1a73e8}
-.audio-section{margin:12px 0 20px}
-.audio-section audio{width:100%;border-radius:8px}
-.question{margin-bottom:18px}
-.question .q-num{font-weight:700;font-size:14px;color:#1a73e8;margin-bottom:6px}
-.question .q-text{font-size:14.5px;color:#333;margin-bottom:8px}
-.question .options{padding-left:4px}
-.question .option{display:block;font-size:14px;padding:8px 10px;margin:4px 0;border-radius:8px;background:#f8f9fa;border:1.5px solid transparent;transition:all .15s;cursor:pointer}
-.question .option:hover{background:#e8f0fe}
-.question .option.selected{background:#e8f0fe;border-color:#1a73e8;color:#1a73e8;font-weight:600}
-.question .option.correct{background:#e6f4ea;border-color:#34a853;color:#1e7e34}
-.question .option.wrong{background:#fce8e6;border-color:#ea4335;color:#c5221f}
-.question .option.reveal-correct{background:#e6f4ea;border-color:#34a853;color:#1e7e34}
-.answer-section{margin-top:8px;display:none}
-.answer-section.show{display:block}
-.answer-section .answer-key{font-size:13px;color:#34a853;font-weight:600;padding:8px 10px;background:#e6f4ea;border-radius:8px}
-.answer-section .explanation{font-size:13px;color:#666;margin-top:6px;padding:8px 10px;background:#f8f9fa;border-radius:8px}
-.transcript{margin-top:16px;display:none;padding:14px;background:#f8f9fa;border-radius:10px;font-size:14px;line-height:1.8;color:#444}
-.transcript.show{display:block}
-.transcript h3{font-size:15px;color:#1a73e8;margin-bottom:8px}
-.writing-area{margin-bottom:16px}
-.writing-area textarea{width:100%;min-height:120px;padding:12px;border:1.5px solid #ddd;border-radius:8px;font-size:14px;font-family:inherit;line-height:1.6;resize:vertical}
-.writing-area textarea:focus{outline:none;border-color:#1a73e8}
-.writing-prompt{font-size:14.5px;color:#333;margin-bottom:12px;padding:12px;background:#f0f4ff;border-radius:8px;line-height:1.6}
-.writing-prompt .zh-text{font-size:15px}
-.model-answer{display:none;margin-top:16px;padding:14px;background:#e8f5e9;border-radius:10px;font-size:14px;line-height:1.8;color:#1e7e34}
-.model-answer.show{display:block}
-.model-answer h3{font-size:15px;color:#2e7d32;margin-bottom:8px}
-.model-answer audio{width:100%;border-radius:6px;margin-top:8px}
-.btn-group{display:flex;gap:10px;margin:20px 0}
-.btn{flex:1;padding:14px;border:none;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;text-align:center}
-.btn-primary{background:#1a73e8;color:#fff}
-.btn-primary:active{background:#1557b0}
-.btn-secondary{background:#e8eaed;color:#444}
-.btn-secondary:active{background:#d2d4d8}
-.result-bar{display:none;text-align:center;padding:16px;margin:16px 0;border-radius:12px;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,0.06);font-size:15px}
-.result-bar.show{display:block}
-.result-bar .score{font-size:28px;font-weight:700}
-.result-bar .score.pass{color:#34a853}
-.result-bar .score.fail{color:#ea4335}
-.result-bar .detail{font-size:13px;color:#888;margin-top:4px}
-.footer{text-align:center;padding:24px 0 32px;font-size:12px;color:#aaa}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f5f7fa; color: #2d3436; line-height: 1.8; }
+.header { background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: #fff; padding: 30px 20px; text-align: center; }
+.header h1 { font-size: 24px; margin-bottom: 5px; }
+.header p { font-size: 14px; opacity: 0.9; }
+.container { max-width: 800px; margin: 0 auto; padding: 20px; }
+.section { background: #fff; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.section h2 { font-size: 20px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #6c5ce7; color: #6c5ce7; }
+.section h3 { font-size: 16px; margin: 16px 0 10px; color: #555; }
+.audio-player { width: 100%; margin: 10px 0; }
+.audio-label { font-size: 13px; color: #888; margin: 5px 0; }
+.reading-text { font-size: 15px; line-height: 1.9; text-align: justify; margin: 15px 0; }
+.vocab-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px; }
+.vocab-table th { background: #f0f0ff; padding: 8px 12px; text-align: left; border: 1px solid #ddd; }
+.vocab-table td { padding: 8px 12px; border: 1px solid #ddd; }
+.question-list { margin: 15px 0; }
+.question-item { padding: 12px; margin: 8px 0; background: #fafbfc; border-radius: 8px; border: 1px solid #eee; }
+.question-item p { font-weight: 600; margin-bottom: 8px; }
+.question-item label { display: block; padding: 4px 0; font-size: 14px; cursor: pointer; }
+.question-item input[type="radio"] { margin-right: 8px; }
+.question-item .correct { color: #27ae60; font-weight: 600; }
+.question-item .wrong { color: #e74c3c; }
+.translation-input, .writing-input { width: 100%; min-height: 150px; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; line-height: 1.6; resize: vertical; font-family: inherit; }
+.writing-input { min-height: 200px; }
+.btn { display: inline-block; padding: 10px 24px; background: #6c5ce7; color: #fff; border: none; border-radius: 8px; font-size: 15px; cursor: pointer; margin: 10px 5px 0 0; }
+.btn:hover { background: #5a4bd1; }
+.btn-secondary { background: #636e72; }
+.btn-secondary:hover { background: #535e62; }
+.reveal-content { display: none; margin-top: 20px; padding: 20px; background: #f8f9fa; border-radius: 8px; border: 1px solid #e9ecef; }
+.reveal-content.show { display: block; }
+.reveal-content h4 { color: #6c5ce7; margin-bottom: 10px; font-size: 16px; }
+.reveal-content .script-text { font-size: 14px; line-height: 1.8; margin: 10px 0; white-space: pre-wrap; }
+.quest-label { font-size: 12px; color: #999; margin: 5px 0; }
+hr { margin: 20px 0; border: none; border-top: 1px solid #eee; }
+@media (max-width: 600px) { .container { padding: 10px; } .section { padding: 16px; } }
 </style>
 </head>
 <body>
-<div class="container">
 <div class="header">
-  <h1>📖🎧✍️📝 每日六级</h1>
-  <div class="date">2026 年 5 月 19 日 · </div>
-  <div class="badge">🎯 CET-6 听力·阅读·翻译·作文 一日打通</div>
+  <h1>📖 CET-6 每日练习</h1>
+  <p>2026年5月19日 星期二 | 听力·阅读·翻译·作文</p>
 </div>
+<div class="container">
 
-<div class="section-badge">🎧 听力理解</div>
-<div class="passage">
-  <span class="tag tag-tech">🔬 科技听力</span>
-  <h2>AI Helps Mars Rovers Navigate Autonomously</h2>
-  <div class="audio-section"><audio controls><source src="https://3563z.github.io/cet6-reading/daily/audio/20260519_1.mp3" type="audio/mpeg"></audio></div>
-  <div class="question" data-answer="c">
-<div class="q-num">Question 1</div>
-<div class="options">
-<div class="option" data-value="a">A. It enables the rover to operate without signals from Earth-based operators.</div>
-<div class="option" data-value="b">B. It eliminates the need for any human involvement in space missions.</div>
-<div class="option" data-value="c">C. It dramatically reduces the time needed for each movement decision.</div>
-<div class="option" data-value="d">D. It allows the rover to inspect Martian rocks for organic compounds.</div>
-</div>
-<div class="answer-section"><div class="answer-key">✅ 正确答案：C. It dramatically reduces the time needed for each movement decision.</div><div class="explanation">正确答案：C. It dramatically reduces the time needed for each movement decision.</div></div>
-</div>
-<div class="question" data-answer="d">
-<div class="q-num">Question 2</div>
-<div class="options">
-<div class="option" data-value="a">A. It causes frequent breakdowns in the rover's navigation equipment.</div>
-<div class="option" data-value="b">B. It prevents the AI from receiving regular software updates.</div>
-<div class="option" data-value="c">C. It reduces the quality of images transmitted back to NASA.</div>
-<div class="option" data-value="d">D. It makes real-time communication with the rover impractical.</div>
-</div>
-<div class="answer-section"><div class="answer-key">✅ 正确答案：D. It makes real-time communication with the rover impractical.</div><div class="explanation">正确答案：D. It makes real-time communication with the rover impractical.</div></div>
-</div>
-<div class="question" data-answer="d">
-<div class="q-num">Question 3</div>
-<div class="options">
-<div class="option" data-value="a">A. Radio signals transmitted from orbiters around Mars.</div>
-<div class="option" data-value="b">B. Temperature sensors that detect surface conditions.</div>
-<div class="option" data-value="c">C. Pre-programmed maps uploaded before the mission.</div>
-<div class="option" data-value="d">D. Visual data processed by an onboard camera system.</div>
-</div>
-<div class="answer-section"><div class="answer-key">✅ 正确答案：D. Visual data processed by an onboard camera system.</div><div class="explanation">正确答案：D. Visual data processed by an onboard camera system.</div></div>
-</div>
-<div class="question" data-answer="a">
-<div class="q-num">Question 4</div>
-<div class="options">
-<div class="option" data-value="a">A. The rover must operate under severe temperature conditions.</div>
-<div class="option" data-value="b">B. The planet's gravity is too weak for efficient movement.</div>
-<div class="option" data-value="c">C. The atmosphere causes frequent dust storms blocking cameras.</div>
-<div class="option" data-value="d">D. The surface is mostly covered in loose sand that traps wheels.</div>
-</div>
-<div class="answer-section"><div class="answer-key">✅ 正确答案：A. The rover must operate under severe temperature conditions.</div><div class="explanation">正确答案：A. The rover must operate under severe temperature conditions.</div></div>
-</div>
-<div class="question" data-answer="c">
-<div class="q-num">Question 5</div>
-<div class="options">
-<div class="option" data-value="a">A. It receives regular software patches from human engineers.</div>
-<div class="option" data-value="b">B. It compares its navigation data with other Mars rovers.</div>
-<div class="option" data-value="c">C. It learns from every successful trip across the landscape.</div>
-<div class="option" data-value="d">D. It uses cloud-based machine learning models from Earth.</div>
-</div>
-<div class="answer-section"><div class="answer-key">✅ 正确答案：C. It learns from every successful trip across the landscape.</div><div class="explanation">正确答案：C. It learns from every successful trip across the landscape.</div></div>
-</div>
+<!-- ============ 听力部分 ============ -->
+<div class="section" id="listening">
+  <h2>🎧 听力理解 (Listening Comprehension)</h2>
+  <p style="color:#888;font-size:13px;">听录音，完成选择题。提交后显示听力原文。</p>
 
-  <div class="transcript" id="t1"><h3>📝 听力原文</h3><p>Student A: Hey, I just read something amazing about NASA's Perseverance rover. Did you know it can now drive across Mars using routes planned entirely by artificial intelligence?<br><br>Student B: Really? I thought all Martian rovers were guided by human operators back on Earth. How does the AI actually work?<br><br>Student A: Well, traditionally, engineers had to manually analyze images and plan each movement. But a vision-capable AI on board can now examine the same images and make decisions independently. It identifies safe paths, avoids obstacles like large rocks, and calculates the most efficient route.<br><br>Student B: That's a huge leap forward. You know, the time delay between Earth and Mars is a real problem. It can take anywhere from 5 to 20 minutes for a signal to travel. So having autonomous navigation dramatically speeds things up.<br><br>Student A: Exactly. Instead of covering just a few dozen meters per day, the rover can now travel much farther. What's more, the AI keeps learning as it goes. Each successful drive improves future route planning.<br><br>Student B: I wonder if this same technology could be used for other applications. Like, could self-driving cars on Earth benefit from these algorithms?<br><br>Student A: Actually, that's a great point. The core technology is similar, though the Martian environment is quite different. The AI has to deal with uneven terrain, extreme temperatures, and limited computing power. But the principles of vision-based navigation definitely apply to autonomous vehicles here.<br><br>Student B: Fascinating. With AI handling navigation, scientists can focus on the more important task—analyzing data to search for signs of ancient life. It really shows how AI is transforming space exploration.<br><br>Question 1. What is the main advantage of the new AI navigation system on the Perseverance rover according to the conversation?<br><br>Question 2. Why does the man say the time delay between Earth and Mars is a problem?<br><br>Question 3. What does the AI navigation system use to identify safe paths?<br><br>Question 4. What limitation of the Martian environment does the woman mention for AI navigation?<br><br>Question 5. How does the AI improve its performance over time?</p></div>
-</div>
+  <h3>第一部分：长对话 (Long Conversation)</h3>
+  <p class="quest-label">对话：科技领域 — 量子计算</p>
+  <audio class="audio-player" controls src="audio/listening1_long_conversation.mp3"></audio>
+  <div class="question-list" id="lc-questions"></div>
 
-<div class="passage">
-  <span class="tag tag-human">🌍 社会听力</span>
-  <h2>The Hidden Dangers of Ultra-Processed Foods</h2>
-  <div class="audio-section"><audio controls><source src="https://3563z.github.io/cet6-reading/daily/audio/20260519_2.mp3" type="audio/mpeg"></audio></div>
-  <div class="question" data-answer="b">
-<div class="q-num">Question 1</div>
-<div class="options">
-<div class="option" data-value="a">A. The nutritional value of frozen meals and packaged snacks.</div>
-<div class="option" data-value="b">B. The link between ultra-processed foods and heart disease risk.</div>
-<div class="option" data-value="c">C. The difference between European and American eating habits.</div>
-<div class="option" data-value="d">D. The effectiveness of current dietary guidelines for the public.</div>
-</div>
-<div class="answer-section"><div class="answer-key">✅ 正确答案：B. The link between ultra-processed foods and heart disease risk.</div><div class="explanation">正确答案：B. The link between ultra-processed foods and heart disease risk.</div></div>
-</div>
-<div class="question" data-answer="a">
-<div class="q-num">Question 2</div>
-<div class="options">
-<div class="option" data-value="a">A. They contain substances rarely found in home cooking.</div>
-<div class="option" data-value="b">B. They have higher calorie counts than natural foods.</div>
-<div class="option" data-value="c">C. They are marketed exclusively to young consumers.</div>
-<div class="option" data-value="d">D. They require refrigeration to maintain freshness.</div>
-</div>
-<div class="answer-section"><div class="answer-key">✅ 正确答案：A. They contain substances rarely found in home cooking.</div><div class="explanation">正确答案：A. They contain substances rarely found in home cooking.</div></div>
-</div>
-<div class="question" data-answer="a">
-<div class="q-num">Question 3</div>
-<div class="options">
-<div class="option" data-value="a">A. The health risks remain even after accounting for calorie intake.</div>
-<div class="option" data-value="b">B. People who eat them tend to exercise less than average.</div>
-<div class="option" data-value="c">C. The damage they cause is reversible within a few months.</div>
-<div class="option" data-value="d">D. Their effects are stronger in men than in women.</div>
-</div>
-<div class="answer-section"><div class="answer-key">✅ 正确答案：A. The health risks remain even after accounting for calorie intake.</div><div class="explanation">正确答案：A. The health risks remain even after accounting for calorie intake.</div></div>
-</div>
-<div class="question" data-answer="c">
-<div class="q-num">Question 4</div>
-<div class="options">
-<div class="option" data-value="a">A. 8 percent</div>
-<div class="option" data-value="b">B. 15 percent</div>
-<div class="option" data-value="c">C. 12 percent</div>
-<div class="option" data-value="d">D. 20 percent</div>
-</div>
-<div class="answer-section"><div class="answer-key">✅ 正确答案：C. 12 percent</div><div class="explanation">正确答案：C. 12 percent</div></div>
-</div>
-<div class="question" data-answer="b">
-<div class="q-num">Question 5</div>
-<div class="options">
-<div class="option" data-value="a">A. They contain high levels of natural sugars that damage teeth.</div>
-<div class="option" data-value="b">B. Their altered physical structure changes how the body digests them.</div>
-<div class="option" data-value="c">C. They are often contaminated with bacteria during production.</div>
-<div class="option" data-value="d">D. Their packaging releases harmful chemicals into the food.</div>
-</div>
-<div class="answer-section"><div class="answer-key">✅ 正确答案：B. Their altered physical structure changes how the body digests them.</div><div class="explanation">正确答案：B. Their altered physical structure changes how the body digests them.</div></div>
-</div>
+  <h3>第二部分：讲座 (Lecture)</h3>
+  <p class="quest-label">讲座：社会领域 — AI对职场的影响</p>
+  <audio class="audio-player" controls src="audio/listening2_lecture.mp3"></audio>
+  <div class="question-list" id="lecture-questions"></div>
 
-  <div class="transcript" id="t2"><h3>📝 听力原文</h3><p>Good morning. Today I want to discuss a growing concern in public health: the impact of ultra-processed foods on cardiovascular health. A major new European cardiology report has recently warned that people who consume the highest amounts of ultra-processed foods face significantly higher risks of heart disease and stroke.<br><br>What exactly are ultra-processed foods? These are industrial formulations that contain ingredients you wouldn't typically find in a home kitchen—things like hydrogenated oils, high-fructose corn syrup, artificial flavors, and preservatives. Think packaged snacks, sugary drinks, instant noodles, and frozen meals.<br><br>Now, you might assume the main problem is simply too much sugar or fat. However, the study reveals something more disturbing. Even when researchers adjusted for calorie intake and body weight, the elevated risk persisted. This suggests that the processing itself—not just the nutritional content—may be causing harm.<br><br>In fact, the report analyzed data from over 300,000 participants across nine European countries. It found that for every 10% increase in ultra-processed food consumption, the risk of cardiovascular disease rose by 12%. What's more, the association was particularly strong for women. <br><br>So what makes these foods so damaging? One theory involves the chemical additives used during manufacturing. Many ultra-processed foods contain substances that can trigger inflammation in the body. Chronic inflammation, as many of you know, is a known contributor to heart disease. Moreover, the physical structure of these foods is altered during processing, which may affect how our bodies digest and absorb nutrients.<br><br>Therefore, the takeaway message is clear: reducing our reliance on ultra-processed foods could be one of the most effective strategies for protecting heart health. Choosing whole foods—fresh vegetables, fruits, lean proteins, and whole grains—remains the safest approach. As the old saying goes, if it comes in a package with a long list of unpronounceable ingredients, think twice before putting it in your shopping cart.<br><br>Question 1. What is the main topic of this lecture?<br><br>Question 2. According to the lecture, what distinguishes ultra-processed foods from ordinary processed foods?<br><br>Question 3. What surprising finding did the study reveal about ultra-processed foods?<br><br>Question 4. What percentage increase in cardiovascular disease risk was associated with a 10% rise in ultra-processed food intake?<br><br>Question 5. What does the speaker suggest as a key reason why ultra-processed foods are harmful?</p></div>
-</div>
-
-<div class="section-badge">📖 阅读理解</div>
-<div class="passage">
-  <span class="tag tag-tech">🔬 科技</span>
-  <h2>Octopus-Inspired Smart Hydrogel Can Change Shape on Command</h2>
-  <div class="vocab-box"><strong>📝 核心词汇</strong><br>hydrogel <span style="color:#666;font-family:'Times New Roman',serif">/ˈhaɪdrədʒel/</span> <span style="color:#333">水凝胶（一种吸水聚合物网络）</span><br>breakthrough <span style="color:#666;font-family:'Times New Roman',serif">/ˈbreɪkθruː/</span> <span style="color:#333">突破性进展</span><br>stimuli <span style="color:#666;font-family:'Times New Roman',serif">/ˈstɪmjʊlaɪ/</span> <span style="color:#333">刺激因素（stimulus的复数）</span><br>reversible <span style="color:#666;font-family:'Times New Roman',serif">/rɪˈvɜːsəbl/</span> <span style="color:#333">可逆的</span><br>configuration <span style="color:#666;font-family:'Times New Roman',serif">/kənˌfɪɡəˈreɪʃn/</span> <span style="color:#333">配置；结构形态</span><br>prototype <span style="color:#666;font-family:'Times New Roman',serif">/ˈprəʊtətaɪp/</span> <span style="color:#333">原型；样机</span><br>camouflage <span style="color:#666;font-family:'Times New Roman',serif">/ˈkæməflɑːʒ/</span> <span style="color:#333">伪装；保护色</span><br></div>
-  <div class="text"><p>Researchers at Penn State University have developed a remarkable new material inspired by the shape-shifting abilities of octopuses. This smart hydrogel can alter its appearance, texture, and shape when triggered by external commands. The breakthrough could have significant implications for soft robotics, wearable technology, and medical devices.</p><p>The material works by using a network of polymer chains that respond to specific stimuli. When exposed to certain environmental conditions such as changes in temperature or pH levels, the hydrogel undergoes a controlled transformation. The process is reversible, meaning the material can return to its original state when the stimulus is removed.</p><p>What makes this innovation particularly noteworthy is the level of control researchers have achieved. Unlike previous smart materials that could only switch between two states, this hydrogel can be programmed to adopt multiple configurations. The team programmed patterns into the material using a process similar to how data is stored in computer memory.</p><p>However, the researchers faced considerable challenges during development. The term &quot;hydrogel&quot; here refers to a network of water-absorbent polymers, not a gel-like substance in the conventional sense. These materials must balance flexibility with structural integrity, which proved difficult to achieve simultaneously. The team eventually solved this by layering different polymer compositions.</p><p>A recent study published in the journal Nature Communications demonstrated the hydrogel's potential. The material was able to mimic the texture of natural surfaces such as leaves and rocks, changing its microscopic surface patterns within seconds. Dr. Sarah Chen, the lead author, stated that the current prototype represents only the beginning. &quot;We are now exploring applications in color-changing camouflage and adaptive medical implants,&quot; she explained.</p><p>Looking ahead, the researchers believe this technology could revolutionize several industries. In soft robotics, it might enable robots to grasp delicate objects without damaging them. In medicine, smart hydrogels could be used to create implants that adapt to the body's changing conditions. As Dr. Chen concluded, &quot;Nature has been our best teacher. By studying creatures like octopuses, we can create materials once thought impossible.&quot;</p><p>The potential applications extend beyond what was initially imagined. The team is already collaborating with medical researchers to develop smart wound dressings that could change their permeability based on infection levels. Meanwhile, engineers in the robotics field see opportunities for creating more lifelike prosthetic limbs that can subtly adjust their grip strength. The versatility of this hydrogel suggests that its impact may be felt across numerous scientific disciplines for years to come.</p></div>
-  <div class="question" data-answer="a">
-<div class="q-num">第 一 题</div>
-<div class="q-text">What is the passage mainly about?</div>
-<div class="options">
-<div class="option" data-value="a">A. A smart material that imitates the abilities of octopuses.</div>
-<div class="option" data-value="b">B. A comparison between natural and synthetic polymers.</div>
-<div class="option" data-value="c">C. The role of temperature in chemical transformations.</div>
-<div class="option" data-value="d">D. The history of hydrogel development at Penn State.</div>
-</div>
-<div class="answer-section"><div class="answer-key">✅ 正确答案：A. A smart material that imitates the abilities of octopuses.</div><div class="explanation">正确答案：A. A smart material that imitates the abilities of octopuses.</div></div>
-</div>
-<div class="question" data-answer="d">
-<div class="q-num">第 二 题</div>
-<div class="q-text">What triggers the transformation of the smart hydrogel?</div>
-<div class="options">
-<div class="option" data-value="a">A. Electrical signals sent through the polymer network.</div>
-<div class="option" data-value="b">B. Exposure to ultraviolet light from the sun.</div>
-<div class="option" data-value="c">C. Mechanical pressure applied to the material.</div>
-<div class="option" data-value="d">D. Changes in environmental factors like temperature.</div>
-</div>
-<div class="answer-section"><div class="answer-key">✅ 正确答案：D. Changes in environmental factors like temperature.</div><div class="explanation">正确答案：D. Changes in environmental factors like temperature.</div></div>
-</div>
-<div class="question" data-answer="a">
-<div class="q-num">第 三 题</div>
-<div class="q-text">The word &quot;configuration&quot; in paragraph 3 is closest in meaning to:</div>
-<div class="options">
-<div class="option" data-value="a">A. Arrangement or setup.</div>
-<div class="option" data-value="b">B. Temperature setting.</div>
-<div class="option" data-value="c">C. Chemical composition.</div>
-<div class="option" data-value="d">D. Manufacturing process.</div>
-</div>
-<div class="answer-section"><div class="answer-key">✅ 正确答案：A. Arrangement or setup.</div><div class="explanation">正确答案：A. Arrangement or setup.</div></div>
-</div>
-<div class="question" data-answer="c">
-<div class="q-num">第 四 题</div>
-<div class="q-text">What can be inferred about previous smart materials?</div>
-<div class="options">
-<div class="option" data-value="a">A. They were primarily used in the electronics industry.</div>
-<div class="option" data-value="b">B. They required large amounts of energy to operate.</div>
-<div class="option" data-value="c">C. They could only switch between two forms at most.</div>
-<div class="option" data-value="d">D. They were cheaper to produce than the new hydrogel.</div>
-</div>
-<div class="answer-section"><div class="answer-key">✅ 正确答案：C. They could only switch between two forms at most.</div><div class="explanation">正确答案：C. They could only switch between two forms at most.</div></div>
-</div>
-<div class="question" data-answer="c">
-<div class="q-num">第 五 题</div>
-<div class="q-text">What does Dr. Sarah Chen imply about future applications of the hydrogel?</div>
-<div class="options">
-<div class="option" data-value="a">A. Medical uses would require additional animal testing first.</div>
-<div class="option" data-value="b">B. The material needs to be cheaper before it can be widely adopted.</div>
-<div class="option" data-value="c">C. Current achievements are just the start of greater possibilities.</div>
-<div class="option" data-value="d">D. The technology is already ready for commercial use.</div>
-</div>
-<div class="answer-section"><div class="answer-key">✅ 正确答案：C. Current achievements are just the start of greater possibilities.</div><div class="explanation">正确答案：C. Current achievements are just the start of greater possibilities.</div></div>
-</div>
-
-</div>
-
-<div class="passage">
-  <span class="tag tag-human">🌍 社会</span>
-  <h2>Selective Colleges Reach Out to Rural Students</h2>
-  <div class="vocab-box"><strong>📝 核心词汇</strong><br>concerted <span style="color:#666;font-family:'Times New Roman',serif">/kənˈsɜːtɪd/</span> <span style="color:#333">协同的；一致的；共同努力的</span><br>underrepresented <span style="color:#666;font-family:'Times New Roman',serif">/ˌʌndəreprɪˈzentɪd/</span> <span style="color:#333">未被充分代表的；代表性不足的</span><br>imbalance <span style="color:#666;font-family:'Times New Roman',serif">/ɪmˈbæləns/</span> <span style="color:#333">不平衡；失衡</span><br>initiative <span style="color:#666;font-family:'Times New Roman',serif">/ɪˈnɪʃətɪv/</span> <span style="color:#333">倡议；主动行动</span><br>prospective <span style="color:#666;font-family:'Times New Roman',serif">/prəˈspektɪv/</span> <span style="color:#333">未来的；预期的；可能的</span><br>retention <span style="color:#666;font-family:'Times New Roman',serif">/rɪˈtenʃn/</span> <span style="color:#333">保留；保持（率）</span><br>counterpart <span style="color:#666;font-family:'Times New Roman',serif">/ˈkaʊntəpɑːt/</span> <span style="color:#333">对应的人或物</span><br></div>
-  <div class="text"><p>A growing number of selective colleges across the United States are making concerted efforts to recruit students from rural areas. For decades, students growing up in small towns and farming communities have been significantly underrepresented on elite college campuses. Now, institutions are recognizing this imbalance and taking action.</p><p>According to recent data, only about 15 percent of students at the nation's most competitive universities come from rural backgrounds, despite the fact that nearly one in five American children grow up in such communities. The gap stems from multiple factors, including limited access to advanced courses, fewer college counseling resources, and the financial burden of visiting far-away campuses.</p><p>Several universities have launched targeted initiatives to address these barriers. For instance, Amherst College recently hosted admitted students and their families from rural areas for campus tours, covering all travel expenses. The term &quot;fly-in program&quot; refers to such initiatives where prospective students are flown to campus at the institution's expense, helping them experience college life firsthand.</p><p>However, the challenges extend beyond simple logistics. Rural students often face cultural adjustment when arriving on campus. They may feel out of place among peers from wealthy suburban or urban high schools. Some universities have responded by creating rural student support groups and assigning faculty mentors who understand these students' unique experiences.</p><p>A report from the Hechinger Institute suggests that the efforts are beginning to pay off. Applications from rural students to participating colleges have increased by over 30 percent since 2023. What is remarkable is that retention rates for these students are comparable to their urban counterparts, indicating that the support programs are working effectively.</p><p>Nevertheless, advocates argue that much more needs to be done. &quot;Access isn't just about getting in the door,&quot; noted one researcher. &quot;It's about creating an environment where rural students can truly thrive once they arrive.&quot; The long-term goal, they say, should be to ensure that a student's zip code does not determine their educational opportunities.</p><p>Critics point out that these programs, while helpful, reach only a small fraction of eligible rural students. They argue that more fundamental changes are needed in how rural schools are funded and supported. Nevertheless, the growing trend among elite institutions signals a broader recognition that talent is distributed equally across all communities, even if opportunity is not. The question remains whether America's top colleges will sustain this commitment as political and economic pressures shift.</p></div>
-  <div class="question" data-answer="a">
-<div class="q-num">第 一 题</div>
-<div class="q-text">What issue does the passage primarily address?</div>
-<div class="options">
-<div class="option" data-value="a">A. The underrepresentation of rural students at elite colleges.</div>
-<div class="option" data-value="b">B. The financial problems facing rural school districts.</div>
-<div class="option" data-value="c">C. The declining quality of education in rural areas.</div>
-<div class="option" data-value="d">D. The competition between urban and rural universities.</div>
-</div>
-<div class="answer-section"><div class="answer-key">✅ 正确答案：A. The underrepresentation of rural students at elite colleges.</div><div class="explanation">正确答案：A. The underrepresentation of rural students at elite colleges.</div></div>
-</div>
-<div class="question" data-answer="d">
-<div class="q-num">第 二 题</div>
-<div class="q-text">According to paragraph 2, what percentage of American children grow up in rural communities?</div>
-<div class="options">
-<div class="option" data-value="a">A. Roughly 30 percent.</div>
-<div class="option" data-value="b">B. Nearly 40 percent.</div>
-<div class="option" data-value="c">C. About 15 percent.</div>
-<div class="option" data-value="d">D. Approximately 20 percent.</div>
-</div>
-<div class="answer-section"><div class="answer-key">✅ 正确答案：D. Approximately 20 percent.</div><div class="explanation">正确答案：D. Approximately 20 percent.</div></div>
-</div>
-<div class="question" data-answer="c">
-<div class="q-num">第 三 题</div>
-<div class="q-text">The word &quot;prospective&quot; in paragraph 4 is closest in meaning to:</div>
-<div class="options">
-<div class="option" data-value="a">A. Current or existing.</div>
-<div class="option" data-value="b">B. Distant or far away.</div>
-<div class="option" data-value="c">C. Potential or likely.</div>
-<div class="option" data-value="d">D. Wealthy or privileged.</div>
-</div>
-<div class="answer-section"><div class="answer-key">✅ 正确答案：C. Potential or likely.</div><div class="explanation">正确答案：C. Potential or likely.</div></div>
-</div>
-<div class="question" data-answer="b">
-<div class="q-num">第 四 题</div>
-<div class="q-text">What does the report from the Hechinger Institute suggest about the initiatives?</div>
-<div class="options">
-<div class="option" data-value="a">A. They mainly benefit wealthy rural families.</div>
-<div class="option" data-value="b">B. They are showing positive results so far.</div>
-<div class="option" data-value="c">C. They have failed to attract enough applicants.</div>
-<div class="option" data-value="d">D. They are more expensive than traditional methods.</div>
-</div>
-<div class="answer-section"><div class="answer-key">✅ 正确答案：B. They are showing positive results so far.</div><div class="explanation">正确答案：B. They are showing positive results so far.</div></div>
-</div>
-<div class="question" data-answer="c">
-<div class="q-num">第 五 题</div>
-<div class="q-text">What is the implied attitude of advocates toward current efforts in the last paragraph?</div>
-<div class="options">
-<div class="option" data-value="a">A. Strong opposition to the entire approach.</div>
-<div class="option" data-value="b">B. Complete satisfaction with the progress made.</div>
-<div class="option" data-value="c">C. Belief that more work is still required.</div>
-<div class="option" data-value="d">D. Uncertainty about whether change is needed.</div>
-</div>
-<div class="answer-section"><div class="answer-key">✅ 正确答案：C. Belief that more work is still required.</div><div class="explanation">正确答案：C. Belief that more work is still required.</div></div>
-</div>
-
-</div>
-
-<div class="section-badge">✏️ 翻译 · 中译英</div>
-<div class="passage">
-  <span class="tag tag-human">🌍 社会</span>
-  <div class="writing-prompt"><div class="zh-text">中国茶文化有着数千年的历史，是中华文明的重要组成部分。茶叶最早被用作药物，后来逐渐发展成为一种日常饮品。如今，喝茶不仅是一种生活习惯，更是一种社交方式。无论是家庭聚会还是商务会谈，一壶热茶总是拉近人与人之间距离的桥梁。近年来，中国茶文化在世界各地越来越受欢迎，许多外国朋友也开始学习如何品茶。茶文化所代表的宁静与和谐，正是中国传统哲学智慧的体现。</div></div>
-  <div class="writing-area"><textarea id="translationInput" placeholder="在此输入你的翻译…"></textarea></div>
-  <div class="model-answer" id="translationModel">
-    <h3>📖 参考译文</h3>
-    <audio controls><source src="https://3563z.github.io/cet6-reading/daily/audio/20260519_3.mp3" type="audio/mpeg"></audio>
-    <p style="margin-top:8px">Chinese tea culture has a history of thousands of years and is an important part of Chinese civilization. Tea leaves were originally used as medicine, and later gradually developed into a daily beverage. Nowadays, drinking tea is not only a life habit but also a way of socializing. Whether it is a family gathering or a business meeting, a pot of hot tea always serves as a bridge that brings people closer together. In recent years, Chinese tea culture has become increasingly popular around the world, and many foreign friends have started learning how to appreciate tea. The tranquility and harmony represented by tea culture reflect the wisdom of traditional Chinese philosophy.</p>
+  <button class="btn" onclick="revealListening()">📝 提交听力答案 &amp; 查看原文</button>
+  <div class="reveal-content" id="listening-reveal">
+    <h4>📄 听力原文</h4>
+    <h5>长对话</h5>
+    <div class="script-text" id="lc-script"></div>
+    <h5>讲座</h5>
+    <div class="script-text" id="lecture-script"></div>
+    <audio class="audio-player" controls src="audio/listening1_long_conversation.mp3"></audio>
+    <audio class="audio-player" controls src="audio/listening2_lecture.mp3"></audio>
   </div>
 </div>
 
-<div class="section-badge">📝 写作</div>
-<div class="passage">
-  <span class="tag tag-human">✍️</span>
-  <div class="writing-prompt"><div class="zh-text">Directions: For this part, you are allowed 30 minutes to write an essay based on the following chart. The chart shows the percentage of students who use online learning platforms for more than 10 hours per week from 2019 to 2025. You should summarize the data and give your own opinion on whether online learning will eventually replace traditional classroom education. You should write at least 150 words but no more than 200 words.</div></div>
-  <div class="writing-area"><textarea id="writingInput" placeholder="在此输入你的作文…"></textarea></div>
-  <div class="model-answer" id="writingModel">
-    <h3>📖 参考范文</h3>
-    <audio controls><source src="https://3563z.github.io/cet6-reading/daily/audio/20260519_4.mp3" type="audio/mpeg"></audio>
-    <p style="margin-top:8px">The chart clearly illustrates a steady increase in the percentage of students engaging with online learning platforms for over ten hours per week, rising from approximately 15% in 2019 to over 55% in 2025. This dramatic growth raises an important question: will online education eventually replace traditional classroom learning?
+<!-- ============ 阅读部分 ============ -->
+<div class="section" id="reading">
+  <h2>📚 阅读理解 (Reading Comprehension)</h2>
 
-On one hand, online learning offers undeniable advantages. It provides flexibility, allowing students to access high-quality educational resources regardless of their geographical location. Moreover, the COVID-19 pandemic accelerated the adoption of digital tools, demonstrating that remote education can be remarkably effective.
+  <h3>Passage 1：科技 — 脑机接口</h3>
+  <div class="reading-text" id="tech-text"></div>
+  <h4>📝 核心词汇</h4>
+  <table class="vocab-table" id="tech-vocab"></table>
+  <div class="question-list" id="tech-questions"></div>
 
-However, I believe online learning will complement rather than replace traditional classrooms. Face-to-face interaction remains crucial for developing communication skills and building meaningful relationships. A classroom is not merely a place for transmitting knowledge; it is a space where students learn collaboration, empathy, and critical thinking through direct human interaction.
+  <h3>Passage 2：社会 — 四天工作制</h3>
+  <div class="reading-text" id="social-text"></div>
+  <h4>📝 核心词汇</h4>
+  <table class="vocab-table" id="social-vocab"></table>
+  <div class="question-list" id="social-questions"></div>
+</div>
 
-In conclusion, while online platforms will continue to play an increasingly important role in education, traditional classrooms will retain their unique value. The future of education lies in a blended approach that combines the best of both worlds.</p>
+<!-- ============ 翻译部分 ============ -->
+<div class="section" id="translation">
+  <h2>✍️ 翻译 (Translation) — 中译英</h2>
+  <p style="margin-bottom:10px;font-size:15px;line-height:1.8;" id="translation-prompt"></p>
+  <textarea class="translation-input" id="translation-input" placeholder="请在此输入你的英文翻译..."></textarea>
+  <button class="btn" onclick="revealTranslation()">📝 提交 &amp; 查看参考译文</button>
+  <div class="reveal-content" id="translation-reveal">
+    <h4>💡 参考译文</h4>
+    <div class="script-text" id="translation-ref"></div>
+    <audio class="audio-player" controls src="audio/translation_reference.mp3"></audio>
   </div>
 </div>
 
-<div class="btn-group">
-  <button class="btn btn-primary" onclick="submitAll()">✅ 提交</button>
-  <button class="btn btn-secondary" onclick="resetAll()">🔄 重置</button>
+<!-- ============ 写作部分 ============ -->
+<div class="section" id="writing">
+  <h2>📝 写作 (Writing)</h2>
+  <div id="writing-prompt" style="margin-bottom:15px;font-size:14px;line-height:1.8;"></div>
+  <textarea class="writing-input" id="writing-input" placeholder="请在此输入你的作文..."></textarea>
+  <button class="btn" onclick="revealWriting()">📝 提交 &amp; 查看范文</button>
+  <div class="reveal-content" id="writing-reveal">
+    <h4>💡 参考范文</h4>
+    <div class="script-text" id="writing-model"></div>
+    <audio class="audio-player" controls src="audio/writing_model.mp3"></audio>
+  </div>
 </div>
 
-<div class="result-bar" id="resultBar">
-  <div class="score" id="scoreDisplay"></div>
-  <div class="detail" id="resultMessage"></div>
-</div>
-
-<div class="footer">每日六级 · 小约 🤖<br>听力·阅读·翻译·作文 · © 2026</div>
 </div>
 
 <script>
-document.querySelectorAll('.option').forEach(function(o){
-  o.onclick=function(){
-    var p=this.closest('.options');
-    p.querySelectorAll('.option').forEach(function(x){x.classList.remove('selected')});
-    this.classList.add('selected');
-  };
-});
+// ========== DATA ==========
+const DATA = {"listening":{"long_conversation":{"script":"W: Professor Johnson, I've been reading about the latest developments in quantum computing, and I'm honestly a bit overwhelmed. Could you break down what makes it so different from classical computing?\nM: Of course, Sarah. Think of classical computers as using bits that are either 0 or 1, like a light switch that's either on or off. Quantum computers, however, use qubits, which can exist in multiple states simultaneously thanks to a property called superposition.\nW: So it's like the qubit can be both 0 and 1 at the same time? That sounds almost magical.\nM: That's a reasonable way to think about it. Additionally, qubits can be entangled, meaning the state of one qubit is directly related to the state of another, even if they're physically separated. This allows quantum computers to process certain calculations exponentially faster.\nW: I see. So what kinds of problems are quantum computers particularly good at solving?\nM: They excel at optimization problems, cryptography, drug discovery, and climate modeling. For instance, simulating molecular interactions for new pharmaceutical compounds could take classical supercomputers years, but a quantum computer might accomplish it in hours.\nW: That's incredible. But I've heard current quantum computers are still quite limited and error-prone.\nM: You're right. We're in the NISQ era — Noisy Intermediate-Scale Quantum. Current machines have about 50 to a few hundred qubits, and they're highly sensitive to environmental noise. Maintaining quantum coherence is extremely challenging.\nW: How close are we to having practical, large-scale quantum computers?\nM: Most experts estimate we're still 10 to 20 years away from fault-tolerant quantum computing at scale. However, we're already seeing quantum advantage demonstrations for specific problems. Companies like Google, IBM, and several startups are making steady progress.\nW: Should I start learning quantum computing now if I'm a computer science student?\nM: Absolutely. Even if you don't become a quantum algorithm specialist, understanding the fundamentals will be valuable. Many universities now offer introductory courses, and there are excellent online resources available for free.","questions":[{"q":"What does the professor say is the key difference between classical bits and qubits?","A":"Qubits are faster than classical bits.","B":"Qubits can exist in multiple states simultaneously through superposition.","C":"Qubits require less energy to operate.","D":"Qubits are more stable than classical bits.","answer":"B"},{"q":"According to the conversation, what is quantum entanglement?","A":"A process where qubits become physically connected.","B":"A method to increase computing speed by adding more qubits.","C":"A phenomenon where the state of one qubit relates to another even when separated.","D":"A technique to reduce noise in quantum systems.","answer":"C"},{"q":"What does the professor identify as a key application area for quantum computing?","A":"Social media algorithms.","B":"Word processing and spreadsheets.","C":"Data storage and retrieval.","D":"Drug discovery and molecular simulation.","answer":"D"},{"q":"What does the acronym NISQ stand for?","A":"New Integrated System Quantum.","B":"Noisy Intermediate-Scale Quantum.","C":"Neural Inference Sequential Query.","D":"Non-linear Integrated Superconducting Quantum.","answer":"B"},{"q":"What advice does the professor give to the student regarding quantum computing?","A":"She should wait until the technology matures.","B":"She should specialize only in quantum algorithms.","C":"She should start learning the fundamentals now.","D":"She should focus on classical computing instead.","answer":"C"}]},"lecture":{"script":"Good morning, everyone. Today I'd like to discuss the profound social implications of artificial intelligence in the workplace, a topic that has generated considerable debate among economists, policymakers, and technologists alike.\n\nLet me begin with some historical context. During the Industrial Revolution, mechanization eliminated many agricultural and artisanal jobs, but it also created entirely new categories of employment in factories and later in service industries. Similarly, the digital revolution of the late twentieth century automated routine clerical work while spawning careers in information technology. The question before us now is whether the AI revolution will follow a similar pattern of creative destruction, or whether it represents something fundamentally different.\n\nRecent studies from institutions like MIT and McKinsey suggest that approximately sixty percent of current occupations have at least thirty percent of their activities that could be automated by existing AI technologies. However, it's crucial to understand that automation typically affects tasks rather than entire jobs. A radiologist, for instance, may spend less time analyzing medical images as AI assists with preliminary readings, but she will likely devote more time to patient interaction and complex diagnostic reasoning.\n\nWhat makes the current wave distinctive is the capability of generative AI to perform cognitive tasks that were previously considered exclusively human domains. Language translation, content creation, data analysis, and even aspects of software development can now be augmented or partially automated by large language models. This has led some commentators to predict widespread displacement of white-collar workers.\n\nNevertheless, I would argue that a more nuanced picture is emerging. Rather than pure replacement, we're seeing a pattern of human-AI collaboration where productivity is enhanced rather than jobs eliminated outright. Studies from organizations like the World Economic Forum project that while AI may displace approximately eighty-five million jobs by 2025, it will also create ninety-seven million new roles. The key challenge, therefore, is not technological but educational — how do we prepare workers for the jobs of tomorrow?\n\nConsider the example of customer service. AI chatbots now handle initial inquiries, but human agents remain essential for complex issues requiring empathy and nuanced judgment. Similarly, in journalism, AI can generate basic financial reports and sports summaries, yet investigative reporting and opinion pieces still demand human insight.\n\nIn conclusion, the AI revolution will undoubtedly transform the labor market, but the outcome depends largely on how we choose to implement these technologies. The most successful organizations will be those that view AI not as a replacement for human workers, but as a tool to augment human capabilities. Thank you.","questions":[{"q":"What historical pattern does the speaker compare the AI revolution to?","A":"The agricultural revolution.","B":"The Industrial Revolution and the digital revolution.","C":"The Renaissance period.","D":"The information age of the 1990s.","answer":"B"},{"q":"According to the lecture, what percentage of current occupations have at least 30% automatable activities?","A":"Approximately 40 percent.","B":"Approximately 50 percent.","C":"Approximately 60 percent.","D":"Approximately 70 percent.","answer":"C"},{"q":"What does the speaker say makes the current AI wave distinctive?","A":"Its ability to replace physical labor.","B":"Its capability to perform cognitive tasks previously considered human domains.","C":"Its low cost of implementation.","D":"Its focus on manufacturing industries.","answer":"B"},{"q":"What is the speaker's main argument about the impact of AI on jobs?","A":"AI will eliminate most white-collar jobs entirely.","B":"AI will create fewer jobs than it displaces.","C":"The pattern is human-AI collaboration rather than pure replacement.","D":"AI will only affect blue-collar workers.","answer":"C"},{"q":"What does the speaker identify as the key challenge posed by the AI revolution?","A":"Technical limitations of current AI systems.","B":"Educational preparation of workers for future jobs.","C":"Regulatory barriers to AI adoption.","D":"The cost of AI infrastructure.","answer":"B"}]}},"reading":{"tech":{"text":"In recent years, the field of brain-computer interfaces has undergone a remarkable transformation, evolving from theoretical neuroscience into a rapidly advancing technological frontier. Companies such as Neuralink, Synchron, and several academic research groups have made significant strides in developing devices that can decode neural signals and translate them into digital commands. These systems hold the potential to restore mobility to paralyzed individuals, enable communication for those with locked-in syndrome, and eventually augment human cognitive capabilities.\n\nThe fundamental principle behind brain-computer interfaces, or BCIs, is relatively straightforward: neurons communicate through electrical impulses, and these signals can be detected, interpreted, and converted into instructions for external devices. Early BCI systems relied on electroencephalography, or EEG, which uses electrodes placed on the scalp to measure brain activity. While non-invasive and safe, EEG-based systems suffer from limited resolution and are susceptible to interference from ambient electrical noise and muscle movements.\n\nMore recent approaches involve implantable devices that sit directly on or within the brain tissue. The Utah array, for example, is a silicon-based electrode array that penetrates the cortex and can record signals from hundreds of individual neurons simultaneously. These invasive systems offer dramatically higher resolution but carry risks associated with surgery, infection, and the body's immune response to foreign materials.\n\nOne of the most promising developments in the field is the emergence of endovascular BCIs, pioneered by the company Synchron. This approach involves threading a stent-like device through the blood vessels to reach the brain, thereby avoiding open brain surgery entirely. Once in position, the device can detect neural signals through the vessel wall. Early clinical trials have shown that patients with severe paralysis can use this system to perform basic computer tasks, such as sending text messages and browsing the internet, using only their thoughts.\n\nBeyond medical applications, the technology has attracted attention from the tech industry for potential consumer applications. Some companies envision a future where humans interact with computers, virtual reality environments, and even other people through thought alone. However, this raises significant ethical questions about privacy, autonomy, and the potential for cognitive inequality. If such technology becomes available only to the wealthy, it could exacerbate existing social disparities.\n\nDespite these concerns, researchers remain optimistic about the trajectory of BCI technology. Recent advances in machine learning have dramatically improved the accuracy of signal decoding, while flexible, bio-compatible materials are reducing the risk of long-term implantation. As these technologies continue to converge, the prospect of seamless human-machine integration moves closer to reality. However, significant engineering challenges remain, including improving signal longevity, developing wireless power transmission, and ensuring long-term reliability of implanted devices. The next decade will be critical in determining whether BCIs fulfill their remarkable promise or remain a niche medical technology.","vocab":[{"word":"interface","phonetic":"/ˈɪntəfeɪs/","def":"n. 接口；界面；交互设备"},{"word":"neural","phonetic":"/ˈnjʊərəl/","def":"adj. 神经的；神经系统的"},{"word":"decoding","phonetic":"/diːˈkəʊdɪŋ/","def":"n. 解码；译码"},{"word":"invasive","phonetic":"/ɪnˈveɪsɪv/","def":"adj. 侵入的；创伤性的"},{"word":"implantable","phonetic":"/ɪmˈplɑːntəbəl/","def":"adj. 可植入的"},{"word":"endovascular","phonetic":"/ˌendəʊˈvæskjʊlə/","def":"adj. 血管内的"},{"word":"resolution","phonetic":"/ˌrezəˈluːʃən/","def":"n. 分辨率；清晰度"},{"word":"cognitive","phonetic":"/ˈkɒɡnətɪv/","def":"adj. 认知的"}],"questions":[{"q":"What is the fundamental principle behind brain-computer interfaces?","A":"Using magnetic fields to stimulate brain activity.","B":"Detecting and interpreting electrical impulses from neurons.","C":"Reading blood flow patterns in the brain.","D":"Measuring oxygen levels in neural tissue.","answer":"B"},{"q":"What is a major disadvantage of EEG-based BCI systems?","A":"They require invasive surgery to install.","B":"They are expensive and difficult to manufacture.","C":"They have limited resolution and are susceptible to interference.","D":"They can only be used in hospital settings.","answer":"C"},{"q":"What makes Synchron's endovascular BCI approach distinctive?","A":"It uses magnetic fields instead of electrodes.","B":"It avoids open brain surgery by threading through blood vessels.","C":"It is the only non-invasive system available.","D":"It can record signals from millions of neurons.","answer":"B"},{"q":"What ethical concern does the author raise about consumer BCI applications?","A":"The technology could be used for military purposes.","B":"It might lead to cognitive inequality if only available to the wealthy.","C":"The devices might cause long-term health problems.","D":"It could reduce human intelligence over time.","answer":"B"},{"q":"What does the author suggest about the future of BCI technology?","A":"It will certainly become widely available within five years.","B":"It is unlikely to progress beyond medical applications.","C":"The next decade will determine whether it fulfills its promise.","D":"Ethical concerns will prevent further development.","answer":"C"}]},"social":{"text":"The concept of the four-day workweek has transitioned from a fringe idea to a subject of serious policy debate in recent years. As nations grapple with questions of productivity, worker well-being, and the changing nature of work in the post-pandemic era, several countries have launched large-scale trials to assess the feasibility of reducing the standard working week from five days to four without reducing pay.\n\nIceland conducted perhaps the most comprehensive experiments between 2015 and 2019, involving over 2,500 workers across a variety of sectors including healthcare, education, and social services. The results were striking: productivity remained stable or improved in most workplaces, while worker stress and burnout decreased significantly. Participants reported better work-life balance, improved health outcomes, and greater overall satisfaction. The trials were so successful that Icelandic labor unions successfully negotiated reduced working hours for approximately eighty-six percent of the country's workforce.\n\nSimilar experiments have since been undertaken in other countries. In 2022, the United Kingdom launched the world's largest four-day week pilot program, involving sixty-one companies and approximately 2,900 workers across industries ranging from financial services to fish and chips shops. Preliminary results from the six-month trial showed that revenue remained broadly unchanged across participating companies, while employee turnover dropped by fifty-seven percent compared to the same period the previous year. Furthermore, the number of sick days taken decreased by approximately sixty-five percent.\n\nProponents of the four-day workweek argue that the model is not merely about giving workers an extra day off, but about fundamentally restructuring how work is organized. The compressed schedule forces organizations to eliminate inefficiencies, reduce unnecessary meetings, and focus on outcomes rather than hours spent at a desk. This productivity-oriented approach can benefit both employers and employees.\n\nHowever, critics raise legitimate concerns. Certain industries, particularly healthcare, hospitality, and emergency services, require continuous coverage that a four-day week may not accommodate easily. Small businesses with limited staffing may struggle to implement the model without sacrificing customer service or overburdening existing employees. Additionally, some research suggests that the benefits may diminish over time as workers adapt to the new schedule, and that certain sectors may experience increased pressure on remaining workdays.\n\nDespite these challenges, public support for the four-day workweek continues to grow. A 2023 Gallup poll found that seventy-seven percent of American workers believe a four-day workweek would positively impact their well-being, and younger generations increasingly prioritize work-life balance in their career decisions. While a universal four-day workweek may not be feasible across all sectors, the experiments have demonstrated that for many organizations, it is not only possible but beneficial. The question is no longer whether a shorter working week can work, but under what conditions it works best.","vocab":[{"word":"feasibility","phonetic":"/ˌfiːzəˈbɪləti/","def":"n. 可行性；可能性"},{"word":"burnout","phonetic":"/ˈbɜːnaʊt/","def":"n. 精疲力竭；职业倦怠"},{"word":"turnover","phonetic":"/ˈtɜːnˌəʊvə/","def":"n. 人员流动率；营业额"},{"word":"restructuring","phonetic":"/ˌriːˈstrʌktʃərɪŋ/","def":"n. 重组；结构调整"},{"word":"inefficiency","phonetic":"/ˌɪnɪˈfɪʃənsi/","def":"n. 低效率；无效率"},{"word":"compressed","phonetic":"/kəmˈprest/","def":"adj. 压缩的；精简的"},{"word":"accommodate","phonetic":"/əˈkɒmədeɪt/","def":"v. 容纳；适应；调节"},{"word":"legitimate","phonetic":"/lɪˈdʒɪtɪmət/","def":"adj. 合法的；合理的"}],"questions":[{"q":"What was the primary finding from Iceland's four-day workweek experiments?","A":"Productivity decreased significantly but workers were happier.","B":"Productivity remained stable or improved while worker stress decreased.","C":"The model only worked for office-based jobs.","D":"Most companies returned to the five-day week after the trial.","answer":"B"},{"q":"According to the UK pilot program, what happened to employee turnover?","A":"It increased by 57 percent.","B":"It remained unchanged.","C":"It dropped by 57 percent.","D":"It decreased by 65 percent.","answer":"C"},{"q":"What do proponents argue is the real benefit of a four-day workweek?","A":"Workers get more leisure time.","B":"Companies save money on utilities.","C":"It forces organizations to restructure work more efficiently.","D":"It reduces traffic congestion during rush hour.","answer":"C"},{"q":"What concern do critics raise about the four-day workweek?","A":"It would reduce overall economic productivity.","B":"Some industries requiring continuous coverage may not accommodate it.","C":"Workers would not want to work longer hours per day.","D":"It would increase unemployment rates.","answer":"B"},{"q":"What does the 2023 Gallup poll indicate about American workers' views?","A":"Most prefer a six-day workweek for higher pay.","B":"Seventy-seven percent believe a four-day week would improve their well-being.","C":"Older workers strongly oppose the idea.","D":"Most think it would decrease company profits.","answer":"B"}]}},"translation":{"chinese":"近年来，人工智能在医疗领域的应用取得了显著进展。从辅助诊断到药物研发，AI系统正在帮助医生提高工作效率和诊断准确性。然而，专家们也指出，AI技术的广泛应用面临着数据隐私、算法偏见和监管框架滞后等挑战。未来，如何平衡技术创新与伦理规范，将成为推动该领域健康发展的关键。","reference":"In recent years, the application of artificial intelligence in the medical field has achieved remarkable progress. From assisted diagnosis to drug discovery, AI systems are helping doctors improve work efficiency and diagnostic accuracy. However, experts also point out that the widespread adoption of AI technology faces challenges such as data privacy, algorithmic bias, and lagging regulatory frameworks. In the future, how to balance technological innovation with ethical norms will be key to promoting the healthy development of this field."},"writing":{"prompt":"Directions: For this part, you are allowed 30 minutes to write an essay based on the following chart. The chart shows the percentage of time people spent on different types of media in 2022 and 2025. You should describe the chart briefly and give your comments on the trend. You should write at least 150 words but no more than 200 words.\n\n[Chart Description: A bar chart showing media consumption time distribution — Social Media (35% in 2022, 42% in 2025), Video Streaming (28% in 2022, 31% in 2025), Online News (18% in 2022, 15% in 2025), Traditional TV (12% in 2022, 8% in 2025), Print Media (7% in 2022, 4% in 2025)]","model":"The bar chart illustrates the changing landscape of media consumption between 2022 and 2025. As can be seen from the data, social media has maintained its dominance, growing from 35% to 42% of total media time. Video streaming also experienced a modest increase from 28% to 31%. In contrast, traditional media formats have witnessed a steady decline, with traditional TV dropping from 12% to 8% and print media falling from 7% to 4%.\n\nSeveral factors may account for these trends. First, the proliferation of smartphones and affordable internet access has made social media platforms more accessible than ever. Second, younger generations, who constitute the largest demographic of media consumers, increasingly prefer on-demand, interactive content over passive consumption of traditional media.\n\nIn my opinion, while the shift toward digital media offers unprecedented convenience and personalization, it also raises concerns about information quality and screen time. Striking a balance between embracing technological progress and maintaining healthy media habits will be essential for individuals and society alike."}};
 
-function submitAll(){
-  var correct=0,qs=document.querySelectorAll('.question');
-  qs.forEach(function(q){
-    var a=q.getAttribute('data-answer'),sel=q.querySelector('.option.selected');
-    var opts=q.querySelectorAll('.option');
-    opts.forEach(function(o){
-      o.classList.remove('correct','wrong','reveal-correct');
-      if(o.getAttribute('data-value')===a) o.classList.add('reveal-correct');
+// ========== RENDER FUNCTIONS ==========
+function renderQuestions(containerId, questions, prefix) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = '';
+  const letters = ['A','B','C','D'];
+  questions.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'question-item';
+    div.id = prefix + '-q-' + i;
+    let html = `<p>${i+1}. ${q.q}</p>`;
+    letters.forEach(l => {
+      html += `<label><input type="radio" name="${prefix}-${i}" value="${l}" data-answer="${q.answer}"> ${l}. ${q[l]}</label>`;
     });
-    if(sel){var ok=sel.getAttribute('data-value')===a;sel.classList.add(ok?'correct':'wrong');if(ok) correct++;}
-    q.querySelector('.answer-section').classList.add('show');
+    div.innerHTML = html;
+    container.appendChild(div);
   });
-  document.querySelectorAll('.transcript').forEach(function(t){t.classList.add('show')});
-  document.getElementById('translationModel').classList.add('show');
-  document.getElementById('writingModel').classList.add('show');
-  var total=qs.length,pct=Math.round(correct/total*100);
-  var e=document.getElementById('scoreDisplay');
-  e.textContent=correct+'/'+total+' ('+pct+'%)';
-  e.className='score '+(pct>=60?'pass':'fail');
-  document.getElementById('resultMessage').textContent='听力+阅读 '+correct+'/'+total+' · 翻译和作文在下方参考';
-  document.getElementById('resultBar').classList.add('show');
 }
 
-function resetAll(){
-  document.querySelectorAll('.option').forEach(function(o){o.classList.remove('selected','correct','wrong','reveal-correct')});
-  document.querySelectorAll('.answer-section').forEach(function(s){s.classList.remove('show')});
-  document.querySelectorAll('.transcript').forEach(function(t){t.classList.remove('show')});
-  document.getElementById('translationModel').classList.remove('show');
-  document.getElementById('writingModel').classList.remove('show');
-  document.getElementById('resultBar').classList.remove('show');
-  document.getElementById('translationInput').value='';
-  document.getElementById('writingInput').value='';
+function renderVocab(containerId, vocab) {
+  const table = document.getElementById(containerId);
+  table.innerHTML = '<tr><th>单词</th><th>音标</th><th>释义</th></tr>';
+  vocab.forEach(v => {
+    const row = table.insertRow();
+    row.insertCell().textContent = v.word;
+    row.insertCell().textContent = v.phonetic;
+    row.insertCell().textContent = v.def;
+  });
 }
 
-// === localStorage 答题记录 ===
-(function(){
-  try {
-    var key = 'cet6_records_' + '20260519';
-    var saved = localStorage.getItem(key);
-    if (saved) {
-      var data = JSON.parse(saved);
-      var footer = document.querySelector('.footer');
-      if (footer) {
-        var note = document.createElement('div');
-        note.style.cssText = 'text-align:center;padding:8px;font-size:12px;color:#888;margin-top:-8px';
-        note.textContent = '✅ 你之前做过这套题，得分: ' + data.score;
-        footer.parentNode.insertBefore(note, footer);
+function renderText(containerId, text) {
+  document.getElementById(containerId).innerHTML = text.replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
+  // Wrap in paragraphs
+  const el = document.getElementById(containerId);
+  const parts = text.split(/\n\n+/);
+  el.innerHTML = parts.map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
+}
+
+// ========== REVEAL FUNCTIONS ==========
+function revealListening() {
+  // Check answers
+  const lcQs = DATA.listening.long_conversation.questions;
+  const lecQs = DATA.listening.lecture.questions;
+  let allSelected = true;
+  
+  lcQs.forEach((q, i) => {
+    const selected = document.querySelector(`input[name="lc-${i}"]:checked`);
+    const qDiv = document.getElementById('lc-q-' + i);
+    const correctSpan = document.createElement('span');
+    correctSpan.className = 'correct';
+    if (selected) {
+      if (selected.value === q.answer) {
+        correctSpan.textContent = ' ✓ 正确!';
+      } else {
+        correctSpan.textContent = ' ✗ 错误，正确答案是 ' + q.answer;
       }
+    } else {
+      correctSpan.textContent = ' 未作答，正确答案是 ' + q.answer;
+      allSelected = false;
     }
-  } catch(e){}
-
-  // Monkey-patch submitAll to save to localStorage
-  var origSubmit = submitAll;
-  submitAll = function() {
-    origSubmit();
-    try {
-      var e = document.getElementById('scoreDisplay');
-      if (e && e.textContent) {
-        localStorage.setItem(key, JSON.stringify({
-          score: e.textContent,
-          date: '20260519',
-          timestamp: Date.now()
-        }));
+    qDiv.querySelector('p').appendChild(correctSpan);
+  });
+  
+  lecQs.forEach((q, i) => {
+    const selected = document.querySelector(`input[name="lecture-${i}"]:checked`);
+    const qDiv = document.getElementById('lecture-q-' + i);
+    const correctSpan = document.createElement('span');
+    correctSpan.className = 'correct';
+    if (selected) {
+      if (selected.value === q.answer) {
+        correctSpan.textContent = ' ✓ 正确!';
+      } else {
+        correctSpan.textContent = ' ✗ 错误，正确答案是 ' + q.answer;
       }
-    } catch(e){}
-  };
-})();
+    } else {
+      correctSpan.textContent = ' 未作答，正确答案是 ' + q.answer;
+    }
+    qDiv.querySelector('p').appendChild(correctSpan);
+  });
+
+  document.getElementById('lc-script').textContent = DATA.listening.long_conversation.script;
+  document.getElementById('lecture-script').textContent = DATA.listening.lecture.script;
+  document.getElementById('listening-reveal').classList.add('show');
+}
+
+function revealTranslation() {
+  document.getElementById('translation-ref').textContent = DATA.translation.reference;
+  document.getElementById('translation-reveal').classList.add('show');
+}
+
+function revealWriting() {
+  document.getElementById('writing-model').textContent = DATA.writing.model;
+  document.getElementById('writing-reveal').classList.add('show');
+}
+
+// ========== INIT ==========
+renderQuestions('lc-questions', DATA.listening.long_conversation.questions, 'lc');
+renderQuestions('lecture-questions', DATA.listening.lecture.questions, 'lecture');
+renderText('tech-text', DATA.reading.tech.text);
+renderVocab('tech-vocab', DATA.reading.tech.vocab);
+renderQuestions('tech-questions', DATA.reading.tech.questions, 'tech');
+renderText('social-text', DATA.reading.social.text);
+renderVocab('social-vocab', DATA.reading.social.vocab);
+renderQuestions('social-questions', DATA.reading.social.questions, 'social');
+document.getElementById('translation-prompt').textContent = DATA.translation.chinese;
+document.getElementById('writing-prompt').textContent = DATA.writing.prompt;
 </script>
 </body>
 </html>
