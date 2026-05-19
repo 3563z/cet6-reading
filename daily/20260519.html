@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>每日六级 · 20260519</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#1a1a2e;padding:16px;line-height:1.8}
+.container{max-width:520px;margin:0 auto}
+.header{text-align:center;padding:24px 0 16px}
+.header h1{font-size:22px;font-weight:700;color:#1a1a2e}
+.header .date{font-size:14px;color:#888;margin-top:4px}
+.header .badge{display:inline-block;background:#e8f0fe;color:#1a73e8;font-size:12px;padding:2px 10px;border-radius:12px;margin-top:8px}
+.section-badge{text-align:center;padding:12px;margin:24px 0 8px;font-size:16px;font-weight:700;color:#1a73e8;border-bottom:2px solid #e8f0fe}
+.passage{background:#fff;border-radius:16px;padding:20px;margin:16px 0;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.passage .tag{display:inline-block;font-size:12px;font-weight:600;padding:3px 10px;border-radius:8px;margin-bottom:12px}
+.tag-tech{background:#e3f2fd;color:#1565c0}
+.tag-human{background:#fce4ec;color:#c62828}
+.passage h2{font-size:18px;font-weight:600;line-height:1.5;margin-bottom:12px;color:#1a1a2e}
+.passage .text{font-size:15px;line-height:1.9;color:#333;text-align:justify;margin-bottom:16px}
+.passage .text p{margin-bottom:12px;text-indent:2em}
+.vocab{display:inline;color:#1a73e8;font-weight:600;border-bottom:2px solid #1a73e8;cursor:help}
+.vocab-box{background:#f0f4ff;border-radius:10px;padding:12px 14px;margin-bottom:16px;font-size:13px}
+.vocab-box strong{color:#1a73e8}
+.audio-section{margin:12px 0 20px}
+.audio-section audio{width:100%;border-radius:8px}
+.question{margin-bottom:18px}
+.question .q-num{font-weight:700;font-size:14px;color:#1a73e8;margin-bottom:6px}
+.question .q-text{font-size:14.5px;color:#333;margin-bottom:8px}
+.question .options{padding-left:4px}
+.question .option{display:block;font-size:14px;padding:8px 10px;margin:4px 0;border-radius:8px;background:#f8f9fa;border:1.5px solid transparent;transition:all .15s;cursor:pointer}
+.question .option:hover{background:#e8f0fe}
+.question .option.selected{background:#e8f0fe;border-color:#1a73e8;color:#1a73e8;font-weight:600}
+.question .option.correct{background:#e6f4ea;border-color:#34a853;color:#1e7e34}
+.question .option.wrong{background:#fce8e6;border-color:#ea4335;color:#c5221f}
+.question .option.reveal-correct{background:#e6f4ea;border-color:#34a853;color:#1e7e34}
+.answer-section{margin-top:8px;display:none}
+.answer-section.show{display:block}
+.answer-section .answer-key{font-size:13px;color:#34a853;font-weight:600;padding:8px 10px;background:#e6f4ea;border-radius:8px}
+.answer-section .explanation{font-size:13px;color:#666;margin-top:6px;padding:8px 10px;background:#f8f9fa;border-radius:8px}
+.transcript{margin-top:16px;display:none;padding:14px;background:#f8f9fa;border-radius:10px;font-size:14px;line-height:1.8;color:#444}
+.transcript.show{display:block}
+.transcript h3{font-size:15px;color:#1a73e8;margin-bottom:8px}
+.writing-area{margin-bottom:16px}
+.writing-area textarea{width:100%;min-height:120px;padding:12px;border:1.5px solid #ddd;border-radius:8px;font-size:14px;font-family:inherit;line-height:1.6;resize:vertical}
+.writing-area textarea:focus{outline:none;border-color:#1a73e8}
+.writing-prompt{font-size:14.5px;color:#333;margin-bottom:12px;padding:12px;background:#f0f4ff;border-radius:8px;line-height:1.6}
+.writing-prompt .zh-text{font-size:15px}
+.model-answer{display:none;margin-top:16px;padding:14px;background:#e8f5e9;border-radius:10px;font-size:14px;line-height:1.8;color:#1e7e34}
+.model-answer.show{display:block}
+.model-answer h3{font-size:15px;color:#2e7d32;margin-bottom:8px}
+.model-answer audio{width:100%;border-radius:6px;margin-top:8px}
+.btn-group{display:flex;gap:10px;margin:20px 0}
+.btn{flex:1;padding:14px;border:none;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;text-align:center}
+.btn-primary{background:#1a73e8;color:#fff}
+.btn-primary:active{background:#1557b0}
+.btn-secondary{background:#e8eaed;color:#444}
+.btn-secondary:active{background:#d2d4d8}
+.result-bar{display:none;text-align:center;padding:16px;margin:16px 0;border-radius:12px;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,0.06);font-size:15px}
+.result-bar.show{display:block}
+.result-bar .score{font-size:28px;font-weight:700}
+.result-bar .score.pass{color:#34a853}
+.result-bar .score.fail{color:#ea4335}
+.result-bar .detail{font-size:13px;color:#888;margin-top:4px}
+.footer{text-align:center;padding:24px 0 32px;font-size:12px;color:#aaa}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+  <h1>📖🎧✍️📝 每日六级</h1>
+  <div class="date">2026 年 5 月 19 日 · </div>
+  <div class="badge">🎯 CET-6 听力·阅读·翻译·作文 一日打通</div>
+</div>
+
+<div class="section-badge">🎧 听力理解</div>
+<div class="passage">
+  <span class="tag tag-tech">🔬 科技听力</span>
+  <h2>AI Helps Mars Rovers Navigate Autonomously</h2>
+  <div class="audio-section"><audio controls><source src="https://3563z.github.io/cet6-reading/daily/audio/20260519_1.mp3" type="audio/mpeg"></audio></div>
+  <div class="question" data-answer="c">
+<div class="q-num">Question 1</div>
+<div class="options">
+<div class="option" data-value="a">A. It enables the rover to operate without signals from Earth-based operators.</div>
+<div class="option" data-value="b">B. It eliminates the need for any human involvement in space missions.</div>
+<div class="option" data-value="c">C. It dramatically reduces the time needed for each movement decision.</div>
+<div class="option" data-value="d">D. It allows the rover to inspect Martian rocks for organic compounds.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：C. It dramatically reduces the time needed for each movement decision.</div><div class="explanation">正确答案：C. It dramatically reduces the time needed for each movement decision.</div></div>
+</div>
+<div class="question" data-answer="d">
+<div class="q-num">Question 2</div>
+<div class="options">
+<div class="option" data-value="a">A. It causes frequent breakdowns in the rover's navigation equipment.</div>
+<div class="option" data-value="b">B. It prevents the AI from receiving regular software updates.</div>
+<div class="option" data-value="c">C. It reduces the quality of images transmitted back to NASA.</div>
+<div class="option" data-value="d">D. It makes real-time communication with the rover impractical.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：D. It makes real-time communication with the rover impractical.</div><div class="explanation">正确答案：D. It makes real-time communication with the rover impractical.</div></div>
+</div>
+<div class="question" data-answer="d">
+<div class="q-num">Question 3</div>
+<div class="options">
+<div class="option" data-value="a">A. Radio signals transmitted from orbiters around Mars.</div>
+<div class="option" data-value="b">B. Temperature sensors that detect surface conditions.</div>
+<div class="option" data-value="c">C. Pre-programmed maps uploaded before the mission.</div>
+<div class="option" data-value="d">D. Visual data processed by an onboard camera system.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：D. Visual data processed by an onboard camera system.</div><div class="explanation">正确答案：D. Visual data processed by an onboard camera system.</div></div>
+</div>
+<div class="question" data-answer="a">
+<div class="q-num">Question 4</div>
+<div class="options">
+<div class="option" data-value="a">A. The rover must operate under severe temperature conditions.</div>
+<div class="option" data-value="b">B. The planet's gravity is too weak for efficient movement.</div>
+<div class="option" data-value="c">C. The atmosphere causes frequent dust storms blocking cameras.</div>
+<div class="option" data-value="d">D. The surface is mostly covered in loose sand that traps wheels.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：A. The rover must operate under severe temperature conditions.</div><div class="explanation">正确答案：A. The rover must operate under severe temperature conditions.</div></div>
+</div>
+<div class="question" data-answer="c">
+<div class="q-num">Question 5</div>
+<div class="options">
+<div class="option" data-value="a">A. It receives regular software patches from human engineers.</div>
+<div class="option" data-value="b">B. It compares its navigation data with other Mars rovers.</div>
+<div class="option" data-value="c">C. It learns from every successful trip across the landscape.</div>
+<div class="option" data-value="d">D. It uses cloud-based machine learning models from Earth.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：C. It learns from every successful trip across the landscape.</div><div class="explanation">正确答案：C. It learns from every successful trip across the landscape.</div></div>
+</div>
+
+  <div class="transcript" id="t1"><h3>📝 听力原文</h3><p>Student A: Hey, I just read something amazing about NASA's Perseverance rover. Did you know it can now drive across Mars using routes planned entirely by artificial intelligence?<br><br>Student B: Really? I thought all Martian rovers were guided by human operators back on Earth. How does the AI actually work?<br><br>Student A: Well, traditionally, engineers had to manually analyze images and plan each movement. But a vision-capable AI on board can now examine the same images and make decisions independently. It identifies safe paths, avoids obstacles like large rocks, and calculates the most efficient route.<br><br>Student B: That's a huge leap forward. You know, the time delay between Earth and Mars is a real problem. It can take anywhere from 5 to 20 minutes for a signal to travel. So having autonomous navigation dramatically speeds things up.<br><br>Student A: Exactly. Instead of covering just a few dozen meters per day, the rover can now travel much farther. What's more, the AI keeps learning as it goes. Each successful drive improves future route planning.<br><br>Student B: I wonder if this same technology could be used for other applications. Like, could self-driving cars on Earth benefit from these algorithms?<br><br>Student A: Actually, that's a great point. The core technology is similar, though the Martian environment is quite different. The AI has to deal with uneven terrain, extreme temperatures, and limited computing power. But the principles of vision-based navigation definitely apply to autonomous vehicles here.<br><br>Student B: Fascinating. With AI handling navigation, scientists can focus on the more important task—analyzing data to search for signs of ancient life. It really shows how AI is transforming space exploration.<br><br>Question 1. What is the main advantage of the new AI navigation system on the Perseverance rover according to the conversation?<br><br>Question 2. Why does the man say the time delay between Earth and Mars is a problem?<br><br>Question 3. What does the AI navigation system use to identify safe paths?<br><br>Question 4. What limitation of the Martian environment does the woman mention for AI navigation?<br><br>Question 5. How does the AI improve its performance over time?</p></div>
+</div>
+
+<div class="passage">
+  <span class="tag tag-human">🌍 社会听力</span>
+  <h2>The Hidden Dangers of Ultra-Processed Foods</h2>
+  <div class="audio-section"><audio controls><source src="https://3563z.github.io/cet6-reading/daily/audio/20260519_2.mp3" type="audio/mpeg"></audio></div>
+  <div class="question" data-answer="b">
+<div class="q-num">Question 1</div>
+<div class="options">
+<div class="option" data-value="a">A. The nutritional value of frozen meals and packaged snacks.</div>
+<div class="option" data-value="b">B. The link between ultra-processed foods and heart disease risk.</div>
+<div class="option" data-value="c">C. The difference between European and American eating habits.</div>
+<div class="option" data-value="d">D. The effectiveness of current dietary guidelines for the public.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：B. The link between ultra-processed foods and heart disease risk.</div><div class="explanation">正确答案：B. The link between ultra-processed foods and heart disease risk.</div></div>
+</div>
+<div class="question" data-answer="a">
+<div class="q-num">Question 2</div>
+<div class="options">
+<div class="option" data-value="a">A. They contain substances rarely found in home cooking.</div>
+<div class="option" data-value="b">B. They have higher calorie counts than natural foods.</div>
+<div class="option" data-value="c">C. They are marketed exclusively to young consumers.</div>
+<div class="option" data-value="d">D. They require refrigeration to maintain freshness.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：A. They contain substances rarely found in home cooking.</div><div class="explanation">正确答案：A. They contain substances rarely found in home cooking.</div></div>
+</div>
+<div class="question" data-answer="a">
+<div class="q-num">Question 3</div>
+<div class="options">
+<div class="option" data-value="a">A. The health risks remain even after accounting for calorie intake.</div>
+<div class="option" data-value="b">B. People who eat them tend to exercise less than average.</div>
+<div class="option" data-value="c">C. The damage they cause is reversible within a few months.</div>
+<div class="option" data-value="d">D. Their effects are stronger in men than in women.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：A. The health risks remain even after accounting for calorie intake.</div><div class="explanation">正确答案：A. The health risks remain even after accounting for calorie intake.</div></div>
+</div>
+<div class="question" data-answer="c">
+<div class="q-num">Question 4</div>
+<div class="options">
+<div class="option" data-value="a">A. 8 percent</div>
+<div class="option" data-value="b">B. 15 percent</div>
+<div class="option" data-value="c">C. 12 percent</div>
+<div class="option" data-value="d">D. 20 percent</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：C. 12 percent</div><div class="explanation">正确答案：C. 12 percent</div></div>
+</div>
+<div class="question" data-answer="b">
+<div class="q-num">Question 5</div>
+<div class="options">
+<div class="option" data-value="a">A. They contain high levels of natural sugars that damage teeth.</div>
+<div class="option" data-value="b">B. Their altered physical structure changes how the body digests them.</div>
+<div class="option" data-value="c">C. They are often contaminated with bacteria during production.</div>
+<div class="option" data-value="d">D. Their packaging releases harmful chemicals into the food.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：B. Their altered physical structure changes how the body digests them.</div><div class="explanation">正确答案：B. Their altered physical structure changes how the body digests them.</div></div>
+</div>
+
+  <div class="transcript" id="t2"><h3>📝 听力原文</h3><p>Good morning. Today I want to discuss a growing concern in public health: the impact of ultra-processed foods on cardiovascular health. A major new European cardiology report has recently warned that people who consume the highest amounts of ultra-processed foods face significantly higher risks of heart disease and stroke.<br><br>What exactly are ultra-processed foods? These are industrial formulations that contain ingredients you wouldn't typically find in a home kitchen—things like hydrogenated oils, high-fructose corn syrup, artificial flavors, and preservatives. Think packaged snacks, sugary drinks, instant noodles, and frozen meals.<br><br>Now, you might assume the main problem is simply too much sugar or fat. However, the study reveals something more disturbing. Even when researchers adjusted for calorie intake and body weight, the elevated risk persisted. This suggests that the processing itself—not just the nutritional content—may be causing harm.<br><br>In fact, the report analyzed data from over 300,000 participants across nine European countries. It found that for every 10% increase in ultra-processed food consumption, the risk of cardiovascular disease rose by 12%. What's more, the association was particularly strong for women. <br><br>So what makes these foods so damaging? One theory involves the chemical additives used during manufacturing. Many ultra-processed foods contain substances that can trigger inflammation in the body. Chronic inflammation, as many of you know, is a known contributor to heart disease. Moreover, the physical structure of these foods is altered during processing, which may affect how our bodies digest and absorb nutrients.<br><br>Therefore, the takeaway message is clear: reducing our reliance on ultra-processed foods could be one of the most effective strategies for protecting heart health. Choosing whole foods—fresh vegetables, fruits, lean proteins, and whole grains—remains the safest approach. As the old saying goes, if it comes in a package with a long list of unpronounceable ingredients, think twice before putting it in your shopping cart.<br><br>Question 1. What is the main topic of this lecture?<br><br>Question 2. According to the lecture, what distinguishes ultra-processed foods from ordinary processed foods?<br><br>Question 3. What surprising finding did the study reveal about ultra-processed foods?<br><br>Question 4. What percentage increase in cardiovascular disease risk was associated with a 10% rise in ultra-processed food intake?<br><br>Question 5. What does the speaker suggest as a key reason why ultra-processed foods are harmful?</p></div>
+</div>
+
+<div class="section-badge">📖 阅读理解</div>
+<div class="passage">
+  <span class="tag tag-tech">🔬 科技</span>
+  <h2>Octopus-Inspired Smart Hydrogel Can Change Shape on Command</h2>
+  <div class="vocab-box"><strong>📝 核心词汇</strong><br>hydrogel <span style="color:#666;font-family:'Times New Roman',serif">/ˈhaɪdrədʒel/</span> <span style="color:#333">水凝胶（一种吸水聚合物网络）</span><br>breakthrough <span style="color:#666;font-family:'Times New Roman',serif">/ˈbreɪkθruː/</span> <span style="color:#333">突破性进展</span><br>stimuli <span style="color:#666;font-family:'Times New Roman',serif">/ˈstɪmjʊlaɪ/</span> <span style="color:#333">刺激因素（stimulus的复数）</span><br>reversible <span style="color:#666;font-family:'Times New Roman',serif">/rɪˈvɜːsəbl/</span> <span style="color:#333">可逆的</span><br>configuration <span style="color:#666;font-family:'Times New Roman',serif">/kənˌfɪɡəˈreɪʃn/</span> <span style="color:#333">配置；结构形态</span><br>prototype <span style="color:#666;font-family:'Times New Roman',serif">/ˈprəʊtətaɪp/</span> <span style="color:#333">原型；样机</span><br>camouflage <span style="color:#666;font-family:'Times New Roman',serif">/ˈkæməflɑːʒ/</span> <span style="color:#333">伪装；保护色</span><br></div>
+  <div class="text"><p>Researchers at Penn State University have developed a remarkable new material inspired by the shape-shifting abilities of octopuses. This smart hydrogel can alter its appearance, texture, and shape when triggered by external commands. The breakthrough could have significant implications for soft robotics, wearable technology, and medical devices.</p><p>The material works by using a network of polymer chains that respond to specific stimuli. When exposed to certain environmental conditions such as changes in temperature or pH levels, the hydrogel undergoes a controlled transformation. The process is reversible, meaning the material can return to its original state when the stimulus is removed.</p><p>What makes this innovation particularly noteworthy is the level of control researchers have achieved. Unlike previous smart materials that could only switch between two states, this hydrogel can be programmed to adopt multiple configurations. The team programmed patterns into the material using a process similar to how data is stored in computer memory.</p><p>However, the researchers faced considerable challenges during development. The term &quot;hydrogel&quot; here refers to a network of water-absorbent polymers, not a gel-like substance in the conventional sense. These materials must balance flexibility with structural integrity, which proved difficult to achieve simultaneously. The team eventually solved this by layering different polymer compositions.</p><p>A recent study published in the journal Nature Communications demonstrated the hydrogel's potential. The material was able to mimic the texture of natural surfaces such as leaves and rocks, changing its microscopic surface patterns within seconds. Dr. Sarah Chen, the lead author, stated that the current prototype represents only the beginning. &quot;We are now exploring applications in color-changing camouflage and adaptive medical implants,&quot; she explained.</p><p>Looking ahead, the researchers believe this technology could revolutionize several industries. In soft robotics, it might enable robots to grasp delicate objects without damaging them. In medicine, smart hydrogels could be used to create implants that adapt to the body's changing conditions. As Dr. Chen concluded, &quot;Nature has been our best teacher. By studying creatures like octopuses, we can create materials once thought impossible.&quot;</p><p>The potential applications extend beyond what was initially imagined. The team is already collaborating with medical researchers to develop smart wound dressings that could change their permeability based on infection levels. Meanwhile, engineers in the robotics field see opportunities for creating more lifelike prosthetic limbs that can subtly adjust their grip strength. The versatility of this hydrogel suggests that its impact may be felt across numerous scientific disciplines for years to come.</p></div>
+  <div class="question" data-answer="a">
+<div class="q-num">第 一 题</div>
+<div class="q-text">What is the passage mainly about?</div>
+<div class="options">
+<div class="option" data-value="a">A. A smart material that imitates the abilities of octopuses.</div>
+<div class="option" data-value="b">B. A comparison between natural and synthetic polymers.</div>
+<div class="option" data-value="c">C. The role of temperature in chemical transformations.</div>
+<div class="option" data-value="d">D. The history of hydrogel development at Penn State.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：A. A smart material that imitates the abilities of octopuses.</div><div class="explanation">正确答案：A. A smart material that imitates the abilities of octopuses.</div></div>
+</div>
+<div class="question" data-answer="d">
+<div class="q-num">第 二 题</div>
+<div class="q-text">What triggers the transformation of the smart hydrogel?</div>
+<div class="options">
+<div class="option" data-value="a">A. Electrical signals sent through the polymer network.</div>
+<div class="option" data-value="b">B. Exposure to ultraviolet light from the sun.</div>
+<div class="option" data-value="c">C. Mechanical pressure applied to the material.</div>
+<div class="option" data-value="d">D. Changes in environmental factors like temperature.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：D. Changes in environmental factors like temperature.</div><div class="explanation">正确答案：D. Changes in environmental factors like temperature.</div></div>
+</div>
+<div class="question" data-answer="a">
+<div class="q-num">第 三 题</div>
+<div class="q-text">The word &quot;configuration&quot; in paragraph 3 is closest in meaning to:</div>
+<div class="options">
+<div class="option" data-value="a">A. Arrangement or setup.</div>
+<div class="option" data-value="b">B. Temperature setting.</div>
+<div class="option" data-value="c">C. Chemical composition.</div>
+<div class="option" data-value="d">D. Manufacturing process.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：A. Arrangement or setup.</div><div class="explanation">正确答案：A. Arrangement or setup.</div></div>
+</div>
+<div class="question" data-answer="c">
+<div class="q-num">第 四 题</div>
+<div class="q-text">What can be inferred about previous smart materials?</div>
+<div class="options">
+<div class="option" data-value="a">A. They were primarily used in the electronics industry.</div>
+<div class="option" data-value="b">B. They required large amounts of energy to operate.</div>
+<div class="option" data-value="c">C. They could only switch between two forms at most.</div>
+<div class="option" data-value="d">D. They were cheaper to produce than the new hydrogel.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：C. They could only switch between two forms at most.</div><div class="explanation">正确答案：C. They could only switch between two forms at most.</div></div>
+</div>
+<div class="question" data-answer="c">
+<div class="q-num">第 五 题</div>
+<div class="q-text">What does Dr. Sarah Chen imply about future applications of the hydrogel?</div>
+<div class="options">
+<div class="option" data-value="a">A. Medical uses would require additional animal testing first.</div>
+<div class="option" data-value="b">B. The material needs to be cheaper before it can be widely adopted.</div>
+<div class="option" data-value="c">C. Current achievements are just the start of greater possibilities.</div>
+<div class="option" data-value="d">D. The technology is already ready for commercial use.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：C. Current achievements are just the start of greater possibilities.</div><div class="explanation">正确答案：C. Current achievements are just the start of greater possibilities.</div></div>
+</div>
+
+</div>
+
+<div class="passage">
+  <span class="tag tag-human">🌍 社会</span>
+  <h2>Selective Colleges Reach Out to Rural Students</h2>
+  <div class="vocab-box"><strong>📝 核心词汇</strong><br>concerted <span style="color:#666;font-family:'Times New Roman',serif">/kənˈsɜːtɪd/</span> <span style="color:#333">协同的；一致的；共同努力的</span><br>underrepresented <span style="color:#666;font-family:'Times New Roman',serif">/ˌʌndəreprɪˈzentɪd/</span> <span style="color:#333">未被充分代表的；代表性不足的</span><br>imbalance <span style="color:#666;font-family:'Times New Roman',serif">/ɪmˈbæləns/</span> <span style="color:#333">不平衡；失衡</span><br>initiative <span style="color:#666;font-family:'Times New Roman',serif">/ɪˈnɪʃətɪv/</span> <span style="color:#333">倡议；主动行动</span><br>prospective <span style="color:#666;font-family:'Times New Roman',serif">/prəˈspektɪv/</span> <span style="color:#333">未来的；预期的；可能的</span><br>retention <span style="color:#666;font-family:'Times New Roman',serif">/rɪˈtenʃn/</span> <span style="color:#333">保留；保持（率）</span><br>counterpart <span style="color:#666;font-family:'Times New Roman',serif">/ˈkaʊntəpɑːt/</span> <span style="color:#333">对应的人或物</span><br></div>
+  <div class="text"><p>A growing number of selective colleges across the United States are making concerted efforts to recruit students from rural areas. For decades, students growing up in small towns and farming communities have been significantly underrepresented on elite college campuses. Now, institutions are recognizing this imbalance and taking action.</p><p>According to recent data, only about 15 percent of students at the nation's most competitive universities come from rural backgrounds, despite the fact that nearly one in five American children grow up in such communities. The gap stems from multiple factors, including limited access to advanced courses, fewer college counseling resources, and the financial burden of visiting far-away campuses.</p><p>Several universities have launched targeted initiatives to address these barriers. For instance, Amherst College recently hosted admitted students and their families from rural areas for campus tours, covering all travel expenses. The term &quot;fly-in program&quot; refers to such initiatives where prospective students are flown to campus at the institution's expense, helping them experience college life firsthand.</p><p>However, the challenges extend beyond simple logistics. Rural students often face cultural adjustment when arriving on campus. They may feel out of place among peers from wealthy suburban or urban high schools. Some universities have responded by creating rural student support groups and assigning faculty mentors who understand these students' unique experiences.</p><p>A report from the Hechinger Institute suggests that the efforts are beginning to pay off. Applications from rural students to participating colleges have increased by over 30 percent since 2023. What is remarkable is that retention rates for these students are comparable to their urban counterparts, indicating that the support programs are working effectively.</p><p>Nevertheless, advocates argue that much more needs to be done. &quot;Access isn't just about getting in the door,&quot; noted one researcher. &quot;It's about creating an environment where rural students can truly thrive once they arrive.&quot; The long-term goal, they say, should be to ensure that a student's zip code does not determine their educational opportunities.</p><p>Critics point out that these programs, while helpful, reach only a small fraction of eligible rural students. They argue that more fundamental changes are needed in how rural schools are funded and supported. Nevertheless, the growing trend among elite institutions signals a broader recognition that talent is distributed equally across all communities, even if opportunity is not. The question remains whether America's top colleges will sustain this commitment as political and economic pressures shift.</p></div>
+  <div class="question" data-answer="a">
+<div class="q-num">第 一 题</div>
+<div class="q-text">What issue does the passage primarily address?</div>
+<div class="options">
+<div class="option" data-value="a">A. The underrepresentation of rural students at elite colleges.</div>
+<div class="option" data-value="b">B. The financial problems facing rural school districts.</div>
+<div class="option" data-value="c">C. The declining quality of education in rural areas.</div>
+<div class="option" data-value="d">D. The competition between urban and rural universities.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：A. The underrepresentation of rural students at elite colleges.</div><div class="explanation">正确答案：A. The underrepresentation of rural students at elite colleges.</div></div>
+</div>
+<div class="question" data-answer="d">
+<div class="q-num">第 二 题</div>
+<div class="q-text">According to paragraph 2, what percentage of American children grow up in rural communities?</div>
+<div class="options">
+<div class="option" data-value="a">A. Roughly 30 percent.</div>
+<div class="option" data-value="b">B. Nearly 40 percent.</div>
+<div class="option" data-value="c">C. About 15 percent.</div>
+<div class="option" data-value="d">D. Approximately 20 percent.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：D. Approximately 20 percent.</div><div class="explanation">正确答案：D. Approximately 20 percent.</div></div>
+</div>
+<div class="question" data-answer="c">
+<div class="q-num">第 三 题</div>
+<div class="q-text">The word &quot;prospective&quot; in paragraph 4 is closest in meaning to:</div>
+<div class="options">
+<div class="option" data-value="a">A. Current or existing.</div>
+<div class="option" data-value="b">B. Distant or far away.</div>
+<div class="option" data-value="c">C. Potential or likely.</div>
+<div class="option" data-value="d">D. Wealthy or privileged.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：C. Potential or likely.</div><div class="explanation">正确答案：C. Potential or likely.</div></div>
+</div>
+<div class="question" data-answer="b">
+<div class="q-num">第 四 题</div>
+<div class="q-text">What does the report from the Hechinger Institute suggest about the initiatives?</div>
+<div class="options">
+<div class="option" data-value="a">A. They mainly benefit wealthy rural families.</div>
+<div class="option" data-value="b">B. They are showing positive results so far.</div>
+<div class="option" data-value="c">C. They have failed to attract enough applicants.</div>
+<div class="option" data-value="d">D. They are more expensive than traditional methods.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：B. They are showing positive results so far.</div><div class="explanation">正确答案：B. They are showing positive results so far.</div></div>
+</div>
+<div class="question" data-answer="c">
+<div class="q-num">第 五 题</div>
+<div class="q-text">What is the implied attitude of advocates toward current efforts in the last paragraph?</div>
+<div class="options">
+<div class="option" data-value="a">A. Strong opposition to the entire approach.</div>
+<div class="option" data-value="b">B. Complete satisfaction with the progress made.</div>
+<div class="option" data-value="c">C. Belief that more work is still required.</div>
+<div class="option" data-value="d">D. Uncertainty about whether change is needed.</div>
+</div>
+<div class="answer-section"><div class="answer-key">✅ 正确答案：C. Belief that more work is still required.</div><div class="explanation">正确答案：C. Belief that more work is still required.</div></div>
+</div>
+
+</div>
+
+<div class="section-badge">✏️ 翻译 · 中译英</div>
+<div class="passage">
+  <span class="tag tag-human">🌍 社会</span>
+  <div class="writing-prompt"><div class="zh-text">中国茶文化有着数千年的历史，是中华文明的重要组成部分。茶叶最早被用作药物，后来逐渐发展成为一种日常饮品。如今，喝茶不仅是一种生活习惯，更是一种社交方式。无论是家庭聚会还是商务会谈，一壶热茶总是拉近人与人之间距离的桥梁。近年来，中国茶文化在世界各地越来越受欢迎，许多外国朋友也开始学习如何品茶。茶文化所代表的宁静与和谐，正是中国传统哲学智慧的体现。</div></div>
+  <div class="writing-area"><textarea id="translationInput" placeholder="在此输入你的翻译…"></textarea></div>
+  <div class="model-answer" id="translationModel">
+    <h3>📖 参考译文</h3>
+    <audio controls><source src="https://3563z.github.io/cet6-reading/daily/audio/20260519_3.mp3" type="audio/mpeg"></audio>
+    <p style="margin-top:8px">Chinese tea culture has a history of thousands of years and is an important part of Chinese civilization. Tea leaves were originally used as medicine, and later gradually developed into a daily beverage. Nowadays, drinking tea is not only a life habit but also a way of socializing. Whether it is a family gathering or a business meeting, a pot of hot tea always serves as a bridge that brings people closer together. In recent years, Chinese tea culture has become increasingly popular around the world, and many foreign friends have started learning how to appreciate tea. The tranquility and harmony represented by tea culture reflect the wisdom of traditional Chinese philosophy.</p>
+  </div>
+</div>
+
+<div class="section-badge">📝 写作</div>
+<div class="passage">
+  <span class="tag tag-human">✍️</span>
+  <div class="writing-prompt"><div class="zh-text">Directions: For this part, you are allowed 30 minutes to write an essay based on the following chart. The chart shows the percentage of students who use online learning platforms for more than 10 hours per week from 2019 to 2025. You should summarize the data and give your own opinion on whether online learning will eventually replace traditional classroom education. You should write at least 150 words but no more than 200 words.</div></div>
+  <div class="writing-area"><textarea id="writingInput" placeholder="在此输入你的作文…"></textarea></div>
+  <div class="model-answer" id="writingModel">
+    <h3>📖 参考范文</h3>
+    <audio controls><source src="https://3563z.github.io/cet6-reading/daily/audio/20260519_4.mp3" type="audio/mpeg"></audio>
+    <p style="margin-top:8px">The chart clearly illustrates a steady increase in the percentage of students engaging with online learning platforms for over ten hours per week, rising from approximately 15% in 2019 to over 55% in 2025. This dramatic growth raises an important question: will online education eventually replace traditional classroom learning?
+
+On one hand, online learning offers undeniable advantages. It provides flexibility, allowing students to access high-quality educational resources regardless of their geographical location. Moreover, the COVID-19 pandemic accelerated the adoption of digital tools, demonstrating that remote education can be remarkably effective.
+
+However, I believe online learning will complement rather than replace traditional classrooms. Face-to-face interaction remains crucial for developing communication skills and building meaningful relationships. A classroom is not merely a place for transmitting knowledge; it is a space where students learn collaboration, empathy, and critical thinking through direct human interaction.
+
+In conclusion, while online platforms will continue to play an increasingly important role in education, traditional classrooms will retain their unique value. The future of education lies in a blended approach that combines the best of both worlds.</p>
+  </div>
+</div>
+
+<div class="btn-group">
+  <button class="btn btn-primary" onclick="submitAll()">✅ 提交</button>
+  <button class="btn btn-secondary" onclick="resetAll()">🔄 重置</button>
+</div>
+
+<div class="result-bar" id="resultBar">
+  <div class="score" id="scoreDisplay"></div>
+  <div class="detail" id="resultMessage"></div>
+</div>
+
+<div class="footer">每日六级 · 小约 🤖<br>听力·阅读·翻译·作文 · © 2026</div>
+</div>
+
+<script>
+document.querySelectorAll('.option').forEach(function(o){
+  o.onclick=function(){
+    var p=this.closest('.options');
+    p.querySelectorAll('.option').forEach(function(x){x.classList.remove('selected')});
+    this.classList.add('selected');
+  };
+});
+
+function submitAll(){
+  var correct=0,qs=document.querySelectorAll('.question');
+  qs.forEach(function(q){
+    var a=q.getAttribute('data-answer'),sel=q.querySelector('.option.selected');
+    var opts=q.querySelectorAll('.option');
+    opts.forEach(function(o){
+      o.classList.remove('correct','wrong','reveal-correct');
+      if(o.getAttribute('data-value')===a) o.classList.add('reveal-correct');
+    });
+    if(sel){var ok=sel.getAttribute('data-value')===a;sel.classList.add(ok?'correct':'wrong');if(ok) correct++;}
+    q.querySelector('.answer-section').classList.add('show');
+  });
+  document.querySelectorAll('.transcript').forEach(function(t){t.classList.add('show')});
+  document.getElementById('translationModel').classList.add('show');
+  document.getElementById('writingModel').classList.add('show');
+  var total=qs.length,pct=Math.round(correct/total*100);
+  var e=document.getElementById('scoreDisplay');
+  e.textContent=correct+'/'+total+' ('+pct+'%)';
+  e.className='score '+(pct>=60?'pass':'fail');
+  document.getElementById('resultMessage').textContent='听力+阅读 '+correct+'/'+total+' · 翻译和作文在下方参考';
+  document.getElementById('resultBar').classList.add('show');
+}
+
+function resetAll(){
+  document.querySelectorAll('.option').forEach(function(o){o.classList.remove('selected','correct','wrong','reveal-correct')});
+  document.querySelectorAll('.answer-section').forEach(function(s){s.classList.remove('show')});
+  document.querySelectorAll('.transcript').forEach(function(t){t.classList.remove('show')});
+  document.getElementById('translationModel').classList.remove('show');
+  document.getElementById('writingModel').classList.remove('show');
+  document.getElementById('resultBar').classList.remove('show');
+  document.getElementById('translationInput').value='';
+  document.getElementById('writingInput').value='';
+}
+
+// === localStorage 答题记录 ===
+(function(){
+  try {
+    var key = 'cet6_records_' + '20260519';
+    var saved = localStorage.getItem(key);
+    if (saved) {
+      var data = JSON.parse(saved);
+      var footer = document.querySelector('.footer');
+      if (footer) {
+        var note = document.createElement('div');
+        note.style.cssText = 'text-align:center;padding:8px;font-size:12px;color:#888;margin-top:-8px';
+        note.textContent = '✅ 你之前做过这套题，得分: ' + data.score;
+        footer.parentNode.insertBefore(note, footer);
+      }
+    }
+  } catch(e){}
+
+  // Monkey-patch submitAll to save to localStorage
+  var origSubmit = submitAll;
+  submitAll = function() {
+    origSubmit();
+    try {
+      var e = document.getElementById('scoreDisplay');
+      if (e && e.textContent) {
+        localStorage.setItem(key, JSON.stringify({
+          score: e.textContent,
+          date: '20260519',
+          timestamp: Date.now()
+        }));
+      }
+    } catch(e){}
+  };
+})();
+</script>
+</body>
+</html>
