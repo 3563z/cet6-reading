@@ -162,6 +162,15 @@ hr { margin: 20px 0; border: none; border-top: 1px solid var(--border); }
   <h4>📝 核心词汇</h4>
   <table class="vocab-table" id="social-vocab"></table>
   <div class="question-list" id="social-questions"></div>
+  
+  <button class="btn" onclick="revealReading()">📝 提交阅读答案 &amp; 查看解析</button>
+  <div class="reveal-content" id="reading-reveal">
+    <h4>📊 答题结果</h4>
+    <div class="result-bar">
+      <div class="score" id="reading-score"></div>
+      <div class="detail" id="reading-detail"></div>
+    </div>
+  </div>
 </div>
 
 <!-- ============ 翻译部分 ============ -->
@@ -290,6 +299,53 @@ function revealListening() {
   document.getElementById('passage-script').textContent = DATA.listening.passage.script;
   document.getElementById('lecture-script').textContent = DATA.listening.lecture.script;
   document.getElementById('listening-reveal').classList.add('show');
+}
+
+
+function revealReading() {
+  const techQs = DATA.reading.tech.questions;
+  const socialQs = DATA.reading.social.questions;
+  let correct = 0, total = techQs.length + socialQs.length;
+  
+  techQs.forEach((q, i) => {
+    const selected = document.querySelector(`input[name="tech-${i}"]:checked`);
+    const qDiv = document.getElementById('tech-q-' + i);
+    const correctSpan = document.createElement('span');
+    correctSpan.className = 'correct';
+    if (selected) {
+      if (selected.value === q.answer) {
+        correctSpan.textContent = ' ✓ 正确!';
+        correct++;
+      } else {
+        correctSpan.textContent = ' ✗ 错误，正确答案是 ' + q.answer;
+      }
+    } else {
+      correctSpan.textContent = ' 未作答，正确答案是 ' + q.answer;
+    }
+    qDiv.querySelector('p').appendChild(correctSpan);
+  });
+  
+  socialQs.forEach((q, i) => {
+    const selected = document.querySelector(`input[name="social-${i}"]:checked`);
+    const qDiv = document.getElementById('social-q-' + i);
+    const correctSpan = document.createElement('span');
+    correctSpan.className = 'correct';
+    if (selected) {
+      if (selected.value === q.answer) {
+        correctSpan.textContent = ' ✓ 正确!';
+        correct++;
+      } else {
+        correctSpan.textContent = ' ✗ 错误，正确答案是 ' + q.answer;
+      }
+    } else {
+      correctSpan.textContent = ' 未作答，正确答案是 ' + q.answer;
+    }
+    qDiv.querySelector('p').appendChild(correctSpan);
+  });
+  
+  document.getElementById('reading-score').textContent = `${correct} / ${total}`;
+  document.getElementById('reading-detail').textContent = correct >= Math.ceil(total * 0.6) ? '合格 ✓' : '需要加油 ✗';
+  document.getElementById('reading-reveal').classList.add('show');
 }
 
 function revealTranslation() {
