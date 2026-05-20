@@ -214,7 +214,7 @@ const DATA = {"listening":{"passage":{"script":"The rapid development of artific
 })();
 
 // ========== RENDER FUNCTIONS ==========
-function renderQuestions(containerId, questions, prefix) {
+function renderQuestions(containerId, questions, prefix, showQuestionText = true) {
   const container = document.getElementById(containerId);
   container.innerHTML = '';
   const letters = ['A','B','C','D'];
@@ -222,7 +222,7 @@ function renderQuestions(containerId, questions, prefix) {
     const div = document.createElement('div');
     div.className = 'question-item';
     div.id = prefix + '-q-' + i;
-    let html = `<p>${i+1}. ${q.q}</p>`;
+    let html = showQuestionText ? `<p>${i+1}. ${q.q}</p>` : `<p>${i+1}.</p>`;
     letters.forEach(l => {
       html += `<label><input type="radio" name="${prefix}-${i}" value="${l}" data-answer="${q.answer}"> ${l}. ${q[l]}</label>`;
     });
@@ -304,7 +304,7 @@ function revealWriting() {
 
 // ========== INIT ==========
 renderQuestions('passage-questions', DATA.listening.passage.questions, 'passage');
-renderQuestions('lecture-questions', DATA.listening.lecture.questions, 'lecture');
+renderQuestions('lecture-questions', DATA.listening.lecture.questions, 'lecture', false);
 renderText('tech-text', DATA.reading.tech.text);
 renderVocab('tech-vocab', DATA.reading.tech.vocab);
 renderQuestions('tech-questions', DATA.reading.tech.questions, 'tech');
