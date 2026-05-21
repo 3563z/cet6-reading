@@ -3,439 +3,375 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CET-6 Daily - 2026-05-21</title>
+<title>CET-6 每日练习 - 2026年5月21日 星期四</title>
 <style>
 :root {
-    --bg: #ffffff;
-    --text: #222222;
-    --card-bg: #ffffff;
-    --border: #e0e0e0;
-    --accent: #2563eb;
-    --accent-hover: #1d4ed8;
-    --heading: #111111;
-    --meta: #666666;
-    --input-bg: #f9f9f9;
-    --table-header-bg: #f0f0f0;
-    --table-border: #ddd;
-    --vocab-word-color: #d63384;
-    --reveal-bg: #f0f0f0;
-    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+  --bg-page: #f5f7fa;
+  --bg-section: #ffffff;
+  --text: #2d3436;
+  --text-muted: #888;
+  --accent: #6c5ce7;
+  --accent-hover: #5a4bd1;
+  --accent-light: #f0f0ff;
+  --border: #eee;
+  --reveal-bg: #f8f9fa;
+  --reveal-border: #e9ecef;
+  --correct: #27ae60;
+  --wrong: #e74c3c;
+  --header-grad-1: #6c5ce7;
+  --header-grad-2: #a29bfe;
+  --shadow: rgba(0,0,0,0.06);
+  --input-bg: #fff;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
-
-body.warm {
-    --bg: #faf6ed;
-    --text: #3a3a3a;
-    --card-bg: #fcf9f2;
-    --border: #e8dcc8;
-    --accent: #b8860b;
-    --accent-hover: #9a7209;
-    --heading: #2c2c2c;
-    --meta: #7a7a7a;
-    --input-bg: #f8f5ec;
-    --table-header-bg: #f0ead6;
-    --table-border: #ddd5c0;
-    --vocab-word-color: #8b4513;
-    --reveal-bg: #f0ead6;
+[data-theme="warm"] {
+  --bg-page: #faf6ed;
+  --bg-section: #fffcf5;
+  --text: #3d3535;
+  --text-muted: #999;
+  --accent: #c0784a;
+  --accent-hover: #a8643a;
+  --accent-light: #f5ede4;
+  --border: #e8ddd0;
+  --reveal-bg: #f8f1e8;
+  --reveal-border: #e8ddd0;
+  --correct: #5d8a3c;
+  --wrong: #c0392b;
+  --header-grad-1: #c0784a;
+  --header-grad-2: #d4a574;
+  --shadow: rgba(0,0,0,0.04);
+  --input-bg: #fffcf5;
 }
-
-body.dark {
-    --bg: #0f0f1a;
-    --text: #d0d0d0;
-    --card-bg: #1a1a2e;
-    --border: #2a2a4a;
-    --accent: #7c8aff;
-    --accent-hover: #99a6ff;
-    --heading: #e8e8e8;
-    --meta: #8888aa;
-    --input-bg: #16162a;
-    --table-header-bg: #222244;
-    --table-border: #333366;
-    --vocab-word-color: #ff99cc;
-    --reveal-bg: #222244;
+[data-theme="dark"] {
+  --bg-page: #0f0f1a;
+  --bg-section: #1a1a2e;
+  --text: #e0e0e0;
+  --text-muted: #888;
+  --accent: #9370db;
+  --accent-hover: #a884e8;
+  --accent-light: #2a1f40;
+  --border: #2a2a3e;
+  --reveal-bg: #151525;
+  --reveal-border: #2a2a3e;
+  --correct: #5cb85c;
+  --wrong: #e74c3c;
+  --header-grad-1: #3d1f6e;
+  --header-grad-2: #6c3fa0;
+  --shadow: rgba(0,0,0,0.2);
+  --input-bg: #1a1a2e;
 }
-
-body {
-    background-color: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
-    line-height: 1.8;
-    margin: 0;
-    padding: 20px;
-    min-height: 100vh;
-}
-
-.container {
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 0 15px;
-}
-
-.theme-switcher {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    gap: 8px;
-    z-index: 999;
-}
-
-.theme-btn {
-    padding: 8px 16px;
-    border: 2px solid var(--border);
-    border-radius: 20px;
-    background: var(--card-bg);
-    color: var(--text);
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.theme-btn:hover { border-color: var(--accent); }
-.theme-btn.active { border-color: var(--accent); background: var(--accent); color: #fff; }
-
-.header {
-    text-align: center;
-    padding: 30px 0 20px;
-    border-bottom: 2px solid var(--border);
-    margin-bottom: 30px;
-}
-.header h1 { font-size: 1.8em; color: var(--heading); margin: 0; }
-.header .subtitle { color: var(--meta); font-size: 0.9em; margin-top: 8px; }
-
-.passage {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 24px;
-}
-.passage h3 { font-size: 1.2em; color: var(--heading); margin: 0 0 16px 0; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
-.passage h4 { font-size: 1.05em; color: var(--heading); margin: 18px 0 10px; }
-
-.audio-bar { margin: 12px 0; }
-.audio-bar audio { width: 100%; max-width: 400px; }
-
-.questions { margin: 16px 0; }
-.question { margin-bottom: 18px; }
-.q-text { font-weight: 600; margin-bottom: 6px; color: var(--heading); }
-.q-options {
-    font-family: inherit; white-space: pre-wrap; margin: 0;
-    padding: 10px 14px; background: var(--input-bg);
-    border-radius: 8px; border-left: 3px solid var(--accent);
-    font-size: 0.95em; line-height: 1.7;
-}
-
-.reading-text { line-height: 2; margin-bottom: 16px; text-align: justify; }
-.reading-text p { text-indent: 2em; margin: 0 0 10px 0; }
-
-.vocab-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.9em; }
-.vocab-table th { background: var(--table-header-bg); padding: 10px 8px; text-align: left; border-bottom: 2px solid var(--table-border); color: var(--heading); }
-.vocab-table td { padding: 8px; border-bottom: 1px solid var(--table-border); vertical-align: top; }
-.vocab-word { color: var(--vocab-word-color); font-weight: 700; }
-.vocab-pron { color: var(--meta); font-style: italic; }
-.vocab-example { color: var(--meta); }
-
-.translation-text { background: var(--input-bg); padding: 16px; border-radius: 8px; margin-bottom: 12px; border-left: 3px solid var(--accent); }
-.cn-text { font-size: 1em; line-height: 2; }
-
-.answer-input {
-    width: 100%; min-height: 100px; padding: 12px;
-    border: 1px solid var(--border); border-radius: 8px;
-    background: var(--input-bg); color: var(--text);
-    font-family: inherit; font-size: 0.95em; line-height: 1.6;
-    resize: vertical; box-sizing: border-box; margin-bottom: 10px;
-}
-.answer-input:focus { outline: none; border-color: var(--accent); }
-
-.reveal-btn {
-    padding: 10px 24px; border: none; border-radius: 8px;
-    background: var(--accent); color: #fff; cursor: pointer;
-    font-size: 0.95em; font-weight: 500; transition: background 0.3s;
-}
-.reveal-btn:hover { background: var(--accent-hover); }
-
-.answer-section {
-    margin-top: 16px; padding: 16px;
-    background: var(--reveal-bg); border-radius: 8px;
-    border-left: 4px solid var(--accent);
-}
-.script { line-height: 1.8; margin: 10px 0; font-size: 0.95em; }
-.answer-key p { margin: 4px 0; }
-
-.writing-topic {
-    background: var(--input-bg); padding: 16px; border-radius: 8px;
-    margin-bottom: 12px; border-left: 3px solid var(--accent); line-height: 1.8;
-}
-
-.footer {
-    text-align: center; padding: 30px 0;
-    color: var(--meta); font-size: 0.85em;
-    border-top: 1px solid var(--border); margin-top: 20px;
-}
-
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg-page); color: var(--text); line-height: 1.8; }
+.header { background: linear-gradient(135deg, var(--header-grad-1), var(--header-grad-2)); color: #fff; padding: 30px 20px; text-align: center; }
+.header h1 { font-size: 24px; margin-bottom: 5px; }
+.header p { font-size: 14px; opacity: 0.9; }
+.theme-switcher { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
+.theme-btn { padding: 6px 18px; border: 2px solid rgba(255,255,255,0.3); border-radius: 20px; background: transparent; color: #fff; cursor: pointer; font-size: 13px; transition: all 0.2s; }
+.theme-btn:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.1); }
+.theme-btn.active { border-color: #fff; background: rgba(255,255,255,0.2); font-weight: 600; }
+.container { max-width: 800px; margin: 0 auto; padding: 20px; }
+.section { background: var(--bg-section); border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px var(--shadow); transition: background-color 0.3s ease; }
+.section h2 { font-size: 20px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--accent); color: var(--accent); }
+.section h3 { font-size: 16px; margin: 16px 0 10px; color: var(--text-muted); }
+.audio-player { width: 100%; margin: 10px 0; border-radius: 6px; }
+.audio-label { font-size: 13px; color: var(--text-muted); margin: 5px 0; }
+.reading-text { font-size: 15px; line-height: 1.9; text-align: justify; margin: 15px 0; }
+.reading-text p { margin-bottom: 12px; }
+.vocab-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px; }
+.vocab-table th { background: var(--accent-light); padding: 8px 12px; text-align: left; border: 1px solid var(--border); color: var(--text); }
+.vocab-table td { padding: 8px 12px; border: 1px solid var(--border); }
+.question-list { margin: 15px 0; }
+.question-item { padding: 12px; margin: 8px 0; background: var(--bg-page); border-radius: 8px; border: 1px solid var(--border); }
+.question-item p { font-weight: 600; margin-bottom: 8px; }
+.question-item label { display: block; padding: 4px 0; font-size: 14px; cursor: pointer; }
+.question-item input[type="radio"] { margin-right: 8px; accent-color: var(--accent); }
+.question-item .correct { color: var(--correct); font-weight: 600; }
+.question-item .wrong { color: var(--wrong); }
+.translation-input, .writing-input { width: 100%; min-height: 150px; padding: 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; line-height: 1.6; resize: vertical; font-family: inherit; background: var(--input-bg); color: var(--text); }
+.writing-input { min-height: 200px; }
+.btn { display: inline-block; padding: 10px 24px; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-size: 15px; cursor: pointer; margin: 10px 5px 0 0; transition: background 0.2s; }
+.btn:hover { background: var(--accent-hover); }
+.reveal-content { display: none; margin-top: 20px; padding: 20px; background: var(--reveal-bg); border-radius: 8px; border: 1px solid var(--reveal-border); transition: background-color 0.3s ease; }
+.reveal-content.show { display: block; }
+.reveal-content h4 { color: var(--accent); margin-bottom: 10px; font-size: 16px; }
+.reveal-content h5 { color: var(--text-muted); margin: 12px 0 6px; font-size: 14px; }
+.reveal-content .script-text { font-size: 14px; line-height: 1.8; margin: 10px 0; white-space: pre-wrap; }
+.quest-label { font-size: 12px; color: var(--text-muted); margin: 5px 0; }
+hr { margin: 20px 0; border: none; border-top: 1px solid var(--border); }
 @media (min-width: 768px) {
-    .container { max-width: 800px; }
-    body { padding: 30px 20px; }
-    .passage { padding: 28px; }
-    .passage h3 { font-size: 1.3em; }
+  .container { max-width: 800px; }
+  .section { padding: 28px; }
+  .section h2 { font-size: 22px; }
+  .reading-text { font-size: 16px; }
+  .vocab-table { font-size: 15px; }
+  .question-item label { font-size: 15px; }
+}
+.result-bar {
+  text-align: center;
+  padding: 20px;
+  margin: 15px 0;
+  background: var(--reveal-bg);
+  border-radius: 8px;
+  border: 1px solid var(--reveal-border);
+}
+.result-bar .score {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+}
+.result-bar .detail {
+  font-size: 16px;
+  margin-top: 5px;
+  color: var(--text-muted);
 }
 </style>
 </head>
 <body>
-<div class="theme-switcher">
-    <button class="theme-btn active" onclick="setTheme('default')">Default</button>
-    <button class="theme-btn" onclick="setTheme('warm')">Warm</button>
-    <button class="theme-btn" onclick="setTheme('dark')">Dark</button>
+<div class="header">
+  <h1>📖 CET-6 每日练习</h1>
+  <p>2026年5月21日 星期四 | 听力·阅读·翻译·作文</p>
+  <div class="theme-switcher">
+    <button class="theme-btn active" data-theme="default">🌙 默认</button>
+    <button class="theme-btn" data-theme="warm">☀️ 暖黄</button>
+    <button class="theme-btn" data-theme="dark">🌑 深色</button>
+  </div>
 </div>
-
 <div class="container">
-    <div class="header">
-        <h1>CET-6 Daily Practice</h1>
-        <p class="subtitle">May 21, 2026 Thursday - Listening - Reading - Translation - Writing</p>
+
+<!-- ============ 听力部分 ============ -->
+<div class="section" id="listening">
+  <h2>🎧 听力理解 (Listening Comprehension)</h2>
+  <p style="color:var(--text-muted);font-size:13px;">听录音，完成选择题。提交后显示听力原文。</p>
+
+  <h3>第一部分：长对话 (Long Conversation)</h3>
+  <p class="quest-label">对话：科技领域 — AI环境监测</p>
+  <audio class="audio-player" controls src="audio/listening1_long_conversation.mp3"></audio>
+  <div class="question-list" id="long_conversation-questions"></div>
+
+  <h3>第二部分：听力篇章 (Passage)</h3>
+  <p class="quest-label">篇章：社会领域 — 远程工作与心理健康</p>
+  <audio class="audio-player" controls src="audio/listening2_passage.mp3"></audio>
+  <div class="question-list" id="passage-questions"></div>
+
+  <button class="btn" onclick="revealListening()">📝 提交听力答案 &amp; 查看原文</button>
+  <div class="reveal-content" id="listening-reveal">
+    <h4>📄 听力原文</h4>
+    <h5>长对话 — AI在环境监测中的应用</h5>
+    <div class="script-text" id="long_conversation-script"></div>
+    <audio class="audio-player" controls src="audio/listening1_long_conversation.mp3"></audio>
+    <h5>听力篇章 — 远程工作与心理健康</h5>
+    <div class="script-text" id="passage-script"></div>
+    <audio class="audio-player" controls src="audio/listening2_passage.mp3"></audio>
+  </div>
+</div>
+
+<!-- ============ 阅读部分 ============ -->
+<div class="section" id="reading">
+  <h2>📚 阅读理解 (Reading Comprehension)</h2>
+
+  <h3>Passage 1：科技 — 视觉修复技术新进展</h3>
+  <div class="reading-text" id="tech-text"></div>
+  <h4>📝 核心词汇</h4>
+  <table class="vocab-table" id="tech-vocab"></table>
+  <div class="question-list" id="tech-questions"></div>
+
+  <h3>Passage 2：社会 — 数字支付的普及与挑战</h3>
+  <div class="reading-text" id="social-text"></div>
+  <h4>📝 核心词汇</h4>
+  <table class="vocab-table" id="social-vocab"></table>
+  <div class="question-list" id="social-questions"></div>
+  
+  <button class="btn" onclick="revealReading()">📝 提交阅读答案 &amp; 查看解析</button>
+  <div class="reveal-content" id="reading-reveal">
+    <h4>📊 答题结果</h4>
+    <div class="result-bar">
+      <div class="score" id="reading-score"></div>
+      <div class="detail" id="reading-detail"></div>
     </div>
-
-    <h2>Listening Comprehension</h2>
-<div class="passage">
-<h3>Section A</h3>
-<div class="audio-bar"><audio controls src="audio/20260521_listeningA.mp3"></audio></div>
-<div class="questions">
-<div class="question"><p class="q-text">1. What is the most alarming trend Dr. Chen has observed?</p><pre class="q-options">A) People are unaware of AI technology
-B) AI-generated content has become highly sophisticated
-C) Tech companies refuse to help
-D) Education systems are failing</pre></div>
-<div class="question"><p class="q-text">2. According to Dr. Chen&#x27;s survey, what percentage of internet users have encountered AI-generated misinformation recently?</p><pre class="q-options">A) 48%
-B) 58%
-C) 68%
-D) 78%</pre></div>
-<div class="question"><p class="q-text">3. Which is NOT mentioned as a way to identify deepfakes?</p><pre class="q-options">A) Unusual blinking patterns
-B) Background audio discrepancies
-C) Lip-sync errors
-D) Subtle inconsistencies</pre></div>
-<div class="question"><p class="q-text">4. What does Dr. Chen say about generation vs. detection tools?</p><pre class="q-options">A) Detection tools are far ahead
-B) Generation tools improve faster
-C) They are equally matched
-D) Neither is making progress</pre></div>
-<div class="question"><p class="q-text">5. Which country does Dr. Chen cite as a good example of media literacy education?</p><pre class="q-options">A) Sweden
-B) Norway
-C) Finland
-D) Denmark</pre></div>
-</div>
-<div class="answer-section" id="listening-answers-A" style="display:none;">
-<h4>Listening Script</h4>
-<div class="script">M: Dr. Chen, you&#x27;ve been researching AI misinformation for years. What&#x27;s the most alarming trend you&#x27;ve observed recently?<br>W: The sophistication of AI-generated content has reached a point where even experts struggle to distinguish real from fake. We&#x27;re seeing hyper-realistic voice clones being used in phone scams, and video deepfakes that are nearly impossible to detect with the naked eye.<br>M: How widespread is this problem?<br>W: According to our latest survey, approximately 68 percent of internet users have encountered some form of AI-generated misinformation in the past month. What&#x27;s particularly concerning is that many people are unaware they&#x27;ve been exposed to it.<br>M: What can individuals do to protect themselves?<br>W: First, develop a healthy skepticism. If something seems too dramatic or perfectly aligned with your biases, pause and verify. Second, use reverse image search tools and fact-checking websites. Third, pay attention to subtle inconsistencies in videos, such as unusual blinking patterns or lip-sync errors.<br>M: Are tech companies doing enough?<br>W: Most major platforms have implemented AI-detection systems, but it&#x27;s a constant arms race. The generation tools improve faster than detection tools. I believe regulation needs to evolve alongside technology. Transparency requirements for AI-generated content should be mandatory, not voluntary.<br>M: What about education?<br>W: Digital literacy is crucial. We need to teach critical thinking skills starting from elementary school. Finland has done this well, having integrated media literacy across their curriculum.<br>M: Thank you, Dr. Chen. Those are valuable insights.</div>
-<div class="answer-key">
-<p>1. B</p>
-<p>2. C</p>
-<p>3. B</p>
-<p>4. B</p>
-<p>5. C</p>
-</div></div>
-<button class="reveal-btn" onclick="toggleAnswers('listening-answers-A')">View Answer Key</button>
-</div>
-<div class="passage">
-<h3>Section B</h3>
-<div class="audio-bar"><audio controls src="audio/20260521_listeningB.mp3"></audio></div>
-<div class="questions">
-<div class="question"><p class="q-text">1. What is digital minimalism primarily about?</p><pre class="q-options">A) Completely abandoning all technology
-B) Being intentional about technology use
-C) Using only open-source software
-D) Reducing screen brightness</pre></div>
-<div class="question"><p class="q-text">2. According to the passage, how often does the average person check their phone?</p><pre class="q-options">A) 48 times per day
-B) 72 times per day
-C) 96 times per day
-D) 120 times per day</pre></div>
-<div class="question"><p class="q-text">3. How much can frequent task-switching reduce productivity?</p><pre class="q-options">A) Up to 20 percent
-B) Up to 30 percent
-C) Up to 40 percent
-D) Up to 50 percent</pre></div>
-<div class="question"><p class="q-text">4. What is the first step of implementing digital minimalism?</p><pre class="q-options">A) Buying a new phone
-B) A digital declutter
-C) Installing productivity apps
-D) Joining a support group</pre></div>
-<div class="question"><p class="q-text">5. What criticism do opponents raise?</p><pre class="q-options">A) It doesn&#x27;t work
-B) It is a privilege not everyone can afford
-C) It requires expensive equipment
-D) It is too time-consuming</pre></div>
-</div>
-<div class="answer-section" id="listening-answers-B" style="display:none;">
-<h4>Listening Script</h4>
-<div class="script">The concept of digital minimalism has gained significant traction in recent years as people grow increasingly concerned about their relationship with technology. Coined by Cal Newport, digital minimalism is a philosophy of technology use in which you focus your online time on a small number of carefully selected and optimized activities that strongly support things you value, and then happily miss out on everything else.<br><br>The core principle is not about rejecting technology altogether, but rather about being intentional. Digital minimalists recognize that every notification, every scroll, and every click competes for their most valuable resource: attention. Studies have shown that the average person checks their phone 96 times per day, and that frequent task-switching can reduce productivity by up to 40 percent.<br><br>Implementing digital minimalism typically involves a three-step process. First, a digital declutter where you step away from optional technologies for a defined period. Second, during this period, you rediscover activities that provide genuine satisfaction. Third, you reintroduce technology selectively, establishing clear rules for usage. The goal is not to live like a Luddite but to ensure that technology serves your values rather than shaping them.<br><br>Proponents argue that this approach leads to improved focus, deeper relationships, and greater overall life satisfaction. Critics, however, point out that digital minimalism is a privilege not everyone can afford, as many jobs now require constant digital connectivity.</div>
-<div class="answer-key">
-<p>1. B</p>
-<p>2. C</p>
-<p>3. C</p>
-<p>4. B</p>
-<p>5. B</p>
-</div></div>
-<button class="reveal-btn" onclick="toggleAnswers('listening-answers-B')">View Answer Key</button>
+  </div>
 </div>
 
-    <h2>Reading Comprehension</h2>
-<div class="passage">
-<h3>Reading - AI Disproves Math Conjecture</h3>
-<p>OpenAI&#x27;s groundbreaking achievement in discrete geometry has sent ripples through the mathematical community, demonstrating that artificial intelligence can now contribute to pure mathematics in ways previously thought impossible. The company announced that its latest model successfully disproved a central conjecture in discrete geometry that had puzzled mathematicians for over three decades.</p>
-<p>The conjecture, which concerned the properties of convex polytopes in high-dimensional spaces, had been considered one of the most promising candidates for proof in the field. Several prominent mathematicians had attempted to prove it using traditional methods, but all efforts fell short. The AI model approached the problem from an entirely different angle, exploring counterexamples through a systematic search of high-dimensional configuration spaces that would be impractical for human mathematicians to examine manually.</p>
-<p>What makes this achievement particularly significant is the methodology. Rather than simply brute-forcing solutions, the model demonstrated genuine pattern recognition capabilities, identifying structural properties that led to the construction of a valid counterexample. The AI did not just find an answer; it provided a clear, verifiable mathematical proof that human experts have since confirmed.</p>
-<p>This development raises profound questions about the future of mathematical research. Some mathematicians express concern that AI could eventually replace human intuition in certain domains of mathematics. Others, however, see this as a powerful tool that can augment human creativity. Dr. Sarah Mitchell of MIT commented, &quot;This isn&#x27;t the end of human mathematicians. It&#x27;s the beginning of a new partnership where AI handles exhaustive pattern searches while humans focus on conceptual framing and interpretation.&quot;</p>
-<p>The implications extend beyond pure mathematics. The same techniques could potentially be applied to problems in cryptography, materials science, and drug discovery, fields where high-dimensional optimization challenges are common. Venture capital funding for AI-driven scientific discovery has already increased by 300 percent this year alone.</p>
-<p>However, challenges remain. The computational resources required for such mathematical reasoning are substantial, raising questions about accessibility. Only well-funded institutions can currently participate in this frontier of research. Additionally, the AI&#x27;s reasoning process, while verifiable, is not always transparent. Researchers cannot always explain why the model chose a particular approach. This &quot;black box&quot; problem remains one of the most significant hurdles in AI-assisted research.</p>
-<p>Despite these concerns, the achievement represents a watershed moment. For the first time, an AI system has contributed a genuinely novel result to a field of abstract mathematics, not merely by computation but through what appears to be mathematical insight. The question is no longer whether AI can do mathematics, but how best to integrate it into the mathematical enterprise.</p>
-<h4>Core Vocabulary</h4>
-<table class="vocab-table"><thead><tr><th>Word</th><th>Pronunciation</th><th>Meaning</th><th>Example</th></tr></thead><tbody>
-<tr><td class="vocab-word">conjecture</td><td class="vocab-pron">/k@n&#x27;dZektS@r/</td><td>n. conjecture, guess</td><td class="vocab-example"><em>The conjecture had puzzled mathematicians for over thirty years.</em></td></tr>
-<tr><td class="vocab-word">polytope</td><td class="vocab-pron">/&#x27;pAlItoUp/</td><td>n. polyhedron, polytope</td><td class="vocab-example"><em>Convex polytopes in high-dimensional spaces are difficult to visualize.</em></td></tr>
-<tr><td class="vocab-word">counterexample</td><td class="vocab-pron">/&#x27;kaUnt@rIgzAmp@l/</td><td>n. counter-example</td><td class="vocab-example"><em>The AI constructed a valid counterexample to disprove the theorem.</em></td></tr>
-<tr><td class="vocab-word">methodology</td><td class="vocab-pron">/,meT@&#x27;dAl@dZi/</td><td>n. methodology</td><td class="vocab-example"><em>The methodology demonstrated genuine pattern recognition capabilities.</em></td></tr>
-<tr><td class="vocab-word">augment</td><td class="vocab-pron">/O:g&#x27;ment/</td><td>v. to enhance, supplement</td><td class="vocab-example"><em>AI can augment human creativity in mathematical research.</em></td></tr>
-<tr><td class="vocab-word">implication</td><td class="vocab-pron">/,ImplI&#x27;keIS@n/</td><td>n. implication, significance</td><td class="vocab-example"><em>The implications extend beyond pure mathematics.</em></td></tr>
-<tr><td class="vocab-word">computational</td><td class="vocab-pron">/,kAmpju&#x27;teIS@n@l/</td><td>adj. computational</td><td class="vocab-example"><em>The computational resources required are substantial.</em></td></tr>
-<tr><td class="vocab-word">transparent</td><td class="vocab-pron">/trAns&#x27;pEr@nt/</td><td>adj. transparent, clear</td><td class="vocab-example"><em>The AI&#x27;s reasoning process is not always transparent.</em></td></tr>
-<tr><td class="vocab-word">watershed</td><td class="vocab-pron">/&#x27;wO:t@rSed/</td><td>n. watershed, turning point</td><td class="vocab-example"><em>The achievement represents a watershed moment for AI research.</em></td></tr>
-<tr><td class="vocab-word">enterprise</td><td class="vocab-pron">/&#x27;ent@rpraIz/</td><td>n. enterprise, undertaking</td><td class="vocab-example"><em>The mathematical enterprise will be reshaped by AI.</em></td></tr>
-</tbody></table>
-<div class="questions">
-<div class="question"><p class="q-text">1. What did OpenAI&#x27;s latest model achieve?</p><pre class="q-options">A) It proved a mathematical conjecture
-B) It disproved a central conjecture in discrete geometry
-C) It solved a cryptography problem
-D) It discovered a new prime number</pre></div>
-<div class="question"><p class="q-text">2. How did the AI approach the problem differently?</p><pre class="q-options">A) It used more advanced calculus
-B) It explored high-dimensional configuration spaces systematically
-C) It consulted with multiple experts
-D) It randomly guessed answers</pre></div>
-<div class="question"><p class="q-text">3. What does Dr. Sarah Mitchell think about AI in mathematics?</p><pre class="q-options">A) AI will replace mathematicians entirely
-B) AI can augment human creativity
-C) The approach is fundamentally flawed
-D) AI research should be banned</pre></div>
-<div class="question"><p class="q-text">4. Which fields might benefit from similar AI techniques?</p><pre class="q-options">A) Only pure mathematics
-B) Cryptography, materials science, and drug discovery
-C) Only computer science
-D) Only physics and chemistry</pre></div>
-<div class="question"><p class="q-text">5. What is the &#x27;black box&#x27; problem?</p><pre class="q-options">A) The AI cannot be powered on
-B) The AI&#x27;s reasoning process is not always transparent
-C) The AI only works in darkness
-D) The AI refuses to explain its answers</pre></div>
-</div>
-<div class="answer-section" id="reading-answers-AIDispr" style="display:none;">
-<h4>Answer Key</h4>
-<p>1. B</p>
-<p>2. B</p>
-<p>3. B</p>
-<p>4. B</p>
-<p>5. B</p>
-</div>
-<button class="reveal-btn" onclick="toggleAnswers('reading-answers-AIDispr')">View Answer Key</button>
-</div>
-<div class="passage">
-<h3>Reading - Google and the Open Web</h3>
-<p>Google&#x27;s recent policy changes regarding web indexing have sparked heated debate across the technology industry, with critics accusing the search giant of fundamentally undermining the open web. The controversy centers on Google&#x27;s decision to prioritize content from large, established platforms while deprioritizing independent websites and smaller publishers in search results.</p>
-<p>The policy shift, announced earlier this month, introduces stricter quality thresholds that disproportionately affect smaller websites. Google claims these changes are necessary to combat spam and low-quality content generated by AI. However, critics argue that the real motive is to drive more traffic to Google&#x27;s own properties and partner platforms, consolidating the company&#x27;s dominance over online information.</p>
-<p>Independent web creators have reported dramatic drops in organic traffic since the changes took effect. Sarah Jenkins, who runs a popular independent technology blog, says her traffic has decreased by 70 percent in just three weeks. &quot;It&#x27;s devastating,&quot; she explains. &quot;I&#x27;ve spent ten years building this site, and suddenly Google decides my content is no longer worthy of being found. There&#x27;s no appeal process, no human to talk to, just an algorithm that decides what people are allowed to see.&quot;</p>
-<p>The implications for the open web are significant. The World Wide Web was built on principles of decentralization and equal access. Anyone could publish content and, with quality and effort, build an audience through search engines. Google&#x27;s changes threaten this fundamental promise. If only large corporations can achieve visibility online, the diversity of voices that has characterized the internet begins to erode.</p>
-<p>Regulatory bodies in both the European Union and the United States have taken notice. The EU&#x27;s Digital Markets Act already designates Google as a gatekeeper platform, subjecting it to specific obligations regarding fair treatment of business users. US lawmakers have proposed new legislation that would require search engines to maintain transparent ranking criteria and establish appeals processes for content creators.</p>
-<p>Google maintains that the changes are purely technical and quality-driven. &quot;We have a responsibility to our users to deliver the most relevant, trustworthy information,&quot; a company spokesperson stated. &quot;The volume of AI-generated spam has made it necessary to raise our standards.&quot; Yet for many independent creators, these explanations ring hollow. They see a future where the open web becomes a closed ecosystem, with Google as the gatekeeper deciding who gets seen and who remains invisible.</p>
-<h4>Core Vocabulary</h4>
-<table class="vocab-table"><thead><tr><th>Word</th><th>Pronunciation</th><th>Meaning</th><th>Example</th></tr></thead><tbody>
-<tr><td class="vocab-word">index</td><td class="vocab-pron">/&#x27;Indeks/</td><td>v. to index; n. index</td><td class="vocab-example"><em>Google&#x27;s policy changes regarding web indexing have sparked debate.</em></td></tr>
-<tr><td class="vocab-word">deprioritize</td><td class="vocab-pron">/di:praI&#x27;OrItaIz/</td><td>v. to deprioritize</td><td class="vocab-example"><em>The search engine deprioritized independent websites.</em></td></tr>
-<tr><td class="vocab-word">threshold</td><td class="vocab-pron">/&#x27;TreShoUld/</td><td>n. threshold, limit</td><td class="vocab-example"><em>Stricter quality thresholds disproportionately affect smaller sites.</em></td></tr>
-<tr><td class="vocab-word">consolidate</td><td class="vocab-pron">/k@n&#x27;sAlIdeIt/</td><td>v. to consolidate</td><td class="vocab-example"><em>The policy helps consolidate Google&#x27;s dominance over online information.</em></td></tr>
-<tr><td class="vocab-word">organic</td><td class="vocab-pron">/O:r&#x27;gAnIk/</td><td>adj. organic, natural</td><td class="vocab-example"><em>Independent creators reported dramatic drops in organic traffic.</em></td></tr>
-<tr><td class="vocab-word">algorithm</td><td class="vocab-pron">/&#x27;Alg@rID@m/</td><td>n. algorithm</td><td class="vocab-example"><em>An algorithm decides what people are allowed to see.</em></td></tr>
-<tr><td class="vocab-word">decentralization</td><td class="vocab-pron">/di:,sentr@laI&#x27;zeIS@n/</td><td>n. decentralization</td><td class="vocab-example"><em>The web was built on principles of decentralization.</em></td></tr>
-<tr><td class="vocab-word">erode</td><td class="vocab-pron">/I&#x27;roUd/</td><td>v. to erode, wear away</td><td class="vocab-example"><em>The diversity of voices begins to erode under these changes.</em></td></tr>
-<tr><td class="vocab-word">gatekeeper</td><td class="vocab-pron">/&#x27;geItki:p@r/</td><td>n. gatekeeper</td><td class="vocab-example"><em>Google is designated as a gatekeeper platform under EU law.</em></td></tr>
-<tr><td class="vocab-word">ecosystem</td><td class="vocab-pron">/&#x27;i:koUsIst@m/</td><td>n. ecosystem</td><td class="vocab-example"><em>The open web could become a closed ecosystem.</em></td></tr>
-</tbody></table>
-<div class="questions">
-<div class="question"><p class="q-text">1. What is the main controversy?</p><pre class="q-options">A) Google charges more for advertising
-B) Google prioritizes large platforms over independent websites
-C) Google stopped indexing web pages
-D) Google removed all images from search</pre></div>
-<div class="question"><p class="q-text">2. What reason does Google give for the change?</p><pre class="q-options">A) To increase advertising revenue
-B) To combat spam and low-quality AI-generated content
-C) To reduce server costs
-D) To comply with new laws</pre></div>
-<div class="question"><p class="q-text">3. What happened to Sarah Jenkins&#x27;s website traffic?</p><pre class="q-options">A) It increased by 30 percent
-B) It decreased by 70 percent
-C) It remained the same
-D) It doubled</pre></div>
-<div class="question"><p class="q-text">4. What action have EU regulators taken?</p><pre class="q-options">A) They banned Google in Europe
-B) They designated Google as a gatekeeper platform
-C) They imposed a massive fine
-D) They supported Google&#x27;s policy</pre></div>
-<div class="question"><p class="q-text">5. What potential consequence does the author suggest?</p><pre class="q-options">A) The internet will become faster
-B) The diversity of online voices will erode
-C) More people will create websites
-D) Google will lose market share</pre></div>
-</div>
-<div class="answer-section" id="reading-answers-Googlea" style="display:none;">
-<h4>Answer Key</h4>
-<p>1. B</p>
-<p>2. B</p>
-<p>3. B</p>
-<p>4. B</p>
-<p>5. B</p>
-</div>
-<button class="reveal-btn" onclick="toggleAnswers('reading-answers-Googlea')">View Answer Key</button>
+<!-- ============ 翻译部分 ============ -->
+<div class="section" id="translation">
+  <h2>✍️ 翻译 (Translation) — 中译英</h2>
+  <p style="margin-bottom:10px;font-size:15px;line-height:1.8;" id="translation-prompt"></p>
+  <textarea class="translation-input" id="translation-input" placeholder="请在此输入你的英文翻译..."></textarea>
+  <button class="btn" onclick="revealTranslation()">📝 提交 &amp; 查看参考译文</button>
+  <div class="reveal-content" id="translation-reveal">
+    <h4>💡 参考译文</h4>
+    <div class="script-text" id="translation-ref"></div>
+    <audio class="audio-player" controls src="audio/translation_reference.mp3"></audio>
+  </div>
 </div>
 
-    <h2>Translation</h2>
-<div class="passage">
-<h3>Translation - Chinese to English</h3>
-<div class="translation-text"><p class="cn-text">人工智能正在以前所未有的速度改变着我们的生活。从智能手机上的语音助手到自动驾驶汽车，AI技术已经渗透到日常生活的方方面面。然而，随着技术的飞速发展，我们也面临着新的挑战，比如数据隐私保护和就业结构调整。专家们普遍认为，只有在技术创新和伦理规范之间找到平衡，AI才能真正造福人类社会。这需要我们不仅在技术上取得突破，更要在立法和教育方面做出相应的努力。</p></div>
-<textarea class="answer-input" id="translation-input" placeholder="Enter your translation here..."></textarea>
-<button class="reveal-btn" onclick="toggleAnswers('translation-answer')">View Reference Translation</button>
-<div class="answer-section" id="translation-answer" style="display:none;">
-<div class="audio-bar"><audio controls src="audio/20260521_translation.mp3"></audio></div>
-<h4>Reference Translation</h4>
-<p>Artificial intelligence is transforming our lives at an unprecedented pace. From voice assistants on smartphones to self-driving cars, AI technology has permeated every aspect of daily life. However, with the rapid development of technology, we also face new challenges, such as data privacy protection and employment structure adjustment. Experts generally believe that only by finding a balance between technological innovation and ethical norms can AI truly benefit human society. This requires us not only to achieve breakthroughs in technology, but also to make corresponding efforts in legislation and education.</p>
-</div></div>
+<!-- ============ 写作部分 ============ -->
+<div class="section" id="writing">
+  <h2>📝 写作 (Writing)</h2>
+  <div id="writing-prompt" style="margin-bottom:15px;font-size:14px;line-height:1.8;"></div>
+  <textarea class="writing-input" id="writing-input" placeholder="请在此输入你的作文..."></textarea>
+  <button class="btn" onclick="revealWriting()">📝 提交 &amp; 查看范文</button>
+  <div class="reveal-content" id="writing-reveal">
+    <h4>💡 参考范文</h4>
+    <div class="script-text" id="writing-model"></div>
+    <audio class="audio-player" controls src="audio/writing_model.mp3"></audio>
+  </div>
+</div>
 
-    <h2>Writing</h2>
-<div class="passage">
-<h3>Writing</h3>
-<div class="writing-topic"><p>For this part, you are allowed 30 minutes to write an essay based on the following chart. The chart shows the average weekly screen time (in hours) among different age groups in a certain country in 2025. You should:<br>1) Describe the chart briefly<br>2) Analyze the possible reasons behind the trend<br>3) Give your own opinion on the impact of screen time<br><br>Average Weekly Screen Time by Age Group (2025):<br>- Age 13-18: 42 hours<br>- Age 19-35: 38 hours<br>- Age 36-55: 30 hours<br>- Age 56+: 22 hours<br><br>You should write at least 150 words but no more than 200 words.</p></div>
-<textarea class="answer-input" id="writing-input" placeholder="Write your essay here..."></textarea>
-<button class="reveal-btn" onclick="toggleAnswers('writing-answer')">View Sample Essay</button>
-<div class="answer-section" id="writing-answer" style="display:none;">
-<div class="audio-bar"><audio controls src="audio/20260521_writing.mp3"></audio></div>
-<h4>Sample Essay</h4>
-<p>The chart above illustrates the average weekly screen time across different age groups in a certain country in 2025. As can be seen, younger generations spend significantly more time on screens, with the 13-18 age group leading at 42 hours per week, followed by the 19-35 group at 38 hours. In contrast, individuals aged 56 and above spend only 22 hours weekly on screens.<br><br>Several factors may account for this trend. Firstly, younger people are more likely to rely on digital devices for education, entertainment, and social interaction. Secondly, older generations grew up in an era without ubiquitous digital technology and have therefore developed offline habits that persist today.<br><br>In my opinion, while screens offer undeniable benefits in terms of connectivity and access to information, excessive screen time among young people raises serious concerns. It is linked to eye strain, reduced physical activity, and impaired social skills. A balanced approach, setting reasonable limits on recreational screen use while promoting outdoor activities, is essential for maintaining healthy development, especially among adolescents.</p>
-</div></div>
-
-    <div class="footer">
-        <p>CET-6 Daily - Generated on 2026-05-21</p>
-    </div>
 </div>
 
 <script>
-function toggleAnswers(id) {
-    var el = document.getElementById(id);
-    if (el.style.display === 'none' || el.style.display === '') {
-        el.style.display = 'block';
-    } else {
-        el.style.display = 'none';
-    }
+// ========== DATA ==========
+const DATA = {"meta": {"date": "20260521", "day": "Thursday"}, "listening": {"long_conversation": {"title": "AI在环境监测中的应用", "script": "W: Professor Harris, I've been reading about how AI is being used to monitor environmental changes. The scale of data collection seems enormous.\nM: You've hit on a crucial point, Sarah. Traditional environmental monitoring relied on limited sensor networks, but we're now able to analyze satellite imagery, drone footage, and ground sensors simultaneously using machine learning algorithms.\nW: That sounds incredibly powerful. What kind of environmental changes can AI detect that humans might miss?\nM: One remarkable application is detecting early signs of deforestation. AI systems can analyze satellite images daily and identify illegal logging activities within hours, whereas human analysis might take weeks. We've also seen success in tracking ocean plastic accumulation patterns.\nW: I read about a project using AI to monitor coral reef health. Is that related?\nM: Exactly. That project uses underwater cameras and sonar data to create detailed maps of reef ecosystems. The AI can detect bleaching events before they become visible to the naked eye by analyzing subtle changes in water temperature and chemical composition.\nW: That's fascinating. But aren't there challenges with data quality and model accuracy?\nM: Indeed. One major challenge is that environmental data can be noisy and inconsistent. Sensors malfunction, weather conditions affect readings, and satellite images can be obstructed by cloud cover. Researchers are developing robust models that can handle these imperfections.\nW: What advice would you give to students interested in this field?\nM: I'd recommend building a strong foundation in both data science and environmental science. Understanding the domain is just as important as knowing the algorithms. Many universities now offer interdisciplinary programs combining these fields.", "tag": "tech", "voice": "en-US-GuyNeural", "questions": [{"q": "What is the main topic of the conversation?", "A": "To compare different types of environmental sensors.", "B": "The use of AI in monitoring environmental changes.", "C": "By analyzing underwater sonar data for ocean research.", "D": "Students should focus exclusively on machine learning.", "answer": "B"}, {"q": "According to the professor, what advantage does AI have over human analysis in detecting deforestation?", "A": "AI systems can detect illegal logging within hours instead of weeks.", "B": "Satellite imagery is only accessible through machine learning.", "C": "By using more expensive but more accurate equipment.", "D": "The technology eliminates the need for ground sensors entirely.", "answer": "A"}, {"q": "How does the AI system monitor coral reef health according to the conversation?", "A": "By sending divers to collect water samples weekly.", "B": "Detecting bleaching events through subtle environmental changes.", "C": "Installing monitoring stations on every coral reef globally.", "D": "To replace underwater cameras with satellite imaging technology.", "answer": "B"}, {"q": "What challenge does the professor identify regarding environmental data?", "A": "Collecting data from remote locations is too expensive.", "B": "Data can be noisy due to sensor malfunctions and weather conditions.", "C": "Governments restrict access to most environmental data sets.", "D": "By training models exclusively on data from laboratories.", "answer": "B"}, {"q": "What career advice does the professor give to interested students?", "A": "To pursue a degree in pure data science without environmental courses.", "B": "Building expertise in both data science and environmental science.", "C": "Focusing only on field work rather than computational methods.", "D": "The field requires a PhD before any practical application is possible.", "answer": "B"}]}, "passage": {"title": "远程工作与心理健康", "script": "The shift to remote work following recent global events has fundamentally changed how millions of people approach their professional lives. While much of the public discussion has focused on productivity metrics, researchers have begun examining the psychological implications of this transformation.\n\nA comprehensive study conducted by Stanford University tracked over twelve thousand remote workers over a two-year period. The findings revealed that employees who worked remotely at least three days per week reported significantly lower stress levels and higher job satisfaction compared to their office-based counterparts. Interestingly, the benefits were most pronounced among workers with long commutes, who gained an average of nearly an hour of personal time each day.\n\nHowever, the study also identified potential drawbacks. Remote workers reported higher rates of loneliness and found it more challenging to separate work from personal life. Those who worked entirely from home without any in-person interaction showed a twenty percent increase in reported feelings of isolation. The researchers emphasized that a hybrid model, combining remote work with regular office presence, appeared to offer the optimal balance between flexibility and social connection.", "tag": "human", "voice": "en-US-MichelleNeural", "questions": [{"q": "What is the main finding of the Stanford University study?", "A": "To compare productivity between remote and office workers.", "B": "Remote workers reported lower stress and higher job satisfaction.", "C": "By tracking employees over a period of twelve months.", "D": "The study found no significant differences between the two groups.", "answer": "B"}, {"q": "Which group benefited most from remote work according to the study?", "A": "Employees working in creative industries.", "B": "Workers with long commutes who gained personal time.", "C": "By analyzing data from over twenty thousand participants.", "D": "The benefits were equally distributed across all demographics.", "answer": "B"}, {"q": "What was identified as a drawback of remote work?", "A": "Productivity decreased significantly in most cases.", "B": "Higher rates of loneliness and work-life balance challenges.", "C": "By eliminating all forms of in-person collaboration.", "D": "The technology required for remote work is too expensive.", "answer": "B"}, {"q": "What percentage increase in isolation was reported among fully remote workers?", "A": "Approximately ten percent higher than office workers.", "B": "A twenty percent increase in reported feelings of isolation.", "C": "By comparing data across different industries and regions.", "D": "The study found isolation rates decreased over time.", "answer": "B"}, {"q": "What model does the study recommend as optimal?", "A": "Returning to full-time office work immediately.", "B": "A hybrid model combining remote work with office presence.", "C": "To allow employees to choose their own work arrangement freely.", "D": "Complete remote work with virtual social events.", "answer": "B"}]}}, "reading": {"tech": {"title": "视觉修复技术新进展", "text": "In recent years, the field of visual prosthetics has made remarkable progress, offering new hope to millions of people suffering from blindness and severe visual impairment. While cochlear implants for hearing loss have been widely available for decades, creating a functional artificial eye has proven far more challenging due to the extraordinary complexity of the human visual system.\n\nThe human eye contains approximately 130 million photoreceptor cells that convert light into electrical signals. These signals travel through the optic nerve to the brain, where they are processed by neural networks that have evolved over millions of years. Replicating this system requires not only sophisticated hardware but also a deep understanding of how the brain interprets visual information.\n\nOne promising approach involves implanting electrode arrays directly onto the visual cortex, the part of the brain responsible for processing sight. Researchers at the University of Texas have developed a wireless implant containing over a thousand microelectrodes, each capable of stimulating individual neurons. Early clinical trials have allowed blind participants to perceive shapes, detect motion, and even recognize large letters.\n\nA competing approach focuses on the retina itself. Companies like Second Sight have developed retinal implants that replace damaged photoreceptor cells. These devices use a tiny camera mounted on glasses to capture images, which are then converted into electrical pulses sent to the remaining healthy retinal cells. While the resulting vision is far from natural, patients can navigate unfamiliar environments and read large-print text.\n\nDespite these advances, significant obstacles remain. The brain's ability to adapt to artificial visual input varies greatly among individuals, and the long-term stability of implanted devices poses ongoing engineering challenges. Nevertheless, the rapid pace of innovation in both materials science and neural interface technology suggests that functional vision restoration for at least some forms of blindness may become clinically available within the next decade.", "tag": "tech", "vocab": [["prosthetic", "/prɒsˈθetɪk/", "adj. 假体的；人工替代的"], ["photoreceptor", "/ˌfəʊtəʊrɪˈseptə/", "n. 光感受器；感光细胞"], ["neural", "/ˈnjʊərəl/", "adj. 神经的；神经系统的"], ["implant", "/ɪmˈplɑːnt/", "v./n. 植入；植入物"], ["retinal", "/ˈretɪnəl/", "adj. 视网膜的"], ["electrode", "/ɪˈlektrəʊd/", "n. 电极"], ["clinical", "/ˈklɪnɪkəl/", "adj. 临床的"], ["stimulate", "/ˈstɪmjʊleɪt/", "v. 刺激；激发"], ["impairment", "/ɪmˈpeəmənt/", "n. 损伤；障碍"], ["cortex", "/ˈkɔːteks/", "n. 皮层；皮质"]], "questions": [{"q": "为什么人工视觉的开发比人工耳蜗更具挑战性？", "A": "视觉系统的复杂性远高于听觉系统", "B": "因为视觉信号需要无线传输技术", "C": "研究经费主要分配给了听觉领域", "D": "全球失明患者数量远少于听力障碍者", "answer": "A"}, {"q": "德克萨斯大学开发的植入装置有何特点？", "A": "它可以直接替换受损的视网膜细胞", "B": "包含超过一千个微电极，每个能刺激单个神经元", "C": "需要通过手术连接外部摄像机", "D": "只能帮助患者感知光线变化", "answer": "B"}, {"q": "根据文章，视网膜植入装置的工作原理是？", "A": "将摄像机图像转换为电脉冲发送给健康的视网膜细胞", "B": "直接在视觉皮层中重建完整的视觉图像", "C": "通过药物刺激受损的感光细胞再生", "D": "利用基因编辑技术修复视网膜损伤", "answer": "A"}, {"q": "文中提到的 \"competing approach\"（竞争方法）指的是什么？", "A": "德克萨斯大学与第二视觉公司之间的技术竞争", "B": "视觉皮层植入与视网膜植入两种不同方案", "C": "人工视觉与传统治疗方法的比较", "D": "不同国家在视觉修复领域的研究投入竞赛", "answer": "B"}, {"q": "作者对人工视觉未来的态度是什么？", "A": "悲观，认为技术障碍短期内无法克服", "B": "谨慎乐观，认为未来十年内可能取得临床突破", "C": "怀疑，因为病人对植入物的适应能力差异太大", "D": "中立，仅陈述现有研究成果而不做预测", "answer": "B"}]}, "social": {"title": "数字支付的普及与挑战", "text": "The rapid expansion of digital payment systems has fundamentally altered the way people conduct financial transactions across the globe. From mobile wallets in Kenya to contactless cards in Europe, the shift away from cash has accelerated dramatically in recent years, driven by advances in smartphone technology and improved internet connectivity.\n\nIn China, the transformation has been particularly striking. Mobile payment platforms such as Alipay and WeChat Pay have achieved near-universal adoption in urban areas, where even street vendors and small shops display QR codes for payment. According to the People's Bank of China, mobile payments in the country exceeded 347 trillion yuan in 2023, representing over eighty percent of all non-cash transactions. This widespread adoption has been facilitated by the integration of payment functions into social media and messaging applications, making transactions as simple as sending a message.\n\nHowever, the digital payment revolution has not been without controversy. Privacy advocates have raised concerns about the vast amounts of personal financial data collected by payment platforms. In many cases, transaction histories can reveal sensitive information about individuals' health conditions, political affiliations, and personal relationships. Additionally, older adults and those in rural areas with limited internet access risk being excluded from an increasingly cashless society.\n\nRegulators around the world are grappling with how to balance innovation with consumer protection. The European Union's Payment Services Directive requires strong customer authentication for online payments, while India's Unified Payments Interface has established open standards that promote competition among payment providers. These regulatory frameworks aim to ensure that the benefits of digital payments are widely shared while minimizing risks to privacy and financial stability.\n\nAs digital payment technologies continue to evolve, the emergence of central bank digital currencies and blockchain-based systems promises to further reshape the financial landscape. The key challenge will be designing systems that are not only convenient and efficient but also inclusive, secure, and respectful of user privacy.", "tag": "human", "vocab": [["transaction", "/trænˈzækʃən/", "n. 交易；办理"], ["accelerate", "/əkˈseləreɪt/", "v. 加速；促进"], ["adoption", "/əˈdɒpʃən/", "n. 采用；推广"], ["integration", "/ˌɪntɪˈɡreɪʃən/", "n. 整合；一体化"], ["privacy", "/ˈprɪvəsi/", "n. 隐私；私密"], ["authentication", "/ɔːˌθentɪˈkeɪʃən/", "n. 认证；验证"], ["regulatory", "/ˈreɡjʊlətəri/", "adj. 监管的；管理的"], ["inclusive", "/ɪnˈkluːsɪv/", "adj. 包容的；包含全面的"], ["infrastructure", "/ˈɪnfrəstrʌktʃə/", "n. 基础设施"], ["emergence", "/ɪˈmɜːdʒəns/", "n. 出现；兴起"]], "questions": [{"q": "根据文章，推动数字支付快速增长的主要因素是什么？", "A": "智能手机技术和互联网连接的改善", "B": "各国政府对现金交易的限制政策", "C": "传统银行服务费用的持续上涨", "D": "国际贸易量的急剧增加", "answer": "A"}, {"q": "中国数字支付的特点是什么？", "A": "主要由信用卡支付主导市场", "B": "支付功能已整合到社交媒体应用中", "C": "仅限于大型商场和连锁超市使用", "D": "农村地区使用率高于城市地区", "answer": "B"}, {"q": "关于数字支付的担忧，文中提到了什么？", "A": "交易速度过慢影响使用体验", "B": "个人财务数据可能泄露敏感信息", "C": "支付平台之间的竞争过于激烈", "D": "系统安全漏洞频繁导致资金损失", "answer": "B"}, {"q": "文中 \"near-universal adoption\" 的含义最接近？", "A": "在特定地区得到广泛应用", "B": "几乎被所有人普遍采用", "C": "获得了政府的大力推广", "D": "技术标准实现了全球统一", "answer": "B"}, {"q": "作者对数字支付未来的主要关注点是什么？", "A": "如何提高交易处理的速度", "B": "如何在便捷与包容、安全、隐私之间取得平衡", "C": "如何降低支付平台的技术成本", "D": "如何消除国际支付中的货币兑换问题", "answer": "B"}]}}, "translation": {"cn": "中国传统节日是中华文化的重要组成部分，承载着丰富的历史内涵和深厚的民族情感。春节作为最重要的传统节日，象征着团圆和新生活的开始。每逢春节，无论身在何处，人们都会想方设法回到家乡与亲人团聚。除了春节之外，端午节和中秋节等传统节日也各具特色，反映了中国人对自然、家庭和社会的独特理解。近年来，越来越多的年轻人开始重视传统节日，这标志着文化自信的回归。", "en": "Traditional Chinese festivals are an important part of Chinese culture, carrying rich historical connotations and profound national sentiments. The Spring Festival, as the most significant traditional festival, symbolizes reunion and the beginning of a new life. During the Spring Festival, no matter where they are, people will find ways to return to their hometowns to reunite with their families. Besides the Spring Festival, traditional festivals such as the Dragon Boat Festival and the Mid-Autumn Festival also have their own distinctive characteristics, reflecting Chinese people's unique understanding of nature, family, and society. In recent years, more and more young people have begun to value traditional festivals, signaling the return of cultural confidence."}, "writing": {"prompt": "Directions: For this part, you are allowed 30 minutes to write an essay on the topic \"The Importance of Digital Literacy in the Modern World\". You should state your opinion and support it with reasons and examples. You should write at least 150 words but no more than 200 words.", "model": "In today's interconnected world, digital literacy has become as essential as reading, writing, and arithmetic. I firmly believe that the ability to navigate digital technologies is no longer optional but a fundamental requirement for full participation in modern society.\n\nFirst, digital literacy is crucial for economic opportunity. Most jobs now require at least basic computer skills, and many high-paying positions demand advanced digital competencies. A person without these skills faces significant barriers in the job market. Second, digital literacy enables access to essential services. From healthcare appointments to government benefits, an increasing number of services are moving online, making digital skills necessary for everyday life.\n\nMoreover, digital literacy includes the critical ability to evaluate online information. In an era of misinformation, knowing how to identify reliable sources and distinguish facts from falsehoods is vital for making informed decisions.\n\nIn conclusion, digital literacy should be treated as a basic right in the twenty-first century. Educational systems must prioritize teaching these skills to ensure no one is left behind in our increasingly digital world."}}
+
+// ========== RENDER;
+
+// ========== RENDER FUNCTIONS ==========
+function renderQuestions(containerId, questions, prefix, showQuestionText = true) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = '';
+  const letters = ['A','B','C','D'];
+  questions.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'question-item';
+    div.id = prefix + '-q-' + i;
+    let html = showQuestionText ? `<p>${i+1}. ${q.q}</p>` : `<p>${i+1}.</p>`;
+    letters.forEach(l => {
+      html += `<label><input type="radio" name="${prefix}-${i}" value="${l}" data-answer="${q.answer}"> ${l}. ${q[l]}</label>`;
+    });
+    div.innerHTML = html;
+    container.appendChild(div);
+  });
 }
 
-function setTheme(theme) {
-    var body = document.body;
-    body.className = theme === 'default' ? '' : theme;
-    localStorage.setItem('cet6-theme', theme);
-    var btns = document.querySelectorAll('.theme-btn');
-    var labels = {'default': 'Default', 'warm': 'Warm', 'dark': 'Dark'};
-    btns.forEach(function(b) {
-        b.classList.remove('active');
-        if (b.textContent.trim() === labels[theme]) {
-            b.classList.add('active');
-        }
-    });
+function renderVocab(containerId, vocab) {
+  const table = document.getElementById(containerId);
+  table.innerHTML = '<tr><th>单词</th><th>音标</th><th>释义</th></tr>';
+  vocab.forEach(v => {
+    const row = table.insertRow();
+    row.insertCell().textContent = v.word;
+    row.insertCell().textContent = v.phonetic;
+    row.insertCell().textContent = v.def;
+  });
 }
-(function() {
-    var saved = localStorage.getItem('cet6-theme');
-    if (saved) setTheme(saved);
-})();
+
+function renderText(containerId, text) {
+  const el = document.getElementById(containerId);
+  const parts = text.split(/\n\n+/);
+  el.innerHTML = parts.map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
+}
+
+// ========== REVEAL FUNCTIONS ==========
+function revealListening() {
+  const lcQs = DATA.listening.long_conversation.questions;
+  const passageQs = DATA.listening.passage.questions;
+  
+  lcQs.forEach((q, i) => {
+    const selected = document.querySelector(`input[name="long_conversation-${i}"]:checked`);
+    const qDiv = document.getElementById('long_conversation-q-' + i);
+    const correctSpan = document.createElement('span');
+    correctSpan.className = 'correct';
+    if (selected) {
+      if (selected.value === q.answer) {
+        correctSpan.textContent = ' ✓ 正确!';
+      } else {
+        correctSpan.textContent = ' ✗ 错误，正确答案是 ' + q.answer;
+      }
+    } else {
+      correctSpan.textContent = ' 未作答，正确答案是 ' + q.answer;
+    }
+    qDiv.querySelector('p').appendChild(correctSpan);
+  });
+  
+  passageQs.forEach((q, i) => {
+    const selected = document.querySelector(`input[name="passage-${i}"]:checked`);
+    const qDiv = document.getElementById('passage-q-' + i);
+    const correctSpan = document.createElement('span');
+    correctSpan.className = 'correct';
+    if (selected) {
+      if (selected.value === q.answer) {
+        correctSpan.textContent = ' ✓ 正确!';
+      } else {
+        correctSpan.textContent = ' ✗ 错误，正确答案是 ' + q.answer;
+      }
+    } else {
+      correctSpan.textContent = ' 未作答，正确答案是 ' + q.answer;
+    }
+    qDiv.querySelector('p').appendChild(correctSpan);
+  });
+
+  document.getElementById('long_conversation-script').textContent = DATA.listening.long_conversation.script;
+  document.getElementById('passage-script').textContent = DATA.listening.passage.script;
+  document.getElementById('listening-reveal').classList.add('show');
+}
+
+
+function revealReading() {
+  const techQs = DATA.reading.tech.questions;
+  const socialQs = DATA.reading.social.questions;
+  let correct = 0, total = techQs.length + socialQs.length;
+  
+  techQs.forEach((q, i) => {
+    const selected = document.querySelector(`input[name="tech-${i}"]:checked`);
+    const qDiv = document.getElementById('tech-q-' + i);
+    const correctSpan = document.createElement('span');
+    correctSpan.className = 'correct';
+    if (selected) {
+      if (selected.value === q.answer) {
+        correctSpan.textContent = ' ✓ 正确!';
+        correct++;
+      } else {
+        correctSpan.textContent = ' ✗ 错误，正确答案是 ' + q.answer;
+      }
+    } else {
+      correctSpan.textContent = ' 未作答，正确答案是 ' + q.answer;
+    }
+    qDiv.querySelector('p').appendChild(correctSpan);
+  });
+  
+  socialQs.forEach((q, i) => {
+    const selected = document.querySelector(`input[name="social-${i}"]:checked`);
+    const qDiv = document.getElementById('social-q-' + i);
+    const correctSpan = document.createElement('span');
+    correctSpan.className = 'correct';
+    if (selected) {
+      if (selected.value === q.answer) {
+        correctSpan.textContent = ' ✓ 正确!';
+        correct++;
+      } else {
+        correctSpan.textContent = ' ✗ 错误，正确答案是 ' + q.answer;
+      }
+    } else {
+      correctSpan.textContent = ' 未作答，正确答案是 ' + q.answer;
+    }
+    qDiv.querySelector('p').appendChild(correctSpan);
+  });
+  
+  document.getElementById('reading-score').textContent = `${correct} / ${total}`;
+  document.getElementById('reading-detail').textContent = correct >= Math.ceil(total * 0.6) ? '合格 ✓' : '需要加油 ✗';
+  document.getElementById('reading-reveal').classList.add('show');
+}
+
+function revealTranslation() {
+  document.getElementById('translation-ref').textContent = DATA.translation.reference;
+  document.getElementById('translation-reveal').classList.add('show');
+}
+
+function revealWriting() {
+  document.getElementById('writing-model').textContent = DATA.writing.model;
+  document.getElementById('writing-reveal').classList.add('show');
+}
+
+// ========== INIT ==========
+renderQuestions('long_conversation-questions', DATA.listening.long_conversation.questions, 'long_conversation', false);
+renderQuestions('passage-questions', DATA.listening.passage.questions, 'passage', false);
+renderText('tech-text', DATA.reading.tech.text);
+renderVocab('tech-vocab', DATA.reading.tech.vocab);
+renderQuestions('tech-questions', DATA.reading.tech.questions, 'tech');
+renderText('social-text', DATA.reading.social.text);
+renderVocab('social-vocab', DATA.reading.social.vocab);
+renderQuestions('social-questions', DATA.reading.social.questions, 'social');
+document.getElementById('translation-prompt').textContent = DATA.translation.chinese;
+document.getElementById('writing-prompt').textContent = DATA.writing.prompt;
 </script>
 </body>
 </html>
