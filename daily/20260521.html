@@ -5,163 +5,77 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CET-6 每日练习 - 2026年5月21日 星期四</title>
 <style>
-:root {
-  --bg-page: #f5f7fa;
-  --bg-section: #ffffff;
-  --text: #2d3436;
-  --text-muted: #888;
-  --accent: #6c5ce7;
-  --accent-hover: #5a4bd1;
-  --accent-light: #f0f0ff;
-  --border: #eee;
-  --reveal-bg: #f8f9fa;
-  --reveal-border: #e9ecef;
-  --correct: #27ae60;
-  --wrong: #e74c3c;
-  --header-grad-1: #6c5ce7;
-  --header-grad-2: #a29bfe;
-  --shadow: rgba(0,0,0,0.06);
-  --input-bg: #fff;
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-[data-theme="warm"] {
-  --bg-page: #faf6ed;
-  --bg-section: #fffcf5;
-  --text: #3d3535;
-  --text-muted: #999;
-  --accent: #c0784a;
-  --accent-hover: #a8643a;
-  --accent-light: #f5ede4;
-  --border: #e8ddd0;
-  --reveal-bg: #f8f1e8;
-  --reveal-border: #e8ddd0;
-  --correct: #5d8a3c;
-  --wrong: #c0392b;
-  --header-grad-1: #c0784a;
-  --header-grad-2: #d4a574;
-  --shadow: rgba(0,0,0,0.04);
-  --input-bg: #fffcf5;
-}
-[data-theme="dark"] {
-  --bg-page: #0f0f1a;
-  --bg-section: #1a1a2e;
-  --text: #e0e0e0;
-  --text-muted: #888;
-  --accent: #9370db;
-  --accent-hover: #a884e8;
-  --accent-light: #2a1f40;
-  --border: #2a2a3e;
-  --reveal-bg: #151525;
-  --reveal-border: #2a2a3e;
-  --correct: #5cb85c;
-  --wrong: #e74c3c;
-  --header-grad-1: #3d1f6e;
-  --header-grad-2: #6c3fa0;
-  --shadow: rgba(0,0,0,0.2);
-  --input-bg: #1a1a2e;
-}
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg-page); color: var(--text); line-height: 1.8; }
-.header { background: linear-gradient(135deg, var(--header-grad-1), var(--header-grad-2)); color: #fff; padding: 30px 20px; text-align: center; }
+body { font-family: -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f5f7fa; color: #2d3436; line-height: 1.8; }
+.header { background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: #fff; padding: 30px 20px; text-align: center; }
 .header h1 { font-size: 24px; margin-bottom: 5px; }
 .header p { font-size: 14px; opacity: 0.9; }
-.theme-switcher { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
-.theme-btn { padding: 6px 18px; border: 2px solid rgba(255,255,255,0.3); border-radius: 20px; background: transparent; color: #fff; cursor: pointer; font-size: 13px; transition: all 0.2s; }
-.theme-btn:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.1); }
-.theme-btn.active { border-color: #fff; background: rgba(255,255,255,0.2); font-weight: 600; }
 .container { max-width: 800px; margin: 0 auto; padding: 20px; }
-.section { background: var(--bg-section); border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px var(--shadow); transition: background-color 0.3s ease; }
-.section h2 { font-size: 20px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--accent); color: var(--accent); }
-.section h3 { font-size: 16px; margin: 16px 0 10px; color: var(--text-muted); }
-.audio-player { width: 100%; margin: 10px 0; border-radius: 6px; }
-.audio-label { font-size: 13px; color: var(--text-muted); margin: 5px 0; }
+.section { background: #fff; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.section h2 { font-size: 20px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #6c5ce7; color: #6c5ce7; }
+.section h3 { font-size: 16px; margin: 16px 0 10px; color: #555; }
+.audio-player { width: 100%; margin: 10px 0; }
+.audio-label { font-size: 13px; color: #888; margin: 5px 0; }
 .reading-text { font-size: 15px; line-height: 1.9; text-align: justify; margin: 15px 0; }
-.reading-text p { margin-bottom: 12px; }
 .vocab-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px; }
-.vocab-table th { background: var(--accent-light); padding: 8px 12px; text-align: left; border: 1px solid var(--border); color: var(--text); }
-.vocab-table td { padding: 8px 12px; border: 1px solid var(--border); }
+.vocab-table th { background: #f0f0ff; padding: 8px 12px; text-align: left; border: 1px solid #ddd; }
+.vocab-table td { padding: 8px 12px; border: 1px solid #ddd; }
 .question-list { margin: 15px 0; }
-.question-item { padding: 12px; margin: 8px 0; background: var(--bg-page); border-radius: 8px; border: 1px solid var(--border); }
+.question-item { padding: 12px; margin: 8px 0; background: #fafbfc; border-radius: 8px; border: 1px solid #eee; }
 .question-item p { font-weight: 600; margin-bottom: 8px; }
 .question-item label { display: block; padding: 4px 0; font-size: 14px; cursor: pointer; }
-.question-item input[type="radio"] { margin-right: 8px; accent-color: var(--accent); }
-.question-item .correct { color: var(--correct); font-weight: 600; }
-.question-item .wrong { color: var(--wrong); }
-.translation-input, .writing-input { width: 100%; min-height: 150px; padding: 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; line-height: 1.6; resize: vertical; font-family: inherit; background: var(--input-bg); color: var(--text); }
+.question-item input[type="radio"] { margin-right: 8px; }
+.question-item .correct { color: #27ae60; font-weight: 600; }
+.question-item .wrong { color: #e74c3c; }
+.translation-input, .writing-input { width: 100%; min-height: 150px; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; line-height: 1.6; resize: vertical; font-family: inherit; }
 .writing-input { min-height: 200px; }
-.btn { display: inline-block; padding: 10px 24px; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-size: 15px; cursor: pointer; margin: 10px 5px 0 0; transition: background 0.2s; }
-.btn:hover { background: var(--accent-hover); }
-.reveal-content { display: none; margin-top: 20px; padding: 20px; background: var(--reveal-bg); border-radius: 8px; border: 1px solid var(--reveal-border); transition: background-color 0.3s ease; }
+.btn { display: inline-block; padding: 10px 24px; background: #6c5ce7; color: #fff; border: none; border-radius: 8px; font-size: 15px; cursor: pointer; margin: 10px 5px 0 0; }
+.btn:hover { background: #5a4bd1; }
+.btn-secondary { background: #636e72; }
+.btn-secondary:hover { background: #535e62; }
+.reveal-content { display: none; margin-top: 20px; padding: 20px; background: #f8f9fa; border-radius: 8px; border: 1px solid #e9ecef; }
 .reveal-content.show { display: block; }
-.reveal-content h4 { color: var(--accent); margin-bottom: 10px; font-size: 16px; }
-.reveal-content h5 { color: var(--text-muted); margin: 12px 0 6px; font-size: 14px; }
+.reveal-content h4 { color: #6c5ce7; margin-bottom: 10px; font-size: 16px; }
 .reveal-content .script-text { font-size: 14px; line-height: 1.8; margin: 10px 0; white-space: pre-wrap; }
-.quest-label { font-size: 12px; color: var(--text-muted); margin: 5px 0; }
-hr { margin: 20px 0; border: none; border-top: 1px solid var(--border); }
-@media (min-width: 768px) {
-  .container { max-width: 800px; }
-  .section { padding: 28px; }
-  .section h2 { font-size: 22px; }
-  .reading-text { font-size: 16px; }
-  .vocab-table { font-size: 15px; }
-  .question-item label { font-size: 15px; }
-}
-.result-bar {
-  text-align: center;
-  padding: 20px;
-  margin: 15px 0;
-  background: var(--reveal-bg);
-  border-radius: 8px;
-  border: 1px solid var(--reveal-border);
-}
-.result-bar .score {
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--accent);
-}
-.result-bar .detail {
-  font-size: 16px;
-  margin-top: 5px;
-  color: var(--text-muted);
-}
+.quest-label { font-size: 12px; color: #999; margin: 5px 0; }
+.result-bar { margin: 15px 0; padding: 15px; background: #fff; border-radius: 8px; border: 1px solid #e9ecef; }
+.result-bar .score { font-size: 24px; font-weight: 700; color: #6c5ce7; }
+.result-bar .detail { font-size: 14px; color: #555; margin-top: 5px; }
+hr { margin: 20px 0; border: none; border-top: 1px solid #eee; }
+@media (max-width: 600px) { .container { padding: 10px; } .section { padding: 16px; } }
 </style>
 </head>
 <body>
 <div class="header">
   <h1>📖 CET-6 每日练习</h1>
   <p>2026年5月21日 星期四 | 听力·阅读·翻译·作文</p>
-  <div class="theme-switcher">
-    <button class="theme-btn active" data-theme="default">🌙 默认</button>
-    <button class="theme-btn" data-theme="warm">☀️ 暖黄</button>
-    <button class="theme-btn" data-theme="dark">🌑 深色</button>
-  </div>
 </div>
 <div class="container">
 
 <!-- ============ 听力部分 ============ -->
 <div class="section" id="listening">
   <h2>🎧 听力理解 (Listening Comprehension)</h2>
-  <p style="color:var(--text-muted);font-size:13px;">听录音，完成选择题。提交后显示听力原文。</p>
+  <p style="color:#888;font-size:13px;">听录音，完成选择题。提交后显示听力原文。</p>
 
   <h3>第一部分：长对话 (Long Conversation)</h3>
-  <p class="quest-label">对话：科技领域 — AI环境监测</p>
-  <audio class="audio-player" controls src="audio/listening1_long_conversation.mp3"></audio>
-  <div class="question-list" id="long_conversation-questions"></div>
+  <p class="quest-label">对话：非物质文化遗产 — 赫哲族鱼皮画</p>
+  <audio class="audio-player" controls src="https://3563z.github.io/cet6-reading/daily/audio/20260521_1.mp3"></audio>
+  <div class="question-list" id="lc-questions"></div>
 
-  <h3>第二部分：听力篇章 (Passage)</h3>
-  <p class="quest-label">篇章：社会领域 — 远程工作与心理健康</p>
-  <audio class="audio-player" controls src="audio/listening2_passage.mp3"></audio>
-  <div class="question-list" id="passage-questions"></div>
+  <h3>第二部分：讲座 (Lecture)</h3>
+  <p class="quest-label">讲座：科技领域 — 智能康复机器人</p>
+  <audio class="audio-player" controls src="https://3563z.github.io/cet6-reading/daily/audio/20260521_2.mp3"></audio>
+  <div class="question-list" id="lecture-questions"></div>
 
   <button class="btn" onclick="revealListening()">📝 提交听力答案 &amp; 查看原文</button>
   <div class="reveal-content" id="listening-reveal">
     <h4>📄 听力原文</h4>
-    <h5>长对话 — AI在环境监测中的应用</h5>
-    <div class="script-text" id="long_conversation-script"></div>
-    <audio class="audio-player" controls src="audio/listening1_long_conversation.mp3"></audio>
-    <h5>听力篇章 — 远程工作与心理健康</h5>
-    <div class="script-text" id="passage-script"></div>
-    <audio class="audio-player" controls src="audio/listening2_passage.mp3"></audio>
+    <h5>长对话</h5>
+    <div class="script-text" id="lc-script"></div>
+    <h5>讲座</h5>
+    <div class="script-text" id="lecture-script"></div>
+    <audio class="audio-player" controls src="https://3563z.github.io/cet6-reading/daily/audio/20260521_1.mp3"></audio>
+    <audio class="audio-player" controls src="https://3563z.github.io/cet6-reading/daily/audio/20260521_2.mp3"></audio>
   </div>
 </div>
 
@@ -169,18 +83,18 @@ hr { margin: 20px 0; border: none; border-top: 1px solid var(--border); }
 <div class="section" id="reading">
   <h2>📚 阅读理解 (Reading Comprehension)</h2>
 
-  <h3>Passage 1：科技 — 视觉修复技术新进展</h3>
+  <h3>Passage 1：科技 — 智能康复机器人</h3>
   <div class="reading-text" id="tech-text"></div>
   <h4>📝 核心词汇</h4>
   <table class="vocab-table" id="tech-vocab"></table>
   <div class="question-list" id="tech-questions"></div>
 
-  <h3>Passage 2：社会 — 数字支付的普及与挑战</h3>
+  <h3>Passage 2：社会 — 赫哲族鱼皮画</h3>
   <div class="reading-text" id="social-text"></div>
   <h4>📝 核心词汇</h4>
   <table class="vocab-table" id="social-vocab"></table>
   <div class="question-list" id="social-questions"></div>
-  
+
   <button class="btn" onclick="revealReading()">📝 提交阅读答案 &amp; 查看解析</button>
   <div class="reveal-content" id="reading-reveal">
     <h4>📊 答题结果</h4>
@@ -200,7 +114,7 @@ hr { margin: 20px 0; border: none; border-top: 1px solid var(--border); }
   <div class="reveal-content" id="translation-reveal">
     <h4>💡 参考译文</h4>
     <div class="script-text" id="translation-ref"></div>
-    <audio class="audio-player" controls src="audio/translation_reference.mp3"></audio>
+    <audio class="audio-player" controls src="https://3563z.github.io/cet6-reading/daily/audio/20260521_3.mp3"></audio>
   </div>
 </div>
 
@@ -213,7 +127,7 @@ hr { margin: 20px 0; border: none; border-top: 1px solid var(--border); }
   <div class="reveal-content" id="writing-reveal">
     <h4>💡 参考范文</h4>
     <div class="script-text" id="writing-model"></div>
-    <audio class="audio-player" controls src="audio/writing_model.mp3"></audio>
+    <audio class="audio-player" controls src="https://3563z.github.io/cet6-reading/daily/audio/20260521_4.mp3"></audio>
   </div>
 </div>
 
@@ -221,10 +135,264 @@ hr { margin: 20px 0; border: none; border-top: 1px solid var(--border); }
 
 <script>
 // ========== DATA ==========
-const DATA = {"meta": {"date": "20260521", "day": "Thursday"}, "listening": {"long_conversation": {"title": "AI在环境监测中的应用", "script": "W: Professor Harris, I've been reading about how AI is being used to monitor environmental changes. The scale of data collection seems enormous.\nM: You've hit on a crucial point, Sarah. Traditional environmental monitoring relied on limited sensor networks, but we're now able to analyze satellite imagery, drone footage, and ground sensors simultaneously using machine learning algorithms.\nW: That sounds incredibly powerful. What kind of environmental changes can AI detect that humans might miss?\nM: One remarkable application is detecting early signs of deforestation. AI systems can analyze satellite images daily and identify illegal logging activities within hours, whereas human analysis might take weeks. We've also seen success in tracking ocean plastic accumulation patterns.\nW: I read about a project using AI to monitor coral reef health. Is that related?\nM: Exactly. That project uses underwater cameras and sonar data to create detailed maps of reef ecosystems. The AI can detect bleaching events before they become visible to the naked eye by analyzing subtle changes in water temperature and chemical composition.\nW: That's fascinating. But aren't there challenges with data quality and model accuracy?\nM: Indeed. One major challenge is that environmental data can be noisy and inconsistent. Sensors malfunction, weather conditions affect readings, and satellite images can be obstructed by cloud cover. Researchers are developing robust models that can handle these imperfections.\nW: What advice would you give to students interested in this field?\nM: I'd recommend building a strong foundation in both data science and environmental science. Understanding the domain is just as important as knowing the algorithms. Many universities now offer interdisciplinary programs combining these fields.", "tag": "tech", "voice": "en-US-GuyNeural", "questions": [{"q": "What is the main topic of the conversation?", "A": "To compare different types of environmental sensors.", "B": "The use of AI in monitoring environmental changes.", "C": "By analyzing underwater sonar data for ocean research.", "D": "Students should focus exclusively on machine learning.", "answer": "B"}, {"q": "According to the professor, what advantage does AI have over human analysis in detecting deforestation?", "A": "AI systems can detect illegal logging within hours instead of weeks.", "B": "Satellite imagery is only accessible through machine learning.", "C": "By using more expensive but more accurate equipment.", "D": "The technology eliminates the need for ground sensors entirely.", "answer": "A"}, {"q": "How does the AI system monitor coral reef health according to the conversation?", "A": "By sending divers to collect water samples weekly.", "B": "Detecting bleaching events through subtle environmental changes.", "C": "Installing monitoring stations on every coral reef globally.", "D": "To replace underwater cameras with satellite imaging technology.", "answer": "B"}, {"q": "What challenge does the professor identify regarding environmental data?", "A": "Collecting data from remote locations is too expensive.", "B": "Data can be noisy due to sensor malfunctions and weather conditions.", "C": "Governments restrict access to most environmental data sets.", "D": "By training models exclusively on data from laboratories.", "answer": "B"}, {"q": "What career advice does the professor give to interested students?", "A": "To pursue a degree in pure data science without environmental courses.", "B": "Building expertise in both data science and environmental science.", "C": "Focusing only on field work rather than computational methods.", "D": "The field requires a PhD before any practical application is possible.", "answer": "B"}]}, "passage": {"title": "远程工作与心理健康", "script": "The shift to remote work following recent global events has fundamentally changed how millions of people approach their professional lives. While much of the public discussion has focused on productivity metrics, researchers have begun examining the psychological implications of this transformation.\n\nA comprehensive study conducted by Stanford University tracked over twelve thousand remote workers over a two-year period. The findings revealed that employees who worked remotely at least three days per week reported significantly lower stress levels and higher job satisfaction compared to their office-based counterparts. Interestingly, the benefits were most pronounced among workers with long commutes, who gained an average of nearly an hour of personal time each day.\n\nHowever, the study also identified potential drawbacks. Remote workers reported higher rates of loneliness and found it more challenging to separate work from personal life. Those who worked entirely from home without any in-person interaction showed a twenty percent increase in reported feelings of isolation. The researchers emphasized that a hybrid model, combining remote work with regular office presence, appeared to offer the optimal balance between flexibility and social connection.", "tag": "human", "voice": "en-US-MichelleNeural", "questions": [{"q": "What is the main finding of the Stanford University study?", "A": "To compare productivity between remote and office workers.", "B": "Remote workers reported lower stress and higher job satisfaction.", "C": "By tracking employees over a period of twelve months.", "D": "The study found no significant differences between the two groups.", "answer": "B"}, {"q": "Which group benefited most from remote work according to the study?", "A": "Employees working in creative industries.", "B": "Workers with long commutes who gained personal time.", "C": "By analyzing data from over twenty thousand participants.", "D": "The benefits were equally distributed across all demographics.", "answer": "B"}, {"q": "What was identified as a drawback of remote work?", "A": "Productivity decreased significantly in most cases.", "B": "Higher rates of loneliness and work-life balance challenges.", "C": "By eliminating all forms of in-person collaboration.", "D": "The technology required for remote work is too expensive.", "answer": "B"}, {"q": "What percentage increase in isolation was reported among fully remote workers?", "A": "Approximately ten percent higher than office workers.", "B": "A twenty percent increase in reported feelings of isolation.", "C": "By comparing data across different industries and regions.", "D": "The study found isolation rates decreased over time.", "answer": "B"}, {"q": "What model does the study recommend as optimal?", "A": "Returning to full-time office work immediately.", "B": "A hybrid model combining remote work with office presence.", "C": "To allow employees to choose their own work arrangement freely.", "D": "Complete remote work with virtual social events.", "answer": "B"}]}}, "reading": {"tech": {"title": "视觉修复技术新进展", "text": "In recent years, the field of visual prosthetics has made remarkable progress, offering new hope to millions of people suffering from blindness and severe visual impairment. While cochlear implants for hearing loss have been widely available for decades, creating a functional artificial eye has proven far more challenging due to the extraordinary complexity of the human visual system.\n\nThe human eye contains approximately 130 million photoreceptor cells that convert light into electrical signals. These signals travel through the optic nerve to the brain, where they are processed by neural networks that have evolved over millions of years. Replicating this system requires not only sophisticated hardware but also a deep understanding of how the brain interprets visual information.\n\nOne promising approach involves implanting electrode arrays directly onto the visual cortex, the part of the brain responsible for processing sight. Researchers at the University of Texas have developed a wireless implant containing over a thousand microelectrodes, each capable of stimulating individual neurons. Early clinical trials have allowed blind participants to perceive shapes, detect motion, and even recognize large letters.\n\nA competing approach focuses on the retina itself. Companies like Second Sight have developed retinal implants that replace damaged photoreceptor cells. These devices use a tiny camera mounted on glasses to capture images, which are then converted into electrical pulses sent to the remaining healthy retinal cells. While the resulting vision is far from natural, patients can navigate unfamiliar environments and read large-print text.\n\nDespite these advances, significant obstacles remain. The brain's ability to adapt to artificial visual input varies greatly among individuals, and the long-term stability of implanted devices poses ongoing engineering challenges. Nevertheless, the rapid pace of innovation in both materials science and neural interface technology suggests that functional vision restoration for at least some forms of blindness may become clinically available within the next decade.", "tag": "tech", "vocab": [{"word": "prosthetic", "phonetic": "/prɒsˈθetɪk/", "def": "adj. 假体的；人工替代的"}, {"word": "photoreceptor", "phonetic": "/ˌfəʊtəʊrɪˈseptə/", "def": "n. 光感受器；感光细胞"}, {"word": "neural", "phonetic": "/ˈnjʊərəl/", "def": "adj. 神经的；神经系统的"}, {"word": "implant", "phonetic": "/ɪmˈplɑːnt/", "def": "v./n. 植入；植入物"}, {"word": "retinal", "phonetic": "/ˈretɪnəl/", "def": "adj. 视网膜的"}, {"word": "electrode", "phonetic": "/ɪˈlektrəʊd/", "def": "n. 电极"}, {"word": "clinical", "phonetic": "/ˈklɪnɪkəl/", "def": "adj. 临床的"}, {"word": "stimulate", "phonetic": "/ˈstɪmjʊleɪt/", "def": "v. 刺激；激发"}, {"word": "impairment", "phonetic": "/ɪmˈpeəmənt/", "def": "n. 损伤；障碍"}, {"word": "cortex", "phonetic": "/ˈkɔːteks/", "def": "n. 皮层；皮质"}], "questions": [{"q": "Why is developing artificial vision more challenging than cochlear implants?", "A": "The visual system is far more complex than the auditory system.", "B": "Because visual signals require wireless transmission technology.", "C": "Research funding has been allocated mostly to hearing research.", "D": "The number of blind patients is much smaller.", "answer": "A"}, {"q": "What is distinctive about the University of Texas implant device?", "A": "It can directly replace damaged retinal cells.", "B": "It contains over a thousand microelectrodes stimulating individual neurons.", "C": "It requires surgical connection to an external camera.", "D": "It can only help patients perceive light changes.", "answer": "B"}, {"q": "How does the retinal implant device work according to the article?", "A": "It converts camera images into electrical pulses sent to healthy retinal cells.", "B": "It reconstructs complete visual images directly on the visual cortex.", "C": "To stimulate damaged photoreceptor cells to regenerate.", "D": "By using genetic editing to repair retinal damage.", "answer": "A"}, {"q": "What does \"competing approach\" in the article refer to?", "A": "Competition between two corporations developing vision technology.", "B": "Cortical implants versus retinal implants as different strategies.", "C": "A comparison between artificial and natural vision systems.", "D": "Competition among countries in vision restoration research.", "answer": "B"}, {"q": "What is the author's attitude toward artificial vision's future?", "A": "Pessimistic, believing barriers cannot be overcome soon.", "B": "Cautiously optimistic, expecting clinical breakthroughs within a decade.", "C": "Doubtful, because patient adaptability varies greatly.", "D": "Neutral, merely presenting findings without predictions.", "answer": "B"}]}, "social": {"title": "数字支付的普及与挑战", "text": "The rapid expansion of digital payment systems has fundamentally altered the way people conduct financial transactions across the globe. From mobile wallets in Kenya to contactless cards in Europe, the shift away from cash has accelerated dramatically in recent years, driven by advances in smartphone technology and improved internet connectivity.\n\nIn China, the transformation has been particularly striking. Mobile payment platforms such as Alipay and WeChat Pay have achieved near-universal adoption in urban areas, where even street vendors and small shops display QR codes for payment. According to the People's Bank of China, mobile payments in the country exceeded 347 trillion yuan in 2023, representing over eighty percent of all non-cash transactions. This widespread adoption has been facilitated by the integration of payment functions into social media and messaging applications, making transactions as simple as sending a message.\n\nHowever, the digital payment revolution has not been without controversy. Privacy advocates have raised concerns about the vast amounts of personal financial data collected by payment platforms. In many cases, transaction histories can reveal sensitive information about individuals' health conditions, political affiliations, and personal relationships. Additionally, older adults and those in rural areas with limited internet access risk being excluded from an increasingly cashless society.\n\nRegulators around the world are grappling with how to balance innovation with consumer protection. The European Union's Payment Services Directive requires strong customer authentication for online payments, while India's Unified Payments Interface has established open standards that promote competition among payment providers. These regulatory frameworks aim to ensure that the benefits of digital payments are widely shared while minimizing risks to privacy and financial stability.\n\nAs digital payment technologies continue to evolve, the emergence of central bank digital currencies and blockchain-based systems promises to further reshape the financial landscape. The key challenge will be designing systems that are not only convenient and efficient but also inclusive, secure, and respectful of user privacy.", "tag": "human", "vocab": [{"word": "transaction", "phonetic": "/trænˈzækʃən/", "def": "n. 交易；办理"}, {"word": "accelerate", "phonetic": "/əkˈseləreɪt/", "def": "v. 加速；促进"}, {"word": "adoption", "phonetic": "/əˈdɒpʃən/", "def": "n. 采用；推广"}, {"word": "integration", "phonetic": "/ˌɪntɪˈɡreɪʃən/", "def": "n. 整合；一体化"}, {"word": "privacy", "phonetic": "/ˈprɪvəsi/", "def": "n. 隐私；私密"}, {"word": "authentication", "phonetic": "/ɔːˌθentɪˈkeɪʃən/", "def": "n. 认证；验证"}, {"word": "regulatory", "phonetic": "/ˈreɡjʊlətəri/", "def": "adj. 监管的；管理的"}, {"word": "inclusive", "phonetic": "/ɪnˈkluːsɪv/", "def": "adj. 包容的；包含全面的"}, {"word": "infrastructure", "phonetic": "/ˈɪnfrəstrʌktʃə/", "def": "n. 基础设施"}, {"word": "emergence", "phonetic": "/ɪˈmɜːdʒəns/", "def": "n. 出现；兴起"}], "questions": [{"q": "What drives the rapid growth of digital payments according to the article?", "A": "Advances in smartphone technology and internet connectivity.", "B": "Government restrictions on cash transactions.", "C": "The rising cost of traditional banking services.", "D": "An increase in international trade volume.", "answer": "A"}, {"q": "What is distinctive about digital payments in China?", "A": "Credit card payments dominate the market.", "B": "Payment functions are integrated into social media apps.", "C": "They are limited to large shopping malls.", "D": "Rural areas have higher usage rates than cities.", "answer": "B"}, {"q": "What concern about digital payments does the article raise?", "A": "Transaction speeds are too slow for users.", "B": "Personal financial data may reveal sensitive information.", "C": "Competition among platforms is too intense.", "D": "Security vulnerabilities cause frequent financial losses.", "answer": "B"}, {"q": "What does \"near-universal adoption\" most closely mean?", "A": "Widespread use in specific regions only.", "B": "Adopted by nearly everyone universally.", "C": "Received strong government promotion.", "D": "Technical standards achieved global unification.", "answer": "B"}, {"q": "What is the author's main concern about digital payments' future?", "A": "How to improve transaction processing speed.", "B": "How to balance convenience with security and privacy.", "C": "How to reduce platform technical costs.", "D": "How to eliminate currency exchange issues.", "answer": "B"}]}}, "translation": {"cn": "中国传统节日是中华文化的重要组成部分，承载着丰富的历史内涵和深厚的民族情感。春节作为最重要的传统节日，象征着团圆和新生活的开始。每逢春节，无论身在何处，人们都会想方设法回到家乡与亲人团聚。除了春节之外，端午节和中秋节等传统节日也各具特色，反映了中国人对自然、家庭和社会的独特理解。近年来，越来越多的年轻人开始重视传统节日，这标志着文化自信的回归。", "en": "Traditional Chinese festivals are an important part of Chinese culture, carrying rich historical connotations and profound national sentiments. The Spring Festival, as the most significant traditional festival, symbolizes reunion and the beginning of a new life. During the Spring Festival, no matter where they are, people will find ways to return to their hometowns to reunite with their families. Besides the Spring Festival, traditional festivals such as the Dragon Boat Festival and the Mid-Autumn Festival also have their own distinctive characteristics, reflecting Chinese people's unique understanding of nature, family, and society. In recent years, more and more young people have begun to value traditional festivals, signaling the return of cultural confidence."}, "writing": {"prompt": "Directions: For this part, you are allowed 30 minutes to write an essay on the topic \"The Importance of Digital Literacy in the Modern World\". You should state your opinion and support it with reasons and examples. You should write at least 150 words but no more than 200 words.", "model": "In today's interconnected world, digital literacy has become as essential as reading, writing, and arithmetic. I firmly believe that the ability to navigate digital technologies is no longer optional but a fundamental requirement for full participation in modern society.\n\nFirst, digital literacy is crucial for economic opportunity. Most jobs now require at least basic computer skills, and many high-paying positions demand advanced digital competencies. A person without these skills faces significant barriers in the job market. Second, digital literacy enables access to essential services. From healthcare appointments to government benefits, an increasing number of services are moving online, making digital skills necessary for everyday life.\n\nMoreover, digital literacy includes the critical ability to evaluate online information. In an era of misinformation, knowing how to identify reliable sources and distinguish facts from falsehoods is vital for making informed decisions.\n\nIn conclusion, digital literacy should be treated as a basic right in the twenty-first century. Educational systems must prioritize teaching these skills to ensure no one is left behind in our increasingly digital world."}}
+const DATA = {
+  "listening": {
+    "long_conversation": {
+      "title": "长对话：探讨非物质文化遗产保护",
+      "script": "M: Hi Xiaoli, I heard you visited the China-Russia Expo last week. How was it?\n\nW: It was absolutely fascinating, Professor. There was this amazing booth showcasing fish-skin collage techniques from the Hezhe ethnic group. I had no idea fish skin could be turned into such beautiful artwork.\n\nM: Ah, the Hezhe people. They're one of China's smallest ethnic minorities, living along the Heilong River. Their fish-skin craft dates back over two thousand years, to the Spring and Autumn Period.\n\nW: That's incredible! The artist, a woman named Zhang Lin, was demonstrating how to tan, cut, and paste the fish skin into elaborate designs. She told us it was once a dying art form.\n\nM: That's correct. By the early two thousands, the craft had nearly vanished because the tanning process is extremely grueling and time-consuming. But in 2006, it was officially recognized as national intangible cultural heritage, which helped preserve it.\n\nW: I'm glad it survived. Zhang Lin brought fish-skin garments and collages to the expo. The images were so vivid — divine deer, soaring eagles, ethnic totems. She even incorporated Russian cultural elements into some pieces.\n\nM: That cross-cultural exchange seems to be a key part of her mission. She's been attending the China-Russia Expo since its very first event in 2014, right?\n\nW: Exactly. She said intangible cultural heritage is a language without borders. Russian visitors were deeply impressed by her work, and she's even donated some pieces to a Russian museum.\n\nM: That's remarkable. You know, there's a Russian student from our university who took her class. She said Zhang never follows a script — she brings raw materials and tools, explaining the history and breaking down the techniques step by step.\n\nW: I can see why that would be effective. Actually, I'm thinking of writing my term paper on how traditional crafts can serve as bridges for international understanding.\n\nM: That's an excellent idea. It combines cultural heritage studies with international relations. Why don't you come to my office tomorrow and we can discuss your outline?\n\nW: Thank you, Professor. I'd really appreciate that.",
+      "questions": [
+        {
+          "q": "What is the conversation mainly about?",
+          "A": "The history and preservation of Hezhe fish-skin art",
+          "B": "How to visit the China-Russia Expo in Harbin",
+          "C": "The differences between Chinese and Russian art forms",
+          "D": "A term paper about traditional Chinese calligraphy",
+          "answer": "a"
+        },
+        {
+          "q": "When was the Hezhe fish-skin craft officially recognized as intangible cultural heritage?",
+          "A": "In the early 2000s",
+          "B": "In 2006",
+          "C": "In 2014",
+          "D": "During the Spring and Autumn Period",
+          "answer": "b"
+        },
+        {
+          "q": "What does Zhang Lin say about intangible cultural heritage?",
+          "A": "It is difficult to preserve in modern society",
+          "B": "It is a language without borders",
+          "C": "It requires government funding to survive",
+          "D": "It should remain within ethnic groups",
+          "answer": "b"
+        },
+        {
+          "q": "What can be inferred about Zhang Lin's teaching style?",
+          "A": "She follows a strict textbook-based approach",
+          "B": "She focuses only on advanced techniques",
+          "C": "She uses hands-on demonstrations with real materials",
+          "D": "She teaches exclusively through online videos",
+          "answer": "c"
+        },
+        {
+          "q": "What does the professor suggest the student do?",
+          "A": "Visit the expo to see more exhibits",
+          "B": "Write a paper on a different topic",
+          "C": "Come to his office to discuss her outline",
+          "D": "Take Zhang Lin's class at the university",
+          "answer": "c"
+        }
+      ],
+      "voice": "en-US-GuyNeural"
+    },
+    "lecture": {
+      "title": "讲座：人工智能与康复机器人",
+      "script": "Good morning, everyone. Today I'd like to discuss how artificial intelligence and robotics are revolutionizing the field of rehabilitation medicine. China has emerged as a global leader in this domain, with companies like Fourier developing intelligent rehabilitation systems that are transforming patient care.\n\nRobert Riener, a professor at ETH Zurich, points out that modern rehabilitation faces enormous challenges. Every year, millions of people suffer from strokes, resulting in hemiplegia and other motor impairments. The traditional approach to rehabilitation is labor-intensive and often provides limited feedback. However, AI-powered robotics are changing this landscape dramatically.\n\nWhat makes these systems so effective? First, they leverage large neural networks trained on extensive patient databases. These networks can monitor physiological data, social behavior, and sleep-wake rhythms, enabling the prediction of symptoms before they manifest. Second, modern rehab robots incorporate force feedback technologies that sense a patient's muscle strength and provide corresponding assistance, creating a more human-like interaction.\n\nConsider Fourier Intelligence, founded in 2015. The company started with exoskeleton robots and has since expanded into humanoid robots and comprehensive rehabilitation solutions. Their products now serve over two thousand institutions across forty countries, including hospitals, communities, and manufacturing environments. Last year alone, their sales doubled compared to 2024.\n\nWhat's particularly noteworthy is the concept of \"embodied intelligence.\" According to Professor Jose Luis Pons, the real breakthrough will come when we can embody intelligence directly into robotic systems. This doesn't mean creating autonomous agents that replace human therapists. Rather, it involves using AI techniques to synthesize rehabilitation principles, making robots intelligent collaborators that work alongside medical professionals.\n\nOwen Teoh, managing director of Fourier's rehab division, observes that overseas acceptance of Chinese rehabilitation robotics is among the highest in the industry. He notes that robots are increasingly perceived as \"warm-hearted,\" because their game design and user experience are tailored to the actual needs of both patients and therapists. The development trend is shifting from single products to comprehensive solutions, from passive execution to active intelligence, and from hospital settings to home environments.\n\nIn conclusion, the integration of AI and robotics in rehabilitation represents a paradigm shift in healthcare. As technology continues to advance, these intelligent systems will become more accessible, ultimately improving the quality of life for millions of people worldwide.",
+      "questions": [
+        {
+          "q": "What is the main topic of the lecture?",
+          "A": "The global competition in AI and robotics development",
+          "B": "How AI-powered robotics are transforming rehabilitation medicine",
+          "C": "A comparison of traditional and modern rehabilitation methods",
+          "D": "The history of Fourier Intelligence as a robotics company",
+          "answer": "b"
+        },
+        {
+          "q": "According to the lecture, what enables modern rehab systems to predict patients' symptoms?",
+          "A": "Human therapists' professional experience and judgment",
+          "B": "Large neural networks analyzing physiological and behavioral data",
+          "C": "Direct communication between robots and patients' families",
+          "D": "Standardized treatment protocols for stroke patients",
+          "answer": "b"
+        },
+        {
+          "q": "What does the concept of 'embodied intelligence' in rehabilitation refer to?",
+          "A": "Building autonomous AI agents to replace human therapists completely",
+          "B": "Creating robots that can think and feel like human beings",
+          "C": "Using AI to make robots intelligent collaborators with medical professionals",
+          "D": "Developing robots that can diagnose diseases without human input",
+          "answer": "c"
+        },
+        {
+          "q": "What can be inferred about Fourier's market performance?",
+          "A": "Its sales have declined due to international competition",
+          "B": "It primarily focuses on the domestic Chinese market",
+          "C": "Its revenue has experienced significant growth recently",
+          "D": "It has withdrawn from the rehabilitation sector entirely",
+          "answer": "c"
+        },
+        {
+          "q": "What is Professor Pons' attitude toward the future of embodied intelligence in robotics?",
+          "A": "Cautiously optimistic about its transformative potential",
+          "B": "Highly skeptical about its practical applications",
+          "C": "Indifferent, as other technologies are more promising",
+          "D": "Worried that robots might replace human jobs",
+          "answer": "a"
+        }
+      ],
+      "voice": "en-US-GuyNeural"
+    }
+  },
+  "reading": {
+    "tech": {
+      "title": "Passage 1：科技 — 智能康复机器人",
+      "text": "For decades, stroke rehabilitation has relied heavily on manual therapy, where patients perform repetitive exercises under the guidance of physical therapists. While effective to some degree, this approach is labor-intensive, expensive, and often lacks the precision needed to maximize recovery. However, a new generation of AI-powered robotic systems is beginning to transform the rehabilitation landscape.\n\nThe fundamental principle behind these systems is relatively straightforward. Advanced sensors embedded in robotic exoskeletons and rehabilitation devices capture real-time data about a patient's movements, muscle strength, and range of motion. Artificial intelligence algorithms then analyze this data to create personalized treatment plans that adapt as the patient progresses. This continuous feedback loop allows for far more precise and efficient therapy than traditional methods.\n\nFourier Intelligence, a Chinese robotics company founded in 2015, stands at the forefront of this revolution. What began as a startup focused on exoskeleton technology has evolved into a diversified enterprise producing humanoid robots and comprehensive rehabilitation systems. The company's products now serve over 2,000 institutions across 40 countries, spanning hospitals, community health centers, and manufacturing environments. In 2025 alone, the company reported that its sales had doubled compared to the previous year.\n\nWhat distinguishes Fourier's approach is its emphasis on human-robot interaction. Unlike conventional rehabilitation robots that rely heavily on repetitive movements, Fourier's systems incorporate force feedback technology that senses the patient's muscle strength and adjusts the level of assistance accordingly. This creates what the company describes as a \"warm-hearted\" interaction — the robot feels more like a collaborative partner than a cold machine. Additionally, the game design and user interface are tailored to patient needs, making therapy sessions more engaging and less monotonous.\n\nExperts emphasize that the goal is not to replace human therapists, but to augment their capabilities. By handling repetitive tasks and providing detailed analytics, robots free up therapists to focus on higher-level clinical decisions. Furthermore, as the technology becomes more affordable, it has the potential to expand access to quality rehabilitation services from hospital settings to community clinics and even private homes, addressing the growing demand driven by global aging populations.",
+      "vocab": [
+        {
+          "word": "exoskeleton",
+          "phonetic": "/ˈeksoʊˌskɛlɪtən/",
+          "def": "外骨骼；外部骨架"
+        },
+        {
+          "word": "rehabilitation",
+          "phonetic": "/ˌriːəˌbɪlɪˈteɪʃən/",
+          "def": "康复；恢复"
+        },
+        {
+          "word": "hemiplegia",
+          "phonetic": "/ˌhemɪˈpliːdʒə/",
+          "def": "偏瘫；半身麻痹"
+        },
+        {
+          "word": "forefront",
+          "phonetic": "/ˈfɔːrfrʌnt/",
+          "def": "前沿；最前线"
+        },
+        {
+          "word": "monotonous",
+          "phonetic": "/məˈnɑːtənəs/",
+          "def": "单调的；乏味的"
+        }
+      ],
+      "questions": [
+        {
+          "q": "What is a major limitation of traditional stroke rehabilitation according to the passage?",
+          "A": "It cannot treat severe cases of hemiplegia",
+          "B": "It is only available in developed countries",
+          "C": "It is labor-intensive and lacks precision",
+          "D": "It requires expensive robotic equipment",
+          "answer": "c"
+        },
+        {
+          "q": "The word \"augment\" in the last paragraph is closest in meaning to:",
+          "A": "Replace",
+          "B": "Criticize",
+          "C": "Enhance",
+          "D": "Ignore",
+          "answer": "c"
+        },
+        {
+          "q": "What can be inferred about the global demand for rehabilitation services?",
+          "A": "It is decreasing due to improved healthcare",
+          "B": "It is growing partly because of aging populations",
+          "C": "It remains stable in most countries",
+          "D": "It is primarily concentrated in China",
+          "answer": "b"
+        },
+        {
+          "q": "What makes Fourier's robots feel \"warm-hearted\" according to the passage?",
+          "A": "They can communicate with patients in natural language",
+          "B": "They sense muscle strength and adjust assistance accordingly",
+          "C": "They are designed to look like human caregivers",
+          "D": "They play music during therapy sessions",
+          "answer": "b"
+        },
+        {
+          "q": "What is the main idea of the passage?",
+          "A": "Traditional rehabilitation methods are no longer useful",
+          "B": "AI-powered robotics are revolutionizing rehabilitation with human-centered design",
+          "C": "Chinese robotics companies dominate the global market",
+          "D": "Force feedback technology is the only innovation in rehab robotics",
+          "answer": "b"
+        }
+      ]
+    },
+    "social": {
+      "title": "Passage 2：社会 — 赫哲族鱼皮画",
+      "text": "In the exhibition hall of the 10th China-Russia Expo, a steady stream of international visitors gathered around a workshop table, handling a material few associated with fine art: raw, tanned fish skin. Guided by 58-year-old Zhang Lin, Russian merchants, foreign tourists, and local residents took up carving tools to cut and paste intricate shapes, experiencing a tradition that has endured for millennia.\n\nThe Hezhe, one of China's smallest ethnic groups, have historically inhabited the river valleys of the Heilong River, known in Russia as the Amur River. Dating back to the Spring and Autumn Period, their ancestors developed a unique lifestyle centered on fishing and hunting. They utilized salmon skins to construct durable clothing, daily utensils, and sacred totems. However, the grueling process of tanning, cutting, carving, and sewing fish skin is extremely laborious, and by the early 2000s, the craft had nearly vanished.\n\nThe craft's trajectory shifted dramatically in 2006 when it was officially listed as Chinese national intangible cultural heritage. This recognition anchored preservation efforts and brought renewed attention to the Hezhe people's cultural legacy. Zhang Lin, a provincial-level inheritor of the craft from Heilongjiang province, has been instrumental in this revival. At this year's expo, she displayed two fish-skin garments and 16 collages, alongside cultural and creative products made from fish skin. Her works feature vivid images of divine deer, soaring eagles, ancient ethnic totems, and distant landscapes evoking China's northern regions.\n\nWhat makes Zhang's work particularly significant is her role as a cultural ambassador. She has been a fixture at the China-Russia Expo since its inaugural event in 2014, and has taken her creations to multiple Russian cities for folk cultural exchange activities. At past expos, she incorporated Russian cultural elements into her traditional fish-skin works, creating a fusion that resonated with international audiences. In July, she donated 20 works to a Russian museum, featuring themes including the 12 Chinese zodiac signs and symbols of good fortune.\n\nZhang has also extended her reach to university campuses. In her classes, she brings complete fish-skin materials, production tools, and fine artworks, explaining the history of Hezhe fishing culture and breaking down core techniques. \"Intangible cultural heritage is a language without borders,\" she often says. By combining craftsmanship with cultural exchange, Zhang has ensured that this ancient tradition continues to shine for new generations, both at home and abroad.",
+      "vocab": [
+        {
+          "word": "intangible",
+          "phonetic": "/ɪnˈtændʒəbl/",
+          "def": "无形的；触摸不到的"
+        },
+        {
+          "word": "collage",
+          "phonetic": "/kəˈlɑːʒ/",
+          "def": "拼贴艺术；拼贴画"
+        },
+        {
+          "word": "totem",
+          "phonetic": "/ˈtoʊtəm/",
+          "def": "图腾；崇拜物"
+        },
+        {
+          "word": "inheritor",
+          "phonetic": "/ɪnˈherɪtər/",
+          "def": "继承人；传承人"
+        },
+        {
+          "word": "grueling",
+          "phonetic": "/ˈɡruːəlɪŋ/",
+          "def": "折磨人的；使人筋疲力尽的"
+        }
+      ],
+      "questions": [
+        {
+          "q": "When was the Hezhe fish-skin craft officially recognized as national intangible cultural heritage?",
+          "A": "During the Spring and Autumn Period",
+          "B": "In the early 2000s",
+          "C": "In 2006",
+          "D": "In 2014",
+          "answer": "c"
+        },
+        {
+          "q": "The word \"grueling\" in paragraph 2 is closest in meaning to:",
+          "A": "Rewarding and fulfilling",
+          "B": "Quick and efficient",
+          "C": "Exhausting and demanding",
+          "D": "Creative and inspiring",
+          "answer": "c"
+        },
+        {
+          "q": "What can be inferred about the Hezhe people's traditional lifestyle?",
+          "A": "They were primarily farmers who cultivated crops",
+          "B": "They lived in harmony with nature through fishing and hunting",
+          "C": "They were nomadic herders who moved across the plains",
+          "D": "They were urban merchants who traded along the river",
+          "answer": "b"
+        },
+        {
+          "q": "How did Zhang Lin adapt her work to promote cross-cultural understanding?",
+          "A": "She translated Hezhe stories into multiple languages",
+          "B": "She incorporated Russian cultural elements into her fish-skin works",
+          "C": "She taught Chinese language classes alongside her art",
+          "D": "She opened a museum dedicated to Hezhe culture in Russia",
+          "answer": "b"
+        },
+        {
+          "q": "What is the main purpose of the passage?",
+          "A": "To describe the technical process of fish-skin tanning",
+          "B": "To criticize the lack of government support for ethnic crafts",
+          "C": "To illustrate how fish-skin art bridges cultures and preserves heritage",
+          "D": "To compare Chinese and Russian approaches to cultural preservation",
+          "answer": "c"
+        }
+      ]
+    }
+  },
+  "translation": {
+    "chinese": "赫哲族是中国人口最少的少数民族之一，主要生活在黑龙江省的黑龙江流域。赫哲族的祖先早在春秋时期就形成了以渔猎为核心的独特生活方式。他们利用鲑鱼皮制作衣物、日常器具和神圣图腾，创造了独特的鱼皮文化。然而，由于鞣制、切割和缝制鱼皮的过程极为耗时费力，这门手艺在21世纪初几乎失传。2006年，赫哲族鱼皮制作技艺被列入中国国家级非物质文化遗产，使这一传统工艺得以重新焕发生机。如今，传承人张琳不仅在国内展示这门技艺，还将其带到俄罗斯等多个国家，让世界了解中国少数民族的文化魅力。",
+    "reference": "The Hezhe are one of China's smallest ethnic minorities, primarily living in the river valleys of the Heilong River in Heilongjiang Province. As early as the Spring and Autumn Period, the ancestors of the Hezhe developed a unique lifestyle centered on fishing and hunting. They utilized salmon skins to make clothing, daily utensils, and sacred totems, creating a distinctive fish-skin culture. However, because the process of tanning, cutting, and sewing fish skin is extremely time-consuming and laborious, this craft had nearly disappeared by the early 2000s. In 2006, the Hezhe fish-skin crafting technique was officially listed as a Chinese national intangible cultural heritage, allowing this traditional craft to be revitalized. Today, inheritor Zhang Lin not only demonstrates this skill within China but also brings it to countries such as Russia, enabling the world to appreciate the cultural charm of China's ethnic minorities."
+  },
+  "writing": {
+    "prompt": "Directions: For this part, you are allowed 30 minutes to write an essay commenting on the saying \"Cultural heritage is a language without borders.\" You can cite examples from traditional Chinese crafts or customs to illustrate your point. You should write at least 150 words but no more than 200 words.",
+    "model": "The saying that \"cultural heritage is a language without borders\" profoundly captures the universal appeal of traditional crafts and customs. I firmly believe that cultural heritage serves as a powerful bridge connecting people across different nations and backgrounds.\n\nFirst and foremost, traditional crafts embody the wisdom and values of a particular culture, yet their beauty can be appreciated by anyone regardless of language. Take the Hezhe fish-skin art as an example. Although the Hezhe are one of China's smallest ethnic groups, their fish-skin collages featuring eagles, deer, and ancient totems have captivated audiences from Russia, Europe, and beyond. The visual language of art transcends linguistic barriers, allowing people to connect on an emotional level.\n\nFurthermore, engaging with another culture's heritage fosters mutual respect and understanding. When Zhang Lin, a Hezhe inheritor, teaches Russian students her fish-skin techniques, she is not merely demonstrating a craft — she is sharing a way of life, a history, and a worldview. This cultural exchange creates bonds that no political agreement can replicate.\n\nIn conclusion, cultural heritage possesses a unique power to unite humanity. In an increasingly divided world, preserving and sharing our diverse traditions is more important than ever, for they speak a language that everyone can understand."
+  }
+};
 
 // ========== RENDER FUNCTIONS ==========
-function renderQuestions(containerId, questions, prefix, showQuestionText = true) {
+function renderQuestions(containerId, questions, prefix, showQuestionText) {
+  if (showQuestionText === undefined) showQuestionText = true;
   const container = document.getElementById(containerId);
   container.innerHTML = '';
   const letters = ['A','B','C','D'];
@@ -261,91 +429,74 @@ function renderText(containerId, text) {
 // ========== REVEAL FUNCTIONS ==========
 function revealListening() {
   const lcQs = DATA.listening.long_conversation.questions;
-  const passageQs = DATA.listening.passage.questions;
-  
+  const lecQs = DATA.listening.lecture.questions;
+
   lcQs.forEach((q, i) => {
-    const selected = document.querySelector(`input[name="long_conversation-${i}"]:checked`);
-    const qDiv = document.getElementById('long_conversation-q-' + i);
-    const correctSpan = document.createElement('span');
-    correctSpan.className = 'correct';
+    const selected = document.querySelector(`input[name="lc-${i}"]:checked`);
+    const qDiv = document.getElementById('lc-q-' + i);
+    const span = document.createElement('span');
+    span.className = 'correct';
     if (selected) {
-      if (selected.value === q.answer) {
-        correctSpan.textContent = ' ✓ 正确!';
-      } else {
-        correctSpan.textContent = ' ✗ 错误，正确答案是 ' + q.answer;
-      }
+      span.textContent = selected.value === q.answer ? ' ✓ 正确!' : ' ✗ 错误，正确答案是 ' + q.answer.toUpperCase();
     } else {
-      correctSpan.textContent = ' 未作答，正确答案是 ' + q.answer;
+      span.textContent = ' 未作答，正确答案是 ' + q.answer.toUpperCase();
     }
-    qDiv.querySelector('p').appendChild(correctSpan);
-  });
-  
-  passageQs.forEach((q, i) => {
-    const selected = document.querySelector(`input[name="passage-${i}"]:checked`);
-    const qDiv = document.getElementById('passage-q-' + i);
-    const correctSpan = document.createElement('span');
-    correctSpan.className = 'correct';
-    if (selected) {
-      if (selected.value === q.answer) {
-        correctSpan.textContent = ' ✓ 正确!';
-      } else {
-        correctSpan.textContent = ' ✗ 错误，正确答案是 ' + q.answer;
-      }
-    } else {
-      correctSpan.textContent = ' 未作答，正确答案是 ' + q.answer;
-    }
-    qDiv.querySelector('p').appendChild(correctSpan);
+    qDiv.querySelector('p').appendChild(span);
   });
 
-  document.getElementById('long_conversation-script').textContent = DATA.listening.long_conversation.script;
-  document.getElementById('passage-script').textContent = DATA.listening.passage.script;
+  lecQs.forEach((q, i) => {
+    const selected = document.querySelector(`input[name="lecture-${i}"]:checked`);
+    const qDiv = document.getElementById('lecture-q-' + i);
+    const span = document.createElement('span');
+    span.className = 'correct';
+    if (selected) {
+      span.textContent = selected.value === q.answer ? ' ✓ 正确!' : ' ✗ 错误，正确答案是 ' + q.answer.toUpperCase();
+    } else {
+      span.textContent = ' 未作答，正确答案是 ' + q.answer.toUpperCase();
+    }
+    qDiv.querySelector('p').appendChild(span);
+  });
+
+  document.getElementById('lc-script').textContent = DATA.listening.long_conversation.script;
+  document.getElementById('lecture-script').textContent = DATA.listening.lecture.script;
   document.getElementById('listening-reveal').classList.add('show');
 }
-
 
 function revealReading() {
   const techQs = DATA.reading.tech.questions;
   const socialQs = DATA.reading.social.questions;
   let correct = 0, total = techQs.length + socialQs.length;
-  
+
   techQs.forEach((q, i) => {
     const selected = document.querySelector(`input[name="tech-${i}"]:checked`);
     const qDiv = document.getElementById('tech-q-' + i);
-    const correctSpan = document.createElement('span');
-    correctSpan.className = 'correct';
+    const span = document.createElement('span');
+    span.className = 'correct';
     if (selected) {
-      if (selected.value === q.answer) {
-        correctSpan.textContent = ' ✓ 正确!';
-        correct++;
-      } else {
-        correctSpan.textContent = ' ✗ 错误，正确答案是 ' + q.answer;
-      }
+      if (selected.value === q.answer) { span.textContent = ' ✓ 正确!'; correct++; }
+      else { span.textContent = ' ✗ 错误，正确答案是 ' + q.answer.toUpperCase(); }
     } else {
-      correctSpan.textContent = ' 未作答，正确答案是 ' + q.answer;
+      span.textContent = ' 未作答，正确答案是 ' + q.answer.toUpperCase();
     }
-    qDiv.querySelector('p').appendChild(correctSpan);
+    qDiv.querySelector('p').appendChild(span);
   });
-  
+
   socialQs.forEach((q, i) => {
     const selected = document.querySelector(`input[name="social-${i}"]:checked`);
     const qDiv = document.getElementById('social-q-' + i);
-    const correctSpan = document.createElement('span');
-    correctSpan.className = 'correct';
+    const span = document.createElement('span');
+    span.className = 'correct';
     if (selected) {
-      if (selected.value === q.answer) {
-        correctSpan.textContent = ' ✓ 正确!';
-        correct++;
-      } else {
-        correctSpan.textContent = ' ✗ 错误，正确答案是 ' + q.answer;
-      }
+      if (selected.value === q.answer) { span.textContent = ' ✓ 正确!'; correct++; }
+      else { span.textContent = ' ✗ 错误，正确答案是 ' + q.answer.toUpperCase(); }
     } else {
-      correctSpan.textContent = ' 未作答，正确答案是 ' + q.answer;
+      span.textContent = ' 未作答，正确答案是 ' + q.answer.toUpperCase();
     }
-    qDiv.querySelector('p').appendChild(correctSpan);
+    qDiv.querySelector('p').appendChild(span);
   });
-  
-  document.getElementById('reading-score').textContent = `${correct} / ${total}`;
-  document.getElementById('reading-detail').textContent = correct >= Math.ceil(total * 0.6) ? '合格 ✓' : '需要加油 ✗';
+
+  document.getElementById('reading-score').textContent = correct + ' / ' + total;
+  document.getElementById('reading-detail').textContent = correct >= 6 ? '合格 ✓' : '需要加油 ✗';
   document.getElementById('reading-reveal').classList.add('show');
 }
 
@@ -360,15 +511,15 @@ function revealWriting() {
 }
 
 // ========== INIT ==========
-renderQuestions('long_conversation-questions', DATA.listening.long_conversation.questions, 'long_conversation', false);
-renderQuestions('passage-questions', DATA.listening.passage.questions, 'passage', false);
+renderQuestions('lc-questions', DATA.listening.long_conversation.questions, 'lc', false);
+renderQuestions('lecture-questions', DATA.listening.lecture.questions, 'lecture', false);
+renderQuestions('tech-questions', DATA.reading.tech.questions, 'tech', true);
+renderQuestions('social-questions', DATA.reading.social.questions, 'social', true);
 renderText('tech-text', DATA.reading.tech.text);
 renderVocab('tech-vocab', DATA.reading.tech.vocab);
-renderQuestions('tech-questions', DATA.reading.tech.questions, 'tech');
 renderText('social-text', DATA.reading.social.text);
 renderVocab('social-vocab', DATA.reading.social.vocab);
-renderQuestions('social-questions', DATA.reading.social.questions, 'social');
-document.getElementById('translation-prompt').textContent = DATA.translation.cn;
+document.getElementById('translation-prompt').textContent = DATA.translation.chinese;
 document.getElementById('writing-prompt').textContent = DATA.writing.prompt;
 </script>
 </body>
