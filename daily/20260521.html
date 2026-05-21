@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CET-6 Daily - 2026-05-21</title>
+<style>
+:root {
+    --bg: #ffffff;
+    --text: #222222;
+    --card-bg: #ffffff;
+    --border: #e0e0e0;
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+    --heading: #111111;
+    --meta: #666666;
+    --input-bg: #f9f9f9;
+    --table-header-bg: #f0f0f0;
+    --table-border: #ddd;
+    --vocab-word-color: #d63384;
+    --reveal-bg: #f0f0f0;
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+body.warm {
+    --bg: #faf6ed;
+    --text: #3a3a3a;
+    --card-bg: #fcf9f2;
+    --border: #e8dcc8;
+    --accent: #b8860b;
+    --accent-hover: #9a7209;
+    --heading: #2c2c2c;
+    --meta: #7a7a7a;
+    --input-bg: #f8f5ec;
+    --table-header-bg: #f0ead6;
+    --table-border: #ddd5c0;
+    --vocab-word-color: #8b4513;
+    --reveal-bg: #f0ead6;
+}
+
+body.dark {
+    --bg: #0f0f1a;
+    --text: #d0d0d0;
+    --card-bg: #1a1a2e;
+    --border: #2a2a4a;
+    --accent: #7c8aff;
+    --accent-hover: #99a6ff;
+    --heading: #e8e8e8;
+    --meta: #8888aa;
+    --input-bg: #16162a;
+    --table-header-bg: #222244;
+    --table-border: #333366;
+    --vocab-word-color: #ff99cc;
+    --reveal-bg: #222244;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+    line-height: 1.8;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.theme-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 8px;
+    z-index: 999;
+}
+
+.theme-btn {
+    padding: 8px 16px;
+    border: 2px solid var(--border);
+    border-radius: 20px;
+    background: var(--card-bg);
+    color: var(--text);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.theme-btn:hover { border-color: var(--accent); }
+.theme-btn.active { border-color: var(--accent); background: var(--accent); color: #fff; }
+
+.header {
+    text-align: center;
+    padding: 30px 0 20px;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 30px;
+}
+.header h1 { font-size: 1.8em; color: var(--heading); margin: 0; }
+.header .subtitle { color: var(--meta); font-size: 0.9em; margin-top: 8px; }
+
+.passage {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 24px;
+}
+.passage h3 { font-size: 1.2em; color: var(--heading); margin: 0 0 16px 0; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+.passage h4 { font-size: 1.05em; color: var(--heading); margin: 18px 0 10px; }
+
+.audio-bar { margin: 12px 0; }
+.audio-bar audio { width: 100%; max-width: 400px; }
+
+.questions { margin: 16px 0; }
+.question { margin-bottom: 18px; }
+.q-text { font-weight: 600; margin-bottom: 6px; color: var(--heading); }
+.q-options {
+    font-family: inherit; white-space: pre-wrap; margin: 0;
+    padding: 10px 14px; background: var(--input-bg);
+    border-radius: 8px; border-left: 3px solid var(--accent);
+    font-size: 0.95em; line-height: 1.7;
+}
+
+.reading-text { line-height: 2; margin-bottom: 16px; text-align: justify; }
+.reading-text p { text-indent: 2em; margin: 0 0 10px 0; }
+
+.vocab-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.9em; }
+.vocab-table th { background: var(--table-header-bg); padding: 10px 8px; text-align: left; border-bottom: 2px solid var(--table-border); color: var(--heading); }
+.vocab-table td { padding: 8px; border-bottom: 1px solid var(--table-border); vertical-align: top; }
+.vocab-word { color: var(--vocab-word-color); font-weight: 700; }
+.vocab-pron { color: var(--meta); font-style: italic; }
+.vocab-example { color: var(--meta); }
+
+.translation-text { background: var(--input-bg); padding: 16px; border-radius: 8px; margin-bottom: 12px; border-left: 3px solid var(--accent); }
+.cn-text { font-size: 1em; line-height: 2; }
+
+.answer-input {
+    width: 100%; min-height: 100px; padding: 12px;
+    border: 1px solid var(--border); border-radius: 8px;
+    background: var(--input-bg); color: var(--text);
+    font-family: inherit; font-size: 0.95em; line-height: 1.6;
+    resize: vertical; box-sizing: border-box; margin-bottom: 10px;
+}
+.answer-input:focus { outline: none; border-color: var(--accent); }
+
+.reveal-btn {
+    padding: 10px 24px; border: none; border-radius: 8px;
+    background: var(--accent); color: #fff; cursor: pointer;
+    font-size: 0.95em; font-weight: 500; transition: background 0.3s;
+}
+.reveal-btn:hover { background: var(--accent-hover); }
+
+.answer-section {
+    margin-top: 16px; padding: 16px;
+    background: var(--reveal-bg); border-radius: 8px;
+    border-left: 4px solid var(--accent);
+}
+.script { line-height: 1.8; margin: 10px 0; font-size: 0.95em; }
+.answer-key p { margin: 4px 0; }
+
+.writing-topic {
+    background: var(--input-bg); padding: 16px; border-radius: 8px;
+    margin-bottom: 12px; border-left: 3px solid var(--accent); line-height: 1.8;
+}
+
+.footer {
+    text-align: center; padding: 30px 0;
+    color: var(--meta); font-size: 0.85em;
+    border-top: 1px solid var(--border); margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+    .container { max-width: 800px; }
+    body { padding: 30px 20px; }
+    .passage { padding: 28px; }
+    .passage h3 { font-size: 1.3em; }
+}
+</style>
+</head>
+<body>
+<div class="theme-switcher">
+    <button class="theme-btn active" onclick="setTheme('default')">Default</button>
+    <button class="theme-btn" onclick="setTheme('warm')">Warm</button>
+    <button class="theme-btn" onclick="setTheme('dark')">Dark</button>
+</div>
+
+<div class="container">
+    <div class="header">
+        <h1>CET-6 Daily Practice</h1>
+        <p class="subtitle">May 21, 2026 Thursday - Listening - Reading - Translation - Writing</p>
+    </div>
+
+    <h2>Listening Comprehension</h2>
+<div class="passage">
+<h3>Section A</h3>
+<div class="audio-bar"><audio controls src="audio/20260521_listeningA.mp3"></audio></div>
+<div class="questions">
+<div class="question"><p class="q-text">1. What is the most alarming trend Dr. Chen has observed?</p><pre class="q-options">A) People are unaware of AI technology
+B) AI-generated content has become highly sophisticated
+C) Tech companies refuse to help
+D) Education systems are failing</pre></div>
+<div class="question"><p class="q-text">2. According to Dr. Chen&#x27;s survey, what percentage of internet users have encountered AI-generated misinformation recently?</p><pre class="q-options">A) 48%
+B) 58%
+C) 68%
+D) 78%</pre></div>
+<div class="question"><p class="q-text">3. Which is NOT mentioned as a way to identify deepfakes?</p><pre class="q-options">A) Unusual blinking patterns
+B) Background audio discrepancies
+C) Lip-sync errors
+D) Subtle inconsistencies</pre></div>
+<div class="question"><p class="q-text">4. What does Dr. Chen say about generation vs. detection tools?</p><pre class="q-options">A) Detection tools are far ahead
+B) Generation tools improve faster
+C) They are equally matched
+D) Neither is making progress</pre></div>
+<div class="question"><p class="q-text">5. Which country does Dr. Chen cite as a good example of media literacy education?</p><pre class="q-options">A) Sweden
+B) Norway
+C) Finland
+D) Denmark</pre></div>
+</div>
+<div class="answer-section" id="listening-answers-A" style="display:none;">
+<h4>Listening Script</h4>
+<div class="script">M: Dr. Chen, you&#x27;ve been researching AI misinformation for years. What&#x27;s the most alarming trend you&#x27;ve observed recently?<br>W: The sophistication of AI-generated content has reached a point where even experts struggle to distinguish real from fake. We&#x27;re seeing hyper-realistic voice clones being used in phone scams, and video deepfakes that are nearly impossible to detect with the naked eye.<br>M: How widespread is this problem?<br>W: According to our latest survey, approximately 68 percent of internet users have encountered some form of AI-generated misinformation in the past month. What&#x27;s particularly concerning is that many people are unaware they&#x27;ve been exposed to it.<br>M: What can individuals do to protect themselves?<br>W: First, develop a healthy skepticism. If something seems too dramatic or perfectly aligned with your biases, pause and verify. Second, use reverse image search tools and fact-checking websites. Third, pay attention to subtle inconsistencies in videos, such as unusual blinking patterns or lip-sync errors.<br>M: Are tech companies doing enough?<br>W: Most major platforms have implemented AI-detection systems, but it&#x27;s a constant arms race. The generation tools improve faster than detection tools. I believe regulation needs to evolve alongside technology. Transparency requirements for AI-generated content should be mandatory, not voluntary.<br>M: What about education?<br>W: Digital literacy is crucial. We need to teach critical thinking skills starting from elementary school. Finland has done this well, having integrated media literacy across their curriculum.<br>M: Thank you, Dr. Chen. Those are valuable insights.</div>
+<div class="answer-key">
+<p>1. B</p>
+<p>2. C</p>
+<p>3. B</p>
+<p>4. B</p>
+<p>5. C</p>
+</div></div>
+<button class="reveal-btn" onclick="toggleAnswers('listening-answers-A')">View Answer Key</button>
+</div>
+<div class="passage">
+<h3>Section B</h3>
+<div class="audio-bar"><audio controls src="audio/20260521_listeningB.mp3"></audio></div>
+<div class="questions">
+<div class="question"><p class="q-text">1. What is digital minimalism primarily about?</p><pre class="q-options">A) Completely abandoning all technology
+B) Being intentional about technology use
+C) Using only open-source software
+D) Reducing screen brightness</pre></div>
+<div class="question"><p class="q-text">2. According to the passage, how often does the average person check their phone?</p><pre class="q-options">A) 48 times per day
+B) 72 times per day
+C) 96 times per day
+D) 120 times per day</pre></div>
+<div class="question"><p class="q-text">3. How much can frequent task-switching reduce productivity?</p><pre class="q-options">A) Up to 20 percent
+B) Up to 30 percent
+C) Up to 40 percent
+D) Up to 50 percent</pre></div>
+<div class="question"><p class="q-text">4. What is the first step of implementing digital minimalism?</p><pre class="q-options">A) Buying a new phone
+B) A digital declutter
+C) Installing productivity apps
+D) Joining a support group</pre></div>
+<div class="question"><p class="q-text">5. What criticism do opponents raise?</p><pre class="q-options">A) It doesn&#x27;t work
+B) It is a privilege not everyone can afford
+C) It requires expensive equipment
+D) It is too time-consuming</pre></div>
+</div>
+<div class="answer-section" id="listening-answers-B" style="display:none;">
+<h4>Listening Script</h4>
+<div class="script">The concept of digital minimalism has gained significant traction in recent years as people grow increasingly concerned about their relationship with technology. Coined by Cal Newport, digital minimalism is a philosophy of technology use in which you focus your online time on a small number of carefully selected and optimized activities that strongly support things you value, and then happily miss out on everything else.<br><br>The core principle is not about rejecting technology altogether, but rather about being intentional. Digital minimalists recognize that every notification, every scroll, and every click competes for their most valuable resource: attention. Studies have shown that the average person checks their phone 96 times per day, and that frequent task-switching can reduce productivity by up to 40 percent.<br><br>Implementing digital minimalism typically involves a three-step process. First, a digital declutter where you step away from optional technologies for a defined period. Second, during this period, you rediscover activities that provide genuine satisfaction. Third, you reintroduce technology selectively, establishing clear rules for usage. The goal is not to live like a Luddite but to ensure that technology serves your values rather than shaping them.<br><br>Proponents argue that this approach leads to improved focus, deeper relationships, and greater overall life satisfaction. Critics, however, point out that digital minimalism is a privilege not everyone can afford, as many jobs now require constant digital connectivity.</div>
+<div class="answer-key">
+<p>1. B</p>
+<p>2. C</p>
+<p>3. C</p>
+<p>4. B</p>
+<p>5. B</p>
+</div></div>
+<button class="reveal-btn" onclick="toggleAnswers('listening-answers-B')">View Answer Key</button>
+</div>
+
+    <h2>Reading Comprehension</h2>
+<div class="passage">
+<h3>Reading - AI Disproves Math Conjecture</h3>
+<p>OpenAI&#x27;s groundbreaking achievement in discrete geometry has sent ripples through the mathematical community, demonstrating that artificial intelligence can now contribute to pure mathematics in ways previously thought impossible. The company announced that its latest model successfully disproved a central conjecture in discrete geometry that had puzzled mathematicians for over three decades.</p>
+<p>The conjecture, which concerned the properties of convex polytopes in high-dimensional spaces, had been considered one of the most promising candidates for proof in the field. Several prominent mathematicians had attempted to prove it using traditional methods, but all efforts fell short. The AI model approached the problem from an entirely different angle, exploring counterexamples through a systematic search of high-dimensional configuration spaces that would be impractical for human mathematicians to examine manually.</p>
+<p>What makes this achievement particularly significant is the methodology. Rather than simply brute-forcing solutions, the model demonstrated genuine pattern recognition capabilities, identifying structural properties that led to the construction of a valid counterexample. The AI did not just find an answer; it provided a clear, verifiable mathematical proof that human experts have since confirmed.</p>
+<p>This development raises profound questions about the future of mathematical research. Some mathematicians express concern that AI could eventually replace human intuition in certain domains of mathematics. Others, however, see this as a powerful tool that can augment human creativity. Dr. Sarah Mitchell of MIT commented, &quot;This isn&#x27;t the end of human mathematicians. It&#x27;s the beginning of a new partnership where AI handles exhaustive pattern searches while humans focus on conceptual framing and interpretation.&quot;</p>
+<p>The implications extend beyond pure mathematics. The same techniques could potentially be applied to problems in cryptography, materials science, and drug discovery, fields where high-dimensional optimization challenges are common. Venture capital funding for AI-driven scientific discovery has already increased by 300 percent this year alone.</p>
+<p>However, challenges remain. The computational resources required for such mathematical reasoning are substantial, raising questions about accessibility. Only well-funded institutions can currently participate in this frontier of research. Additionally, the AI&#x27;s reasoning process, while verifiable, is not always transparent. Researchers cannot always explain why the model chose a particular approach. This &quot;black box&quot; problem remains one of the most significant hurdles in AI-assisted research.</p>
+<p>Despite these concerns, the achievement represents a watershed moment. For the first time, an AI system has contributed a genuinely novel result to a field of abstract mathematics, not merely by computation but through what appears to be mathematical insight. The question is no longer whether AI can do mathematics, but how best to integrate it into the mathematical enterprise.</p>
+<h4>Core Vocabulary</h4>
+<table class="vocab-table"><thead><tr><th>Word</th><th>Pronunciation</th><th>Meaning</th><th>Example</th></tr></thead><tbody>
+<tr><td class="vocab-word">conjecture</td><td class="vocab-pron">/k@n&#x27;dZektS@r/</td><td>n. conjecture, guess</td><td class="vocab-example"><em>The conjecture had puzzled mathematicians for over thirty years.</em></td></tr>
+<tr><td class="vocab-word">polytope</td><td class="vocab-pron">/&#x27;pAlItoUp/</td><td>n. polyhedron, polytope</td><td class="vocab-example"><em>Convex polytopes in high-dimensional spaces are difficult to visualize.</em></td></tr>
+<tr><td class="vocab-word">counterexample</td><td class="vocab-pron">/&#x27;kaUnt@rIgzAmp@l/</td><td>n. counter-example</td><td class="vocab-example"><em>The AI constructed a valid counterexample to disprove the theorem.</em></td></tr>
+<tr><td class="vocab-word">methodology</td><td class="vocab-pron">/,meT@&#x27;dAl@dZi/</td><td>n. methodology</td><td class="vocab-example"><em>The methodology demonstrated genuine pattern recognition capabilities.</em></td></tr>
+<tr><td class="vocab-word">augment</td><td class="vocab-pron">/O:g&#x27;ment/</td><td>v. to enhance, supplement</td><td class="vocab-example"><em>AI can augment human creativity in mathematical research.</em></td></tr>
+<tr><td class="vocab-word">implication</td><td class="vocab-pron">/,ImplI&#x27;keIS@n/</td><td>n. implication, significance</td><td class="vocab-example"><em>The implications extend beyond pure mathematics.</em></td></tr>
+<tr><td class="vocab-word">computational</td><td class="vocab-pron">/,kAmpju&#x27;teIS@n@l/</td><td>adj. computational</td><td class="vocab-example"><em>The computational resources required are substantial.</em></td></tr>
+<tr><td class="vocab-word">transparent</td><td class="vocab-pron">/trAns&#x27;pEr@nt/</td><td>adj. transparent, clear</td><td class="vocab-example"><em>The AI&#x27;s reasoning process is not always transparent.</em></td></tr>
+<tr><td class="vocab-word">watershed</td><td class="vocab-pron">/&#x27;wO:t@rSed/</td><td>n. watershed, turning point</td><td class="vocab-example"><em>The achievement represents a watershed moment for AI research.</em></td></tr>
+<tr><td class="vocab-word">enterprise</td><td class="vocab-pron">/&#x27;ent@rpraIz/</td><td>n. enterprise, undertaking</td><td class="vocab-example"><em>The mathematical enterprise will be reshaped by AI.</em></td></tr>
+</tbody></table>
+<div class="questions">
+<div class="question"><p class="q-text">1. What did OpenAI&#x27;s latest model achieve?</p><pre class="q-options">A) It proved a mathematical conjecture
+B) It disproved a central conjecture in discrete geometry
+C) It solved a cryptography problem
+D) It discovered a new prime number</pre></div>
+<div class="question"><p class="q-text">2. How did the AI approach the problem differently?</p><pre class="q-options">A) It used more advanced calculus
+B) It explored high-dimensional configuration spaces systematically
+C) It consulted with multiple experts
+D) It randomly guessed answers</pre></div>
+<div class="question"><p class="q-text">3. What does Dr. Sarah Mitchell think about AI in mathematics?</p><pre class="q-options">A) AI will replace mathematicians entirely
+B) AI can augment human creativity
+C) The approach is fundamentally flawed
+D) AI research should be banned</pre></div>
+<div class="question"><p class="q-text">4. Which fields might benefit from similar AI techniques?</p><pre class="q-options">A) Only pure mathematics
+B) Cryptography, materials science, and drug discovery
+C) Only computer science
+D) Only physics and chemistry</pre></div>
+<div class="question"><p class="q-text">5. What is the &#x27;black box&#x27; problem?</p><pre class="q-options">A) The AI cannot be powered on
+B) The AI&#x27;s reasoning process is not always transparent
+C) The AI only works in darkness
+D) The AI refuses to explain its answers</pre></div>
+</div>
+<div class="answer-section" id="reading-answers-AIDispr" style="display:none;">
+<h4>Answer Key</h4>
+<p>1. B</p>
+<p>2. B</p>
+<p>3. B</p>
+<p>4. B</p>
+<p>5. B</p>
+</div>
+<button class="reveal-btn" onclick="toggleAnswers('reading-answers-AIDispr')">View Answer Key</button>
+</div>
+<div class="passage">
+<h3>Reading - Google and the Open Web</h3>
+<p>Google&#x27;s recent policy changes regarding web indexing have sparked heated debate across the technology industry, with critics accusing the search giant of fundamentally undermining the open web. The controversy centers on Google&#x27;s decision to prioritize content from large, established platforms while deprioritizing independent websites and smaller publishers in search results.</p>
+<p>The policy shift, announced earlier this month, introduces stricter quality thresholds that disproportionately affect smaller websites. Google claims these changes are necessary to combat spam and low-quality content generated by AI. However, critics argue that the real motive is to drive more traffic to Google&#x27;s own properties and partner platforms, consolidating the company&#x27;s dominance over online information.</p>
+<p>Independent web creators have reported dramatic drops in organic traffic since the changes took effect. Sarah Jenkins, who runs a popular independent technology blog, says her traffic has decreased by 70 percent in just three weeks. &quot;It&#x27;s devastating,&quot; she explains. &quot;I&#x27;ve spent ten years building this site, and suddenly Google decides my content is no longer worthy of being found. There&#x27;s no appeal process, no human to talk to, just an algorithm that decides what people are allowed to see.&quot;</p>
+<p>The implications for the open web are significant. The World Wide Web was built on principles of decentralization and equal access. Anyone could publish content and, with quality and effort, build an audience through search engines. Google&#x27;s changes threaten this fundamental promise. If only large corporations can achieve visibility online, the diversity of voices that has characterized the internet begins to erode.</p>
+<p>Regulatory bodies in both the European Union and the United States have taken notice. The EU&#x27;s Digital Markets Act already designates Google as a gatekeeper platform, subjecting it to specific obligations regarding fair treatment of business users. US lawmakers have proposed new legislation that would require search engines to maintain transparent ranking criteria and establish appeals processes for content creators.</p>
+<p>Google maintains that the changes are purely technical and quality-driven. &quot;We have a responsibility to our users to deliver the most relevant, trustworthy information,&quot; a company spokesperson stated. &quot;The volume of AI-generated spam has made it necessary to raise our standards.&quot; Yet for many independent creators, these explanations ring hollow. They see a future where the open web becomes a closed ecosystem, with Google as the gatekeeper deciding who gets seen and who remains invisible.</p>
+<h4>Core Vocabulary</h4>
+<table class="vocab-table"><thead><tr><th>Word</th><th>Pronunciation</th><th>Meaning</th><th>Example</th></tr></thead><tbody>
+<tr><td class="vocab-word">index</td><td class="vocab-pron">/&#x27;Indeks/</td><td>v. to index; n. index</td><td class="vocab-example"><em>Google&#x27;s policy changes regarding web indexing have sparked debate.</em></td></tr>
+<tr><td class="vocab-word">deprioritize</td><td class="vocab-pron">/di:praI&#x27;OrItaIz/</td><td>v. to deprioritize</td><td class="vocab-example"><em>The search engine deprioritized independent websites.</em></td></tr>
+<tr><td class="vocab-word">threshold</td><td class="vocab-pron">/&#x27;TreShoUld/</td><td>n. threshold, limit</td><td class="vocab-example"><em>Stricter quality thresholds disproportionately affect smaller sites.</em></td></tr>
+<tr><td class="vocab-word">consolidate</td><td class="vocab-pron">/k@n&#x27;sAlIdeIt/</td><td>v. to consolidate</td><td class="vocab-example"><em>The policy helps consolidate Google&#x27;s dominance over online information.</em></td></tr>
+<tr><td class="vocab-word">organic</td><td class="vocab-pron">/O:r&#x27;gAnIk/</td><td>adj. organic, natural</td><td class="vocab-example"><em>Independent creators reported dramatic drops in organic traffic.</em></td></tr>
+<tr><td class="vocab-word">algorithm</td><td class="vocab-pron">/&#x27;Alg@rID@m/</td><td>n. algorithm</td><td class="vocab-example"><em>An algorithm decides what people are allowed to see.</em></td></tr>
+<tr><td class="vocab-word">decentralization</td><td class="vocab-pron">/di:,sentr@laI&#x27;zeIS@n/</td><td>n. decentralization</td><td class="vocab-example"><em>The web was built on principles of decentralization.</em></td></tr>
+<tr><td class="vocab-word">erode</td><td class="vocab-pron">/I&#x27;roUd/</td><td>v. to erode, wear away</td><td class="vocab-example"><em>The diversity of voices begins to erode under these changes.</em></td></tr>
+<tr><td class="vocab-word">gatekeeper</td><td class="vocab-pron">/&#x27;geItki:p@r/</td><td>n. gatekeeper</td><td class="vocab-example"><em>Google is designated as a gatekeeper platform under EU law.</em></td></tr>
+<tr><td class="vocab-word">ecosystem</td><td class="vocab-pron">/&#x27;i:koUsIst@m/</td><td>n. ecosystem</td><td class="vocab-example"><em>The open web could become a closed ecosystem.</em></td></tr>
+</tbody></table>
+<div class="questions">
+<div class="question"><p class="q-text">1. What is the main controversy?</p><pre class="q-options">A) Google charges more for advertising
+B) Google prioritizes large platforms over independent websites
+C) Google stopped indexing web pages
+D) Google removed all images from search</pre></div>
+<div class="question"><p class="q-text">2. What reason does Google give for the change?</p><pre class="q-options">A) To increase advertising revenue
+B) To combat spam and low-quality AI-generated content
+C) To reduce server costs
+D) To comply with new laws</pre></div>
+<div class="question"><p class="q-text">3. What happened to Sarah Jenkins&#x27;s website traffic?</p><pre class="q-options">A) It increased by 30 percent
+B) It decreased by 70 percent
+C) It remained the same
+D) It doubled</pre></div>
+<div class="question"><p class="q-text">4. What action have EU regulators taken?</p><pre class="q-options">A) They banned Google in Europe
+B) They designated Google as a gatekeeper platform
+C) They imposed a massive fine
+D) They supported Google&#x27;s policy</pre></div>
+<div class="question"><p class="q-text">5. What potential consequence does the author suggest?</p><pre class="q-options">A) The internet will become faster
+B) The diversity of online voices will erode
+C) More people will create websites
+D) Google will lose market share</pre></div>
+</div>
+<div class="answer-section" id="reading-answers-Googlea" style="display:none;">
+<h4>Answer Key</h4>
+<p>1. B</p>
+<p>2. B</p>
+<p>3. B</p>
+<p>4. B</p>
+<p>5. B</p>
+</div>
+<button class="reveal-btn" onclick="toggleAnswers('reading-answers-Googlea')">View Answer Key</button>
+</div>
+
+    <h2>Translation</h2>
+<div class="passage">
+<h3>Translation - Chinese to English</h3>
+<div class="translation-text"><p class="cn-text">人工智能正在以前所未有的速度改变着我们的生活。从智能手机上的语音助手到自动驾驶汽车，AI技术已经渗透到日常生活的方方面面。然而，随着技术的飞速发展，我们也面临着新的挑战，比如数据隐私保护和就业结构调整。专家们普遍认为，只有在技术创新和伦理规范之间找到平衡，AI才能真正造福人类社会。这需要我们不仅在技术上取得突破，更要在立法和教育方面做出相应的努力。</p></div>
+<textarea class="answer-input" id="translation-input" placeholder="Enter your translation here..."></textarea>
+<button class="reveal-btn" onclick="toggleAnswers('translation-answer')">View Reference Translation</button>
+<div class="answer-section" id="translation-answer" style="display:none;">
+<div class="audio-bar"><audio controls src="audio/20260521_translation.mp3"></audio></div>
+<h4>Reference Translation</h4>
+<p>Artificial intelligence is transforming our lives at an unprecedented pace. From voice assistants on smartphones to self-driving cars, AI technology has permeated every aspect of daily life. However, with the rapid development of technology, we also face new challenges, such as data privacy protection and employment structure adjustment. Experts generally believe that only by finding a balance between technological innovation and ethical norms can AI truly benefit human society. This requires us not only to achieve breakthroughs in technology, but also to make corresponding efforts in legislation and education.</p>
+</div></div>
+
+    <h2>Writing</h2>
+<div class="passage">
+<h3>Writing</h3>
+<div class="writing-topic"><p>For this part, you are allowed 30 minutes to write an essay based on the following chart. The chart shows the average weekly screen time (in hours) among different age groups in a certain country in 2025. You should:<br>1) Describe the chart briefly<br>2) Analyze the possible reasons behind the trend<br>3) Give your own opinion on the impact of screen time<br><br>Average Weekly Screen Time by Age Group (2025):<br>- Age 13-18: 42 hours<br>- Age 19-35: 38 hours<br>- Age 36-55: 30 hours<br>- Age 56+: 22 hours<br><br>You should write at least 150 words but no more than 200 words.</p></div>
+<textarea class="answer-input" id="writing-input" placeholder="Write your essay here..."></textarea>
+<button class="reveal-btn" onclick="toggleAnswers('writing-answer')">View Sample Essay</button>
+<div class="answer-section" id="writing-answer" style="display:none;">
+<div class="audio-bar"><audio controls src="audio/20260521_writing.mp3"></audio></div>
+<h4>Sample Essay</h4>
+<p>The chart above illustrates the average weekly screen time across different age groups in a certain country in 2025. As can be seen, younger generations spend significantly more time on screens, with the 13-18 age group leading at 42 hours per week, followed by the 19-35 group at 38 hours. In contrast, individuals aged 56 and above spend only 22 hours weekly on screens.<br><br>Several factors may account for this trend. Firstly, younger people are more likely to rely on digital devices for education, entertainment, and social interaction. Secondly, older generations grew up in an era without ubiquitous digital technology and have therefore developed offline habits that persist today.<br><br>In my opinion, while screens offer undeniable benefits in terms of connectivity and access to information, excessive screen time among young people raises serious concerns. It is linked to eye strain, reduced physical activity, and impaired social skills. A balanced approach, setting reasonable limits on recreational screen use while promoting outdoor activities, is essential for maintaining healthy development, especially among adolescents.</p>
+</div></div>
+
+    <div class="footer">
+        <p>CET-6 Daily - Generated on 2026-05-21</p>
+    </div>
+</div>
+
+<script>
+function toggleAnswers(id) {
+    var el = document.getElementById(id);
+    if (el.style.display === 'none' || el.style.display === '') {
+        el.style.display = 'block';
+    } else {
+        el.style.display = 'none';
+    }
+}
+
+function setTheme(theme) {
+    var body = document.body;
+    body.className = theme === 'default' ? '' : theme;
+    localStorage.setItem('cet6-theme', theme);
+    var btns = document.querySelectorAll('.theme-btn');
+    var labels = {'default': 'Default', 'warm': 'Warm', 'dark': 'Dark'};
+    btns.forEach(function(b) {
+        b.classList.remove('active');
+        if (b.textContent.trim() === labels[theme]) {
+            b.classList.add('active');
+        }
+    });
+}
+(function() {
+    var saved = localStorage.getItem('cet6-theme');
+    if (saved) setTheme(saved);
+})();
+</script>
+</body>
+</html>
