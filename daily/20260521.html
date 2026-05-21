@@ -1,365 +1,228 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CET-6 每日练习 - 2026年5月21日 星期四</title>
-<style>
-:root {
-  --bg-page: #f5f7fa;
-  --bg-section: #ffffff;
-  --text: #2d3436;
-  --text-muted: #888;
-  --accent: #6c5ce7;
-  --accent-hover: #5a4bd1;
-  --accent-light: #f0f0ff;
-  --border: #eee;
-  --reveal-bg: #f8f9fa;
-  --reveal-border: #e9ecef;
-  --correct: #27ae60;
-  --wrong: #e74c3c;
-  --header-grad-1: #6c5ce7;
-  --header-grad-2: #a29bfe;
-  --shadow: rgba(0,0,0,0.06);
-  --input-bg: #fff;
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-[data-theme="warm"] {
-  --bg-page: #faf6ed;
-  --bg-section: #fffcf5;
-  --text: #3d3535;
-  --text-muted: #999;
-  --accent: #c0784a;
-  --accent-hover: #a8643a;
-  --accent-light: #f5ede4;
-  --border: #e8ddd0;
-  --reveal-bg: #f8f1e8;
-  --reveal-border: #e8ddd0;
-  --correct: #5d8a3c;
-  --wrong: #c0392b;
-  --header-grad-1: #c0784a;
-  --header-grad-2: #d4a574;
-  --shadow: rgba(0,0,0,0.04);
-  --input-bg: #fffcf5;
-}
-[data-theme="dark"] {
-  --bg-page: #0f0f1a;
-  --bg-section: #1a1a2e;
-  --text: #e0e0e0;
-  --text-muted: #888;
-  --accent: #9370db;
-  --accent-hover: #a884e8;
-  --accent-light: #2a1f40;
-  --border: #2a2a3e;
-  --reveal-bg: #151525;
-  --reveal-border: #2a2a3e;
-  --correct: #5cb85c;
-  --wrong: #e74c3c;
-  --header-grad-1: #3d1f6e;
-  --header-grad-2: #6c3fa0;
-  --shadow: rgba(0,0,0,0.2);
-  --input-bg: #1a1a2e;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg-page); color: var(--text); line-height: 1.8; }
-.header { background: linear-gradient(135deg, var(--header-grad-1), var(--header-grad-2)); color: #fff; padding: 30px 20px; text-align: center; }
-.header h1 { font-size: 24px; margin-bottom: 5px; }
-.header p { font-size: 14px; opacity: 0.9; }
-.theme-switcher { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
-.theme-btn { padding: 6px 18px; border: 2px solid rgba(255,255,255,0.3); border-radius: 20px; background: transparent; color: #fff; cursor: pointer; font-size: 13px; transition: all 0.2s; }
-.theme-btn:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.1); }
-.theme-btn.active { border-color: #fff; background: rgba(255,255,255,0.2); font-weight: 600; }
-.container { max-width: 800px; margin: 0 auto; padding: 20px; }
-.section { background: var(--bg-section); border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px var(--shadow); transition: background-color 0.3s ease; }
-.section h2 { font-size: 20px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--accent); color: var(--accent); }
-.section h3 { font-size: 16px; margin: 16px 0 10px; color: var(--text-muted); }
-.audio-player { width: 100%; margin: 10px 0; border-radius: 6px; }
-.audio-label { font-size: 13px; color: var(--text-muted); margin: 5px 0; }
-.reading-text { font-size: 15px; line-height: 1.9; text-align: justify; margin: 15px 0; }
-.reading-text p { margin-bottom: 12px; }
-.vocab-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px; }
-.vocab-table th { background: var(--accent-light); padding: 8px 12px; text-align: left; border: 1px solid var(--border); color: var(--text); }
-.vocab-table td { padding: 8px 12px; border: 1px solid var(--border); }
-.question-list { margin: 15px 0; }
-.question-item { padding: 12px; margin: 8px 0; background: var(--bg-page); border-radius: 8px; border: 1px solid var(--border); }
-.question-item p { font-weight: 600; margin-bottom: 8px; }
-.question-item label { display: block; padding: 4px 0; font-size: 14px; cursor: pointer; }
-.question-item input[type="radio"] { margin-right: 8px; accent-color: var(--accent); }
-.question-item .correct { color: var(--correct); font-weight: 600; }
-.question-item .wrong { color: var(--wrong); }
-.translation-input, .writing-input { width: 100%; min-height: 150px; padding: 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; line-height: 1.6; resize: vertical; font-family: inherit; background: var(--input-bg); color: var(--text); }
-.writing-input { min-height: 200px; }
-.btn { display: inline-block; padding: 10px 24px; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-size: 15px; cursor: pointer; margin: 10px 5px 0 0; transition: background 0.2s; }
-.btn:hover { background: var(--accent-hover); }
-.reveal-content { display: none; margin-top: 20px; padding: 20px; background: var(--reveal-bg); border-radius: 8px; border: 1px solid var(--reveal-border); transition: background-color 0.3s ease; }
-.reveal-content.show { display: block; }
-.reveal-content h4 { color: var(--accent); margin-bottom: 10px; font-size: 16px; }
-.reveal-content h5 { color: var(--text-muted); margin: 12px 0 6px; font-size: 14px; }
-.reveal-content .script-text { font-size: 14px; line-height: 1.8; margin: 10px 0; white-space: pre-wrap; }
-.quest-label { font-size: 12px; color: var(--text-muted); margin: 5px 0; }
-hr { margin: 20px 0; border: none; border-top: 1px solid var(--border); }
-@media (min-width: 768px) {
-  .container { max-width: 800px; }
-  .section { padding: 28px; }
-  .section h2 { font-size: 22px; }
-  .reading-text { font-size: 16px; }
-  .vocab-table { font-size: 15px; }
-  .question-item label { font-size: 15px; }
-}
-.result-bar {
-  text-align: center;
-  padding: 20px;
-  margin: 15px 0;
-  background: var(--reveal-bg);
-  border-radius: 8px;
-  border: 1px solid var(--reveal-border);
-}
-.result-bar .score {
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--accent);
-}
-.result-bar .detail {
-  font-size: 16px;
-  margin-top: 5px;
-  color: var(--text-muted);
-}
-</style>
-</head>
-<body>
-<div class="header">
-  <h1>📖 CET-6 每日练习</h1>
-  <p>2026年5月21日 星期四 | 听力·阅读·翻译·作文</p>
-  <div class="theme-switcher">
-    <button class="theme-btn active" data-theme="default">🌙 默认</button>
-    <button class="theme-btn" data-theme="warm">☀️ 暖黄</button>
-    <button class="theme-btn" data-theme="dark">🌑 深色</button>
-  </div>
-</div>
-<div class="container">
+     1|<!DOCTYPE html>
+     2|<html lang="zh-CN">
+     3|<head>
+     4|<meta charset="UTF-8">
+     5|<meta name="viewport" content="width=device-width, initial-scale=1.0">
+     6|<title>CET-6 每日练习 - 2026年5月21日 星期四</title>
+     7|<style>
+     8|:root {
+     9|  --bg-page: #f5f7fa;
+    10|  --bg-section: #ffffff;
+    11|  --text: #2d3436;
+    12|  --text-muted: #888;
+    13|  --accent: #6c5ce7;
+    14|  --accent-hover: #5a4bd1;
+    15|  --accent-light: #f0f0ff;
+    16|  --border: #eee;
+    17|  --reveal-bg: #f8f9fa;
+    18|  --reveal-border: #e9ecef;
+    19|  --correct: #27ae60;
+    20|  --wrong: #e74c3c;
+    21|  --header-grad-1: #6c5ce7;
+    22|  --header-grad-2: #a29bfe;
+    23|  --shadow: rgba(0,0,0,0.06);
+    24|  --input-bg: #fff;
+    25|  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    26|}
+    27|[data-theme="warm"] {
+    28|  --bg-page: #faf6ed;
+    29|  --bg-section: #fffcf5;
+    30|  --text: #3d3535;
+    31|  --text-muted: #999;
+    32|  --accent: #c0784a;
+    33|  --accent-hover: #a8643a;
+    34|  --accent-light: #f5ede4;
+    35|  --border: #e8ddd0;
+    36|  --reveal-bg: #f8f1e8;
+    37|  --reveal-border: #e8ddd0;
+    38|  --correct: #5d8a3c;
+    39|  --wrong: #c0392b;
+    40|  --header-grad-1: #c0784a;
+    41|  --header-grad-2: #d4a574;
+    42|  --shadow: rgba(0,0,0,0.04);
+    43|  --input-bg: #fffcf5;
+    44|}
+    45|[data-theme="dark"] {
+    46|  --bg-page: #0f0f1a;
+    47|  --bg-section: #1a1a2e;
+    48|  --text: #e0e0e0;
+    49|  --text-muted: #888;
+    50|  --accent: #9370db;
+    51|  --accent-hover: #a884e8;
+    52|  --accent-light: #2a1f40;
+    53|  --border: #2a2a3e;
+    54|  --reveal-bg: #151525;
+    55|  --reveal-border: #2a2a3e;
+    56|  --correct: #5cb85c;
+    57|  --wrong: #e74c3c;
+    58|  --header-grad-1: #3d1f6e;
+    59|  --header-grad-2: #6c3fa0;
+    60|  --shadow: rgba(0,0,0,0.2);
+    61|  --input-bg: #1a1a2e;
+    62|}
+    63|* { margin: 0; padding: 0; box-sizing: border-box; }
+    64|body { font-family: -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg-page); color: var(--text); line-height: 1.8; }
+    65|.header { background: linear-gradient(135deg, var(--header-grad-1), var(--header-grad-2)); color: #fff; padding: 30px 20px; text-align: center; }
+    66|.header h1 { font-size: 24px; margin-bottom: 5px; }
+    67|.header p { font-size: 14px; opacity: 0.9; }
+    68|.theme-switcher { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
+    69|.theme-btn { padding: 6px 18px; border: 2px solid rgba(255,255,255,0.3); border-radius: 20px; background: transparent; color: #fff; cursor: pointer; font-size: 13px; transition: all 0.2s; }
+    70|.theme-btn:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.1); }
+    71|.theme-btn.active { border-color: #fff; background: rgba(255,255,255,0.2); font-weight: 600; }
+    72|.container { max-width: 800px; margin: 0 auto; padding: 20px; }
+    73|.section { background: var(--bg-section); border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px var(--shadow); transition: background-color 0.3s ease; }
+    74|.section h2 { font-size: 20px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--accent); color: var(--accent); }
+    75|.section h3 { font-size: 16px; margin: 16px 0 10px; color: var(--text-muted); }
+    76|.audio-player { width: 100%; margin: 10px 0; border-radius: 6px; }
+    77|.audio-label { font-size: 13px; color: var(--text-muted); margin: 5px 0; }
+    78|.reading-text { font-size: 15px; line-height: 1.9; text-align: justify; margin: 15px 0; }
+    79|.reading-text p { margin-bottom: 12px; }
+    80|.vocab-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px; }
+    81|.vocab-table th { background: var(--accent-light); padding: 8px 12px; text-align: left; border: 1px solid var(--border); color: var(--text); }
+    82|.vocab-table td { padding: 8px 12px; border: 1px solid var(--border); }
+    83|.question-list { margin: 15px 0; }
+    84|.question-item { padding: 12px; margin: 8px 0; background: var(--bg-page); border-radius: 8px; border: 1px solid var(--border); }
+    85|.question-item p { font-weight: 600; margin-bottom: 8px; }
+    86|.question-item label { display: block; padding: 4px 0; font-size: 14px; cursor: pointer; }
+    87|.question-item input[type="radio"] { margin-right: 8px; accent-color: var(--accent); }
+    88|.question-item .correct { color: var(--correct); font-weight: 600; }
+    89|.question-item .wrong { color: var(--wrong); }
+    90|.translation-input, .writing-input { width: 100%; min-height: 150px; padding: 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; line-height: 1.6; resize: vertical; font-family: inherit; background: var(--input-bg); color: var(--text); }
+    91|.writing-input { min-height: 200px; }
+    92|.btn { display: inline-block; padding: 10px 24px; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-size: 15px; cursor: pointer; margin: 10px 5px 0 0; transition: background 0.2s; }
+    93|.btn:hover { background: var(--accent-hover); }
+    94|.reveal-content { display: none; margin-top: 20px; padding: 20px; background: var(--reveal-bg); border-radius: 8px; border: 1px solid var(--reveal-border); transition: background-color 0.3s ease; }
+    95|.reveal-content.show { display: block; }
+    96|.reveal-content h4 { color: var(--accent); margin-bottom: 10px; font-size: 16px; }
+    97|.reveal-content h5 { color: var(--text-muted); margin: 12px 0 6px; font-size: 14px; }
+    98|.reveal-content .script-text { font-size: 14px; line-height: 1.8; margin: 10px 0; white-space: pre-wrap; }
+    99|.quest-label { font-size: 12px; color: var(--text-muted); margin: 5px 0; }
+   100|hr { margin: 20px 0; border: none; border-top: 1px solid var(--border); }
+   101|@media (min-width: 768px) {
+   102|  .container { max-width: 800px; }
+   103|  .section { padding: 28px; }
+   104|  .section h2 { font-size: 22px; }
+   105|  .reading-text { font-size: 16px; }
+   106|  .vocab-table { font-size: 15px; }
+   107|  .question-item label { font-size: 15px; }
+   108|}
+   109|.result-bar {
+   110|  text-align: center;
+   111|  padding: 20px;
+   112|  margin: 15px 0;
+   113|  background: var(--reveal-bg);
+   114|  border-radius: 8px;
+   115|  border: 1px solid var(--reveal-border);
+   116|}
+   117|.result-bar .score {
+   118|  font-size: 28px;
+   119|  font-weight: 700;
+   120|  color: var(--accent);
+   121|}
+   122|.result-bar .detail {
+   123|  font-size: 16px;
+   124|  margin-top: 5px;
+   125|  color: var(--text-muted);
+   126|}
+   127|</style>
+   128|</head>
+   129|<body>
+   130|<div class="header">
+   131|  <h1>📖 CET-6 每日练习</h1>
+   132|  <p>2026年5月21日 星期四 | 听力·阅读·翻译·作文</p>
+   133|  <div class="theme-switcher">
+   134|    <button class="theme-btn active" data-theme="default">🌙 默认</button>
+   135|    <button class="theme-btn" data-theme="warm">☀️ 暖黄</button>
+   136|    <button class="theme-btn" data-theme="dark">🌑 深色</button>
+   137|  </div>
+   138|</div>
+   139|<div class="container">
+   140|
+   141|<!-- ============ 听力部分 ============ -->
+   142|<div class="section" id="listening">
+   143|  <h2>🎧 听力理解 (Listening Comprehension)</h2>
+   144|  <p style="color:var(--text-muted);font-size:13px;">听录音，完成选择题。提交后显示听力原文。</p>
+   145|
+   146|  <h3>第一部分：长对话 (Long Conversation)</h3>
+   147|  <p class="quest-label">对话：科技领域 — AI环境监测</p>
+   148|  <audio class="audio-player" controls src="audio/listening1_long_conversation.mp3"></audio>
+   149|  <div class="question-list" id="long_conversation-questions"></div>
+   150|
+   151|  <h3>第二部分：听力篇章 (Passage)</h3>
+   152|  <p class="quest-label">篇章：社会领域 — 远程工作与心理健康</p>
+   153|  <audio class="audio-player" controls src="audio/listening2_passage.mp3"></audio>
+   154|  <div class="question-list" id="passage-questions"></div>
+   155|
+   156|  <button class="btn" onclick="revealListening()">📝 提交听力答案 &amp; 查看原文</button>
+   157|  <div class="reveal-content" id="listening-reveal">
+   158|    <h4>📄 听力原文</h4>
+   159|    <h5>长对话 — AI在环境监测中的应用</h5>
+   160|    <div class="script-text" id="long_conversation-script"></div>
+   161|    <audio class="audio-player" controls src="audio/listening1_long_conversation.mp3"></audio>
+   162|    <h5>听力篇章 — 远程工作与心理健康</h5>
+   163|    <div class="script-text" id="passage-script"></div>
+   164|    <audio class="audio-player" controls src="audio/listening2_passage.mp3"></audio>
+   165|  </div>
+   166|</div>
+   167|
+   168|<!-- ============ 阅读部分 ============ -->
+   169|<div class="section" id="reading">
+   170|  <h2>📚 阅读理解 (Reading Comprehension)</h2>
+   171|
+   172|  <h3>Passage 1：科技 — 视觉修复技术新进展</h3>
+   173|  <div class="reading-text" id="tech-text"></div>
+   174|  <h4>📝 核心词汇</h4>
+   175|  <table class="vocab-table" id="tech-vocab"></table>
+   176|  <div class="question-list" id="tech-questions"></div>
+   177|
+   178|  <h3>Passage 2：社会 — 数字支付的普及与挑战</h3>
+   179|  <div class="reading-text" id="social-text"></div>
+   180|  <h4>📝 核心词汇</h4>
+   181|  <table class="vocab-table" id="social-vocab"></table>
+   182|  <div class="question-list" id="social-questions"></div>
+   183|  
+   184|  <button class="btn" onclick="revealReading()">📝 提交阅读答案 &amp; 查看解析</button>
+   185|  <div class="reveal-content" id="reading-reveal">
+   186|    <h4>📊 答题结果</h4>
+   187|    <div class="result-bar">
+   188|      <div class="score" id="reading-score"></div>
+   189|      <div class="detail" id="reading-detail"></div>
+   190|    </div>
+   191|  </div>
+   192|</div>
+   193|
+   194|<!-- ============ 翻译部分 ============ -->
+   195|<div class="section" id="translation">
+   196|  <h2>✍️ 翻译 (Translation) — 中译英</h2>
+   197|  <p style="margin-bottom:10px;font-size:15px;line-height:1.8;" id="translation-prompt"></p>
+   198|  <textarea class="translation-input" id="translation-input" placeholder="请在此输入你的英文翻译..."></textarea>
+   199|  <button class="btn" onclick="revealTranslation()">📝 提交 &amp; 查看参考译文</button>
+   200|  <div class="reveal-content" id="translation-reveal">
+   201|    <h4>💡 参考译文</h4>
+   202|    <div class="script-text" id="translation-ref"></div>
+   203|    <audio class="audio-player" controls src="audio/translation_reference.mp3"></audio>
+   204|  </div>
+   205|</div>
+   206|
+   207|<!-- ============ 写作部分 ============ -->
+   208|<div class="section" id="writing">
+   209|  <h2>📝 写作 (Writing)</h2>
+   210|  <div id="writing-prompt" style="margin-bottom:15px;font-size:14px;line-height:1.8;"></div>
+   211|  <textarea class="writing-input" id="writing-input" placeholder="请在此输入你的作文..."></textarea>
+   212|  <button class="btn" onclick="revealWriting()">📝 提交 &amp; 查看范文</button>
+   213|  <div class="reveal-content" id="writing-reveal">
+   214|    <h4>💡 参考范文</h4>
+   215|    <div class="script-text" id="writing-model"></div>
+   216|    <audio class="audio-player" controls src="audio/writing_model.mp3"></audio>
+   217|  </div>
+   218|</div>
+   219|
+   220|</div>
+   221|
+   222|<script>
+   223|// ========== DATA ==========
+   224|const DATA = {"meta": {"date": "20260521", "day": "Thursday"}, "listening": {"long_conversation": {"title": "AI在环境监测中的应用", "script": "W: Professor Harris, I've been reading about how AI is being used to monitor environmental changes. The scale of data collection seems enormous.\nM: You've hit on a crucial point, Sarah. Traditional environmental monitoring relied on limited sensor networks, but we're now able to analyze satellite imagery, drone footage, and ground sensors simultaneously using machine learning algorithms.\nW: That sounds incredibly powerful. What kind of environmental changes can AI detect that humans might miss?\nM: One remarkable application is detecting early signs of deforestation. AI systems can analyze satellite images daily and identify illegal logging activities within hours, whereas human analysis might take weeks. We've also seen success in tracking ocean plastic accumulation patterns.\nW: I read about a project using AI to monitor coral reef health. Is that related?\nM: Exactly. That project uses underwater cameras and sonar data to create detailed maps of reef ecosystems. The AI can detect bleaching events before they become visible to the naked eye by analyzing subtle changes in water temperature and chemical composition.\nW: That's fascinating. But aren't there challenges with data quality and model accuracy?\nM: Indeed. One major challenge is that environmental data can be noisy and inconsistent. Sensors malfunction, weather conditions affect readings, and satellite images can be obstructed by cloud cover. Researchers are developing robust models that can handle these imperfections.\nW: What advice would you give to students interested in this field?\nM: I'd recommend building a strong foundation in both data science and environmental science. Understanding the domain is just as important as knowing the algorithms. Many universities now offer interdisciplinary programs combining these fields.", "tag": "tech", "voice": "en-US-GuyNeural", "questions": [{"q": "What is the main topic of the conversation?", "A": "To compare different types of environmental sensors.", "B": "The use of AI in monitoring environmental changes.", "C": "By analyzing underwater sonar data for ocean research.", "D": "Students should focus exclusively on machine learning.", "answer": "B"}, {"q": "According to the professor, what advantage does AI have over human analysis in detecting deforestation?", "A": "AI systems can detect illegal logging within hours instead of weeks.", "B": "Satellite imagery is only accessible through machine learning.", "C": "By using more expensive but more accurate equipment.", "D": "The technology eliminates the need for ground sensors entirely.", "answer": "A"}, {"q": "How does the AI system monitor coral reef health according to the conversation?", "A": "By sending divers to collect water samples weekly.", "B": "Detecting bleaching events through subtle environmental changes.", "C": "Installing monitoring stations on every coral reef globally.", "D": "To replace underwater cameras with satellite imaging technology.", "answer": "B"}, {"q": "What challenge does the professor identify regarding environmental data?", "A": "Collecting data from remote locations is too expensive.", "B": "Data can be noisy due to sensor malfunctions and weather conditions.", "C": "Governments restrict access to most environmental data sets.", "D": "By training models exclusively on data from laboratories.", "answer": "B"}, {"q": "What career advice does the professor give to interested students?", "A": "To pursue a degree in pure data science without environmental courses.", "B": "Building expertise in both data science and environmental science.", "C": "Focusing only on field work rather than computational methods.", "D": "The field requires a PhD before any practical application is possible.", "answer": "B"}]}, "passage": {"title": "远程工作与心理健康", "script": "The shift to remote work following recent global events has fundamentally changed how millions of people approach their professional lives. While much of the public discussion has focused on productivity metrics, researchers have begun examining the psychological implications of this transformation.\n\nA comprehensive study conducted by Stanford University tracked over twelve thousand remote workers over a two-year period. The findings revealed that employees who worked remotely at least three days per week reported significantly lower stress levels and higher job satisfaction compared to their office-based counterparts. Interestingly, the benefits were most pronounced among workers with long commutes, who gained an average of nearly an hour of personal time each day.\n\nHowever, the study also identified potential drawbacks. Remote workers reported higher rates of loneliness and found it more challenging to separate work from personal life. Those who worked entirely from home without any in-person interaction showed a twenty percent increase in reported feelings of isolation. The researchers emphasized that a hybrid model, combining remote work with regular office presence, appeared to offer the optimal balance between flexibility and social connection.", "tag": "human", "voice": "en-US-MichelleNeural", "questions": [{"q": "What is the main finding of the Stanford University study?", "A": "To compare productivity between remote and office workers.", "B": "Remote workers reported lower stress and higher job satisfaction.", "C": "By tracking employees over a period of twelve months.", "D": "The study found no significant differences between the two groups.", "answer": "B"}, {"q": "Which group benefited most from remote work according to the study?", "A": "Employees working in creative industries.", "B": "Workers with long commutes who gained personal time.", "C": "By analyzing data from over twenty thousand participants.", "D": "The benefits were equally distributed across all demographics.", "answer": "B"}, {"q": "What was identified as a drawback of remote work?", "A": "Productivity decreased significantly in most cases.", "B": "Higher rates of loneliness and work-life balance challenges.", "C": "By eliminating all forms of in-person collaboration.", "D": "The technology required for remote work is too expensive.", "answer": "B"}, {"q": "What percentage increase in isolation was reported among fully remote workers?", "A": "Approximately ten percent higher than office workers.", "B": "A twenty percent increase in reported feelings of isolation.", "C": "By comparing data across different industries and regions.", "D": "The study found isolation rates decreased over time.", "answer": "B"}, {"q": "What model does the study recommend as optimal?", "A": "Returning to full-time office work immediately.", "B": "A hybrid model combining remote work with office presence.", "C": "To allow employees to choose their own work arrangement freely.", "D": "Complete remote work with virtual social events.", "answer": "B"}]}}, "reading": {"tech": {"title": "视觉修复技术新进展", "text": "In recent years, the field of visual prosthetics has made remarkable progress, offering new hope to millions of people suffering from blindness and severe visual impairment. While cochlear implants for hearing loss have been widely available for decades, creating a functional artificial eye has proven far more challenging due to the extraordinary complexity of the human visual system.\n\nThe human eye contains approximately 130 million photoreceptor cells that convert light into electrical signals. These signals travel through the optic nerve to the brain, where they are processed by neural networks that have evolved over millions of years. Replicating this system requires not only sophisticated hardware but also a deep understanding of how the brain interprets visual information.\n\nOne promising approach involves implanting electrode arrays directly onto the visual cortex, the part of the brain responsible for processing sight. Researchers at the University of Texas have developed a wireless implant containing over a thousand microelectrodes, each capable of stimulating individual neurons. Early clinical trials have allowed blind participants to perceive shapes, detect motion, and even recognize large letters.\n\nA competing approach focuses on the retina itself. Companies like Second Sight have developed retinal implants that replace damaged photoreceptor cells. These devices use a tiny camera mounted on glasses to capture images, which are then converted into electrical pulses sent to the remaining healthy retinal cells. While the resulting vision is far from natural, patients can navigate unfamiliar environments and read large-print text.\n\nDespite these advances, significant obstacles remain. The brain's ability to adapt to artificial visual input varies greatly among individuals, and the long-term stability of implanted devices poses ongoing engineering challenges. Nevertheless, the rapid pace of innovation in both materials science and neural interface technology suggests that functional vision restoration for at least some forms of blindness may become clinically available within the next decade.", "tag": "tech", "vocab": [["prosthetic", "/prɒsˈθetɪk/", "adj. 假体的；人工替代的"], ["photoreceptor", "/ˌfəʊtəʊrɪˈseptə/", "n. 光感受器；感光细胞"], ["neural", "/ˈnjʊərəl/", "adj. 神经的；神经系统的"], ["implant", "/ɪmˈplɑːnt/", "v./n. 植入；植入物"], ["retinal", "/ˈretɪnəl/", "adj. 视网膜的"], ["electrode", "/ɪˈlektrəʊd/", "n. 电极"], ["clinical", "/ˈklɪnɪkəl/", "adj. 临床的"], ["stimulate", "/ˈstɪmjʊleɪt/", "v. 刺激；激发"], ["impairment", "/ɪmˈpeəmənt/", "n. 损伤；障碍"], ["cortex", "/ˈkɔːteks/", "n. 皮层；皮质"]], "questions": [{"q": "Why is developing artificial vision more challenging than cochlear implants?", "A": "The visual system is far more complex than the auditory system.", "B": "Because visual signals require wireless transmission technology.", "C": "Research funding has been allocated mostly to hearing research.", "D": "The number of blind patients is much smaller.", "answer": "A"}, {"q": "What is distinctive about the University of Texas implant device?", "A": "It can directly replace damaged retinal cells.", "B": "It contains over a thousand microelectrodes stimulating individual neurons.", "C": "It requires surgical connection to an external camera.", "D": "It can only help patients perceive light changes.", "answer": "B"}, {"q": "How does the retinal implant device work according to the article?", "A": "It converts camera images into electrical pulses sent to healthy retinal cells.", "B": "It reconstructs complete visual images directly on the visual cortex.", "C": "To stimulate damaged photoreceptor cells to regenerate.", "D": "By using genetic editing to repair retinal damage.", "answer": "A"}, {"q": "What does \"competing approach\" in the article refer to?", "A": "Competition between two corporations developing vision technology.", "B": "Cortical implants versus retinal implants as different strategies.", "C": "A comparison between artificial and natural vision systems.", "D": "Competition among countries in vision restoration research.", "answer": "B"}, {"q": "What is the author's attitude toward artificial vision's future?", "A": "Pessimistic, believing barriers cannot be overcome soon.", "B": "Cautiously optimistic, expecting clinical breakthroughs within a decade.", "C": "Doubtful, because patient adaptability varies greatly.", "D": "Neutral, merely presenting findings without predictions.", "answer": "B"}]}, "social": {"title": "数字支付的普及与挑战", "text": "The rapid expansion of digital payment systems has fundamentally altered the way people conduct financial transactions across the globe. From mobile wallets in Kenya to contactless cards in Europe, the shift away from cash has accelerated dramatically in recent years, driven by advances in smartphone technology and improved internet connectivity.\n\nIn China, the transformation has been particularly striking. Mobile payment platforms such as Alipay and WeChat Pay have achieved near-universal adoption in urban areas, where even street vendors and small shops display QR codes for payment. According to the People's Bank of China, mobile payments in the country exceeded 347 trillion yuan in 2023, representing over eighty percent of all non-cash transactions. This widespread adoption has been facilitated by the integration of payment functions into social media and messaging applications, making transactions as simple as sending a message.\n\nHowever, the digital payment revolution has not been without controversy. Privacy advocates have raised concerns about the vast amounts of personal financial data collected by payment platforms. In many cases, transaction histories can reveal sensitive information about individuals' health conditions, political affiliations, and personal relationships. Additionally, older adults and those in rural areas with limited internet access risk being excluded from an increasingly cashless society.\n\nRegulators around the world are grappling with how to balance innovation with consumer protection. The European Union's Payment Services Directive requires strong customer authentication for online payments, while India's Unified Payments Interface has established open standards that promote competition among payment providers. These regulatory frameworks aim to ensure that the benefits of digital payments are widely shared while minimizing risks to privacy and financial stability.\n\nAs digital payment technologies continue to evolve, the emergence of central bank digital currencies and blockchain-based systems promises to further reshape the financial landscape. The key challenge will be designing systems that are not only convenient and efficient but also inclusive, secure, and respectful of user privacy.", "tag": "human", "vocab": [["transaction", "/trænˈzækʃən/", "n. 交易；办理"], ["accelerate", "/əkˈseləreɪt/", "v. 加速；促进"], ["adoption", "/əˈdɒpʃən/", "n. 采用；推广"], ["integration", "/ˌɪntɪˈɡreɪʃən/", "n. 整合；一体化"], ["privacy", "/ˈprɪvəsi/", "n. 隐私；私密"], ["authentication", "/ɔːˌθentɪˈkeɪʃən/", "n. 认证；验证"], ["regulatory", "/ˈreɡjʊlətəri/", "adj. 监管的；管理的"], ["inclusive", "/ɪnˈkluːsɪv/", "adj. 包容的；包含全面的"], ["infrastructure", "/ˈɪnfrəstrʌktʃə/", "n. 基础设施"], ["emergence", "/ɪˈmɜːdʒəns/", "n. 出现；兴起"]], "questions": [{"q": "What drives the rapid growth of digital payments according to the article?", "A": "Advances in smartphone technology and internet connectivity.", "B": "Government restrictions on cash transactions.", "C": "The rising cost of traditional banking services.", "D": "An increase in international trade volume.", "answer": "A"}, {"q": "What is distinctive about digital payments in China?", "A": "Credit card payments dominate the market.", "B": "Payment functions are integrated into social media apps.", "C": "They are limited to large shopping malls.", "D": "Rural areas have higher usage rates than cities.", "answer": "B"}, {"q": "What concern about digital payments does the article raise?", "A": "Transaction speeds are too slow for users.", "B": "Personal financial data may reveal sensitive information.", "C": "Competition among platforms is too intense.", "D": "Security vulnerabilities cause frequent financial losses.", "answer": "B"}, {"q": "What does \"near-universal adoption\" most closely mean?", "A": "Widespread use in specific regions only.", "B": "Adopted by nearly everyone universally.", "C": "Received strong government promotion.", "D": "Technical standards achieved global unification.", "answer": "B"}, {"q": "What is the author's main concern about digital payments' future?", "A": "How to improve transaction processing speed.", "B": "How to balance convenience with security and privacy.", "C": "How to reduce platform technical costs.", "D": "How to eliminate currency exchange issues.", "answer": "B"}]}}, "translation": {"cn": "中国传统节日是中华文化的重要组成部分，承载着丰富的历史内涵和深厚的民族情感。春节作为最重要的传统节日，象征着团圆和新生活的开始。每逢春节，无论身在何处，人们都会想方设法回到家乡与亲人团聚。除了春节之外，端午节和中秋节等传统节日也各具特色，反映了中国人对自然、家庭和社会的独特理解。近年来，越来越多的年轻人开始重视传统节日，这标志着文化自信的回归。", "en": "Traditional Chinese festivals are an important part of Chinese culture, carrying rich historical connotations and profound national sentiments. The Spring Festival, as the most significant traditional festival, symbolizes reunion and the beginning of a new life. During the Spring Festival, no matter where they are, people will find ways to return to their hometowns to reunite with their families. Besides the Spring Festival, traditional festivals such as the Dragon Boat Festival and the Mid-Autumn Festival also have their own distinctive characteristics, reflecting Chinese people's unique understanding of nature, family, and society. In recent years, more and more young people have begun to value traditional festivals, signaling the return of cultural confidence."}, "writing": {"prompt": "Directions: For this part, you are allowed 30 minutes to write an essay on the topic \"The Importance of Digital Literacy in the Modern World\". You should state your opinion and support it with reasons and examples. You should write at least 150 words but no more than 200 words.", "model": "In today's interconnected world, digital literacy has become as essential as reading, writing, and arithmetic. I firmly believe that the ability to navigate digital technologies is no longer optional but a fundamental requirement for full participation in modern society.\n\nFirst, digital literacy is crucial for economic opportunity. Most jobs now require at least basic computer skills, and many high-paying positions demand advanced digital competencies. A person without these skills faces significant barriers in the job market. Second, digital literacy enables access to essential services. From healthcare appointments to government benefits, an increasing number of services are moving online, making digital skills necessary for everyday life.\n\nMoreover, digital literacy includes the critical ability to evaluate online information. In an era of misinformation, knowing how to identify reliable sources and distinguish facts from falsehoods is vital for making informed decisions.\n\nIn conclusion, digital literacy should be treated as a basic right in the twenty-first century. Educational systems must prioritize teaching these skills to ensure no one is left behind in our increasingly digital world."}}
 
-<!-- ============ 听力部分 ============ -->
-<div class="section" id="listening">
-  <h2>🎧 听力理解 (Listening Comprehension)</h2>
-  <p style="color:var(--text-muted);font-size:13px;">听录音，完成选择题。提交后显示听力原文。</p>
-
-  <h3>第一部分：长对话 (Long Conversation)</h3>
-  <p class="quest-label">对话：科技领域 — AI环境监测</p>
-  <audio class="audio-player" controls src="audio/listening1_long_conversation.mp3"></audio>
-  <div class="question-list" id="long_conversation-questions"></div>
-
-  <h3>第二部分：听力篇章 (Passage)</h3>
-  <p class="quest-label">篇章：社会领域 — 远程工作与心理健康</p>
-  <audio class="audio-player" controls src="audio/listening2_passage.mp3"></audio>
-  <div class="question-list" id="passage-questions"></div>
-
-  <button class="btn" onclick="revealListening()">📝 提交听力答案 &amp; 查看原文</button>
-  <div class="reveal-content" id="listening-reveal">
-    <h4>📄 听力原文</h4>
-    <h5>长对话 — AI在环境监测中的应用</h5>
-    <div class="script-text" id="long_conversation-script"></div>
-    <audio class="audio-player" controls src="audio/listening1_long_conversation.mp3"></audio>
-    <h5>听力篇章 — 远程工作与心理健康</h5>
-    <div class="script-text" id="passage-script"></div>
-    <audio class="audio-player" controls src="audio/listening2_passage.mp3"></audio>
-  </div>
-</div>
-
-<!-- ============ 阅读部分 ============ -->
-<div class="section" id="reading">
-  <h2>📚 阅读理解 (Reading Comprehension)</h2>
-
-  <h3>Passage 1：科技 — 视觉修复技术新进展</h3>
-  <div class="reading-text" id="tech-text"></div>
-  <h4>📝 核心词汇</h4>
-  <table class="vocab-table" id="tech-vocab"></table>
-  <div class="question-list" id="tech-questions"></div>
-
-  <h3>Passage 2：社会 — 数字支付的普及与挑战</h3>
-  <div class="reading-text" id="social-text"></div>
-  <h4>📝 核心词汇</h4>
-  <table class="vocab-table" id="social-vocab"></table>
-  <div class="question-list" id="social-questions"></div>
-  
-  <button class="btn" onclick="revealReading()">📝 提交阅读答案 &amp; 查看解析</button>
-  <div class="reveal-content" id="reading-reveal">
-    <h4>📊 答题结果</h4>
-    <div class="result-bar">
-      <div class="score" id="reading-score"></div>
-      <div class="detail" id="reading-detail"></div>
-    </div>
-  </div>
-</div>
-
-<!-- ============ 翻译部分 ============ -->
-<div class="section" id="translation">
-  <h2>✍️ 翻译 (Translation) — 中译英</h2>
-  <p style="margin-bottom:10px;font-size:15px;line-height:1.8;" id="translation-prompt"></p>
-  <textarea class="translation-input" id="translation-input" placeholder="请在此输入你的英文翻译..."></textarea>
-  <button class="btn" onclick="revealTranslation()">📝 提交 &amp; 查看参考译文</button>
-  <div class="reveal-content" id="translation-reveal">
-    <h4>💡 参考译文</h4>
-    <div class="script-text" id="translation-ref"></div>
-    <audio class="audio-player" controls src="audio/translation_reference.mp3"></audio>
-  </div>
-</div>
-
-<!-- ============ 写作部分 ============ -->
-<div class="section" id="writing">
-  <h2>📝 写作 (Writing)</h2>
-  <div id="writing-prompt" style="margin-bottom:15px;font-size:14px;line-height:1.8;"></div>
-  <textarea class="writing-input" id="writing-input" placeholder="请在此输入你的作文..."></textarea>
-  <button class="btn" onclick="revealWriting()">📝 提交 &amp; 查看范文</button>
-  <div class="reveal-content" id="writing-reveal">
-    <h4>💡 参考范文</h4>
-    <div class="script-text" id="writing-model"></div>
-    <audio class="audio-player" controls src="audio/writing_model.mp3"></audio>
-  </div>
-</div>
-
-</div>
-
-<script>
-// ========== DATA ==========
-const DATA = {"meta": {"date": "20260521", "day": "Thursday"}, "listening": {"long_conversation": {"title": "AI在环境监测中的应用", "script": "W: Professor Harris, I've been reading about how AI is being used to monitor environmental changes. The scale of data collection seems enormous.\nM: You've hit on a crucial point, Sarah. Traditional environmental monitoring relied on limited sensor networks, but we're now able to analyze satellite imagery, drone footage, and ground sensors simultaneously using machine learning algorithms.\nW: That sounds incredibly powerful. What kind of environmental changes can AI detect that humans might miss?\nM: One remarkable application is detecting early signs of deforestation. AI systems can analyze satellite images daily and identify illegal logging activities within hours, whereas human analysis might take weeks. We've also seen success in tracking ocean plastic accumulation patterns.\nW: I read about a project using AI to monitor coral reef health. Is that related?\nM: Exactly. That project uses underwater cameras and sonar data to create detailed maps of reef ecosystems. The AI can detect bleaching events before they become visible to the naked eye by analyzing subtle changes in water temperature and chemical composition.\nW: That's fascinating. But aren't there challenges with data quality and model accuracy?\nM: Indeed. One major challenge is that environmental data can be noisy and inconsistent. Sensors malfunction, weather conditions affect readings, and satellite images can be obstructed by cloud cover. Researchers are developing robust models that can handle these imperfections.\nW: What advice would you give to students interested in this field?\nM: I'd recommend building a strong foundation in both data science and environmental science. Understanding the domain is just as important as knowing the algorithms. Many universities now offer interdisciplinary programs combining these fields.", "tag": "tech", "voice": "en-US-GuyNeural", "questions": [{"q": "What is the main topic of the conversation?", "A": "To compare different types of environmental sensors.", "B": "The use of AI in monitoring environmental changes.", "C": "By analyzing underwater sonar data for ocean research.", "D": "Students should focus exclusively on machine learning.", "answer": "B"}, {"q": "According to the professor, what advantage does AI have over human analysis in detecting deforestation?", "A": "AI systems can detect illegal logging within hours instead of weeks.", "B": "Satellite imagery is only accessible through machine learning.", "C": "By using more expensive but more accurate equipment.", "D": "The technology eliminates the need for ground sensors entirely.", "answer": "A"}, {"q": "How does the AI system monitor coral reef health according to the conversation?", "A": "By sending divers to collect water samples weekly.", "B": "Detecting bleaching events through subtle environmental changes.", "C": "Installing monitoring stations on every coral reef globally.", "D": "To replace underwater cameras with satellite imaging technology.", "answer": "B"}, {"q": "What challenge does the professor identify regarding environmental data?", "A": "Collecting data from remote locations is too expensive.", "B": "Data can be noisy due to sensor malfunctions and weather conditions.", "C": "Governments restrict access to most environmental data sets.", "D": "By training models exclusively on data from laboratories.", "answer": "B"}, {"q": "What career advice does the professor give to interested students?", "A": "To pursue a degree in pure data science without environmental courses.", "B": "Building expertise in both data science and environmental science.", "C": "Focusing only on field work rather than computational methods.", "D": "The field requires a PhD before any practical application is possible.", "answer": "B"}]}, "passage": {"title": "远程工作与心理健康", "script": "The shift to remote work following recent global events has fundamentally changed how millions of people approach their professional lives. While much of the public discussion has focused on productivity metrics, researchers have begun examining the psychological implications of this transformation.\n\nA comprehensive study conducted by Stanford University tracked over twelve thousand remote workers over a two-year period. The findings revealed that employees who worked remotely at least three days per week reported significantly lower stress levels and higher job satisfaction compared to their office-based counterparts. Interestingly, the benefits were most pronounced among workers with long commutes, who gained an average of nearly an hour of personal time each day.\n\nHowever, the study also identified potential drawbacks. Remote workers reported higher rates of loneliness and found it more challenging to separate work from personal life. Those who worked entirely from home without any in-person interaction showed a twenty percent increase in reported feelings of isolation. The researchers emphasized that a hybrid model, combining remote work with regular office presence, appeared to offer the optimal balance between flexibility and social connection.", "tag": "human", "voice": "en-US-MichelleNeural", "questions": [{"q": "What is the main finding of the Stanford University study?", "A": "To compare productivity between remote and office workers.", "B": "Remote workers reported lower stress and higher job satisfaction.", "C": "By tracking employees over a period of twelve months.", "D": "The study found no significant differences between the two groups.", "answer": "B"}, {"q": "Which group benefited most from remote work according to the study?", "A": "Employees working in creative industries.", "B": "Workers with long commutes who gained personal time.", "C": "By analyzing data from over twenty thousand participants.", "D": "The benefits were equally distributed across all demographics.", "answer": "B"}, {"q": "What was identified as a drawback of remote work?", "A": "Productivity decreased significantly in most cases.", "B": "Higher rates of loneliness and work-life balance challenges.", "C": "By eliminating all forms of in-person collaboration.", "D": "The technology required for remote work is too expensive.", "answer": "B"}, {"q": "What percentage increase in isolation was reported among fully remote workers?", "A": "Approximately ten percent higher than office workers.", "B": "A twenty percent increase in reported feelings of isolation.", "C": "By comparing data across different industries and regions.", "D": "The study found isolation rates decreased over time.", "answer": "B"}, {"q": "What model does the study recommend as optimal?", "A": "Returning to full-time office work immediately.", "B": "A hybrid model combining remote work with office presence.", "C": "To allow employees to choose their own work arrangement freely.", "D": "Complete remote work with virtual social events.", "answer": "B"}]}}, "reading": {"tech": {"title": "视觉修复技术新进展", "text": "In recent years, the field of visual prosthetics has made remarkable progress, offering new hope to millions of people suffering from blindness and severe visual impairment. While cochlear implants for hearing loss have been widely available for decades, creating a functional artificial eye has proven far more challenging due to the extraordinary complexity of the human visual system.\n\nThe human eye contains approximately 130 million photoreceptor cells that convert light into electrical signals. These signals travel through the optic nerve to the brain, where they are processed by neural networks that have evolved over millions of years. Replicating this system requires not only sophisticated hardware but also a deep understanding of how the brain interprets visual information.\n\nOne promising approach involves implanting electrode arrays directly onto the visual cortex, the part of the brain responsible for processing sight. Researchers at the University of Texas have developed a wireless implant containing over a thousand microelectrodes, each capable of stimulating individual neurons. Early clinical trials have allowed blind participants to perceive shapes, detect motion, and even recognize large letters.\n\nA competing approach focuses on the retina itself. Companies like Second Sight have developed retinal implants that replace damaged photoreceptor cells. These devices use a tiny camera mounted on glasses to capture images, which are then converted into electrical pulses sent to the remaining healthy retinal cells. While the resulting vision is far from natural, patients can navigate unfamiliar environments and read large-print text.\n\nDespite these advances, significant obstacles remain. The brain's ability to adapt to artificial visual input varies greatly among individuals, and the long-term stability of implanted devices poses ongoing engineering challenges. Nevertheless, the rapid pace of innovation in both materials science and neural interface technology suggests that functional vision restoration for at least some forms of blindness may become clinically available within the next decade.", "tag": "tech", "vocab": [["prosthetic", "/prɒsˈθetɪk/", "adj. 假体的；人工替代的"], ["photoreceptor", "/ˌfəʊtəʊrɪˈseptə/", "n. 光感受器；感光细胞"], ["neural", "/ˈnjʊərəl/", "adj. 神经的；神经系统的"], ["implant", "/ɪmˈplɑːnt/", "v./n. 植入；植入物"], ["retinal", "/ˈretɪnəl/", "adj. 视网膜的"], ["electrode", "/ɪˈlektrəʊd/", "n. 电极"], ["clinical", "/ˈklɪnɪkəl/", "adj. 临床的"], ["stimulate", "/ˈstɪmjʊleɪt/", "v. 刺激；激发"], ["impairment", "/ɪmˈpeəmənt/", "n. 损伤；障碍"], ["cortex", "/ˈkɔːteks/", "n. 皮层；皮质"]], "questions": [{"q": "为什么人工视觉的开发比人工耳蜗更具挑战性？", "A": "视觉系统的复杂性远高于听觉系统", "B": "因为视觉信号需要无线传输技术", "C": "研究经费主要分配给了听觉领域", "D": "全球失明患者数量远少于听力障碍者", "answer": "A"}, {"q": "德克萨斯大学开发的植入装置有何特点？", "A": "它可以直接替换受损的视网膜细胞", "B": "包含超过一千个微电极，每个能刺激单个神经元", "C": "需要通过手术连接外部摄像机", "D": "只能帮助患者感知光线变化", "answer": "B"}, {"q": "根据文章，视网膜植入装置的工作原理是？", "A": "将摄像机图像转换为电脉冲发送给健康的视网膜细胞", "B": "直接在视觉皮层中重建完整的视觉图像", "C": "通过药物刺激受损的感光细胞再生", "D": "利用基因编辑技术修复视网膜损伤", "answer": "A"}, {"q": "文中提到的 \"competing approach\"（竞争方法）指的是什么？", "A": "德克萨斯大学与第二视觉公司之间的技术竞争", "B": "视觉皮层植入与视网膜植入两种不同方案", "C": "人工视觉与传统治疗方法的比较", "D": "不同国家在视觉修复领域的研究投入竞赛", "answer": "B"}, {"q": "作者对人工视觉未来的态度是什么？", "A": "悲观，认为技术障碍短期内无法克服", "B": "谨慎乐观，认为未来十年内可能取得临床突破", "C": "怀疑，因为病人对植入物的适应能力差异太大", "D": "中立，仅陈述现有研究成果而不做预测", "answer": "B"}]}, "social": {"title": "数字支付的普及与挑战", "text": "The rapid expansion of digital payment systems has fundamentally altered the way people conduct financial transactions across the globe. From mobile wallets in Kenya to contactless cards in Europe, the shift away from cash has accelerated dramatically in recent years, driven by advances in smartphone technology and improved internet connectivity.\n\nIn China, the transformation has been particularly striking. Mobile payment platforms such as Alipay and WeChat Pay have achieved near-universal adoption in urban areas, where even street vendors and small shops display QR codes for payment. According to the People's Bank of China, mobile payments in the country exceeded 347 trillion yuan in 2023, representing over eighty percent of all non-cash transactions. This widespread adoption has been facilitated by the integration of payment functions into social media and messaging applications, making transactions as simple as sending a message.\n\nHowever, the digital payment revolution has not been without controversy. Privacy advocates have raised concerns about the vast amounts of personal financial data collected by payment platforms. In many cases, transaction histories can reveal sensitive information about individuals' health conditions, political affiliations, and personal relationships. Additionally, older adults and those in rural areas with limited internet access risk being excluded from an increasingly cashless society.\n\nRegulators around the world are grappling with how to balance innovation with consumer protection. The European Union's Payment Services Directive requires strong customer authentication for online payments, while India's Unified Payments Interface has established open standards that promote competition among payment providers. These regulatory frameworks aim to ensure that the benefits of digital payments are widely shared while minimizing risks to privacy and financial stability.\n\nAs digital payment technologies continue to evolve, the emergence of central bank digital currencies and blockchain-based systems promises to further reshape the financial landscape. The key challenge will be designing systems that are not only convenient and efficient but also inclusive, secure, and respectful of user privacy.", "tag": "human", "vocab": [["transaction", "/trænˈzækʃən/", "n. 交易；办理"], ["accelerate", "/əkˈseləreɪt/", "v. 加速；促进"], ["adoption", "/əˈdɒpʃən/", "n. 采用；推广"], ["integration", "/ˌɪntɪˈɡreɪʃən/", "n. 整合；一体化"], ["privacy", "/ˈprɪvəsi/", "n. 隐私；私密"], ["authentication", "/ɔːˌθentɪˈkeɪʃən/", "n. 认证；验证"], ["regulatory", "/ˈreɡjʊlətəri/", "adj. 监管的；管理的"], ["inclusive", "/ɪnˈkluːsɪv/", "adj. 包容的；包含全面的"], ["infrastructure", "/ˈɪnfrəstrʌktʃə/", "n. 基础设施"], ["emergence", "/ɪˈmɜːdʒəns/", "n. 出现；兴起"]], "questions": [{"q": "根据文章，推动数字支付快速增长的主要因素是什么？", "A": "智能手机技术和互联网连接的改善", "B": "各国政府对现金交易的限制政策", "C": "传统银行服务费用的持续上涨", "D": "国际贸易量的急剧增加", "answer": "A"}, {"q": "中国数字支付的特点是什么？", "A": "主要由信用卡支付主导市场", "B": "支付功能已整合到社交媒体应用中", "C": "仅限于大型商场和连锁超市使用", "D": "农村地区使用率高于城市地区", "answer": "B"}, {"q": "关于数字支付的担忧，文中提到了什么？", "A": "交易速度过慢影响使用体验", "B": "个人财务数据可能泄露敏感信息", "C": "支付平台之间的竞争过于激烈", "D": "系统安全漏洞频繁导致资金损失", "answer": "B"}, {"q": "文中 \"near-universal adoption\" 的含义最接近？", "A": "在特定地区得到广泛应用", "B": "几乎被所有人普遍采用", "C": "获得了政府的大力推广", "D": "技术标准实现了全球统一", "answer": "B"}, {"q": "作者对数字支付未来的主要关注点是什么？", "A": "如何提高交易处理的速度", "B": "如何在便捷与包容、安全、隐私之间取得平衡", "C": "如何降低支付平台的技术成本", "D": "如何消除国际支付中的货币兑换问题", "answer": "B"}]}}, "translation": {"cn": "中国传统节日是中华文化的重要组成部分，承载着丰富的历史内涵和深厚的民族情感。春节作为最重要的传统节日，象征着团圆和新生活的开始。每逢春节，无论身在何处，人们都会想方设法回到家乡与亲人团聚。除了春节之外，端午节和中秋节等传统节日也各具特色，反映了中国人对自然、家庭和社会的独特理解。近年来，越来越多的年轻人开始重视传统节日，这标志着文化自信的回归。", "en": "Traditional Chinese festivals are an important part of Chinese culture, carrying rich historical connotations and profound national sentiments. The Spring Festival, as the most significant traditional festival, symbolizes reunion and the beginning of a new life. During the Spring Festival, no matter where they are, people will find ways to return to their hometowns to reunite with their families. Besides the Spring Festival, traditional festivals such as the Dragon Boat Festival and the Mid-Autumn Festival also have their own distinctive characteristics, reflecting Chinese people's unique understanding of nature, family, and society. In recent years, more and more young people have begun to value traditional festivals, signaling the return of cultural confidence."}, "writing": {"prompt": "Directions: For this part, you are allowed 30 minutes to write an essay on the topic \"The Importance of Digital Literacy in the Modern World\". You should state your opinion and support it with reasons and examples. You should write at least 150 words but no more than 200 words.", "model": "In today's interconnected world, digital literacy has become as essential as reading, writing, and arithmetic. I firmly believe that the ability to navigate digital technologies is no longer optional but a fundamental requirement for full participation in modern society.\n\nFirst, digital literacy is crucial for economic opportunity. Most jobs now require at least basic computer skills, and many high-paying positions demand advanced digital competencies. A person without these skills faces significant barriers in the job market. Second, digital literacy enables access to essential services. From healthcare appointments to government benefits, an increasing number of services are moving online, making digital skills necessary for everyday life.\n\nMoreover, digital literacy includes the critical ability to evaluate online information. In an era of misinformation, knowing how to identify reliable sources and distinguish facts from falsehoods is vital for making informed decisions.\n\nIn conclusion, digital literacy should be treated as a basic right in the twenty-first century. Educational systems must prioritize teaching these skills to ensure no one is left behind in our increasingly digital world."}}
-
-// ========== RENDER;
-
-// ========== RENDER FUNCTIONS ==========
-function renderQuestions(containerId, questions, prefix, showQuestionText = true) {
-  const container = document.getElementById(containerId);
-  container.innerHTML = '';
-  const letters = ['A','B','C','D'];
-  questions.forEach((q, i) => {
-    const div = document.createElement('div');
-    div.className = 'question-item';
-    div.id = prefix + '-q-' + i;
-    let html = showQuestionText ? `<p>${i+1}. ${q.q}</p>` : `<p>${i+1}.</p>`;
-    letters.forEach(l => {
-      html += `<label><input type="radio" name="${prefix}-${i}" value="${l}" data-answer="${q.answer}"> ${l}. ${q[l]}</label>`;
-    });
-    div.innerHTML = html;
-    container.appendChild(div);
-  });
-}
-
-function renderVocab(containerId, vocab) {
-  const table = document.getElementById(containerId);
-  table.innerHTML = '<tr><th>单词</th><th>音标</th><th>释义</th></tr>';
-  vocab.forEach(v => {
-    const row = table.insertRow();
-    row.insertCell().textContent = v.word;
-    row.insertCell().textContent = v.phonetic;
-    row.insertCell().textContent = v.def;
-  });
-}
-
-function renderText(containerId, text) {
-  const el = document.getElementById(containerId);
-  const parts = text.split(/\n\n+/);
-  el.innerHTML = parts.map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
-}
-
-// ========== REVEAL FUNCTIONS ==========
-function revealListening() {
-  const lcQs = DATA.listening.long_conversation.questions;
-  const passageQs = DATA.listening.passage.questions;
-  
-  lcQs.forEach((q, i) => {
-    const selected = document.querySelector(`input[name="long_conversation-${i}"]:checked`);
-    const qDiv = document.getElementById('long_conversation-q-' + i);
-    const correctSpan = document.createElement('span');
-    correctSpan.className = 'correct';
-    if (selected) {
-      if (selected.value === q.answer) {
-        correctSpan.textContent = ' ✓ 正确!';
-      } else {
-        correctSpan.textContent = ' ✗ 错误，正确答案是 ' + q.answer;
-      }
-    } else {
-      correctSpan.textContent = ' 未作答，正确答案是 ' + q.answer;
-    }
-    qDiv.querySelector('p').appendChild(correctSpan);
-  });
-  
-  passageQs.forEach((q, i) => {
-    const selected = document.querySelector(`input[name="passage-${i}"]:checked`);
-    const qDiv = document.getElementById('passage-q-' + i);
-    const correctSpan = document.createElement('span');
-    correctSpan.className = 'correct';
-    if (selected) {
-      if (selected.value === q.answer) {
-        correctSpan.textContent = ' ✓ 正确!';
-      } else {
-        correctSpan.textContent = ' ✗ 错误，正确答案是 ' + q.answer;
-      }
-    } else {
-      correctSpan.textContent = ' 未作答，正确答案是 ' + q.answer;
-    }
-    qDiv.querySelector('p').appendChild(correctSpan);
-  });
-
-  document.getElementById('long_conversation-script').textContent = DATA.listening.long_conversation.script;
-  document.getElementById('passage-script').textContent = DATA.listening.passage.script;
-  document.getElementById('listening-reveal').classList.add('show');
-}
-
-
-function revealReading() {
-  const techQs = DATA.reading.tech.questions;
-  const socialQs = DATA.reading.social.questions;
-  let correct = 0, total = techQs.length + socialQs.length;
-  
-  techQs.forEach((q, i) => {
-    const selected = document.querySelector(`input[name="tech-${i}"]:checked`);
-    const qDiv = document.getElementById('tech-q-' + i);
-    const correctSpan = document.createElement('span');
-    correctSpan.className = 'correct';
-    if (selected) {
-      if (selected.value === q.answer) {
-        correctSpan.textContent = ' ✓ 正确!';
-        correct++;
-      } else {
-        correctSpan.textContent = ' ✗ 错误，正确答案是 ' + q.answer;
-      }
-    } else {
-      correctSpan.textContent = ' 未作答，正确答案是 ' + q.answer;
-    }
-    qDiv.querySelector('p').appendChild(correctSpan);
-  });
-  
-  socialQs.forEach((q, i) => {
-    const selected = document.querySelector(`input[name="social-${i}"]:checked`);
-    const qDiv = document.getElementById('social-q-' + i);
-    const correctSpan = document.createElement('span');
-    correctSpan.className = 'correct';
-    if (selected) {
-      if (selected.value === q.answer) {
-        correctSpan.textContent = ' ✓ 正确!';
-        correct++;
-      } else {
-        correctSpan.textContent = ' ✗ 错误，正确答案是 ' + q.answer;
-      }
-    } else {
-      correctSpan.textContent = ' 未作答，正确答案是 ' + q.answer;
-    }
-    qDiv.querySelector('p').appendChild(correctSpan);
-  });
-  
-  document.getElementById('reading-score').textContent = `${correct} / ${total}`;
-  document.getElementById('reading-detail').textContent = correct >= Math.ceil(total * 0.6) ? '合格 ✓' : '需要加油 ✗';
-  document.getElementById('reading-reveal').classList.add('show');
-}
-
-function revealTranslation() {
-  document.getElementById('translation-ref').textContent = DATA.translation.reference;
-  document.getElementById('translation-reveal').classList.add('show');
-}
-
-function revealWriting() {
-  document.getElementById('writing-model').textContent = DATA.writing.model;
-  document.getElementById('writing-reveal').classList.add('show');
-}
 
 // ========== INIT ==========
 renderQuestions('long_conversation-questions', DATA.listening.long_conversation.questions, 'long_conversation', false);
@@ -370,7 +233,7 @@ renderQuestions('tech-questions', DATA.reading.tech.questions, 'tech');
 renderText('social-text', DATA.reading.social.text);
 renderVocab('social-vocab', DATA.reading.social.vocab);
 renderQuestions('social-questions', DATA.reading.social.questions, 'social');
-document.getElementById('translation-prompt').textContent = DATA.translation.chinese;
+document.getElementById('translation-prompt').textContent = DATA.translation.cn;
 document.getElementById('writing-prompt').textContent = DATA.writing.prompt;
 </script>
 </body>
