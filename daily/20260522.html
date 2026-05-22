@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CET-6 每日练习 - 2026年5月22日 星期五</title>
+<style>
+:root {
+  --bg-page: #f5f7fa;
+  --bg-section: #ffffff;
+  --text: #2d3436;
+  --text-muted: #888;
+  --accent: #6c5ce7;
+  --accent-hover: #5a4bd1;
+  --accent-light: #f0f0ff;
+  --border: #eee;
+  --reveal-bg: #f8f9fa;
+  --reveal-border: #e9ecef;
+  --correct: #27ae60;
+  --wrong: #e74c3c;
+  --header-grad-1: #6c5ce7;
+  --header-grad-2: #a29bfe;
+  --shadow: rgba(0,0,0,0.06);
+  --input-bg: #fff;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg-page); color: var(--text); line-height: 1.7; padding: 20px; }
+.container { max-width: 900px; margin: 0 auto; }
+header { text-align: center; padding: 40px 20px; border-radius: 16px; margin-bottom: 30px; background: linear-gradient(135deg, var(--header-grad-1), var(--header-grad-2)); color: #fff; }
+header h1 { font-size: 28px; margin-bottom: 8px; }
+header .subtitle { opacity: 0.85; font-size: 15px; }
+.section { background: var(--bg-section); border-radius: 12px; padding: 30px; margin-bottom: 24px; box-shadow: 0 2px 12px var(--shadow); }
+.section h2 { font-size: 22px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--accent); color: var(--accent); }
+.section h3 { font-size: 17px; margin: 20px 0 12px; color: #555; }
+.reading-text { font-size: 15px; line-height: 1.9; color: #444; }
+.reading-text p { margin-bottom: 16px; }
+.question-item { margin-bottom: 20px; padding: 15px; background: var(--accent-light); border-radius: 8px; border-left: 3px solid var(--accent); }
+.question-item p { font-weight: 600; margin-bottom: 10px; }
+.question-item label { display: block; padding: 8px 12px; margin: 4px 0; border-radius: 6px; cursor: pointer; transition: background 0.15s; font-size: 14px; }
+.question-item label:hover { background: rgba(108,92,231,0.1); }
+.question-item input[type="radio"] { margin-right: 8px; }
+.question-item .correct { font-weight: 600; margin-left: 8px; }
+.question-item .correct { color: var(--correct); }
+.reveal-content { display: none; margin-top: 20px; padding: 20px; background: var(--reveal-bg); border: 1px solid var(--reveal-border); border-radius: 8px; }
+.reveal-content.show { display: block; }
+.btn { display: inline-block; padding: 10px 24px; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-size: 15px; cursor: pointer; transition: background 0.2s; margin: 10px 0; }
+.btn:hover { background: var(--accent-hover); }
+.result-bar { text-align: center; padding: 16px; margin-bottom: 16px; border-radius: 8px; background: var(--accent-light); }
+.result-bar .score { font-size: 32px; font-weight: 700; color: var(--accent); }
+.result-bar .detail { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+th, td { padding: 10px; text-align: left; border-bottom: 1px solid var(--border); font-size: 14px; }
+th { background: var(--accent-light); color: var(--accent); font-weight: 600; }
+.translation-input, .writing-input { width: 100%; min-height: 120px; padding: 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; line-height: 1.7; resize: vertical; font-family: inherit; background: var(--input-bg); color: var(--text); }
+.model-answer { margin-top: 16px; padding: 16px; background: #e8f5e9; border-radius: 8px; border-left: 3px solid #4caf50; font-size: 14px; line-height: 1.8; display: none; }
+.model-answer.show { display: block; }
+.script-text { white-space: pre-wrap; font-size: 14px; line-height: 1.8; padding: 16px; background: #fafafa; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 10px; }
+footer { text-align: center; padding: 30px; color: var(--text-muted); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>📖 CET-6 每日练习</h1>
+  <div class="subtitle">2026年5月22日 星期五 · Friday · 长篇阅读 + 翻译 + 作文</div>
+</header>
+
+<!-- LONG READING -->
+<div class="section">
+  <h2>📖 长篇阅读 — The Quiet Revolution of Microgrids</h2>
+  <div class="reading-text" id="reading-text"></div>
+
+  <h3>📝 阅读理解</h3>
+  <div id="reading-questions"></div>
+
+  <button class="btn" onclick="revealReading()">📝 提交答案 &amp; 查看解析</button>
+  <div class="reveal-content" id="reading-reveal">
+    <h3>📊 答题结果</h3>
+    <div class="result-bar">
+      <div class="score" id="reading-score"></div>
+      <div class="detail" id="reading-detail"></div>
+    </div>
+    <h3>📚 词汇表</h3>
+    <table id="vocab-table"><tr><th>单词</th><th>音标</th><th>释义</th></tr></table>
+  </div>
+</div>
+
+<!-- TRANSLATION -->
+<div class="section">
+  <h2>🌐 翻译 — 绿色建筑</h2>
+  <p style="margin-bottom:12px;font-size:15px;">近年来，绿色建筑的概念在全球范围内得到了广泛关注。绿色建筑不仅注重节能环保，还强调为居住者创造健康舒适的生活环境。通过采用太阳能板、雨水收集系统和自然通风设计，绿色建筑能够显著降低能源消耗和碳排放。中国政府已经出台了一系列政策，鼓励开发商采用绿色建筑标准，并将其作为城市可持续发展的重要组成部分。越来越多的研究表明，居住在绿色建筑中的人们不仅享有更低的能源开支，还拥有更高的生活满意度和工作效率。</p>
+  <textarea class="translation-input" id="translation-input" placeholder="在此输入你的英文翻译..."></textarea>
+  <button class="btn" onclick="document.getElementById('translation-model').classList.toggle('show')">📝 查看参考译文</button>
+  <div class="model-answer" id="translation-model">In recent years, the concept of green buildings has gained widespread attention around the world. Green buildings not only focus on energy conservation and environmental protection but also emphasize creating healthy and comfortable living environments for occupants. By adopting solar panels, rainwater collection systems, and natural ventilation designs, green buildings can significantly reduce energy consumption and carbon emissions. The Chinese government has introduced a series of policies to encourage developers to adopt green building standards and regard them as an important component of sustainable urban development. A growing body of research indicates that people living in green buildings not only enjoy lower energy costs but also have higher life satisfaction and work efficiency.</div>
+</div>
+
+<!-- WRITING -->
+<div class="section">
+  <h2>✏️ 作文</h2>
+  <p style="margin-bottom:12px;font-size:14px;color:#555;">Directions: For this part, you are allowed 30 minutes to write an essay on the topic &quot;The Role of Artificial Intelligence in Education&quot;. You should discuss both the potential benefits and the challenges, and state your own view. You should write at least 150 words but no more than 200 words.</p>
+  <textarea class="writing-input" id="writing-input" placeholder="在此输入你的作文..."></textarea>
+  <button class="btn" onclick="document.getElementById('writing-model').classList.toggle('show')">📝 查看范文</button>
+  <div class="model-answer" id="writing-model">Artificial intelligence is rapidly transforming the landscape of education, bringing both exciting opportunities and significant challenges that deserve careful consideration.
+
+On the positive side, AI-powered tools can personalize learning experiences to an unprecedented degree. Intelligent tutoring systems can adapt to each student&#39;s pace and learning style, providing targeted practice where it is needed most. Automated grading systems free teachers from repetitive tasks, allowing them to focus on more meaningful interactions with students. Furthermore, AI can make quality educational resources accessible to students in remote areas who might otherwise lack access to experienced teachers.
+
+However, the integration of AI into education also raises serious concerns. Over-reliance on automated systems may diminish students&#39; critical thinking abilities and reduce meaningful human interaction in the learning process. Privacy issues surrounding the collection of student data require robust safeguards. Additionally, the digital divide means that students from disadvantaged backgrounds may be left further behind if AI tools remain accessible only to well-funded schools.
+
+In my view, AI should serve as a supplement to, rather than a replacement for, human teachers. The goal should be to harness AI&#39;s efficiency while preserving the irreplaceable human elements of education—mentorship, inspiration, and emotional connection.</div>
+</div>
+
+<footer>CET-6 Daily · 20260522 · Powered by Hermes Agent</footer>
+</div>
+
+<script>
+// ========== DATA ==========
+var READING_QUESTIONS = [{"q": "What is the main advantage of microgrids during natural disasters?", "A": "They can disconnect from the main grid and continue supplying power to critical facilities.", "B": "They automatically reduce electricity prices for all connected consumers.", "C": "They generate twice as much power as the traditional centralized grid.", "D": "They eliminate the need for any external energy sources permanently.", "answer": "A"}, {"q": "What does the term 'prosumers' refer to in the context of microgrids?", "A": "Professional consultants who design energy systems for utility companies.", "B": "Government agencies that regulate electricity pricing and distribution.", "C": "Consumers who also produce energy and feed it back into the local network.", "D": "Companies that manufacture both solar panels and battery storage units.", "answer": "C"}, {"q": "According to the article, what obstacle do microgrids face in terms of regulation?", "A": "Regulatory frameworks were designed for the traditional utility model and lag behind innovation.", "B": "Government regulations explicitly prohibit any form of decentralized energy generation.", "C": "International treaties prevent countries from investing in local energy infrastructure.", "D": "Utility companies have successfully lobbied to ban microgrid technology entirely.", "answer": "A"}, {"q": "How has battery technology affected the adoption of microgrids?", "A": "Storage costs have remained unchanged, limiting microgrid expansion to wealthy nations.", "B": "Storage costs have dropped by nearly ninety percent over the past decade.", "C": "Battery lifespan has decreased significantly, making microgrids less reliable.", "D": "New regulations have restricted the use of lithium batteries in residential areas.", "answer": "B"}, {"q": "What concern does the author raise about the microgrid transition?", "A": "Microgrid technology is too complex for most communities to understand and operate.", "B": "The transition may exclude low-income communities due to high initial costs.", "C": "Solar panels and wind turbines produce inconsistent power in all weather conditions.", "D": "Centralized power plants will become completely obsolete within the next decade.", "answer": "B"}];
+var READING_VOCAB = [["microgrid", "/ˈmaɪkrəʊɡrɪd/", "n. 微电网"], ["traction", "/ˈtrækʃən/", "n. 牵引力；普及"], ["distributed", "/dɪˈstrɪbjuːtɪd/", "adj. 分布式的"], ["prosumer", "/prəʊˈsjuːmə/", "n. 产消者"], ["island", "/ˈaɪlənd/", "v. 孤岛运行"], ["resilient", "/rɪˈzɪliənt/", "adj. 有弹性的"], ["regulatory", "/ˈreɡjʊlətəri/", "adj. 监管的"], ["prohibitive", "/prəˈhɪbɪtɪv/", "adj. 高得令人望而却步的"], ["decentralized", "/diːˈsentrəlaɪzd/", "adj. 去中心化的"], ["infrastructure", "/ˈɪnfrəstrʌktʃə/", "n. 基础设施"]];
+var READING_TEXT = "Across the world, a quiet revolution is taking place in how communities generate and distribute electricity. Microgrids—localized energy systems that can operate independently or in conjunction with the main power grid—are gaining traction as a solution to some of the most persistent challenges in energy infrastructure.\n\nA microgrid typically consists of distributed energy resources such as solar panels, wind turbines, and battery storage systems, all connected to serve a defined geographic area. Unlike the traditional centralized model, where power flows in one direction from large plants to consumers, microgrids enable two-way energy flows. Households with rooftop solar panels can generate excess electricity during sunny hours and feed it back into the local network, effectively turning consumers into 'prosumers'—both producers and consumers of energy.\n\nThe benefits of microgrids extend far beyond energy independence. During natural disasters, when the main grid fails, microgrids can 'island' themselves and continue supplying power to critical facilities such as hospitals, emergency shelters, and water treatment plants. After Hurricane Maria devastated Puerto Rico in 2017, leaving millions without electricity for months, the island began investing heavily in solar-powered microgrids as a more resilient alternative to its fragile centralized system.\n\nHowever, the transition to microgrids is not without obstacles. Regulatory frameworks in many countries were designed for the traditional utility model and have not kept pace with technological innovation. Furthermore, the initial capital costs of installing solar arrays and battery storage can be prohibitive for low-income communities, raising concerns about energy equity.\n\nDespite these challenges, the momentum behind microgrids continues to build. Advances in battery technology have driven down storage costs by nearly ninety percent over the past decade, while improvements in smart grid software enable more sophisticated management of distributed energy resources. The question is no longer whether microgrids will become widespread, but how quickly the transition will occur and whether it will include all communities.";
+
+// ========== ESCAPE HTML ==========
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ========== RENDER ==========
+(function() {
+  // Render reading text
+  var parts = READING_TEXT.split(/\n\n+/);
+  document.getElementById('reading-text').innerHTML = parts.map(function(p) {
+    return '<p>' + p.replace(/\n/g, '<br>') + '</p>';
+  }).join('');
+
+  // Render reading questions
+  var container = document.getElementById('reading-questions');
+  var letters = ['A','B','C','D'];
+  READING_QUESTIONS.forEach(function(q, i) {
+    var div = document.createElement('div');
+    div.className = 'question-item';
+    div.id = 'rq-' + i;
+    var html = '<p>' + (i+1) + '. ' + esc(q.q) + '</p>';
+    letters.forEach(function(l) {
+      html += '<label><input type="radio" name="rq-' + i + '" value="' + l + '"> ' + l + '. ' + esc(q[l]) + '</label>';
+    });
+    div.innerHTML = html;
+    container.appendChild(div);
+  });
+
+  // Render vocab
+  var table = document.getElementById('vocab-table');
+  READING_VOCAB.forEach(function(v) {
+    var row = table.insertRow();
+    row.insertCell().textContent = v[0];
+    row.insertCell().textContent = v[1];
+    row.insertCell().textContent = v[2];
+  });
+})();
+
+// ========== REVEAL READING ==========
+function revealReading() {
+  var correct = 0;
+  var total = READING_QUESTIONS.length;
+
+  READING_QUESTIONS.forEach(function(q, i) {
+    var selected = document.querySelector('input[name="rq-' + i + '"]:checked');
+    var qDiv = document.getElementById('rq-' + i);
+    var span = document.createElement('span');
+
+    if (selected) {
+      if (selected.value === q.answer) {
+        span.textContent = ' ✓ 正确!';
+        span.style.color = 'var(--correct)';
+        correct++;
+      } else {
+        span.textContent = ' ✗ 错误，正确答案是 ' + q.answer;
+        span.style.color = 'var(--wrong)';
+      }
+    } else {
+      span.textContent = ' 未作答，正确答案是 ' + q.answer;
+      span.style.color = 'var(--wrong)';
+    }
+    span.style.fontWeight = '600';
+    span.style.marginLeft = '8px';
+    qDiv.querySelector('p').appendChild(span);
+  });
+
+  document.getElementById('reading-score').textContent = correct + ' / ' + total;
+  var pct = correct / total;
+  var detail = document.getElementById('reading-detail');
+  if (pct >= 0.8) detail.textContent = '优秀 ✓';
+  else if (pct >= 0.6) detail.textContent = '合格 ✓';
+  else detail.textContent = '需要加油 ✗';
+
+  document.getElementById('reading-reveal').classList.add('show');
+}
+</script>
+
+</body>
+</html>
