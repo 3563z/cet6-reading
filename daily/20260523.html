@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CET-6 每日练习 - 2026年5月23日 星期六</title>
+<style>
+:root {
+  --bg-page: #f5f7fa;
+  --bg-section: #ffffff;
+  --text: #2d3436;
+  --text-muted: #888;
+  --accent: #6c5ce7;
+  --accent-hover: #5a4bd1;
+  --accent-light: #f0f0ff;
+  --border: #eee;
+  --reveal-bg: #f8f9fa;
+  --reveal-border: #e9ecef;
+  --correct: #27ae60;
+  --wrong: #e74c3c;
+  --header-grad-1: #6c5ce7;
+  --header-grad-2: #a29bfe;
+  --shadow: rgba(0,0,0,0.06);
+  --input-bg: #fff;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+[data-theme="warm"] {
+  --bg-page: #faf6ed;
+  --bg-section: #fffcf5;
+  --text: #3d3535;
+  --text-muted: #999;
+  --accent: #c0784a;
+  --accent-hover: #a8643a;
+  --accent-light: #f5ede4;
+  --border: #e8ddd0;
+  --reveal-bg: #f8f1e8;
+  --reveal-border: #e8ddd0;
+  --correct: #5d8a3c;
+  --wrong: #c0392b;
+  --header-grad-1: #c0784a;
+  --header-grad-2: #d4a574;
+  --shadow: rgba(0,0,0,0.04);
+  --input-bg: #fffcf5;
+}
+[data-theme="dark"] {
+  --bg-page: #0f0f1a;
+  --bg-section: #1a1a2e;
+  --text: #e0e0e0;
+  --text-muted: #888;
+  --accent: #9370db;
+  --accent-hover: #a884e8;
+  --accent-light: #2a1f40;
+  --border: #2a2a3e;
+  --reveal-bg: #151525;
+  --reveal-border: #2a2a3e;
+  --correct: #5cb85c;
+  --wrong: #e74c3c;
+  --header-grad-1: #3d1f6e;
+  --header-grad-2: #6c3fa0;
+  --shadow: rgba(0,0,0,0.2);
+  --input-bg: #1a1a2e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg-page); color: var(--text); line-height: 1.8; }
+.header { background: linear-gradient(135deg, var(--header-grad-1), var(--header-grad-2)); color: #fff; padding: 30px 20px; text-align: center; }
+.header h1 { font-size: 24px; margin-bottom: 5px; }
+.header p { font-size: 14px; opacity: 0.9; }
+.theme-switcher { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
+.theme-btn { padding: 6px 18px; border: 2px solid rgba(255,255,255,0.3); border-radius: 20px; background: transparent; color: #fff; cursor: pointer; font-size: 13px; transition: all 0.2s; }
+.theme-btn:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.1); }
+.theme-btn.active { border-color: #fff; background: rgba(255,255,255,0.2); font-weight: 600; }
+.container { max-width: 800px; margin: 0 auto; padding: 20px; }
+.section { background: var(--bg-section); border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px var(--shadow); transition: background-color 0.3s ease; }
+.section h2 { font-size: 20px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--accent); color: var(--accent); }
+.section h3 { font-size: 16px; margin: 16px 0 10px; color: var(--text-muted); }
+.audio-player { width: 100%; margin: 10px 0; border-radius: 6px; }
+.reading-text { font-size: 15px; line-height: 1.9; text-align: justify; margin: 15px 0; }
+.reading-text p { margin-bottom: 12px; }
+.vocab-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px; }
+.vocab-table th { background: var(--accent-light); padding: 8px 12px; text-align: left; border: 1px solid var(--border); color: var(--text); }
+.vocab-table td { padding: 8px 12px; border: 1px solid var(--border); }
+.question-list { margin: 15px 0; }
+.question-item { padding: 12px; margin: 8px 0; background: var(--bg-page); border-radius: 8px; border: 1px solid var(--border); }
+.question-item p { font-weight: 600; margin-bottom: 8px; }
+.question-item label { display: block; padding: 4px 0; font-size: 14px; cursor: pointer; }
+.question-item input[type="radio"] { margin-right: 8px; accent-color: var(--accent); }
+.question-item .correct { color: var(--correct); font-weight: 600; }
+.question-item .wrong { color: var(--wrong); }
+.translation-input, .writing-input { width: 100%; min-height: 150px; padding: 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; line-height: 1.6; resize: vertical; font-family: inherit; background: var(--input-bg); color: var(--text); }
+.writing-input { min-height: 200px; }
+.btn { display: inline-block; padding: 10px 24px; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-size: 15px; cursor: pointer; margin: 10px 5px 0 0; transition: background 0.2s; }
+.btn:hover { background: var(--accent-hover); }
+.reveal-content { display: none; margin-top: 20px; padding: 20px; background: var(--reveal-bg); border-radius: 8px; border: 1px solid var(--reveal-border); transition: background-color 0.3s ease; }
+.reveal-content.show { display: block; }
+.reveal-content h4 { color: var(--accent); margin-bottom: 10px; font-size: 16px; }
+.reveal-content h5 { color: var(--text-muted); margin: 12px 0 6px; font-size: 14px; }
+.reveal-content .script-text { font-size: 14px; line-height: 1.8; margin: 10px 0; white-space: pre-wrap; }
+.quest-label { font-size: 13px; color: var(--text-muted); margin: 5px 0; }
+hr { margin: 20px 0; border: none; border-top: 1px solid var(--border); }
+.result-bar { text-align: center; padding: 20px; margin: 15px 0; background: var(--reveal-bg); border-radius: 8px; border: 1px solid var(--reveal-border); }
+.result-bar .score { font-size: 28px; font-weight: 700; color: var(--accent); }
+.result-bar .detail { font-size: 16px; margin-top: 5px; color: var(--text-muted); }
+@media (min-width: 768px) {
+  .container { max-width: 800px; }
+  .section { padding: 28px; }
+  .section h2 { font-size: 22px; }
+  .reading-text { font-size: 16px; }
+  .vocab-table { font-size: 15px; }
+  .question-item label { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📖 CET-6 每日练习</h1>
+  <p>2026年5月23日 星期六 | 综合练习（周末版）</p>
+  <div class="theme-switcher">
+    <button class="theme-btn active" data-theme="default">🌙 默认</button>
+    <button class="theme-btn" data-theme="warm">☀️ 暖黄</button>
+    <button class="theme-btn" data-theme="dark">🌑 深色</button>
+  </div>
+</div>
+<div class="container">
+
+<!-- ============ 听力 ============ -->
+<div class="section" id="listening">
+  <h2>🎧 听力理解</h2>
+
+  <div id="listening-news">
+    <h3>短篇新闻 — Commercial Space Station</h3>
+    <audio class="audio-player" controls id="news-audio" src="audio/20260523_1.mp3"></audio>
+    <div class="question-list" id="news-questions"></div>
+  </div>
+
+  <div id="listening-long_conversation">
+    <h3>长对话 — Research Methodology Discussion</h3>
+    <audio class="audio-player" controls id="long_conversation-audio" src="audio/20260523_2.mp3"></audio>
+    <div class="question-list" id="long_conversation-questions"></div>
+  </div>
+
+  <div id="listening-passage">
+    <h3>听力篇章 — Coral Reef Restoration</h3>
+    <audio class="audio-player" controls id="passage-audio" src="audio/20260523_3.mp3"></audio>
+    <div class="question-list" id="passage-questions"></div>
+  </div>
+
+  <div id="listening-lecture">
+    <h3>讲座 — The Neuroscience of Decision-Making</h3>
+    <audio class="audio-player" controls id="lecture-audio" src="audio/20260523_4.mp3"></audio>
+    <div class="question-list" id="lecture-questions"></div>
+  </div>
+
+  <button class="btn" onclick="revealListening()">📝 提交听力答案 &amp; 查看原文</button>
+  <div class="reveal-content" id="listening-reveal">
+    <h4>📄 听力原文</h4>
+    <div id="listening-news-reveal"><h5>新闻原文</h5><div class="script-text" id="news-script"></div><audio class="audio-player" controls id="news-audio-r" src="audio/20260523_1.mp3"></audio></div>
+    <div id="listening-long_conversation-reveal"><h5>长对话原文</h5><div class="script-text" id="long_conversation-script"></div><audio class="audio-player" controls id="long_conversation-audio-r" src="audio/20260523_2.mp3"></audio></div>
+    <div id="listening-passage-reveal"><h5>篇章原文</h5><div class="script-text" id="passage-script"></div><audio class="audio-player" controls id="passage-audio-r" src="audio/20260523_3.mp3"></audio></div>
+    <div id="listening-lecture-reveal"><h5>讲座原文</h5><div class="script-text" id="lecture-script"></div><audio class="audio-player" controls id="lecture-audio-r" src="audio/20260523_4.mp3"></audio></div>
+  </div>
+</div>
+
+<!-- ============ 阅读 ============ -->
+<div class="section" id="reading">
+  <h2>📚 阅读理解</h2>
+
+  <div id="reading-tech">
+    <h3>Passage 1：科技 — Brain-Computer Interface Progress</h3>
+    <div class="reading-text" id="tech-text"></div>
+    <h4>📝 核心词汇</h4>
+    <table class="vocab-table" id="tech-vocab"><tr><th>单词</th><th>音标</th><th>释义</th></tr></table>
+    <div class="question-list" id="tech-questions"></div>
+  </div>
+
+  <div id="reading-social">
+    <h3>Passage 2：社会 — The Rise of Digital Nomads</h3>
+    <div class="reading-text" id="social-text"></div>
+    <h4>📝 核心词汇</h4>
+    <table class="vocab-table" id="social-vocab"><tr><th>单词</th><th>音标</th><th>释义</th></tr></table>
+    <div class="question-list" id="social-questions"></div>
+  </div>
+
+  <div id="reading-long">
+    <h3>深度阅读 — The Circular Economy Revolution</h3>
+    <div class="reading-text" id="long-text"></div>
+    <h4>📝 核心词汇</h4>
+    <table class="vocab-table" id="long-vocab"><tr><th>单词</th><th>音标</th><th>释义</th></tr></table>
+    <div class="question-list" id="long-questions"></div>
+  </div>
+
+  <button class="btn" onclick="revealReading()">📝 提交阅读答案 &amp; 查看解析</button>
+  <div class="reveal-content" id="reading-reveal">
+    <h4>📊 答题结果</h4>
+    <div class="result-bar"><div class="score" id="reading-score"></div><div class="detail" id="reading-detail"></div></div>
+  </div>
+</div>
+
+<!-- ============ 翻译 ============ -->
+<div class="section" id="translation">
+  <h2>✍️ 翻译 — 中译英</h2>
+  <p style="margin-bottom:10px;font-size:15px;line-height:1.8;" id="translation-prompt"></p>
+  <textarea class="translation-input" id="translation-input" placeholder="请在此输入你的英文翻译..."></textarea>
+  <button class="btn" onclick="revealTranslation()">📝 提交 &amp; 查看参考译文</button>
+  <div class="reveal-content" id="translation-reveal">
+    <h4>💡 参考译文</h4>
+    <div class="script-text" id="translation-ref"></div>
+  </div>
+</div>
+
+<!-- ============ 写作 ============ -->
+<div class="section" id="writing">
+  <h2>📝 写作</h2>
+  <p style="margin-bottom:15px;font-size:14px;line-height:1.8;" id="writing-prompt"></p>
+  <textarea class="writing-input" id="writing-input" placeholder="请在此输入你的作文..."></textarea>
+  <button class="btn" onclick="revealWriting()">📝 提交 &amp; 查看范文</button>
+  <div class="reveal-content" id="writing-reveal">
+    <h4>💡 参考范文</h4>
+    <div class="script-text" id="writing-model"></div>
+  </div>
+</div>
+
+</div>
+
+<script>
+(function(){var b=document.querySelectorAll('.theme-btn');b.forEach(function(x){x.addEventListener('click',function(){var t=this.dataset.theme;document.documentElement.setAttribute('data-theme',t==='default'?'':t);b.forEach(function(y){y.classList.remove('active')});this.classList.add('active')})})})();
+
+function escapeHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+
+function renderQuestions(id,qs,prefix,showQ){showQ=showQ!==false;var c=document.getElementById(id);if(!c)return;c.innerHTML='';if(!qs||!qs.length)return;var L=['A','B','C','D'];qs.forEach(function(q,i){var d=document.createElement('div');d.className='question-item';d.id=prefix+'-q-'+i;var h=showQ?'<p>'+(i+1)+'. '+escapeHtml(q.q)+'</p>':'<p>'+(i+1)+'.</p>';L.forEach(function(l){h+='<label><input type="radio" name="'+prefix+'-'+i+'" value="'+l+'"> '+l+'. '+escapeHtml(q[l])+'</label>'});d.innerHTML=h;c.appendChild(d)})}
+
+function renderVocab(id,vocab){var t=document.getElementById(id);if(!t||!vocab||!vocab.length)return;t.innerHTML='<tr><th>单词</th><th>音标</th><th>释义</th></tr>';vocab.forEach(function(v){var r=t.insertRow();r.insertCell().textContent=v.word;r.insertCell().textContent=v.phonetic;r.insertCell().textContent=v.def})}
+
+function renderText(id,text){var e=document.getElementById(id);if(!e||!text)return;var p=text.split(/\n\n+/);e.innerHTML=p.map(function(x){return'<p>'+escapeHtml(x).replace(/\n/g,'<br>')+'</p>'}).join('')}
+
+function revealListening(){var K=['news','long_conversation','passage','lecture'];K.forEach(function(k){var d=D.listening[k];if(!d||!d.questions)return;d.questions.forEach(function(q,i){var s=document.querySelector('input[name="'+k+'-'+i+'"]:checked');var qd=document.getElementById(k+'-q-'+i);if(!qd)return;var sp=document.createElement('span');if(s&&s.value===q.answer){sp.className='correct';sp.textContent=' ✓'}else{sp.className='wrong';sp.textContent=s?' ✗ 答案:'+q.answer:' 答案:'+q.answer}qd.querySelector('p').appendChild(sp)});var se=document.getElementById(k+'-script');if(se)se.textContent=d.script;var re=document.getElementById('listening-'+k+'-reveal');if(re)re.style.display='';var ar=document.getElementById(k+'-audio-r');if(ar&&d.audio)ar.src=d.audio});document.getElementById('listening-reveal').classList.add('show')}
+
+function revealReading(){var K=['tech','social','long'];var cor=0,tot=0;K.forEach(function(k){var d=D.reading[k];if(!d||!d.questions)return;d.questions.forEach(function(q,i){tot++;var s=document.querySelector('input[name="'+k+'-'+i+'"]:checked');var qd=document.getElementById(k+'-q-'+i);if(!qd)return;var sp=document.createElement('span');if(s&&s.value===q.answer){sp.className='correct';sp.textContent=' ✓';cor++}else{sp.className='wrong';sp.textContent=s?' ✗ 答案:'+q.answer:' 答案:'+q.answer}qd.querySelector('p').appendChild(sp)})});document.getElementById('reading-score').textContent=cor+' / '+tot;document.getElementById('reading-detail').textContent=tot>0&&cor>=Math.ceil(tot*0.6)?'合格 ✓':'需加油 ✗';document.getElementById('reading-reveal').classList.add('show')}
+
+function revealTranslation(){document.getElementById('translation-ref').textContent=D.translation.reference;document.getElementById('translation-reveal').classList.add('show')}
+function revealWriting(){document.getElementById('writing-model').textContent=D.writing.model;document.getElementById('writing-reveal').classList.add('show')}
+
+var D={
+meta:{date:"20260523",day:"Saturday"},
+
+listening:{
+
+news:{
+title:"Commercial Space Station Launch",
+tag:"tech",
+audio:"audio/20260523_1.mp3",
+script:"A privately developed space station successfully reached orbit early Tuesday morning, marking a significant milestone in the commercialization of space. The module, named Horizon One, was launched from Cape Canaveral aboard a reusable rocket at 3:47 AM local time. According to mission control, all systems are functioning normally and the station is expected to be fully operational within three months. \"This is the beginning of a new era where space is not just for governments but for private enterprise,\" said Dr. Elena Vasquez, chief executive of Orbital Frontiers, the company behind the project. The station will initially host up to six researchers conducting experiments in microgravity, with plans to expand capacity to twelve by 2028. Industry analysts estimate the commercial space station market could reach fifteen billion dollars annually within the next decade. However, regulatory questions remain regarding safety standards and international coordination.",
+questions:[
+{q:"What milestone did the news report describe?",A:"A new lunar landing.",B:"A space station reaching orbit.",C:"A Mars rover deployment.",D:"A satellite repair mission.","answer":"B"},
+{q:"When is full operation expected?",A:"Within three months.",B:"By the end of the year.",C:"Within six weeks.",D:"By 2028.","answer":"D"},
+{q:"Who made a statement about private enterprise in space?",A:"A government official.",B:"An industry analyst.",C:"A company executive.",D:"A mission controller.","answer":"C"},
+{q:"What is the projected market value?",A:"Six billion dollars.",B:"Twelve billion dollars.",C:"Fifteen billion dollars.",D:"Twenty billion dollars.","answer":"A"},
+{q:"What concern did the report raise?",A:"Funding shortages.",B:"Safety and coordination issues.",C:"Technical malfunctions.",D:"Staffing difficulties.","answer":"C"}
+]},
+
+long_conversation:{
+title:"Research Methodology Discussion",
+tag:"academic",
+audio:"audio/20260523_2.mp3",
+script:"M: Professor Liu, I've been reviewing the data from our survey on campus dining preferences, but I'm a bit concerned about the sample size.\nW: That's a fair concern, David. We collected responses from 340 students across four departments. What specifically is troubling you?\nM: Well, when I break it down by department, the Engineering group only has 45 respondents. I'm not sure if that's enough to draw meaningful conclusions about their preferences.\nW: Actually, for the type of descriptive analysis we're doing, 45 per subgroup is adequate. The key issue isn't the raw number but whether the sample is representative. Have you checked the demographic breakdown?\nM: I did. The gender ratio and year distribution within Engineering roughly match the overall university profile. So that's reassuring. But I was thinking—should we consider running follow-up interviews to supplement the quantitative data?\nW: That's an excellent idea. A mixed-methods approach would strengthen our findings considerably. I'd suggest selecting eight to ten participants from each department for brief semi-structured interviews. Focus on the open-ended responses from the survey as your starting point.\nM: That makes sense. I could schedule those next week. Should I prepare a separate consent form for the interviews?\nW: Yes, absolutely. The ethics committee requires explicit consent for any data collection beyond the original survey. I'll send you the template this afternoon.",
+questions:[
+{q:"What is David's main concern about the survey?",A:"The survey questions were poorly designed.",B:"The response rate was unusually low.",C:"The sample size for one subgroup seems insufficient.",D:"The data collection period was too short.","answer":"C"},
+{q:"How does Professor Liu respond to the sample size issue?",A:"She agrees and suggests restarting the survey.",B:"She says 45 per subgroup is adequate for this analysis.",C:"She recommends removing the Engineering data.",D:"She suggests merging all departments into one group.","answer":"B"},
+{q:"What additional approach does David propose?",A:"Redistributing the survey to more students.",B:"Conducting follow-up interviews.",C:"Using a different statistical method.",D:"Extending the data collection deadline.","answer":"D"},
+{q:"How many interview participants does Professor Liu recommend?",A:"Five to six from each department.",B:"Eight to ten from each department.",C:"Twelve to fifteen total.",D:"All 340 survey respondents.","answer":"A"},
+{q:"What does Professor Liu say about consent forms?",A:"The original survey consent is sufficient.",B:"A separate form is needed for the interviews.",C:"Consent is not required for follow-up research.",D:"David should draft the form himself.","answer":"B"}
+]},
+
+passage:{
+title:"Coral Reef Restoration Efforts",
+tag:"environment",
+audio:"audio/20260523_3.mp3",
+script:"Coral reefs, often called the rainforests of the sea, support approximately 25 percent of all marine species despite covering less than one percent of the ocean floor. Over the past three decades, however, rising ocean temperatures have triggered widespread coral bleaching events, threatening these vital ecosystems. In response, marine biologists have developed an innovative technique known as assisted evolution. The process involves identifying coral colonies that have survived previous heat waves and selectively breeding them to produce more temperature-resistant offspring. These resilient corals are then transplanted onto damaged reef sections. Early trials in the Great Barrier Reef have shown encouraging results, with survival rates of transplanted corals reaching nearly 70 percent, compared to just 30 percent for unassisted natural recovery. Meanwhile, researchers in the Caribbean are experimenting with underwater speakers that play the sounds of healthy reefs to attract fish and other marine life back to degraded areas. While these approaches offer hope, scientists caution that without significant reductions in carbon emissions, even the most resilient corals will eventually reach their thermal limits.",
+questions:[
+{q:"What is the main topic of this passage?",A:"Ocean pollution and its consequences.",B:"Methods to restore damaged coral reefs.",C:"The economic value of marine ecosystems.",D:"New species discovered in coral reefs.","answer":"B"},
+{q:"What proportion of marine species do coral reefs support?",A:"Less than one percent.",B:"About ten percent.",C:"Approximately 25 percent.",D:"Nearly 70 percent.","answer":"C"},
+{q:"What is the purpose of assisted evolution?",A:"To speed up natural reef formation.",B:"To develop temperature-resistant corals.",C:"To create artificial reef structures.",D:"To eliminate harmful algae species.","answer":"A"},
+{q:"What survival rate did transplanted corals achieve?",A:"About 30 percent.",B:"Nearly 50 percent.",C:"Almost 70 percent.",D:"Over 90 percent.","answer":"D"},
+{q:"What concern do scientists express at the end?",A:"The cost of restoration projects.",B:"The risk of introducing invasive species.",C:"The long-term limits without emission cuts.",D:"The difficulty of training marine biologists.","answer":"C"}
+]},
+
+lecture:{
+title:"The Neuroscience of Decision-Making",
+tag:"science",
+audio:"audio/20260523_4.mp3",
+script:"Good afternoon. Today we'll explore a fascinating area of neuroscience: how the brain makes decisions under uncertainty. This question has occupied researchers for decades and has profound implications for economics, public policy, and even our daily lives.\n\nLet me begin with a striking finding from the field. When faced with choices involving risk, the brain does not act as a single unified decision-maker. Instead, multiple neural systems compete with one another, each advocating for different outcomes. The prefrontal cortex, our brain's executive center, engages in deliberate reasoning and weighs long-term consequences. In contrast, the amygdala and related structures respond rapidly to immediate emotional cues, often pushing us toward choices that feel good in the moment.\n\nA recent study published in Nature Neuroscience sheds new light on this competition. Researchers at Stanford used functional magnetic resonance imaging to observe brain activity while participants made financial decisions. They found that the balance of activity between the prefrontal cortex and the amygdala predicted participants' choices with remarkable accuracy—approximately 85 percent of the time. What's more, this predictive power held across different types of decisions, from investment choices to dietary preferences.\n\nIntriguingly, the research also revealed that this neural balance is not fixed. Participants who underwent eight weeks of mindfulness training showed a measurable shift toward prefrontal dominance, suggesting that decision-making patterns can be modified through deliberate practice. However, individual differences remain substantial, and the researchers caution against overgeneralizing these findings.\n\nBy contrast, studies of experienced traders on Wall Street paint a different picture. These professionals, who make hundreds of rapid decisions daily, show reduced amygdala activation during risk assessment—essentially, their brains have learned to suppress the fear response that typically accompanies financial uncertainty. This raises the question of whether such adaptation is beneficial in other domains or whether it might lead to excessive risk-taking outside of professional contexts.\n\nIn conclusion, the neuroscience of decision-making reveals that our choices emerge from a dynamic tension between reason and emotion. Understanding this interplay not only advances scientific knowledge but also opens the door to practical interventions that could help people make better decisions in critical areas of their lives.",
+questions:[
+{q:"What does the speaker identify as a key finding about the brain?",A:"It makes decisions through competing neural systems.",B:"It processes information more slowly under stress.",C:"It relies entirely on the prefrontal cortex.",D:"It cannot make decisions without external input.","answer":"A"},
+{q:"What accuracy rate did the Stanford study achieve?",A:"About 65 percent.",B:"Approximately 75 percent.",C:"About 85 percent.",D:"Nearly 95 percent.","answer":"C"},
+{q:"What effect did mindfulness training produce?",A:"Increased amygdala activation.",B:"A shift toward prefrontal dominance.",C:"Faster emotional responses.",D:"No measurable change.","answer":"B"},
+{q:"What distinguishes experienced traders from average participants?",A:"Higher overall brain activity.",B:"Greater reliance on emotional cues.",C:"Reduced fear response during risk assessment.",D:"Slower decision-making processes.","answer":"D"},
+{q:"What is the speaker's overall conclusion?",A:"Emotion should be eliminated from decisions.",B:"Decisions result from tension between reason and emotion.",C:"The prefrontal cortex is always dominant.",D:"Neuroscience cannot explain financial choices.","answer":"B"}
+]}
+},
+
+reading:{
+
+tech:{
+title:"Brain-Computer Interface Progress",
+text:"Brain-computer interface technology, once confined to the realm of science fiction, has made remarkable strides in recent years. These devices, which establish a direct communication pathway between the brain and external equipment, are transforming the lives of individuals with severe motor disabilities while raising profound questions about the future of human-machine interaction.\n\nThe fundamental principle behind BCI technology involves detecting and interpreting neural signals. When a person thinks about moving their hand, specific patterns of electrical activity emerge in the motor cortex. Modern BCIs use arrays of tiny electrodes implanted near the brain's surface to capture these signals with increasing precision. Advanced machine learning algorithms then decode the neural patterns and translate them into commands that control computer cursors, robotic arms, or even speech synthesizers.\n\nIn a landmark clinical trial conducted at the University of California, researchers demonstrated that a BCI system could restore communication abilities to patients who had lost the capacity to speak due to stroke or neurodegenerative disease. The system achieved a decoding rate of approximately 62 words per minute, approaching the pace of natural conversation. Moreover, error rates dropped below 10 percent when the system was combined with predictive language models that anticipated likely word sequences based on context.\n\nHowever, the path to widespread adoption faces significant obstacles. The surgical procedure required for implanting high-resolution electrode arrays carries inherent medical risks, including infection and tissue rejection. Furthermore, the long-term stability of implanted devices remains a concern, as the brain's immune response can gradually encapsulate electrodes in scar tissue, degrading signal quality over months or years. Researchers are actively exploring less invasive alternatives, such as electrode meshes that can be delivered through blood vessels, avoiding open brain surgery entirely.\n\nDespite these challenges, the ethical implications of BCI technology demand equally urgent attention. As these systems become more sophisticated, they will inevitably collect increasingly intimate neural data. Who owns this information? Could it be used to infer thoughts or emotions that the individual did not intend to share? These questions extend beyond privacy into the territory of cognitive liberty—the fundamental right to control one's own mental processes. The coming decade will require not only technical innovation but also thoughtful regulatory frameworks that balance progress with protection.",
+vocab:[
+{word:"neural","phonetic":"/ˈnjʊərəl/","def":"adj. 神经的"},
+{word:"decode","phonetic":"/diːˈkəʊd/","def":"v. 解码；破译"},
+{word:"synthesizer","phonetic":"/ˈsɪnθɪsaɪzər/","def":"n. 合成器"},
+{word:"encapsulate","phonetic":"/ɪnˈkæpsjuleɪt/","def":"v. 包裹；概括"},
+{word:"cognitive","phonetic":"/ˈkɒɡnɪtɪv/","def":"adj. 认知的"},
+{word:"liberty","phonetic":"/ˈlɪbəti/","def":"n. 自由"},
+{word:"implant","phonetic":"/ɪmˈplɑːnt/","def":"v. 植入；灌输"},
+{word:"invasive","phonetic":"/ɪnˈveɪsɪv/","def":"adj. 侵入性的"}
+],
+questions:[
+{q:"What is the fundamental function of BCI technology?",A:"To improve computer processing speed.",B:"To connect brain signals with external devices.",C:"To replace damaged brain tissue.",D:"To enhance human memory capacity.","answer":"B"},
+{q:"What communication rate did the UC clinical trial achieve?",A:"About 30 words per minute.",B:"Approximately 45 words per minute.",C:"About 62 words per minute.",D:"Nearly 100 words per minute.","answer":"C"},
+{q:"The word 'encapsulate' in paragraph 4 is closest in meaning to ___?",A:"Protect and enhance.",B:"Surround and isolate.",C:"Absorb and transform.",D:"Detect and transmit.","answer":"D"},
+{q:"What can be inferred about non-invasive BCI approaches?",A:"They have already replaced surgical implants.",B:"They are being explored to avoid brain surgery risks.",C:"They provide better signal quality than implants.",D:"They have been abandoned due to safety concerns.","answer":"A"},
+{q:"What is the author's main purpose in the final paragraph?",A:"To describe new technical breakthroughs.",B:"To argue for the discontinuation of BCI research.",C:"To emphasize the need for ethical and regulatory consideration.",D:"To compare different BCI manufacturers.","answer":"B"}
+]},
+
+social:{
+title:"The Rise of Digital Nomads",
+text:"The traditional model of employment—commuting to a fixed office from nine to five—has been steadily eroding over the past decade. In its place, a new class of workers has emerged: the digital nomads. These professionals leverage technology to perform their jobs from anywhere in the world, untethered from corporate headquarters and conventional work schedules.\n\nSeveral factors have fueled this transformation. The widespread availability of high-speed internet, even in relatively remote locations, has made location-independent work technically feasible. Cloud-based collaboration tools such as shared documents, video conferencing platforms, and project management software have enabled seamless teamwork across time zones. Perhaps most significantly, the global pandemic of the early 2020s fundamentally altered employer attitudes toward remote work, demonstrating that productivity could be maintained—and in some cases improved—outside traditional office environments.\n\nThe demographic profile of digital nomads challenges common stereotypes. While early adopters were predominantly young freelancers in creative fields, the movement now encompasses professionals across diverse industries and age groups. A 2025 survey of over 4,000 remote workers found that nearly 40 percent were over the age of 35, and more than half held full-time positions with established companies rather than working as independent contractors. Software developers, marketing specialists, financial analysts, and even legal professionals have joined the ranks.\n\nNevertheless, the lifestyle carries significant drawbacks that are often understated in popular media. Constant travel can lead to social isolation, as meaningful long-term relationships become difficult to sustain. The absence of clear boundaries between work and personal life frequently results in burnout, with many digital nomads reporting longer working hours than their office-based counterparts. Additionally, navigating the complex web of visa regulations, tax obligations across multiple jurisdictions, and healthcare coverage presents ongoing administrative challenges that can prove overwhelming.\n\nThe future of digital nomadism will likely be shaped by policy responses from governments recognizing both the opportunities and risks. Countries such as Portugal, Estonia, and Thailand have already introduced special visas designed to attract remote workers, viewing them as contributors to local economies without competing for domestic jobs. Whether other nations follow suit—and how they balance the interests of digital nomads with those of local residents—will determine the trajectory of this evolving work paradigm.",
+vocab:[
+{word:"nomad","phonetic":"/ˈnəʊmæd/","def":"n. 游牧者；漫游者"},
+{word:"untethered","phonetic":"/ʌnˈteðəd/","def":"adj. 不受束缚的"},
+{word:"demographic","phonetic":"/ˌdeməˈɡræfɪk/","def":"adj. 人口统计的"},
+{word:"contractor","phonetic":"/kənˈtræktər/","def":"n. 承包商；立约人"},
+{word:"jurisdiction","phonetic":"/ˌdʒʊərɪsˈdɪkʃən/","def":"n. 管辖范围；司法权"},
+{word:"burnout","phonetic":"/ˈbɜːnaʊt/","def":"n. 精疲力竭；倦怠"},
+{word:"trajectory","phonetic":"/trəˈdʒektəri/","def":"n. 轨迹；发展路径"},
+{word:"paradigm","phonetic":"/ˈpærədaɪm/","def":"n. 范式；模式"}
+],
+questions:[
+{q:"What does the author say about the traditional employment model?",A:"It has become more popular recently.",B:"It has been gradually declining.",C:"It remains dominant in all industries.",D:"It was never widely adopted.","answer":"C"},
+{q:"According to the passage, what most changed employer attitudes?",A:"The availability of cloud software.",B:"The growth of high-speed internet.",C:"The global pandemic experience.",D:"The rise of social media platforms.","answer":"B"},
+{q:"What does the 2025 survey indicate about digital nomads?",A:"Most are under 25 years old.",B:"Fewer than 20 percent work full-time.",C:"Many are over 35 and hold full-time positions.",D:"The majority work in creative fields.","answer":"A"},
+{q:"Which of the following is mentioned as a drawback?",A:"Lower salaries than office workers.",B:"Difficulty maintaining long-term relationships.",C:"Lack of access to technology.",D:"Limited career advancement opportunities.","answer":"D"},
+{q:"What can be inferred about countries offering special visas?",A:"They are trying to reduce foreign workers.",B:"They see digital nomads as economic contributors.",C:"They prefer nomads to take local jobs.",D:"They are mainly located in South America.","answer":"B"}
+]},
+
+long:{
+title:"The Circular Economy Revolution",
+text:"For much of the industrial age, the global economy has operated on a linear model: extract raw materials, manufacture products, use them, and dispose of them. This take-make-waste approach has generated unprecedented prosperity but at an enormous environmental cost. Now, a growing coalition of businesses, policymakers, and environmental advocates is championing an alternative: the circular economy.\n\nAt its core, the circular economy seeks to eliminate waste by design. Rather than treating materials as disposable after a single use, products are engineered from the outset to be repaired, refurbished, remanufactured, or recycled. The concept draws inspiration from natural ecosystems, where one organism's waste becomes another's nutrient. In a fully circular system, the very notion of waste becomes obsolete—materials flow continuously through the economy, maintaining their value at every stage.\n\nSeveral multinational corporations have already demonstrated the commercial viability of circular principles. The Dutch electronics company Philips now offers lighting as a service rather than selling light bulbs; customers pay for illumination while Philips retains ownership of the hardware, creating a powerful incentive to design durable, upgradeable products. Similarly, the French tire manufacturer Michelin leases tires to trucking fleets on a per-kilometer basis, which has motivated the company to develop compounds that last longer and can be retreaded multiple times.\n\nHowever, critics argue that the circular economy faces fundamental economic barriers that corporate case studies often gloss over. The upfront investment required to redesign products and supply chains can be prohibitive for small and medium-sized enterprises. Moreover, the current economic system rewards virgin material extraction through subsidies and tax structures that make recycled materials comparatively expensive. In many regions, it remains cheaper to extract new aluminum from the ground than to recycle existing aluminum—a perverse incentive that undermines circular ambitions.\n\nThe policy landscape is beginning to shift, albeit unevenly across the globe. The European Union has introduced comprehensive circular economy legislation, including mandatory recycled content requirements for packaging and a right-to-repair framework for consumer electronics. China, meanwhile, has incorporated circular economy principles into its latest five-year plan, with particular emphasis on industrial parks where waste from one factory can serve as raw material for another—a concept known as industrial symbiosis. The question is no longer whether circular principles can work, but whether the transition can happen fast enough to address the mounting pressures of resource scarcity and climate change.",
+vocab:[
+{word:"linear","phonetic":"/ˈlɪniər/","def":"adj. 线性的；直线的"},
+{word:"circular","phonetic":"/ˈsɜːkjʊlər/","def":"adj. 循环的；圆形的"},
+{word:"refurbish","phonetic":"/riːˈfɜːbɪʃ/","def":"v. 翻新；整修"},
+{word:"obsolete","phonetic":"/ˈɒbsəliːt/","def":"adj. 过时的；废弃的"},
+{word:"prohibitive","phonetic":"/prəˈhɪbɪtɪv/","def":"adj. 高得令人望而却步的"},
+{word:"perverse","phonetic":"/pəˈvɜːs/","def":"adj. 有悖常理的；反常的"},
+{word:"symbiosis","phonetic":"/ˌsɪmbaɪˈəʊsɪs/","def":"n. 共生关系"},
+{word:"mounting","phonetic":"/ˈmaʊntɪŋ/","def":"adj. 日益增长的"}
+],
+questions:[
+{q:"What is the main focus of the first paragraph?",A:"Historical manufacturing methods.",B:"The contrast between linear and circular models.",C:"Government environmental regulations.",D:"Consumer attitudes toward waste.","answer":"B"},
+{q:"How does Philips implement circular economy principles?",A:"By selling cheaper light bulbs.",B:"By offering lighting as a service.",C:"By reducing product variety.",D:"By outsourcing manufacturing.","answer":"D"},
+{q:"According to critics, what barrier do smaller businesses face?",A:"Lack of consumer demand.",B:"Insufficient technical knowledge.",C:"High upfront investment costs.",D:"Government opposition to reform.","answer":"C"},
+{q:"What is the author's attitude toward the circular economy transition?",A:"Deeply skeptical about its feasibility.",B:"Cautiously optimistic but concerned about speed.",C:"Enthusiastic about immediate global adoption.",D:"Neutral with no clear position.","answer":"B"},
+{q:"What does the passage identify as the key remaining question?",A:"Whether circular principles are theoretically sound.",B:"Whether the transition can occur quickly enough.",C:"Which companies should lead the change.",D:"How to measure environmental impact.","answer":"A"}
+]}
+},
+
+translation:{
+cn:"中国书法是中华民族独有的艺术形式，有着数千年的悠久历史。它不仅是文字书写的技艺，更被认为是表达书写者情感和品格的重要方式。历代书法家通过笔墨的浓淡、结构的疏密，展现出独特的审美追求。如今，书法已走出国门，在世界各地拥有越来越多的爱好者。许多外国朋友通过练习书法，不仅提升了艺术修养，还加深了对中国文化的理解。",
+reference:"Chinese calligraphy is a unique art form of the Chinese nation, with a long history spanning thousands of years. It is not only a technique of writing characters but is also regarded as an important means of expressing the calligrapher's emotions and character. Calligraphers across different dynasties have demonstrated unique aesthetic pursuits through variations in ink density and structural arrangement. Today, calligraphy has spread beyond national borders and gained an increasing number of enthusiasts around the world. Through practicing calligraphy, many foreign friends have not only enhanced their artistic cultivation but also deepened their understanding of Chinese culture."
+},
+
+writing:{
+prompt:"Directions: For this part, you are allowed 30 minutes to write an essay on the topic \"The Impact of Short-Form Video Platforms on Young People\". You should describe the phenomenon, analyze both positive and negative effects, and state your own view. You should write at least 150 words but no more than 200 words.",
+model:"Short-form video platforms have become an inseparable part of young people's daily lives, fundamentally reshaping how they consume information and spend their leisure time.\n\nOn the positive side, these platforms have democratized content creation and knowledge sharing. Educational creators now reach millions with bite-sized lessons on topics ranging from science to history. Many young users have discovered new hobbies, developed practical skills, and even built careers through these platforms. The algorithm-driven recommendation systems also expose users to diverse perspectives they might never encounter otherwise.\n\nHowever, the negative consequences deserve equal attention. The average young user now spends over two hours daily scrolling through short videos, time that could be invested in deeper learning or face-to-face social interaction. The instant gratification loop created by endless scrolling can impair attention spans and reduce tolerance for activities requiring sustained focus, such as reading books or completing complex tasks. Furthermore, the pressure to present an idealized version of one's life on these platforms has been linked to increased anxiety among adolescents.\n\nIn my view, short-form video platforms are powerful tools whose impact depends entirely on how they are used. Rather than calling for blanket restrictions, we should focus on promoting digital literacy and self-regulation skills among young people, helping them harness the benefits while minimizing the harm."
+}
+};
+
+(function init(){
+  var L=['news','long_conversation','passage','lecture'];
+  var aL=false;
+  L.forEach(function(k){
+    var d=D.listening[k];
+    var e=document.getElementById('listening-'+k);
+    if(!e)return;
+    if(d&&d.questions&&d.questions.length>0){e.style.display='';aL=true;renderQuestions(k+'-questions',d.questions,k,false);var ae=document.getElementById(k+'-audio');if(ae&&d.audio)ae.src=d.audio}
+    else{e.style.display='none'}
+  });
+  if(!aL)document.getElementById('listening').style.display='none';
+
+  var R=['tech','social','long'];
+  var aR=false;
+  R.forEach(function(k){
+    var d=D.reading[k];
+    var e=document.getElementById('reading-'+k);
+    if(!e)return;
+    if(d){e.style.display='';aR=true;if(d.text)renderText(k+'-text',d.text);if(d.vocab&&d.vocab.length>0)renderVocab(k+'-vocab',d.vocab);if(d.questions)renderQuestions(k+'-questions',d.questions,k)}
+    else{e.style.display='none'}
+  });
+  if(!aR)document.getElementById('reading').style.display='none';
+
+  if(D.translation)document.getElementById('translation-prompt').textContent=D.translation.cn;
+  if(D.writing)document.getElementById('writing-prompt').textContent=D.writing.prompt;
+})();
+</script>
+</body>
+</html>
