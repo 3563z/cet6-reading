@@ -281,7 +281,7 @@ var DATA = {
     "news": {
       "title": "Multi-Cancer Early Detection Blood Test Breakthrough",
       "tag": "health",
-      "audio": "",
+      "audio": "audio/20260525_1.mp3",
       "script": "Researchers at Johns Hopkins University have developed [Q1]a revolutionary blood test capable of detecting eight common cancers at early stages with over 90 percent accuracy, according to a study published in the journal Science on Friday. The non-invasive screening method, known as CancerSEEK, analyzes circulating tumor DNA and protein biomarkers from a single blood sample, [Q2]identifying cancers of the ovary, liver, stomach, pancreas, esophagus, colon, lung, and breast long before symptoms appear.\n\nIn a clinical trial involving [Q3]10,000 participants across five countries, the test correctly identified cancer in 94 percent of cases where the disease was present, researchers reported. 'This represents a fundamental shift in how we approach cancer screening,' said lead investigator Dr. David Chen. 'For the first time, we can detect multiple cancer types simultaneously [Q4]without invasive procedures such as biopsies or endoscopies.' The breakthrough could dramatically reduce cancer mortality rates, as early detection remains the single most critical factor in successful treatment outcomes. Currently, [Q5]routine screening is only available for a handful of cancers, leaving the majority of cases undiagnosed until patients develop noticeable symptoms, when treatment options are often limited.",
       "questions": [
         {
@@ -521,11 +521,17 @@ function renderQuestions(containerId, questions, prefix) {
   container.innerHTML = '';
   if (!questions || !questions.length) return;
   var letters = ['A','B','C','D'];
+  var listeningKeys = ['news', 'long_conversation', 'passage', 'lecture'];
+  var isListening = listeningKeys.indexOf(prefix) !== -1;
   questions.forEach(function(q, i) {
     var div = document.createElement('div');
     div.className = 'question-item';
     div.id = prefix + '-q-' + i;
-    var html = '<p>' + (i+1) + '. ' + escapeHtml(q.q) + '</p>';
+    if (isListening) {
+      var html = '<p class="quest-label">' + (i+1) + '.</p>';
+    } else {
+      var html = '<p>' + (i+1) + '. ' + escapeHtml(q.q) + '</p>';
+    }
     letters.forEach(function(l) {
       html += '<label><input type="radio" name="' + prefix + '-' + i + '" value="' + l + '"> ' + l + '. ' + escapeHtml(q[l]) + '</label>';
     });
