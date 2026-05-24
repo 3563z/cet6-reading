@@ -1,6 +1,278 @@
 <!--
   CET-6 Daily 标准模板 v2 — 全题型自适应
-  规则：只替换 <script> 中的 const DATA = {
+  规则：只替换 <script> 中的 const DATA = {...}，其他一切不动。
+  周一~周日共用此文件，INIT 自动显示/隐藏对应 section。
+  
+  不可偏离的教训（0522事故）：
+  ① div ID 必须通过 DATA key 派生，渲染/提交同一来源
+  ② CSS 三主题变量不可丢
+  ③ <audio> 不可缺
+  ④ 词汇表初始可见
+  ⑤ 答案 ≥2 字母 + 单字母 ≤60%
+  ⑥ 标题全中文
+  ⑦ JS 不压缩
+  ⑧ escapeHtml 覆盖所有 innerHTML 路径
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CET-6 每日练习 - 2026年5月24日 星期日</title>
+<style>
+:root {
+  --bg-page: #f5f7fa;
+  --bg-section: #ffffff;
+  --text: #2d3436;
+  --text-muted: #888;
+  --accent: #6c5ce7;
+  --accent-hover: #5a4bd1;
+  --accent-light: #f0f0ff;
+  --border: #eee;
+  --reveal-bg: #f8f9fa;
+  --reveal-border: #e9ecef;
+  --correct: #27ae60;
+  --wrong: #e74c3c;
+  --header-grad-1: #6c5ce7;
+  --header-grad-2: #a29bfe;
+  --shadow: rgba(0,0,0,0.06);
+  --input-bg: #fff;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+[data-theme="warm"] {
+  --bg-page: #faf6ed;
+  --bg-section: #fffcf5;
+  --text: #3d3535;
+  --text-muted: #999;
+  --accent: #c0784a;
+  --accent-hover: #a8643a;
+  --accent-light: #f5ede4;
+  --border: #e8ddd0;
+  --reveal-bg: #f8f1e8;
+  --reveal-border: #e8ddd0;
+  --correct: #5d8a3c;
+  --wrong: #c0392b;
+  --header-grad-1: #c0784a;
+  --header-grad-2: #d4a574;
+  --shadow: rgba(0,0,0,0.04);
+  --input-bg: #fffcf5;
+}
+[data-theme="dark"] {
+  --bg-page: #0f0f1a;
+  --bg-section: #1a1a2e;
+  --text: #e0e0e0;
+  --text-muted: #888;
+  --accent: #9370db;
+  --accent-hover: #a884e8;
+  --accent-light: #2a1f40;
+  --border: #2a2a3e;
+  --reveal-bg: #151525;
+  --reveal-border: #2a2a3e;
+  --correct: #5cb85c;
+  --wrong: #e74c3c;
+  --header-grad-1: #3d1f6e;
+  --header-grad-2: #6c3fa0;
+  --shadow: rgba(0,0,0,0.2);
+  --input-bg: #1a1a2e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg-page); color: var(--text); line-height: 1.8; }
+.header { background: linear-gradient(135deg, var(--header-grad-1), var(--header-grad-2)); color: #fff; padding: 30px 20px; text-align: center; }
+.header h1 { font-size: 24px; margin-bottom: 5px; }
+.header p { font-size: 14px; opacity: 0.9; }
+.theme-switcher { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
+.theme-btn { padding: 6px 18px; border: 2px solid rgba(255,255,255,0.3); border-radius: 20px; background: transparent; color: #fff; cursor: pointer; font-size: 13px; transition: all 0.2s; }
+.theme-btn:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.1); }
+.theme-btn.active { border-color: #fff; background: rgba(255,255,255,0.2); font-weight: 600; }
+.container { max-width: 800px; margin: 0 auto; padding: 20px; }
+.section { background: var(--bg-section); border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px var(--shadow); transition: background-color 0.3s ease; }
+.section h2 { font-size: 20px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--accent); color: var(--accent); }
+.section h3 { font-size: 16px; margin: 16px 0 10px; color: var(--text-muted); }
+.audio-player { width: 100%; margin: 10px 0; border-radius: 6px; }
+.reading-text { font-size: 15px; line-height: 1.9; text-align: justify; margin: 15px 0; }
+.reading-text p { margin-bottom: 12px; }
+.vocab-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px; }
+.vocab-table th { background: var(--accent-light); padding: 8px 12px; text-align: left; border: 1px solid var(--border); color: var(--text); }
+.vocab-table td { padding: 8px 12px; border: 1px solid var(--border); }
+.question-list { margin: 15px 0; }
+.question-item { padding: 12px; margin: 8px 0; background: var(--bg-page); border-radius: 8px; border: 1px solid var(--border); }
+.question-item p { font-weight: 600; margin-bottom: 8px; }
+.question-item label { display: block; padding: 4px 0; font-size: 14px; cursor: pointer; }
+.question-item input[type="radio"] { margin-right: 8px; accent-color: var(--accent); }
+.question-item .correct { color: var(--correct); font-weight: 600; }
+.question-item .wrong { color: var(--wrong); }
+.translation-input, .writing-input { width: 100%; min-height: 150px; padding: 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; line-height: 1.6; resize: vertical; font-family: inherit; background: var(--input-bg); color: var(--text); }
+.writing-input { min-height: 200px; }
+.btn { display: inline-block; padding: 10px 24px; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-size: 15px; cursor: pointer; margin: 10px 5px 0 0; transition: background 0.2s; }
+.btn:hover { background: var(--accent-hover); }
+.reveal-content { display: none; margin-top: 20px; padding: 20px; background: var(--reveal-bg); border-radius: 8px; border: 1px solid var(--reveal-border); transition: background-color 0.3s ease; }
+.reveal-content.show { display: block; }
+.reveal-content h4 { color: var(--accent); margin-bottom: 10px; font-size: 16px; }
+.reveal-content h5 { color: var(--text-muted); margin: 12px 0 6px; font-size: 14px; }
+.reveal-content .script-text { font-size: 14px; line-height: 1.8; margin: 10px 0; white-space: pre-wrap; }
+.quest-label { font-size: 13px; color: var(--text-muted); margin: 5px 0; }
+hr { margin: 20px 0; border: none; border-top: 1px solid var(--border); }
+.result-bar { text-align: center; padding: 20px; margin: 15px 0; background: var(--reveal-bg); border-radius: 8px; border: 1px solid var(--reveal-border); }
+.result-bar .score { font-size: 28px; font-weight: 700; color: var(--accent); }
+.result-bar .detail { font-size: 16px; margin-top: 5px; color: var(--text-muted); }
+@media (min-width: 768px) {
+  .container { max-width: 800px; }
+  .section { padding: 28px; }
+  .section h2 { font-size: 22px; }
+  .reading-text { font-size: 16px; }
+  .vocab-table { font-size: 15px; }
+  .question-item label { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📖 CET-6 每日练习</h1>
+  <p>2026年5月24日 星期日 | 听力·阅读·翻译·作文</p>
+  <div class="theme-switcher">
+    <button class="theme-btn active" data-theme="default">🌙 默认</button>
+    <button class="theme-btn" data-theme="warm">☀️ 暖黄</button>
+    <button class="theme-btn" data-theme="dark">🌑 深色</button>
+  </div>
+</div>
+<div class="container">
+
+<!-- ============ 听力 ============ -->
+<div class="section" id="listening">
+  <h2>🎧 听力理解 (Listening Comprehension)</h2>
+
+  <div id="listening-news" style="display:none">
+    <h3>短篇新闻 (News Report)</h3>
+    <audio class="audio-player" controls id="news-audio" src=""></audio>
+    <div class="question-list" id="news-questions"></div>
+  </div>
+
+  <div id="listening-long_conversation" style="display:none">
+    <h3>长对话 (Long Conversation)</h3>
+    <audio class="audio-player" controls id="long_conversation-audio" src=""></audio>
+    <div class="question-list" id="long_conversation-questions"></div>
+  </div>
+
+  <div id="listening-passage" style="display:none">
+    <h3>听力篇章 (Passage)</h3>
+    <audio class="audio-player" controls id="passage-audio" src=""></audio>
+    <div class="question-list" id="passage-questions"></div>
+  </div>
+
+  <div id="listening-lecture" style="display:none">
+    <h3>讲座 (Lecture)</h3>
+    <audio class="audio-player" controls id="lecture-audio" src=""></audio>
+    <div class="question-list" id="lecture-questions"></div>
+  </div>
+
+  <button class="btn" id="btn-listening" onclick="revealListening()">📝 提交听力答案 &amp; 查看原文</button>
+  <div class="reveal-content" id="listening-reveal">
+    <h4>📄 听力原文</h4>
+    <div id="listening-news-reveal" style="display:none">
+      <h5>新闻原文</h5>
+      <div class="script-text" id="news-script"></div>
+      <audio class="audio-player" controls id="news-audio-r" src=""></audio>
+    </div>
+    <div id="listening-long_conversation-reveal" style="display:none">
+      <h5>长对话原文</h5>
+      <div class="script-text" id="long_conversation-script"></div>
+      <audio class="audio-player" controls id="long_conversation-audio-r" src=""></audio>
+    </div>
+    <div id="listening-passage-reveal" style="display:none">
+      <h5>篇章原文</h5>
+      <div class="script-text" id="passage-script"></div>
+      <audio class="audio-player" controls id="passage-audio-r" src=""></audio>
+    </div>
+    <div id="listening-lecture-reveal" style="display:none">
+      <h5>讲座原文</h5>
+      <div class="script-text" id="lecture-script"></div>
+      <audio class="audio-player" controls id="lecture-audio-r" src=""></audio>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 阅读 ============ -->
+<div class="section" id="reading">
+  <h2>📚 阅读理解 (Reading Comprehension)</h2>
+
+  <div id="reading-tech" style="display:none">
+    <h3>Passage 1：科技</h3>
+    <div class="reading-text" id="tech-text"></div>
+    <h4>📝 核心词汇</h4>
+    <table class="vocab-table" id="tech-vocab"><tr><th>单词</th><th>音标</th><th>释义</th></tr></table>
+    <div class="question-list" id="tech-questions"></div>
+  </div>
+
+  <div id="reading-social" style="display:none">
+    <h3>Passage 2：社会</h3>
+    <div class="reading-text" id="social-text"></div>
+    <h4>📝 核心词汇</h4>
+    <table class="vocab-table" id="social-vocab"><tr><th>单词</th><th>音标</th><th>释义</th></tr></table>
+    <div class="question-list" id="social-questions"></div>
+  </div>
+
+  <div id="reading-long" style="display:none">
+    <h3>长篇阅读 (Long Reading)</h3>
+    <div class="reading-text" id="long-text"></div>
+    <h4>📝 核心词汇</h4>
+    <table class="vocab-table" id="long-vocab"><tr><th>单词</th><th>音标</th><th>释义</th></tr></table>
+    <div class="question-list" id="long-questions"></div>
+  </div>
+
+  <button class="btn" id="btn-reading" onclick="revealReading()">📝 提交阅读答案 &amp; 查看解析</button>
+  <div class="reveal-content" id="reading-reveal">
+    <h4>📊 答题结果</h4>
+    <div class="result-bar">
+      <div class="score" id="reading-score"></div>
+      <div class="detail" id="reading-detail"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 翻译 ============ -->
+<div class="section" id="translation">
+  <h2>✍️ 翻译 (Translation) — 中译英</h2>
+  <p style="margin-bottom:10px;font-size:15px;line-height:1.8;" id="translation-prompt"></p>
+  <textarea class="translation-input" id="translation-input" placeholder="请在此输入你的英文翻译..."></textarea>
+  <button class="btn" onclick="revealTranslation()">📝 提交 &amp; 查看参考译文</button>
+  <div class="reveal-content" id="translation-reveal">
+    <h4>💡 参考译文</h4>
+    <div class="script-text" id="translation-ref"></div>
+    <audio class="audio-player" controls src="audio/translation_reference.mp3"></audio>
+  </div>
+</div>
+
+<!-- ============ 写作 ============ -->
+<div class="section" id="writing">
+  <h2>📝 写作 (Writing)</h2>
+  <p style="margin-bottom:15px;font-size:14px;line-height:1.8;" id="writing-prompt"></p>
+  <textarea class="writing-input" id="writing-input" placeholder="请在此输入你的作文..."></textarea>
+  <button class="btn" onclick="revealWriting()">📝 提交 &amp; 查看范文</button>
+  <div class="reveal-content" id="writing-reveal">
+    <h4>💡 参考范文</h4>
+    <div class="script-text" id="writing-model"></div>
+    <audio class="audio-player" controls src="audio/writing_model.mp3"></audio>
+  </div>
+</div>
+
+</div>
+
+<script>
+// ========== THEME SWITCHER ==========
+(function() {
+  var btns = document.querySelectorAll('.theme-btn');
+  btns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var theme = this.dataset.theme;
+      document.documentElement.setAttribute('data-theme', theme === 'default' ? '' : theme);
+      btns.forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+    });
+  });
+})();
+
+// ========== DATA ==========
+var DATA = {
   "meta": {
     "date": "20260524",
     "day": "Sunday"
