@@ -970,7 +970,8 @@ function renderQuestions(containerId, questions, prefix) {
     var div = document.createElement('div');
     div.className = 'question-item';
     div.id = prefix + '-q-' + i;
-    var html = '<p>' + (i+1) + '. ' + escapeHtml(q.q) + '</p>';
+    var isLC = prefix === 'news' || prefix === 'long_conversation' || prefix === 'passage' || prefix === 'lecture';
+    var html = isLC ? '<p class="quest-label">' + (i+1) + '.</p>' : '<p>' + (i+1) + '. ' + escapeHtml(q.q) + '</p>';
     letters.forEach(function(l) {
       html += '<label><input type="radio" name="' + prefix + '-' + i + '" value="' + l + '"> ' + l + '. ' + escapeHtml(q[l]) + '</label>';
     });
