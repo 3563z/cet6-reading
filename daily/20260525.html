@@ -1,0 +1,683 @@
+<!--
+  CET-6 Daily 标准模板 v2 — 全题型自适应
+  规则：只替换 <script> 中的 const DATA = {...}，其他一切不动。
+  周一~周日共用此文件，INIT 自动显示/隐藏对应 section。
+  
+  不可偏离的教训（0522事故）：
+  ① div ID 必须通过 DATA key 派生，渲染/提交同一来源
+  ② CSS 三主题变量不可丢
+  ③ <audio> 不可缺
+  ④ 词汇表初始可见
+  ⑤ 答案 ≥2 字母 + 单字母 ≤60%
+  ⑥ 标题全中文
+  ⑦ JS 不压缩
+  ⑧ escapeHtml 覆盖所有 innerHTML 路径
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CET-6 每日练习 - 2026年5月25日 星期一</title>
+<style>
+:root {
+  --bg-page: #f5f7fa;
+  --bg-section: #ffffff;
+  --text: #2d3436;
+  --text-muted: #888;
+  --accent: #6c5ce7;
+  --accent-hover: #5a4bd1;
+  --accent-light: #f0f0ff;
+  --border: #eee;
+  --reveal-bg: #f8f9fa;
+  --reveal-border: #e9ecef;
+  --correct: #27ae60;
+  --wrong: #e74c3c;
+  --header-grad-1: #6c5ce7;
+  --header-grad-2: #a29bfe;
+  --shadow: rgba(0,0,0,0.06);
+  --input-bg: #fff;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+[data-theme="warm"] {
+  --bg-page: #faf6ed;
+  --bg-section: #fffcf5;
+  --text: #3d3535;
+  --text-muted: #999;
+  --accent: #c0784a;
+  --accent-hover: #a8643a;
+  --accent-light: #f5ede4;
+  --border: #e8ddd0;
+  --reveal-bg: #f8f1e8;
+  --reveal-border: #e8ddd0;
+  --correct: #5d8a3c;
+  --wrong: #c0392b;
+  --header-grad-1: #c0784a;
+  --header-grad-2: #d4a574;
+  --shadow: rgba(0,0,0,0.04);
+  --input-bg: #fffcf5;
+}
+[data-theme="dark"] {
+  --bg-page: #0f0f1a;
+  --bg-section: #1a1a2e;
+  --text: #e0e0e0;
+  --text-muted: #888;
+  --accent: #9370db;
+  --accent-hover: #a884e8;
+  --accent-light: #2a1f40;
+  --border: #2a2a3e;
+  --reveal-bg: #151525;
+  --reveal-border: #2a2a3e;
+  --correct: #5cb85c;
+  --wrong: #e74c3c;
+  --header-grad-1: #3d1f6e;
+  --header-grad-2: #6c3fa0;
+  --shadow: rgba(0,0,0,0.2);
+  --input-bg: #1a1a2e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg-page); color: var(--text); line-height: 1.8; }
+.header { background: linear-gradient(135deg, var(--header-grad-1), var(--header-grad-2)); color: #fff; padding: 30px 20px; text-align: center; }
+.header h1 { font-size: 24px; margin-bottom: 5px; }
+.header p { font-size: 14px; opacity: 0.9; }
+.theme-switcher { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
+.theme-btn { padding: 6px 18px; border: 2px solid rgba(255,255,255,0.3); border-radius: 20px; background: transparent; color: #fff; cursor: pointer; font-size: 13px; transition: all 0.2s; }
+.theme-btn:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.1); }
+.theme-btn.active { border-color: #fff; background: rgba(255,255,255,0.2); font-weight: 600; }
+.container { max-width: 800px; margin: 0 auto; padding: 20px; }
+.section { background: var(--bg-section); border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px var(--shadow); transition: background-color 0.3s ease; }
+.section h2 { font-size: 20px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--accent); color: var(--accent); }
+.section h3 { font-size: 16px; margin: 16px 0 10px; color: var(--text-muted); }
+.audio-player { width: 100%; margin: 10px 0; border-radius: 6px; }
+.reading-text { font-size: 15px; line-height: 1.9; text-align: justify; margin: 15px 0; }
+.reading-text p { margin-bottom: 12px; }
+.vocab-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px; }
+.vocab-table th { background: var(--accent-light); padding: 8px 12px; text-align: left; border: 1px solid var(--border); color: var(--text); }
+.vocab-table td { padding: 8px 12px; border: 1px solid var(--border); }
+.question-list { margin: 15px 0; }
+.question-item { padding: 12px; margin: 8px 0; background: var(--bg-page); border-radius: 8px; border: 1px solid var(--border); }
+.question-item p { font-weight: 600; margin-bottom: 8px; }
+.question-item label { display: block; padding: 4px 0; font-size: 14px; cursor: pointer; }
+.question-item input[type="radio"] { margin-right: 8px; accent-color: var(--accent); }
+.question-item .correct { color: var(--correct); font-weight: 600; }
+.question-item .wrong { color: var(--wrong); }
+.translation-input, .writing-input { width: 100%; min-height: 150px; padding: 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; line-height: 1.6; resize: vertical; font-family: inherit; background: var(--input-bg); color: var(--text); }
+.writing-input { min-height: 200px; }
+.btn { display: inline-block; padding: 10px 24px; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-size: 15px; cursor: pointer; margin: 10px 5px 0 0; transition: background 0.2s; }
+.btn:hover { background: var(--accent-hover); }
+.reveal-content { display: none; margin-top: 20px; padding: 20px; background: var(--reveal-bg); border-radius: 8px; border: 1px solid var(--reveal-border); transition: background-color 0.3s ease; }
+.reveal-content.show { display: block; }
+.reveal-content h4 { color: var(--accent); margin-bottom: 10px; font-size: 16px; }
+.reveal-content h5 { color: var(--text-muted); margin: 12px 0 6px; font-size: 14px; }
+.reveal-content .script-text { font-size: 14px; line-height: 1.8; margin: 10px 0; white-space: pre-wrap; }
+.quest-label { font-size: 13px; color: var(--text-muted); margin: 5px 0; }
+hr { margin: 20px 0; border: none; border-top: 1px solid var(--border); }
+.result-bar { text-align: center; padding: 20px; margin: 15px 0; background: var(--reveal-bg); border-radius: 8px; border: 1px solid var(--reveal-border); }
+.result-bar .score { font-size: 28px; font-weight: 700; color: var(--accent); }
+.result-bar .detail { font-size: 16px; margin-top: 5px; color: var(--text-muted); }
+@media (min-width: 768px) {
+  .container { max-width: 800px; }
+  .section { padding: 28px; }
+  .section h2 { font-size: 22px; }
+  .reading-text { font-size: 16px; }
+  .vocab-table { font-size: 15px; }
+  .question-item label { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📖 CET-6 每日练习</h1>
+  <p>2026年5月25日 星期一 | 听力·阅读·翻译·作文</p>
+  <div class="theme-switcher">
+    <button class="theme-btn active" data-theme="default">🌙 默认</button>
+    <button class="theme-btn" data-theme="warm">☀️ 暖黄</button>
+    <button class="theme-btn" data-theme="dark">🌑 深色</button>
+  </div>
+</div>
+<div class="container">
+
+<!-- ============ 听力 ============ -->
+<div class="section" id="listening">
+  <h2>🎧 听力理解 (Listening Comprehension)</h2>
+
+  <div id="listening-news">
+    <h3>短篇新闻 (News Report)</h3>
+    <audio class="audio-player" controls id="news-audio" src=""></audio>
+    <div class="question-list" id="news-questions"></div>
+  </div>
+
+  <div id="listening-long_conversation" style="display:none">
+    <h3>长对话 (Long Conversation)</h3>
+    <audio class="audio-player" controls id="long_conversation-audio" src=""></audio>
+    <div class="question-list" id="long_conversation-questions"></div>
+  </div>
+
+  <div id="listening-passage" style="display:none">
+    <h3>听力篇章 (Passage)</h3>
+    <audio class="audio-player" controls id="passage-audio" src=""></audio>
+    <div class="question-list" id="passage-questions"></div>
+  </div>
+
+  <div id="listening-lecture" style="display:none">
+    <h3>讲座 (Lecture)</h3>
+    <audio class="audio-player" controls id="lecture-audio" src=""></audio>
+    <div class="question-list" id="lecture-questions"></div>
+  </div>
+
+  <button class="btn" id="btn-listening" onclick="revealListening()">📝 提交听力答案 &amp; 查看原文</button>
+  <div class="reveal-content" id="listening-reveal">
+    <h4>📄 听力原文</h4>
+    <div id="listening-news-reveal" style="display:none">
+      <h5>新闻原文</h5>
+      <div class="script-text" id="news-script"></div>
+      <audio class="audio-player" controls id="news-audio-r" src=""></audio>
+    </div>
+    <div id="listening-long_conversation-reveal" style="display:none">
+      <h5>长对话原文</h5>
+      <div class="script-text" id="long_conversation-script"></div>
+      <audio class="audio-player" controls id="long_conversation-audio-r" src=""></audio>
+    </div>
+    <div id="listening-passage-reveal" style="display:none">
+      <h5>篇章原文</h5>
+      <div class="script-text" id="passage-script"></div>
+      <audio class="audio-player" controls id="passage-audio-r" src=""></audio>
+    </div>
+    <div id="listening-lecture-reveal" style="display:none">
+      <h5>讲座原文</h5>
+      <div class="script-text" id="lecture-script"></div>
+      <audio class="audio-player" controls id="lecture-audio-r" src=""></audio>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 阅读 ============ -->
+<div class="section" id="reading">
+  <h2>📚 阅读理解 (Reading Comprehension)</h2>
+
+  <div id="reading-tech" style="display:none">
+    <h3>Passage 1：科技</h3>
+    <div class="reading-text" id="tech-text"></div>
+    <h4>📝 核心词汇</h4>
+    <table class="vocab-table" id="tech-vocab"><tr><th>单词</th><th>音标</th><th>释义</th></tr></table>
+    <div class="question-list" id="tech-questions"></div>
+  </div>
+
+  <div id="reading-social" style="display:none">
+    <h3>Passage 2：社会</h3>
+    <div class="reading-text" id="social-text"></div>
+    <h4>📝 核心词汇</h4>
+    <table class="vocab-table" id="social-vocab"><tr><th>单词</th><th>音标</th><th>释义</th></tr></table>
+    <div class="question-list" id="social-questions"></div>
+  </div>
+
+  <div id="reading-long" style="display:none">
+    <h3>长篇阅读 (Long Reading)</h3>
+    <div class="reading-text" id="long-text"></div>
+    <h4>📝 核心词汇</h4>
+    <table class="vocab-table" id="long-vocab"><tr><th>单词</th><th>音标</th><th>释义</th></tr></table>
+    <div class="question-list" id="long-questions"></div>
+  </div>
+
+  <button class="btn" id="btn-reading" onclick="revealReading()">📝 提交阅读答案 &amp; 查看解析</button>
+  <div class="reveal-content" id="reading-reveal">
+    <h4>📊 答题结果</h4>
+    <div class="result-bar">
+      <div class="score" id="reading-score"></div>
+      <div class="detail" id="reading-detail"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 翻译 ============ -->
+<div class="section" id="translation">
+  <h2>✍️ 翻译 (Translation) — 中译英</h2>
+  <p style="margin-bottom:10px;font-size:15px;line-height:1.8;" id="translation-prompt"></p>
+  <textarea class="translation-input" id="translation-input" placeholder="请在此输入你的英文翻译..."></textarea>
+  <button class="btn" onclick="revealTranslation()">📝 提交 &amp; 查看参考译文</button>
+  <div class="reveal-content" id="translation-reveal">
+    <h4>💡 参考译文</h4>
+    <div class="script-text" id="translation-ref"></div>
+    <audio class="audio-player" controls src="audio/translation_reference.mp3"></audio>
+  </div>
+</div>
+
+<!-- ============ 写作 ============ -->
+<div class="section" id="writing">
+  <h2>📝 写作 (Writing)</h2>
+  <p style="margin-bottom:15px;font-size:14px;line-height:1.8;" id="writing-prompt"></p>
+  <textarea class="writing-input" id="writing-input" placeholder="请在此输入你的作文..."></textarea>
+  <button class="btn" onclick="revealWriting()">📝 提交 &amp; 查看范文</button>
+  <div class="reveal-content" id="writing-reveal">
+    <h4>💡 参考范文</h4>
+    <div class="script-text" id="writing-model"></div>
+    <audio class="audio-player" controls src="audio/writing_model.mp3"></audio>
+  </div>
+</div>
+
+</div>
+
+<script>
+// ========== THEME SWITCHER ==========
+(function() {
+  var btns = document.querySelectorAll('.theme-btn');
+  btns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var theme = this.dataset.theme;
+      document.documentElement.setAttribute('data-theme', theme === 'default' ? '' : theme);
+      btns.forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+    });
+  });
+})();
+
+// ========== DATA ==========
+var DATA = {
+  "meta": {
+    "date": "20260525",
+    "day": "Monday"
+  },
+  "listening": {
+    "news": {
+      "title": "Multi-Cancer Early Detection Blood Test Breakthrough",
+      "tag": "health",
+      "audio": "",
+      "script": "Researchers at Johns Hopkins University have developed [Q1]a revolutionary blood test capable of detecting eight common cancers at early stages with over 90 percent accuracy, according to a study published in the journal Science on Friday. The non-invasive screening method, known as CancerSEEK, analyzes circulating tumor DNA and protein biomarkers from a single blood sample, [Q2]identifying cancers of the ovary, liver, stomach, pancreas, esophagus, colon, lung, and breast long before symptoms appear.\n\nIn a clinical trial involving [Q3]10,000 participants across five countries, the test correctly identified cancer in 94 percent of cases where the disease was present, researchers reported. 'This represents a fundamental shift in how we approach cancer screening,' said lead investigator Dr. David Chen. 'For the first time, we can detect multiple cancer types simultaneously [Q4]without invasive procedures such as biopsies or endoscopies.' The breakthrough could dramatically reduce cancer mortality rates, as early detection remains the single most critical factor in successful treatment outcomes. Currently, [Q5]routine screening is only available for a handful of cancers, leaving the majority of cases undiagnosed until patients develop noticeable symptoms, when treatment options are often limited.",
+      "questions": [
+        {
+          "q": "What is the news report mainly about?",
+          "A": "A new surgical technique for tumor removal.",
+          "B": "A breakthrough in cancer drug development.",
+          "C": "A global initiative for cancer awareness.",
+          "D": "An innovative technique for spotting multiple cancers early.",
+          "answer": "D"
+        },
+        {
+          "q": "What is known about the cancers detected?",
+          "A": "They cover eight organ types including colon.",
+          "B": "They are limited to the digestive system.",
+          "C": "They mainly involve the brain and skin.",
+          "D": "They primarily affect young children.",
+          "answer": "A"
+        },
+        {
+          "q": "What does the report say about the trial?",
+          "A": "The trial lasted over five years.",
+          "B": "The trial had ten thousand subjects.",
+          "C": "The trial targeted pancreatic cancer.",
+          "D": "The trial was conducted in America.",
+          "answer": "B"
+        },
+        {
+          "q": "According to Dr. Chen, what benefit does the test have?",
+          "A": "To avoid surgical procedures like biopsies.",
+          "B": "To reduce testing costs significantly.",
+          "C": "To deliver results in several minutes.",
+          "D": "To eliminate the need for equipment.",
+          "answer": "A"
+        },
+        {
+          "q": "What problem exists with current cancer screening?",
+          "A": "Most cancer types receive regular screening.",
+          "B": "Advanced technology now drives all diagnosis.",
+          "C": "Very few cancers get routinely checked.",
+          "D": "Screening services have grown widely affordable.",
+          "answer": "C"
+        }
+      ]
+    },
+    "long_conversation": null,
+    "passage": null,
+    "lecture": null
+  },
+  "reading": {
+    "tech": {
+      "title": "商业太空探索的环境代价",
+      "text": "The past decade has witnessed a dramatic shift in space exploration. Once dominated by government agencies like NASA, the field is now increasingly driven by private enterprises. Companies such as SpaceX and Blue Origin have deployed thousands of satellites and developed reusable rocket technology, cutting launch costs by over 90 percent. While this commercial boom has been widely celebrated, a less visible consequence — its growing environmental footprint — is beginning to alarm scientists and regulators alike.\n\nSeveral converging trends have fueled this expansion. Reusable boosters have made space more accessible than ever before. At the same time, advances in satellite miniaturization have enabled firms to launch vast constellations of small, low-cost spacecraft for broadband, navigation, and Earth imaging. Venture capital has poured into the sector, with global space investment surpassing 260 billion dollars between 2015 and 2025. Governments have further accelerated the trend by outsourcing missions to commercial providers.\n\nA growing body of research now highlights the environmental toll. A 2024 study in Geophysical Research Letters revealed that rocket launches inject black carbon and aluminum oxide directly into the stratosphere, where these particles can persist for years and trap heat far more effectively than surface-level pollutants. The researchers estimated that if current launch rates continue doubling every two years, the stratospheric warming effect from rockets could match that of the entire global aviation industry within a decade.\n\nThe problem extends to orbital debris and satellite reentry. SpaceX's Starlink constellation alone has placed over 6,000 satellites in low Earth orbit. When these satellites complete their operational lives, most are designed to burn up in the atmosphere, releasing metallic particles at high altitudes. Scientists at the University of California recently cautioned that aluminum oxide from reentering satellites may trigger ozone-depleting chemical reactions, potentially reversing decades of atmospheric recovery achieved under the Montreal Protocol.\n\nThis tension between innovation and environmental responsibility has left regulators struggling to respond. Existing international space law, largely drafted in the 1960s, offers no framework for managing the cumulative ecological effects of commercial launches. Experts increasingly call for new rules that balance the undeniable benefits of space-based services with scientifically grounded environmental protections. As one analyst observed, the central question is no longer whether to explore space, but how to do so without damaging the planet we seek to leave behind.",
+      "vocab": [
+        {
+          "word": "stratosphere",
+          "phonetic": "/ˈstrætəˌsfɪr/",
+          "def": "平流层"
+        },
+        {
+          "word": "constellation",
+          "phonetic": "/ˌkɒnstəˈleɪʃən/",
+          "def": "卫星星座"
+        },
+        {
+          "word": "miniaturization",
+          "phonetic": "/ˌmɪniətʃəraɪˈzeɪʃən/",
+          "def": "小型化"
+        },
+        {
+          "word": "ozone-depleting",
+          "phonetic": "/ˈoʊzoʊn dɪˈpliːtɪŋ/",
+          "def": "消耗臭氧的"
+        },
+        {
+          "word": "cumulative",
+          "phonetic": "/ˈkjuːmjʊlətɪv/",
+          "def": "累积的"
+        }
+      ],
+      "questions": [
+        {
+          "q": "The passage is primarily concerned with ___.",
+          "A": "investment trends in the commercial space industry",
+          "B": "the threat to nature posed by the rapid expansion of space businesses",
+          "C": "regulatory challenges facing government space agencies",
+          "D": "the economic benefits of satellite mega-constellations",
+          "answer": "B",
+          "type": "主旨",
+          "vocab": ""
+        },
+        {
+          "q": "According to the passage, private space activity has expanded rapidly because ___.",
+          "A": "public enthusiasm for space tourism has risen sharply",
+          "B": "government mandates have required satellite deployment",
+          "C": "sending payloads to orbit has become far cheaper",
+          "D": "international agreements have promoted private investment",
+          "answer": "C",
+          "type": "因果",
+          "vocab": ""
+        },
+        {
+          "q": "The 2024 study revealed that rocket emissions ___.",
+          "A": "remain aloft at great heights for a long time and strongly contribute to atmospheric heating",
+          "B": "are less harmful than scientists had previously estimated",
+          "C": "dissipate rapidly and pose minimal long-term risk",
+          "D": "contribute less to warming than aircraft at similar altitudes",
+          "answer": "A",
+          "type": "细节",
+          "vocab": ""
+        },
+        {
+          "q": "What can be inferred about satellite mega-constellations from the passage?",
+          "A": "They have been restricted by international environmental agreements.",
+          "B": "They are primarily deployed for scientific rather than commercial purposes.",
+          "C": "They have been shown to produce no significant atmospheric effects.",
+          "D": "Their reentry may release substances that damage the ozone layer.",
+          "answer": "D",
+          "type": "推断",
+          "vocab": ""
+        },
+        {
+          "q": "The author views current international space law as ___.",
+          "A": "effective in balancing commercial and environmental interests",
+          "B": "outdated and inadequate for modern ecological challenges",
+          "C": "deserving of abolition in favor of national regulations",
+          "D": "consistently ignored by private space enterprises",
+          "answer": "B",
+          "type": "态度",
+          "vocab": ""
+        }
+      ]
+    },
+    "social": {
+      "title": "人口政策的多元路径",
+      "text": "China stands at a demographic crossroads. The country's birth rate fell to a record low of 6.39 per thousand in 2023, while the share of citizens aged 65 and older surpassed 15 percent. For the second consecutive year, the total population declined, and forecasters see little chance of reversal. This shift poses profound challenges: a shrinking workforce must support a rapidly aging society, straining pension systems and healthcare infrastructure built for a younger population.\n\nIn response, policymakers have introduced a series of pronatalist measures. Local governments now offer cash bonuses for second and third children, extended maternity and paternity leave, and housing subsidies for larger families. Some cities have even experimented with direct monthly payments to parents of young children. Proponents argue that easing the economic strain associated with child-rearing is the most direct way to encourage higher birth rates, pointing to modest upticks in regions that adopted such policies early.\n\nCritics, however, contend that financial incentives alone cannot reverse deeply rooted social trends. They point to structural barriers: intense workplace competition that leaves little time for family life, a housing market that consumes a disproportionate share of household income, and inadequate public childcare facilities. A 2024 survey by the China Population Association found that over 70 percent of childless urban couples cited \"time poverty\" rather than direct financial cost as their primary reason for not having children.\n\nInternational experience offers sobering lessons. Japan has spent decades implementing increasingly generous family policies, from universal childcare to substantial child allowances, yet its birth rate has remained stubbornly below replacement level. South Korea has invested over 200 billion dollars in pronatalist programs since 2006 with similarly disappointing results. Researchers at the London School of Economics concluded in a 2023 meta-analysis that while financial incentives produce small, temporary increases in birth rates, their effects typically fade within three to five years unless accompanied by broader structural changes.\n\nA growing consensus among demographers suggests that effective population policy must be multi-dimensional. Beyond subsidies, experts advocate for reforms that reshape the lived experience of work and family: shorter standard working hours, genuinely affordable housing near employment centers, and publicly funded childcare from infancy. The goal, as one leading demographer put it, is not simply to persuade people to have more children, but to create a society in which raising a family feels like a feasible and rewarding choice rather than an overwhelming burden.",
+      "vocab": [
+        {
+          "word": "demographic",
+          "phonetic": "/ˌdeməˈɡræfɪk/",
+          "def": "人口的"
+        },
+        {
+          "word": "pronatalist",
+          "phonetic": "/proʊˈneɪtəlɪst/",
+          "def": "鼓励生育的"
+        },
+        {
+          "word": "child-rearing",
+          "phonetic": "/tʃaɪld ˈrɪrɪŋ/",
+          "def": "抚养子女"
+        },
+        {
+          "word": "disproportionate",
+          "phonetic": "/ˌdɪsprəˈpɔːrʃənət/",
+          "def": "不成比例的"
+        },
+        {
+          "word": "meta-analysis",
+          "phonetic": "/ˈmetə əˈnæləsɪs/",
+          "def": "元分析"
+        }
+      ],
+      "questions": [
+        {
+          "q": "What demographic challenge does the passage highlight?",
+          "A": "A contracting labor force sustaining an expanding elderly population.",
+          "B": "An increasing proportion of young people leaving rural areas.",
+          "C": "A rising unemployment rate among urban college graduates.",
+          "D": "A growing imbalance between male and female population ratios.",
+          "answer": "A",
+          "type": "细节",
+          "vocab": ""
+        },
+        {
+          "q": "Pronatalist proponents believe the most direct way to raise birth rates is by ___.",
+          "A": "extending compulsory education to early childhood",
+          "B": "restricting access to contraception in urban areas",
+          "C": "launching public campaigns promoting traditional values",
+          "D": "reducing the financial pressure on families with young children",
+          "answer": "D",
+          "type": "细节",
+          "vocab": ""
+        },
+        {
+          "q": "The phrase \"time poverty\" (Paragraph 3) is closest in meaning to ___.",
+          "A": "a condition of having too little free time for personal activities",
+          "B": "financial difficulties resulting from inefficient use of time",
+          "C": "a psychological disorder characterized by poor time management",
+          "D": "the struggle to juggle career pressures alongside household duties",
+          "answer": "D",
+          "type": "词汇",
+          "vocab": ""
+        },
+        {
+          "q": "What does the international experience described in Paragraph 4 suggest?",
+          "A": "Cash subsidies have proven completely ineffective across all nations studied.",
+          "B": "Japan and South Korea have successfully reversed their demographic trends.",
+          "C": "Subsidies tend to lose their impact over time if underlying social conditions remain unchanged.",
+          "D": "European nations have designed more effective population policies than Asian ones.",
+          "answer": "C",
+          "type": "推断",
+          "vocab": ""
+        },
+        {
+          "q": "What is the author's main purpose in writing this passage?",
+          "A": "To criticize the ineffectiveness of government population policies.",
+          "B": "To call for deeper social changes rather than just offering monetary rewards.",
+          "C": "To compare China's demographic situation with that of other nations.",
+          "D": "To predict the long-term economic consequences of population decline.",
+          "answer": "B",
+          "type": "主旨",
+          "vocab": ""
+        }
+      ]
+    },
+    "long": null
+  },
+  "translation": {
+    "cn": "中医是中华民族的智慧结晶，历史可追溯至数千年前。《黄帝内经》奠定了其理论基础，强调人体与自然的和谐统一。诊断讲究\u201c望闻问切\u201d，通过观面色、听声音、问症状、切脉象来判断病情。治疗上，针灸、推拿、草药各具特色，均以疏通经络、调和阴阳为根本。近年来，全球对自然疗法的关注使中医的国际影响力持续扩大，针灸如今已被世界卫生组织纳入传统医学体系。这种根植于中国哲学的医学，正以其整体观念为现代医学提供重要补充与借鉴。",
+    "reference": "Traditional Chinese Medicine (TCM) represents the wisdom of the Chinese nation, with a history spanning several thousand years. The Huangdi Neijing, or Yellow Emperor’s Inner Canon, laid its theoretical foundation, emphasizing harmony between the human body and the natural world. TCM diagnosis follows the principle of “observation, listening, inquiry, and pulse-taking” — examining complexion, vocal tones, symptoms, and pulse to assess a patient’s condition. Treatment methods are diverse: acupuncture, tuina massage, and herbal medicine are each distinct, yet all aim to unblock meridians and restore yin-yang balance. In recent years, global interest in natural therapies has expanded TCM’s international influence, and acupuncture has been incorporated into the traditional medicine framework by the World Health Organization. Rooted in Chinese philosophy, this ancient system offers a complement to modern medicine through its holistic approach, which treats the body as an integrated whole."
+  },
+  "writing": {
+    "prompt": "大学生学术拖延问题",
+    "model": "A 2023 survey across 12 Chinese universities found that 67% of students regularly postpone assignments until the final 48 hours before deadlines. This pattern of academic procrastination carries measurable consequences: declining grades, elevated stress, and diminished capacity for sustained intellectual work. The issue warrants structured intervention.\n\nPsychological research at Beijing Normal University identified two primary drivers: task aversion triggered by perceived difficulty, and poor self-regulation in digital environments where social media competes for attention. Addressing the first requires a practical shift — breaking large assignments into daily micro-tasks with self-imposed intermediate deadlines. A 3,000-word essay divided into ten 300-word sections completed over ten days removes the psychological barrier.\n\nThe second driver demands environmental redesign. Students who replaced smartphone study sessions with dedicated offline blocks of 45 minutes reported a 40% improvement in task completion, per a 2024 study from Zhejiang University. Combined with peer accountability groups meeting weekly, these measures transform procrastination from a personal failing into a manageable challenge. Meaningful progress comes not from sheer willpower but from restructuring the conditions under which academic work takes place."
+  }
+};
+
+// ========== UTILITY ==========
+function escapeHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ========== RENDER ==========
+function renderQuestions(containerId, questions, prefix) {
+  var container = document.getElementById(containerId);
+  if (!container) return;
+  container.innerHTML = '';
+  if (!questions || !questions.length) return;
+  var letters = ['A','B','C','D'];
+  questions.forEach(function(q, i) {
+    var div = document.createElement('div');
+    div.className = 'question-item';
+    div.id = prefix + '-q-' + i;
+    var html = '<p>' + (i+1) + '. ' + escapeHtml(q.q) + '</p>';
+    letters.forEach(function(l) {
+      html += '<label><input type="radio" name="' + prefix + '-' + i + '" value="' + l + '"> ' + l + '. ' + escapeHtml(q[l]) + '</label>';
+    });
+    div.innerHTML = html;
+    container.appendChild(div);
+  });
+}
+
+function renderVocab(containerId, vocab) {
+  var table = document.getElementById(containerId);
+  if (!table || !vocab || !vocab.length) return;
+  table.innerHTML = '<tr><th>单词</th><th>音标</th><th>释义</th></tr>';
+  vocab.forEach(function(v) {
+    var row = table.insertRow();
+    row.insertCell().textContent = v.word;
+    row.insertCell().textContent = v.phonetic;
+    row.insertCell().textContent = v.def;
+  });
+}
+
+function renderText(containerId, text) {
+  var el = document.getElementById(containerId);
+  if (!el || !text) return;
+  var parts = text.split(/\n\n+/);
+  el.innerHTML = parts.map(function(p) {
+    return '<p>' + escapeHtml(p).replace(/\n/g, '<br>') + '</p>';
+  }).join('');
+}
+
+// ========== REVEAL ==========
+function revealListening() {
+  var keys = ['news', 'long_conversation', 'passage', 'lecture'];
+  keys.forEach(function(key) {
+    var data = DATA.listening[key];
+    if (!data || !data.questions) return;
+    data.questions.forEach(function(q, i) {
+      var sel = document.querySelector('input[name="' + key + '-' + i + '"]:checked');
+      var qDiv = document.getElementById(key + '-q-' + i);
+      if (!qDiv) return;
+      var sp = document.createElement('span');
+      if (sel && sel.value === q.answer) {
+        sp.className = 'correct';
+        sp.textContent = ' ✓ 正确!';
+      } else {
+        sp.className = 'wrong';
+        sp.textContent = sel ? ' ✗ 错误，正确答案是 ' + q.answer : ' 未作答，正确答案是 ' + q.answer;
+      }
+      qDiv.querySelector('p').appendChild(sp);
+    });
+    var scriptEl = document.getElementById(key + '-script');
+    if (scriptEl) scriptEl.textContent = data.script;
+    var revealEl = document.getElementById('listening-' + key + '-reveal');
+    if (revealEl) revealEl.style.display = '';
+    var audioR = document.getElementById(key + '-audio-r');
+    if (audioR && data.audio) audioR.src = data.audio;
+  });
+  document.getElementById('listening-reveal').classList.add('show');
+}
+
+function revealReading() {
+  var keys = ['tech', 'social', 'long'];
+  var correct = 0, total = 0;
+  keys.forEach(function(key) {
+    var data = DATA.reading[key];
+    if (!data || !data.questions) return;
+    data.questions.forEach(function(q, i) {
+      total++;
+      var sel = document.querySelector('input[name="' + key + '-' + i + '"]:checked');
+      var qDiv = document.getElementById(key + '-q-' + i);
+      if (!qDiv) return;
+      var sp = document.createElement('span');
+      if (sel && sel.value === q.answer) {
+        sp.className = 'correct';
+        sp.textContent = ' ✓ 正确!';
+        correct++;
+      } else {
+        sp.className = 'wrong';
+        sp.textContent = sel ? ' ✗ 错误，正确答案是 ' + q.answer : ' 未作答，正确答案是 ' + q.answer;
+      }
+      qDiv.querySelector('p').appendChild(sp);
+    });
+  });
+  var scoreEl = document.getElementById('reading-score');
+  var detailEl = document.getElementById('reading-detail');
+  if (scoreEl) scoreEl.textContent = correct + ' / ' + total;
+  if (detailEl) detailEl.textContent = total > 0 && correct >= Math.ceil(total * 0.6) ? '合格 ✓' : '需要加油 ✗';
+  document.getElementById('reading-reveal').classList.add('show');
+}
+
+function revealTranslation() {
+  document.getElementById('translation-ref').textContent = DATA.translation.reference;
+  document.getElementById('translation-reveal').classList.add('show');
+}
+
+function revealWriting() {
+  document.getElementById('writing-model').textContent = DATA.writing.model;
+  document.getElementById('writing-reveal').classList.add('show');
+}
+
+// ========== INIT ==========
+(function init() {
+  // --- Listening ---
+  var lKeys = ['news', 'long_conversation', 'passage', 'lecture'];
+  var anyListening = false;
+  lKeys.forEach(function(key) {
+    var data = DATA.listening[key];
+    var subEl = document.getElementById('listening-' + key);
+    if (!subEl) return;
+    if (data && data.questions && data.questions.length > 0) {
+      subEl.style.display = '';
+      anyListening = true;
+      renderQuestions(key + '-questions', data.questions, key);
+      var audioEl = document.getElementById(key + '-audio');
+      if (audioEl && data.audio) audioEl.src = data.audio;
+    } else {
+      subEl.style.display = 'none';
+    }
+  });
+  // 如果没有任何听力数据，隐藏整个听力区
+  if (!anyListening) {
+    document.getElementById('listening').style.display = 'none';
+  }
+
+  // --- Reading ---
+  var rKeys = ['tech', 'social', 'long'];
+  var anyReading = false;
+  rKeys.forEach(function(key) {
+    var data = DATA.reading[key];
+    var subEl = document.getElementById('reading-' + key);
+    if (!subEl) return;
+    if (data) {
+      subEl.style.display = '';
+      anyReading = true;
+      if (data.text) renderText(key + '-text', data.text);
+      if (data.vocab && data.vocab.length > 0) renderVocab(key + '-vocab', data.vocab);
+      if (data.questions) renderQuestions(key + '-questions', data.questions, key);
+    } else {
+      subEl.style.display = 'none';
+    }
+  });
+  if (!anyReading) {
+    document.getElementById('reading').style.display = 'none';
+  }
+
+  // --- Translation & Writing ---
+  if (DATA.translation) {
+    document.getElementById('translation-prompt').textContent = DATA.translation.cn;
+  }
+  if (DATA.writing) {
+    document.getElementById('writing-prompt').textContent = DATA.writing.prompt;
+  }
+})();
+</script>
+</body>
+</html>
