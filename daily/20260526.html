@@ -1,0 +1,731 @@
+<!--
+  CET-6 Daily 标准模板 v2 — 全题型自适应
+  规则：只替换 <script> 中的 const DATA = {...}，其他一切不动。
+  周一~周日共用此文件，INIT 自动显示/隐藏对应 section。
+  
+  不可偏离的教训（0522事故）：
+  ① div ID 必须通过 DATA key 派生，渲染/提交同一来源
+  ② CSS 三主题变量不可丢
+  ③ <audio> 不可缺
+  ④ 词汇表初始可见
+  ⑤ 答案 ≥2 字母 + 单字母 ≤60%
+  ⑥ 标题全中文
+  ⑦ JS 不压缩
+  ⑧ escapeHtml 覆盖所有 innerHTML 路径
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CET-6 每日练习 - 2026年5月26日 星期二</title>
+<style>
+:root {
+  --bg-page: #f5f7fa;
+  --bg-section: #ffffff;
+  --text: #2d3436;
+  --text-muted: #888;
+  --accent: #6c5ce7;
+  --accent-hover: #5a4bd1;
+  --accent-light: #f0f0ff;
+  --border: #eee;
+  --reveal-bg: #f8f9fa;
+  --reveal-border: #e9ecef;
+  --correct: #27ae60;
+  --wrong: #e74c3c;
+  --header-grad-1: #6c5ce7;
+  --header-grad-2: #a29bfe;
+  --shadow: rgba(0,0,0,0.06);
+  --input-bg: #fff;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+[data-theme="warm"] {
+  --bg-page: #faf6ed;
+  --bg-section: #fffcf5;
+  --text: #3d3535;
+  --text-muted: #999;
+  --accent: #c0784a;
+  --accent-hover: #a8643a;
+  --accent-light: #f5ede4;
+  --border: #e8ddd0;
+  --reveal-bg: #f8f1e8;
+  --reveal-border: #e8ddd0;
+  --correct: #5d8a3c;
+  --wrong: #c0392b;
+  --header-grad-1: #c0784a;
+  --header-grad-2: #d4a574;
+  --shadow: rgba(0,0,0,0.04);
+  --input-bg: #fffcf5;
+}
+[data-theme="dark"] {
+  --bg-page: #0f0f1a;
+  --bg-section: #1a1a2e;
+  --text: #e0e0e0;
+  --text-muted: #888;
+  --accent: #9370db;
+  --accent-hover: #a884e8;
+  --accent-light: #2a1f40;
+  --border: #2a2a3e;
+  --reveal-bg: #151525;
+  --reveal-border: #2a2a3e;
+  --correct: #5cb85c;
+  --wrong: #e74c3c;
+  --header-grad-1: #3d1f6e;
+  --header-grad-2: #6c3fa0;
+  --shadow: rgba(0,0,0,0.2);
+  --input-bg: #1a1a2e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg-page); color: var(--text); line-height: 1.8; }
+.header { background: linear-gradient(135deg, var(--header-grad-1), var(--header-grad-2)); color: #fff; padding: 30px 20px; text-align: center; }
+.header h1 { font-size: 24px; margin-bottom: 5px; }
+.header p { font-size: 14px; opacity: 0.9; }
+.theme-switcher { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
+.theme-btn { padding: 6px 18px; border: 2px solid rgba(255,255,255,0.3); border-radius: 20px; background: transparent; color: #fff; cursor: pointer; font-size: 13px; transition: all 0.2s; }
+.theme-btn:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.1); }
+.theme-btn.active { border-color: #fff; background: rgba(255,255,255,0.2); font-weight: 600; }
+.container { max-width: 800px; margin: 0 auto; padding: 20px; }
+.section { background: var(--bg-section); border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 8px var(--shadow); transition: background-color 0.3s ease; }
+.section h2 { font-size: 20px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--accent); color: var(--accent); }
+.section h3 { font-size: 16px; margin: 16px 0 10px; color: var(--text-muted); }
+.audio-player { width: 100%; margin: 10px 0; border-radius: 6px; }
+.reading-text { font-size: 15px; line-height: 1.9; text-align: justify; margin: 15px 0; }
+.reading-text p { margin-bottom: 12px; }
+.vocab-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px; }
+.vocab-table th { background: var(--accent-light); padding: 8px 12px; text-align: left; border: 1px solid var(--border); color: var(--text); }
+.vocab-table td { padding: 8px 12px; border: 1px solid var(--border); }
+.question-list { margin: 15px 0; }
+.question-item { padding: 12px; margin: 8px 0; background: var(--bg-page); border-radius: 8px; border: 1px solid var(--border); }
+.question-item p { font-weight: 600; margin-bottom: 8px; }
+.question-item label { display: block; padding: 4px 0; font-size: 14px; cursor: pointer; }
+.question-item input[type="radio"] { margin-right: 8px; accent-color: var(--accent); }
+.question-item .correct { color: var(--correct); font-weight: 600; }
+.question-item .wrong { color: var(--wrong); }
+.translation-input, .writing-input { width: 100%; min-height: 150px; padding: 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; line-height: 1.6; resize: vertical; font-family: inherit; background: var(--input-bg); color: var(--text); }
+.writing-input { min-height: 200px; }
+.btn { display: inline-block; padding: 10px 24px; background: var(--accent); color: #fff; border: none; border-radius: 8px; font-size: 15px; cursor: pointer; margin: 10px 5px 0 0; transition: background 0.2s; }
+.btn:hover { background: var(--accent-hover); }
+.reveal-content { display: none; margin-top: 20px; padding: 20px; background: var(--reveal-bg); border-radius: 8px; border: 1px solid var(--reveal-border); transition: background-color 0.3s ease; }
+.reveal-content.show { display: block; }
+.reveal-content h4 { color: var(--accent); margin-bottom: 10px; font-size: 16px; }
+.reveal-content h5 { color: var(--text-muted); margin: 12px 0 6px; font-size: 14px; }
+.reveal-content .script-text { font-size: 14px; line-height: 1.8; margin: 10px 0; white-space: pre-wrap; }
+.quest-label { font-size: 13px; color: var(--text-muted); margin: 5px 0; }
+hr { margin: 20px 0; border: none; border-top: 1px solid var(--border); }
+.result-bar { text-align: center; padding: 20px; margin: 15px 0; background: var(--reveal-bg); border-radius: 8px; border: 1px solid var(--reveal-border); }
+.result-bar .score { font-size: 28px; font-weight: 700; color: var(--accent); }
+.result-bar .detail { font-size: 16px; margin-top: 5px; color: var(--text-muted); }
+@media (min-width: 768px) {
+  .container { max-width: 800px; }
+  .section { padding: 28px; }
+  .section h2 { font-size: 22px; }
+  .reading-text { font-size: 16px; }
+  .vocab-table { font-size: 15px; }
+  .question-item label { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📖 CET-6 每日练习</h1>
+  <p>2026年5月26日 星期二 | 听力·阅读·翻译·作文</p>
+  <div class="theme-switcher">
+    <button class="theme-btn active" data-theme="default">🌙 默认</button>
+    <button class="theme-btn" data-theme="warm">☀️ 暖黄</button>
+    <button class="theme-btn" data-theme="dark">🌑 深色</button>
+  </div>
+</div>
+<div class="container">
+
+<!-- ============ 听力 ============ -->
+<div class="section" id="listening">
+  <h2>🎧 听力理解 (Listening Comprehension)</h2>
+
+  <div id="listening-news" style="display:none">
+    <h3>短篇新闻 (News Report)</h3>
+    <audio class="audio-player" controls id="news-audio" src=""></audio>
+    <div class="question-list" id="news-questions"></div>
+  </div>
+
+  <div id="listening-long_conversation" style="display:none">
+    <h3>长对话 (Long Conversation)</h3>
+    <audio class="audio-player" controls id="long_conversation-audio" src=""></audio>
+    <div class="question-list" id="long_conversation-questions"></div>
+  </div>
+
+  <div id="listening-passage" style="display:none">
+    <h3>听力篇章 (Passage)</h3>
+    <audio class="audio-player" controls id="passage-audio" src=""></audio>
+    <div class="question-list" id="passage-questions"></div>
+  </div>
+
+  <div id="listening-lecture" style="display:none">
+    <h3>讲座 (Lecture)</h3>
+    <audio class="audio-player" controls id="lecture-audio" src=""></audio>
+    <div class="question-list" id="lecture-questions"></div>
+  </div>
+
+  <button class="btn" id="btn-listening" onclick="revealListening()">📝 提交听力答案 &amp; 查看原文</button>
+  <div class="reveal-content" id="listening-reveal">
+    <h4>📄 听力原文</h4>
+    <div id="listening-news-reveal" style="display:none">
+      <h5>新闻原文</h5>
+      <div class="script-text" id="news-script"></div>
+      <audio class="audio-player" controls id="news-audio-r" src=""></audio>
+    </div>
+    <div id="listening-long_conversation-reveal" style="display:none">
+      <h5>长对话原文</h5>
+      <div class="script-text" id="long_conversation-script"></div>
+      <audio class="audio-player" controls id="long_conversation-audio-r" src=""></audio>
+    </div>
+    <div id="listening-passage-reveal" style="display:none">
+      <h5>篇章原文</h5>
+      <div class="script-text" id="passage-script"></div>
+      <audio class="audio-player" controls id="passage-audio-r" src=""></audio>
+    </div>
+    <div id="listening-lecture-reveal" style="display:none">
+      <h5>讲座原文</h5>
+      <div class="script-text" id="lecture-script"></div>
+      <audio class="audio-player" controls id="lecture-audio-r" src=""></audio>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 阅读 ============ -->
+<div class="section" id="reading">
+  <h2>📚 阅读理解 (Reading Comprehension)</h2>
+
+  <div id="reading-tech" style="display:none">
+    <h3>Passage 1：科技</h3>
+    <div class="reading-text" id="tech-text"></div>
+    <h4>📝 核心词汇</h4>
+    <table class="vocab-table" id="tech-vocab"><tr><th>单词</th><th>音标</th><th>释义</th></tr></table>
+    <div class="question-list" id="tech-questions"></div>
+  </div>
+
+  <div id="reading-social" style="display:none">
+    <h3>Passage 2：社会</h3>
+    <div class="reading-text" id="social-text"></div>
+    <h4>📝 核心词汇</h4>
+    <table class="vocab-table" id="social-vocab"><tr><th>单词</th><th>音标</th><th>释义</th></tr></table>
+    <div class="question-list" id="social-questions"></div>
+  </div>
+
+  <div id="reading-long" style="display:none">
+    <h3>长篇阅读 (Long Reading)</h3>
+    <div class="reading-text" id="long-text"></div>
+    <h4>📝 核心词汇</h4>
+    <table class="vocab-table" id="long-vocab"><tr><th>单词</th><th>音标</th><th>释义</th></tr></table>
+    <div class="question-list" id="long-questions"></div>
+  </div>
+
+  <button class="btn" id="btn-reading" onclick="revealReading()">📝 提交阅读答案 &amp; 查看解析</button>
+  <div class="reveal-content" id="reading-reveal">
+    <h4>📊 答题结果</h4>
+    <div class="result-bar">
+      <div class="score" id="reading-score"></div>
+      <div class="detail" id="reading-detail"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 翻译 ============ -->
+<div class="section" id="translation">
+  <h2>✍️ 翻译 (Translation) — 中译英</h2>
+  <p style="margin-bottom:10px;font-size:15px;line-height:1.8;" id="translation-prompt"></p>
+  <textarea class="translation-input" id="translation-input" placeholder="请在此输入你的英文翻译..."></textarea>
+  <button class="btn" onclick="revealTranslation()">📝 提交 &amp; 查看参考译文</button>
+  <div class="reveal-content" id="translation-reveal">
+    <h4>💡 参考译文</h4>
+    <div class="script-text" id="translation-ref"></div>
+    <audio class="audio-player" controls src="audio/translation_reference.mp3"></audio>
+  </div>
+</div>
+
+<!-- ============ 写作 ============ -->
+<div class="section" id="writing">
+  <h2>📝 写作 (Writing)</h2>
+  <p style="margin-bottom:15px;font-size:14px;line-height:1.8;" id="writing-prompt"></p>
+  <textarea class="writing-input" id="writing-input" placeholder="请在此输入你的作文..."></textarea>
+  <button class="btn" onclick="revealWriting()">📝 提交 &amp; 查看范文</button>
+  <div class="reveal-content" id="writing-reveal">
+    <h4>💡 参考范文</h4>
+    <div class="script-text" id="writing-model"></div>
+    <audio class="audio-player" controls src="audio/writing_model.mp3"></audio>
+  </div>
+</div>
+
+</div>
+
+<script>
+// ========== THEME SWITCHER ==========
+(function() {
+  var btns = document.querySelectorAll('.theme-btn');
+  btns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var theme = this.dataset.theme;
+      document.documentElement.setAttribute('data-theme', theme === 'default' ? '' : theme);
+      btns.forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+    });
+  });
+})();
+
+// ========== DATA ==========
+var DATA = {
+  "meta": {
+    "date": "20260526",
+    "day": "Tuesday"
+  },
+  "listening": {
+    "news": null,
+    "long_conversation": {
+      "title": "Career Crossroads — Internship vs Graduate School",
+      "tag": "campus",
+      "audio": "audio/20260526_2.mp3",
+      "script": "M: Professor Chen, do you have a moment? I'm torn about something and could use your advice.\nW: Of course, Li Ming. Come in. What's on your mind?\nM: [Q1] Well, I just got a job offer from a tech startup. The salary's pretty good, but I'd been planning to apply for a master's program. I honestly don't know which path to take.\nW: I see. Tell me about this job — what would you be doing?\nM: It's a software development role, mainly mobile apps. The company's small but growing fast. They want me to start next month.\nW: [Q2] Actually, that sounds like solid hands-on experience. But let me ask — do you see yourself in industry long-term, or are you leaning toward research?\nM: That's the thing, I'm not sure. I mean, I enjoy building stuff, but the theoretical side fascinates me too. You know, that's partly why I'm so conflicted.\nW: Let's think about this carefully. [Q3] Graduate school deepens your expertise and opens many doors. But it also means two or three years with almost no income.\nM: Right. And the startup opportunity might not come around again. Actually, the founder said I was their top choice.\nW: [Q4] Here's another angle. Many companies sponsor employees for part-time graduate study. You could potentially do both, though the workload would be demanding.\nM: Hmm, I hadn't thought of that. You know, that could be the best compromise. But I'd need to check if the startup allows flexible arrangements.\nW: [Q5] Before you decide, I'd recommend talking to a few seniors who chose industry over grad school — and vice versa. Their real-world experience might give you perspective I can't offer from academia.\nM: That makes a lot of sense. I'll reach out to some alumni. Thanks so much, Professor — I feel much clearer now.\nW: Glad to help. Let me know what you decide.",
+      "questions": [
+        {
+          "q": "What is the man's main concern?",
+          "A": "He received a very low salary offer.",
+          "B": "He is torn between working and further study.",
+          "C": "He wants to leave his current position.",
+          "D": "His graduate application was rejected.",
+          "answer": "B"
+        },
+        {
+          "q": "What does the woman ask the man about?",
+          "A": "His long-term career preference.",
+          "B": "The specific salary of the job offer.",
+          "C": "Whether his family supports his decision.",
+          "D": "The exact name of the tech company.",
+          "answer": "A"
+        },
+        {
+          "q": "What does the woman say about graduate study?",
+          "A": "It guarantees a well-paid position later.",
+          "B": "Work background matters more than degrees.",
+          "C": "Most graduate programs are too theoretical.",
+          "D": "It builds advanced skills at a financial cost.",
+          "answer": "D"
+        },
+        {
+          "q": "What suggestion does the professor offer?",
+          "A": "He should turn down the job immediately.",
+          "B": "He should apply to additional graduate programs.",
+          "C": "He could pursue work and academics simultaneously.",
+          "D": "He should request a higher starting salary.",
+          "answer": "C"
+        },
+        {
+          "q": "What does the professor finally advise?",
+          "A": "Talk to people who took either route.",
+          "B": "Accept the job and forget about school.",
+          "C": "Research the startup sector more thoroughly.",
+          "D": "Delay deciding for at least one more year.",
+          "answer": "A"
+        }
+      ]
+    },
+    "passage": null,
+    "lecture": {
+      "title": "Biomimicry in Materials Engineering",
+      "tag": "tech",
+      "audio": "audio/20260526_4.mp3",
+      "script": "Good morning, everyone. Today we continue our exploration of biomimicry — the practice of learning from and imitating nature's designs to solve human engineering challenges. [Q1] Over the past few decades, this interdisciplinary field has fundamentally transformed how scientists approach materials development, drawing inspiration from biological systems refined over millions of years. Let me begin with a classic example: the lotus leaf. Its microscopic surface structure repels water and dirt, a phenomenon known as the lotus effect. Researchers have replicated this property to produce self-cleaning paints and commercial coatings. Another remarkable case involves the gecko, whose feet possess millions of tiny hairs enabling it to climb smooth vertical surfaces. Engineers adapted this principle to create reusable adhesives that leave no residue whatsoever. [Q2] However, the most commercially successful application of biomimicry to date is undoubtedly Velcro. Swiss engineer George de Mestral invented it in 1941 after noticing how burdock burrs clung to his dog's fur. The burrs contain tiny hooks that latch onto loops in fabric or animal hair. Velcro now generates billions in annual revenue and appears in products ranging from footwear to spacecraft components. Now, let me turn to recent advances in structural materials. [Q3] In fact, researchers at MIT recently developed a truly remarkable new composite inspired by nacre, also known as mother-of-pearl. Nacre consists of alternating layers of calcium carbonate platelets and biopolymers, yielding a material three thousand times tougher than its constituent minerals. The MIT team replicated this brick-and-mortar architecture using graphene and polymer layers, producing a substance both lightweight and exceptionally strong. Moreover, biomimetic approaches have proven valuable for thermal management challenges. [Q4] Scientists at Harvard examined the intricate blood vessel network in elephant ears, which enables the animals to dissipate excess body heat efficiently. Based on this observation, they designed a cooling system for electronic devices using microfluidic channels arranged in branching patterns. This innovation significantly improved heat transfer performance without requiring any additional energy input. [Q5] Therefore, as we look toward the future, biomimicry holds immense promise for addressing complex engineering problems. From self-healing concrete that mimics bone regeneration to wind turbine blades modeled after humpback whale flippers, nature continues providing remarkably elegant solutions. The core insight is straightforward: organisms have already solved numerous problems through evolution — our task is simply to observe carefully and learn from them.",
+      "questions": [
+        {
+          "q": "What is the lecture mainly about?",
+          "A": "History of materials science development",
+          "B": "Evolution of biological organisms over time",
+          "C": "Engineering solutions for modern construction",
+          "D": "The application of biological principles to design problems",
+          "answer": "D"
+        },
+        {
+          "q": "What does the speaker say about Velcro?",
+          "A": "It was discovered accidentally in a laboratory",
+          "B": "Its inventor first studied gecko foot structures",
+          "C": "It earns billions of dollars annually worldwide",
+          "D": "It was originally designed for spacecraft use",
+          "answer": "C"
+        },
+        {
+          "q": "What did MIT researchers do according to the lecture?",
+          "A": "Studied lotus leaf structure for new coatings",
+          "B": "They copied shell internal architecture for strength",
+          "C": "Designed adhesives based on gecko hair patterns",
+          "D": "Created self-cleaning paint from plant surfaces",
+          "answer": "B"
+        },
+        {
+          "q": "What did Harvard scientists investigate?",
+          "A": "How large animal organs release body warmth",
+          "B": "Whale flipper shape for turbine blade design",
+          "C": "Bone structure to develop self-healing concrete",
+          "D": "Bird wing mechanics for aircraft improvement",
+          "answer": "A"
+        },
+        {
+          "q": "What is the speaker's concluding point?",
+          "A": "More funding is needed for biomimicry research",
+          "B": "Evolution offers us answers worth investigating closely",
+          "C": "Future materials will replace all traditional ones",
+          "D": "Governments should regulate biomimetic product development",
+          "answer": "B"
+        }
+      ]
+    }
+  },
+  "reading": {
+    "tech": {
+      "title": "Solid-State Batteries Enter Commercial Phase",
+      "text": "The race to commercialize solid-state batteries has become one of the most closely watched developments in global energy. Unlike conventional lithium-ion batteries that rely on liquid electrolytes to transport ions between electrodes, solid-state versions replace the liquid with a solid ceramic or polymer. This design shift promises to address two persistent limitations: the fire risk from flammable electrolytes and the energy density ceiling that has restricted electric vehicle range. Automakers and tech firms have invested billions, betting that solid-state cells will define the next generation of energy storage.\n\nThe technical advantages are substantial. Removing the volatile liquid makes these batteries inherently non-flammable, drastically reducing the threat of thermal runaway—the chain reaction that can ignite conventional cells. Solid electrolytes also permit the use of lithium metal anodes, which can theoretically store far more energy than the graphite anodes in today's batteries. Researchers have demonstrated prototype cells with energy densities exceeding 400 watt-hours per kilogram, compared to roughly 250 for the best commercial lithium-ion products. This improvement could enable electric vehicles to travel 700 kilometers on a single charge.\n\nTranslating laboratory success into mass production, however, has proven extraordinarily challenging. The term \"dendrite\" has become a central concern for engineers. Dendrites are microscopic, needle-like lithium formations that grow during charging and can pierce the solid electrolyte, leading to short circuits and cell failure. Although solid electrolytes are mechanically rigid, they have shown unexpected susceptibility to this phenomenon. Manufacturing these materials at scale requires producing ultra-thin, defect-free sheets in tightly controlled environments, a process existing factory infrastructure cannot easily support.\n\nDespite these obstacles, momentum is building. Toyota, which holds more solid-state patents than any rival, plans to deploy the technology in vehicles by 2027-2028. Chinese battery leader CATL has invested heavily in sulfide-based electrolyte research, while U.S. startup QuantumScape, backed by Volkswagen, has reported encouraging results with its ceramic separator design. South Korea's Samsung SDI is exploring silver-carbon composite anodes as an alternative pathway. The diversity of approaches underscores both the promise and the uncertainty surrounding which method will ultimately succeed.\n\nIndustry analysts express cautious optimism about the adoption timeline. Most forecast that solid-state batteries will debut in premium electric vehicles around 2028-2030, with costs declining as manufacturing processes mature. BloombergNEF projects the technology could capture 15 percent of the global battery market by 2035, though this hinges on solving the dendrite problem and achieving production yields comparable to established lithium-ion manufacturing. The coming decade will determine whether solid-state batteries fulfill their transformative potential or remain, like many promising breakthroughs, perpetually \"a few years away.\"",
+      "vocab": [
+        {
+          "word": "electrolyte",
+          "phonetic": "/ɪˈlektrəlaɪt/",
+          "def": "n. 电解质"
+        },
+        {
+          "word": "anode",
+          "phonetic": "/ˈænəʊd/",
+          "def": "n. 阳极"
+        },
+        {
+          "word": "thermal runaway",
+          "phonetic": "/ˈθɜːməl ˈrʌnəweɪ/",
+          "def": "n. 热失控"
+        },
+        {
+          "word": "dendrite",
+          "phonetic": "/ˈdendraɪt/",
+          "def": "n. 枝晶"
+        },
+        {
+          "word": "susceptibility",
+          "phonetic": "/səˌseptəˈbɪləti/",
+          "def": "n. 易受影响性；敏感性"
+        },
+        {
+          "word": "deploy",
+          "phonetic": "/dɪˈplɔɪ/",
+          "def": "v. 部署；应用"
+        },
+        {
+          "word": "momentum",
+          "phonetic": "/məˈmentəm/",
+          "def": "n. 势头；动力"
+        },
+        {
+          "word": "perpetually",
+          "phonetic": "/pəˈpetʃuəli/",
+          "def": "adv. 永久地；不断地"
+        }
+      ],
+      "questions": [
+        {
+          "q": "What is the passage primarily about?",
+          "A": "The manufacturing process of lithium-ion batteries.",
+          "B": "The safety hazards of electric vehicle charging infrastructure.",
+          "C": "The competition among Asian battery manufacturers.",
+          "D": "The drive to commercialize safer, higher-density battery technology.",
+          "answer": "D"
+        },
+        {
+          "q": "According to paragraph 2, what advantage do solid electrolytes offer over liquid ones?",
+          "A": "They permit a different electrode substance with far greater storage potential.",
+          "B": "They reduce the overall weight of battery packs significantly.",
+          "C": "They eliminate the need for thermal management systems entirely.",
+          "D": "They allow batteries to operate at extremely low temperatures.",
+          "answer": "A"
+        },
+        {
+          "q": "The word \"dendrite\" in paragraph 3 is closest in meaning to ___.",
+          "A": "A type of ceramic material used in solid electrolytes.",
+          "B": "A chemical reaction that generates electrical current.",
+          "C": "Needle-shaped lithium growths that can damage the electrolyte.",
+          "D": "A manufacturing defect found in solid electrolyte sheets.",
+          "answer": "C"
+        },
+        {
+          "q": "What does the passage say about Toyota in paragraph 4?",
+          "A": "It has abandoned solid-state research to focus on hydrogen fuel cells.",
+          "B": "It possesses the largest number of solid-state battery patents worldwide.",
+          "C": "It has already launched commercial solid-state battery vehicles.",
+          "D": "It is partnering exclusively with South Korean manufacturers.",
+          "answer": "B"
+        },
+        {
+          "q": "What is the author's overall attitude toward the commercialization of solid-state batteries?",
+          "A": "Deeply skeptical that the technology will ever reach mass production.",
+          "B": "Enthusiastic and confident about immediate commercial success.",
+          "C": "Cautiously hopeful but aware of significant remaining hurdles.",
+          "D": "Indifferent, merely presenting facts without expressing any viewpoint.",
+          "answer": "C"
+        }
+      ]
+    },
+    "social": {
+      "title": "The Remote Work Mental Health Paradox",
+      "text": "When millions of workers shifted to remote arrangements during the pandemic, mental health advocates initially celebrated. Freedom from commuting, greater schedule flexibility, and more time with family seemed like clear benefits for psychological well-being. Four years later, however, the data tells a more complex story that has divided researchers and workplace policy experts into opposing camps.\n\nProponents of remote work point to a 2025 Gallup survey of 12,000 knowledge workers across 15 countries, which found that 67 percent of fully remote employees reported lower daily stress levels than their office-based counterparts. The elimination of commutes freed up time for exercise, sleep, and social activities. Furthermore, remote workers providing care to family members, disproportionately women, reported a 31 percent improvement in work-life balance.\n\nYet critics argue that these aggregate numbers mask a troubling undercurrent. A longitudinal study from the University of Chicago tracked 2,400 remote workers over three years and found that while initial satisfaction was high, loneliness scores increased by an average of 18 percent after the first year. The absence of casual office interactions gradually undermined workers' professional identity and sense of belonging. By year three, remote workers were 25 percent more likely to report symptoms consistent with mild depression compared to hybrid workers.\n\nThe evidence suggests that the truth lies somewhere between these positions. Remote work appears to function as a stress reducer for established professionals with strong social networks and stable home environments. For younger workers, new hires, and those living alone, the isolation can become what psychologists call 'corrosive' — gradually wearing down mental resilience. A 2026 meta-analysis concluded that the mental health impact of remote work depends almost entirely on individual circumstances, making blanket pronouncements about its benefits or harms scientifically untenable.\n\nThe path forward, most experts now agree, lies not in choosing between remote and office work but in designing systems that preserve autonomy while protecting against isolation. Hybrid models with intentional in-person gatherings, mentorship programs that pair remote junior employees with senior colleagues, and company-sponsored co-working spaces are emerging as practical compromises. The challenge lies in maintaining meaningful connection while preserving hard-won flexibility.",
+      "vocab": [
+        {
+          "word": "aggregate",
+          "phonetic": "/ˈæɡrɪɡət/",
+          "def": "adj./n. 总体的；合计"
+        },
+        {
+          "word": "longitudinal",
+          "phonetic": "/ˌlɒndʒɪˈtjuːdɪnl/",
+          "def": "adj. 纵向的，长期的"
+        },
+        {
+          "word": "corrosive",
+          "phonetic": "/kəˈrəʊsɪv/",
+          "def": "adj. 逐渐损害的"
+        },
+        {
+          "word": "untenable",
+          "phonetic": "/ʌnˈtenəbl/",
+          "def": "adj. 站不住脚的"
+        },
+        {
+          "word": "autonomy",
+          "phonetic": "/ɔːˈtɒnəmi/",
+          "def": "n. 自主权"
+        }
+      ],
+      "questions": [
+        {
+          "q": "What does the passage suggest about initial expectations for remote work?",
+          "A": "Researchers warned it would cause mass depression.",
+          "B": "Companies resisted despite employee demands.",
+          "C": "Mental health advocates viewed it favorably.",
+          "D": "Government agencies expressed concern.",
+          "answer": "C"
+        },
+        {
+          "q": "What did the 2025 Gallup survey reveal about remote workers?",
+          "A": "They faced greater job insecurity than office staff.",
+          "B": "Most experienced reduced everyday tension versus office colleagues.",
+          "C": "They worked much longer hours than office workers.",
+          "D": "Most wanted to return to full-time office work.",
+          "answer": "B"
+        },
+        {
+          "q": "The word \"corrosive\" in paragraph 4 is closest in meaning to ___.",
+          "A": "Physically damaging to surrounding materials.",
+          "B": "Causing gradual harm to one's mental state.",
+          "C": "Related to chemical reactions in the body.",
+          "D": "Involving intense and sudden emotional pain.",
+          "answer": "B"
+        },
+        {
+          "q": "What does the 2026 meta-analysis conclude about remote work?",
+          "A": "Its effects depend heavily on personal circumstances.",
+          "B": "It harms all workers across demographic groups.",
+          "C": "Benefits increase over time for everyone.",
+          "D": "Senior managers suffer the most severe effects.",
+          "answer": "A"
+        },
+        {
+          "q": "What solutions does the passage present for the isolation problem?",
+          "A": "Requiring all employees to return three days weekly.",
+          "B": "Using virtual reality to simulate office environments.",
+          "C": "Eliminating remote roles over a five-year period.",
+          "D": "Blending flexible work with structured in-person gatherings.",
+          "answer": "D"
+        }
+      ]
+    },
+    "long": null
+  },
+  "translation": {
+    "cn": "中国高铁网络是世界上规模最大的高速铁路系统，运营里程已超过45000公里。自2008年首条高铁线路投入运营以来，高铁不仅大幅缩短了城市间的旅行时间，还深刻改变了中国的经济地理格局。值得注意的是，高铁技术已从最初的引进消化吸收阶段，发展到全面自主创新，如今中国标准动车组已出口至多个国家。在环保方面，高铁相比航空和公路运输显著降低了人均碳排放。可以说，高铁已成为当代中国现代化进程的一个重要象征。",
+    "reference": "China's high-speed rail network is the largest in the world, with operational mileage exceeding 45,000 kilometers. Since the first high-speed rail line entered service in 2008, high-speed rail has not only dramatically shortened travel time between cities but also profoundly reshaped the country's economic geography. It is worth noting that high-speed rail technology has evolved from initial introduction and assimilation of foreign technologies to comprehensive independent innovation, and Chinese-standard bullet trains have now been exported to multiple countries across Asia, Europe, and Africa. In terms of environmental protection, high-speed rail has significantly reduced per capita carbon emissions compared to air travel and road transport. It is fair to say that high-speed rail has become an important symbol of China's ongoing modernization, reflecting both technological achievement and a long-term commitment to sustainable development."
+  },
+  "writing": {
+    "prompt": "Directions: For this part, you are allowed 30 minutes to write an essay on the growing popularity of short-form video content among young adults. You should explain the reasons behind this phenomenon and discuss its potential impact on learning habits. You should write at least 150 words but no more than 200 words.",
+    "model": "The rise of short-form video platforms has fundamentally altered how young adults consume information. This phenomenon reflects several converging changes in digital behavior.\n\nThe primary driver is the alignment between short-form content and shrinking attention spans. Research from Peking University suggests that the average uninterrupted focus period among college students has dropped to under one minute during digital activities. Platforms optimized their algorithms to deliver engaging content within this window, creating a feedback loop that reinforces ever-shorter consumption habits.\n\nEqually significant is the democratization of content creation. Anyone with a smartphone can now produce and distribute videos, transforming passive consumers into active participants. A 2025 industry report found that 34 percent of users aged 18 to 25 had created video content in the past month alone.\n\nThe implications for learning are mixed. While educational short videos have made complex topics accessible to wider audiences, the habit of processing information in rapid, decontextualized bursts undermines sustained analytical thinking. Students accustomed to bite-sized summaries increasingly struggle with extended reading that demands deeper concentration. The challenge ahead is to build bridges between quick engagement and the rigorous focus that genuine learning requires."
+  }
+}
+
+// ========== UTILITY ==========
+function escapeHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ========== RENDER ==========
+function renderQuestions(containerId, questions, prefix) {
+  var container = document.getElementById(containerId);
+  if (!container) return;
+  container.innerHTML = '';
+  if (!questions || !questions.length) return;
+  var letters = ['A','B','C','D'];
+  var listeningKeys = ['news', 'long_conversation', 'passage', 'lecture'];
+  var isListening = listeningKeys.indexOf(prefix) !== -1;
+  questions.forEach(function(q, i) {
+    var div = document.createElement('div');
+    div.className = 'question-item';
+    div.id = prefix + '-q-' + i;
+    if (isListening) {
+      var html = '<p class="quest-label">' + (i+1) + '.</p>';
+    } else {
+      var html = '<p>' + (i+1) + '. ' + escapeHtml(q.q) + '</p>';
+    }
+    letters.forEach(function(l) {
+      html += '<label><input type="radio" name="' + prefix + '-' + i + '" value="' + l + '"> ' + l + '. ' + escapeHtml(q[l]) + '</label>';
+    });
+    div.innerHTML = html;
+    container.appendChild(div);
+  });
+}
+
+function renderVocab(containerId, vocab) {
+  var table = document.getElementById(containerId);
+  if (!table || !vocab || !vocab.length) return;
+  table.innerHTML = '<tr><th>单词</th><th>音标</th><th>释义</th></tr>';
+  vocab.forEach(function(v) {
+    var row = table.insertRow();
+    row.insertCell().textContent = v.word;
+    row.insertCell().textContent = v.phonetic;
+    row.insertCell().textContent = v.def;
+  });
+}
+
+function renderText(containerId, text) {
+  var el = document.getElementById(containerId);
+  if (!el || !text) return;
+  var parts = text.split(/\n\n+/);
+  el.innerHTML = parts.map(function(p) {
+    return '<p>' + escapeHtml(p).replace(/\n/g, '<br>') + '</p>';
+  }).join('');
+}
+
+// ========== REVEAL ==========
+function revealListening() {
+  var keys = ['news', 'long_conversation', 'passage', 'lecture'];
+  keys.forEach(function(key) {
+    var data = DATA.listening[key];
+    if (!data || !data.questions) return;
+    data.questions.forEach(function(q, i) {
+      var sel = document.querySelector('input[name="' + key + '-' + i + '"]:checked');
+      var qDiv = document.getElementById(key + '-q-' + i);
+      if (!qDiv) return;
+      var sp = document.createElement('span');
+      if (sel && sel.value === q.answer) {
+        sp.className = 'correct';
+        sp.textContent = ' ✓ 正确!';
+      } else {
+        sp.className = 'wrong';
+        sp.textContent = sel ? ' ✗ 错误，正确答案是 ' + q.answer : ' 未作答，正确答案是 ' + q.answer;
+      }
+      qDiv.querySelector('p').appendChild(sp);
+    });
+    var scriptEl = document.getElementById(key + '-script');
+    if (scriptEl) scriptEl.textContent = data.script;
+    var revealEl = document.getElementById('listening-' + key + '-reveal');
+    if (revealEl) revealEl.style.display = '';
+    var audioR = document.getElementById(key + '-audio-r');
+    if (audioR && data.audio) audioR.src = data.audio;
+  });
+  document.getElementById('listening-reveal').classList.add('show');
+}
+
+function revealReading() {
+  var keys = ['tech', 'social', 'long'];
+  var correct = 0, total = 0;
+  keys.forEach(function(key) {
+    var data = DATA.reading[key];
+    if (!data || !data.questions) return;
+    data.questions.forEach(function(q, i) {
+      total++;
+      var sel = document.querySelector('input[name="' + key + '-' + i + '"]:checked');
+      var qDiv = document.getElementById(key + '-q-' + i);
+      if (!qDiv) return;
+      var sp = document.createElement('span');
+      if (sel && sel.value === q.answer) {
+        sp.className = 'correct';
+        sp.textContent = ' ✓ 正确!';
+        correct++;
+      } else {
+        sp.className = 'wrong';
+        sp.textContent = sel ? ' ✗ 错误，正确答案是 ' + q.answer : ' 未作答，正确答案是 ' + q.answer;
+      }
+      qDiv.querySelector('p').appendChild(sp);
+    });
+  });
+  var scoreEl = document.getElementById('reading-score');
+  var detailEl = document.getElementById('reading-detail');
+  if (scoreEl) scoreEl.textContent = correct + ' / ' + total;
+  if (detailEl) detailEl.textContent = total > 0 && correct >= Math.ceil(total * 0.6) ? '合格 ✓' : '需要加油 ✗';
+  document.getElementById('reading-reveal').classList.add('show');
+}
+
+function revealTranslation() {
+  document.getElementById('translation-ref').textContent = DATA.translation.reference;
+  document.getElementById('translation-reveal').classList.add('show');
+}
+
+function revealWriting() {
+  document.getElementById('writing-model').textContent = DATA.writing.model;
+  document.getElementById('writing-reveal').classList.add('show');
+}
+
+// ========== INIT ==========
+(function init() {
+  // --- Listening ---
+  var lKeys = ['news', 'long_conversation', 'passage', 'lecture'];
+  var anyListening = false;
+  lKeys.forEach(function(key) {
+    var data = DATA.listening[key];
+    var subEl = document.getElementById('listening-' + key);
+    if (!subEl) return;
+    if (data && data.questions && data.questions.length > 0) {
+      subEl.style.display = '';
+      anyListening = true;
+      renderQuestions(key + '-questions', data.questions, key);
+      var audioEl = document.getElementById(key + '-audio');
+      if (audioEl && data.audio) audioEl.src = data.audio;
+    } else {
+      subEl.style.display = 'none';
+    }
+  });
+  // 如果没有任何听力数据，隐藏整个听力区
+  if (!anyListening) {
+    document.getElementById('listening').style.display = 'none';
+  }
+
+  // --- Reading ---
+  var rKeys = ['tech', 'social', 'long'];
+  var anyReading = false;
+  rKeys.forEach(function(key) {
+    var data = DATA.reading[key];
+    var subEl = document.getElementById('reading-' + key);
+    if (!subEl) return;
+    if (data) {
+      subEl.style.display = '';
+      anyReading = true;
+      if (data.text) renderText(key + '-text', data.text);
+      if (data.vocab && data.vocab.length > 0) renderVocab(key + '-vocab', data.vocab);
+      if (data.questions) renderQuestions(key + '-questions', data.questions, key);
+    } else {
+      subEl.style.display = 'none';
+    }
+  });
+  if (!anyReading) {
+    document.getElementById('reading').style.display = 'none';
+  }
+
+  // --- Translation & Writing ---
+  if (DATA.translation) {
+    document.getElementById('translation-prompt').textContent = DATA.translation.cn;
+  }
+  if (DATA.writing) {
+    document.getElementById('writing-prompt').textContent = DATA.writing.prompt;
+  }
+})();
+</script>
+</body>
+</html>
