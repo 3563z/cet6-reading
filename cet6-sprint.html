@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CET-6 18天冲刺训练营</title>
+<style>
+:root { --bg: #f5f7fa; --card: #fff; --text: #2d3436; --accent: #6c5ce7; --border: #e0e0e0; --green: #27ae60; --red: #e74c3c; --hint: #888; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system,'PingFang SC','Microsoft YaHei',sans-serif; background:var(--bg); color:var(--text); line-height:1.8; }
+.header { background:linear-gradient(135deg,#6c5ce7,#a29bfe); color:#fff; padding:40px 20px; text-align:center; }
+.header h1 { font-size:26px; margin-bottom:6px; }
+.header p { font-size:14px; opacity:.85; }
+.container { max-width:860px; margin:0 auto; padding:20px; }
+.section { background:var(--card); border-radius:12px; padding:24px; margin-bottom:18px; box-shadow:0 2px 8px rgba(0,0,0,.05); }
+.section h3 { font-size:18px; margin-bottom:12px; color:var(--accent); border-bottom:2px solid var(--accent); padding-bottom:8px; }
+.hint { font-size:13px; color:var(--hint); margin-bottom:10px; }
+.q-list { display:flex; flex-direction:column; gap:10px; }
+.q-item { padding:10px 14px; background:#f0f0ff; border-radius:8px; border:1px solid var(--border); }
+.q-num { font-size:14px; color:var(--accent); font-weight:600; margin-bottom:4px; }
+.q-item label { display:block; padding:3px 0; font-size:14px; cursor:pointer; }
+.q-item input[type="radio"] { margin-right:8px; accent-color:var(--accent); }
+.word-bank { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
+.word-chip { display:inline-block; padding:6px 14px; background:var(--accent); color:#fff; border-radius:20px; font-size:14px; cursor:pointer; transition:opacity .2s; }
+.word-chip:hover { opacity:.8; }
+.word-chip.used { opacity:.3; pointer-events:none; }
+.blank { display:inline-block; min-width:70px; border-bottom:2px solid var(--accent); text-align:center; font-weight:600; color:var(--accent); margin:0 3px; cursor:pointer; padding:2px 6px; font-size:14px; }
+.blank.filled { background:#f0f0ff; }
+.reading-text { font-size:15px; line-height:2.2; text-align:justify; margin:12px 0; }
+.cloze-text { line-height:2.5; }
+.script-box { margin:10px 0; }
+.script-box summary { cursor:pointer; color:var(--accent); font-weight:600; }
+.script-text { white-space:pre-wrap; font-size:13px; line-height:1.8; background:#f5f5f5; padding:14px; border-radius:8px; margin-top:6px; }
+.explain { display:none; margin-top:10px; padding:10px 14px; border-radius:6px; font-size:13px; }
+.explain.show { display:block; }
+.btn-sm { padding:8px 20px; background:var(--accent); color:#fff; border:none; border-radius:8px; font-size:14px; cursor:pointer; margin-top:12px; }
+.btn-sm:hover { opacity:.9; }
+table { width:100%; border-collapse:collapse; margin:12px 0; font-size:14px; }
+th, td { padding:8px 12px; border:1px solid var(--border); text-align:left; }
+th { background:#f0f0ff; }
+.wrong-word { color:var(--red); font-weight:600; text-decoration:line-through; }
+.correct-word { color:var(--green); font-weight:600; }
+.tabs { display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap; }
+.tab { padding:10px 18px; background:var(--card); border:2px solid var(--border); border-radius:8px; cursor:pointer; font-size:14px; font-weight:600; }
+.tab.active { border-color:var(--accent); background:#f0f0ff; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🏃 CET-6 18天冲刺训练营</h1>
+  <p>基于摸底诊断定制 · P0→选词填空+拼写+讲座听力</p>
+</div>
+<div class="container">
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('schedule')">📅 日程表</div>
+  <div class="tab" onclick="showTab('spelling')">🔤 拼写急救</div>
+  <div class="tab" onclick="showTab('cloze')">📖 选词填空×3</div>
+  <div class="tab" onclick="showTab('lecture')">🎧 讲座听力×3</div>
+  <div class="tab" onclick="showTab('trans')">✍️ 翻译句型</div>
+</div>
+
+<div id="tab-schedule"><div class="section"><h3>📅 D1-D3 选词填空突破</h3><ul style="padding-left:20px;line-height:2.2"><li>晨15min：拼写表前10词各写3遍</li><li>上午：1套选词填空 — 先标词性(n/v/adj/adv)再看原文</li><li>下午：1篇讲座三遍法</li><li>晚：1段翻译 + 对照答案改错</li><li>睡前：翻今日错词</li></ul></div><div class="section"><h3>📅 D4-D6 听力强攻</h3><ul style="padding-left:20px;line-height:2.2"><li>晨15min：拼写表后10词各写3遍</li><li>上午：1套选词填空（目标5+正确）</li><li>下午：2篇讲座三遍法</li><li>晚：1段翻译 + 背3个翻译句型</li><li>睡前：写作模板默写1遍</li></ul></div><div class="section"><h3>📅 D7-D9 输出提升</h3><ul style="padding-left:20px;line-height:2.2"><li>晨15min：循环复习拼写表（遮中文写英文）</li><li>上午：选词填空限时12分钟</li><li>下午：1篇全真听力（长对话+篇章+讲座连做）</li><li>晚：1段翻译限时25分钟 + 1篇写作限时30分钟</li></ul></div><div class="section"><h3>📅 D10-D14 全真模拟期</h3><ul style="padding-left:20px;line-height:2.2"><li>每2天1整套全真模拟（严格计时）</li><li>交替日：错题精析 + 弱项定点补</li><li>每日：翻拼写表3分钟</li><li>翻译+写作各3篇</li></ul></div><div class="section"><h3>📅 D15-D18 收网</h3><ul style="padding-left:20px;line-height:2.2"><li>不做新题，只复习错题</li><li>默写翻译10句型和20专有名词</li><li>写作模板过3遍</li><li>考前1天：检查准考证身份证耳机</li></ul></div></div>
+<div id="tab-spelling" style="display:none">
+  <div class="section">
+    <h3>🔤 拼写急救表（你的20个真实错误）</h3>
+    <p class="hint">每天早晨抽10分钟，遮住右边，看左边错词写正确拼写。连续3天写对→划掉。</p>
+    <table><tr><td class="wrong-word">impotant</td><td class="correct-word">important</td><td>im·por·tant — 中间有个 por</td></tr><tr><td class="wrong-word">truely</td><td class="correct-word">truly</td><td>true 去 e 加 ly，不保留 e</td></tr><tr><td class="wrong-word">beging</td><td class="correct-word">beginning</td><td>begin + n + ing — 双写 n</td></tr><tr><td class="wrong-word">atention</td><td class="correct-word">attention</td><td>at·ten·tion — 双 t</td></tr><tr><td class="wrong-word">goverment</td><td class="correct-word">government</td><td>govern + ment — 中间有 n</td></tr><tr><td class="wrong-word">crimal</td><td class="correct-word">criminal</td><td>crime 变 crim·i·nal — 加 i</td></tr><tr><td class="wrong-word">identifly</td><td class="correct-word">identify</td><td>iden·ti·fy — fy 不是 fly</td></tr><tr><td class="wrong-word">assient</td><td class="correct-word">assistant</td><td>as·sis·tant — 双 s</td></tr><tr><td class="wrong-word">konw</td><td class="correct-word">know</td><td>k-now — k 不发音但必须写</td></tr><tr><td class="wrong-word">daliy</td><td class="correct-word">daily</td><td>day 变 dai·ly — ai 不是 a</td></tr><tr><td class="wrong-word">resent</td><td class="correct-word">recent</td><td>re·cent — e 不是 e</td></tr><tr><td class="wrong-word">puloution</td><td class="correct-word">pollution</td><td>pol·lu·tion — 双 l, tion</td></tr><tr><td class="wrong-word">developing</td><td class="correct-word">developing</td><td>你写对了！但 developing the skill 不是 developing skill</td></tr><tr><td class="wrong-word">noly</td><td class="correct-word">only</td><td>on·ly — on 不是 no</td></tr><tr><td class="wrong-word">longgest</td><td class="correct-word">longest</td><td>long + est — 没有 g</td></tr><tr><td class="wrong-word">mlies</td><td class="correct-word">kilometers</td><td>中文'公里'=kilometers，不是miles</td></tr><tr><td class="wrong-word">importance(adj)</td><td class="correct-word">important</td><td>importance 是名词，important 是形容词</td></tr><tr><td class="wrong-word">take action</td><td class="correct-word">taken action</td><td>has taken — 现在完成时</td></tr><tr><td class="wrong-word">restoration(n.)</td><td class="correct-word">restore(v.)</td><td>平行结构：control and restore</td></tr><tr><td class="wrong-word">all most</td><td class="correct-word">almost</td><td>一个词，不是两个</td></tr></table>
+  </div>
+</div>
+<div id="tab-cloze" style="display:none">
+  <div class="section" style="background:#f0f0ff">
+    <h3>⚡ 词性排除法（解题技巧）</h3>
+    <p class="hint">十五选十的核心不是认不认识词——是<strong>词性判断</strong>。拿到题先不看词库，逐个空标注需要什么词性：</p>
+    <table>
+      <tr><th>空前后线索</th><th>需要的词性</th><th>示例</th></tr>
+      <tr><td>a/an/the + ___ + n</td><td>形容词</td><td>a ___ challenge</td></tr>
+      <tr><td>be + ___</td><td>形容词/名词/过去分词</td><td>is ___</td></tr>
+      <tr><td>___ + 名词</td><td>形容词</td><td>___ damage</td></tr>
+      <tr><td>can/may/must + ___</td><td>动词原形</td><td>can ___</td></tr>
+      <tr><td>介词 + ___</td><td>名词/动名词</td><td>for ___</td></tr>
+    </table>
+  </div>
+  
+    <div class="section">
+      <h3>📖 Set 1 — 气候变化的临界点</h3>
+      <p class="hint">先标注每个空需要的词性(n/v/adj/adv)，再选词。点击词汇→点击空格填入，双击空格撤销。</p>
+      <div class="word-bank"><span class="word-chip" data-set="0" data-word="tipping" onclick="pickWord('0','tipping',this)">tipping</span><span class="word-chip" data-set="0" data-word="irreversible" onclick="pickWord('0','irreversible',this)">irreversible</span><span class="word-chip" data-set="0" data-word="potent" onclick="pickWord('0','potent',this)">potent</span><span class="word-chip" data-set="0" data-word="impossible" onclick="pickWord('0','impossible',this)">impossible</span><span class="word-chip" data-set="0" data-word="consequence" onclick="pickWord('0','consequence',this)">consequence</span><span class="word-chip" data-set="0" data-word="infrastructure" onclick="pickWord('0','infrastructure',this)">infrastructure</span><span class="word-chip" data-set="0" data-word="define" onclick="pickWord('0','define',this)">define</span><span class="word-chip" data-set="0" data-word="formidable" onclick="pickWord('0','formidable',this)">formidable</span><span class="word-chip" data-set="0" data-word="inaction" onclick="pickWord('0','inaction',this)">inaction</span><span class="word-chip" data-set="0" data-word="options" onclick="pickWord('0','options',this)">options</span><span class="word-chip" data-set="0" data-word="curious" onclick="pickWord('0','curious',this)">curious</span><span class="word-chip" data-set="0" data-word="temporary" onclick="pickWord('0','temporary',this)">temporary</span><span class="word-chip" data-set="0" data-word="modest" onclick="pickWord('0','modest',this)">modest</span><span class="word-chip" data-set="0" data-word="opportunity" onclick="pickWord('0','opportunity',this)">opportunity</span><span class="word-chip" data-set="0" data-word="reluctant" onclick="pickWord('0','reluctant',this)">reluctant</span></div>
+      <div class="reading-text cloze-text">Scientists have long warned that climate change is not a gradual process but one marked by <span class="blank" id="c0_1">(1)____</span> points — thresholds beyond which changes become self-reinforcing and potentially <span class="blank" id="c0_2">(2)____</span>. The melting of Arctic permafrost is a prime example. As frozen ground thaws, it releases methane, a greenhouse gas far more <span class="blank" id="c0_3">(3)____</span> than carbon dioxide, which in turn accelerates warming and causes further thawing. Once this feedback loop begins, it may be difficult or even <span class="blank" id="c0_4">(4)____</span> to stop. Researchers at the University of Cambridge have identified fifteen such tipping elements, including the collapse of the Greenland ice sheet and the dieback of the Amazon rainforest. The <span class="blank" id="c0_5">(5)____</span> of crossing these thresholds is not merely environmental but economic, potentially costing trillions of dollars in <span class="blank" id="c0_6">(6)____</span> damage. Yet public awareness remains surprisingly low. A recent survey found that while 72 percent of respondents expressed general concern about climate change, only 18 percent could accurately <span class="blank" id="c0_7">(7)____</span> what a tipping point was. This gap between concern and understanding represents a <span class="blank" id="c0_8">(8)____</span> challenge for policymakers, who must persuade voters to support costly mitigation measures before the worst effects become visible. The window for action is narrowing, and the cost of <span class="blank" id="c0_9">(9)____</span> grows with each passing year. As one lead researcher noted, we are not just running out of time — we are running out of <span class="blank" id="c0_10">(10)____</span>.</div>
+      <div style="margin-top:8px"><span class="hint">当前选择：</span><span id="pick-ci0" style="color:var(--accent);font-weight:600">无</span></div>
+      <button class="btn-sm" onclick="checkCloze(0, ["tipping", "irreversible", "potent", "impossible", "consequence", "infrastructure", "define", "formidable", "inaction", "options"])">✅ 检查答案</button>
+      <div class="explain" id="clozenote-0"></div>
+    </div>
+    <div class="section">
+      <h3>📖 Set 2 — 微生物组与人类健康</h3>
+      <p class="hint">先标注每个空需要的词性(n/v/adj/adv)，再选词。点击词汇→点击空格填入，双击空格撤销。</p>
+      <div class="word-bank"><span class="word-chip" data-set="1" data-word="collective" onclick="pickWord('1','collective',this)">collective</span><span class="word-chip" data-set="1" data-word="landmark" onclick="pickWord('1','landmark',this)">landmark</span><span class="word-chip" data-set="1" data-word="diversity" onclick="pickWord('1','diversity',this)">diversity</span><span class="word-chip" data-set="1" data-word="regulate" onclick="pickWord('1','regulate',this)">regulate</span><span class="word-chip" data-set="1" data-word="crucial" onclick="pickWord('1','crucial',this)">crucial</span><span class="word-chip" data-set="1" data-word="associated" onclick="pickWord('1','associated',this)">associated</span><span class="word-chip" data-set="1" data-word="fundamental" onclick="pickWord('1','fundamental',this)">fundamental</span><span class="word-chip" data-set="1" data-word="underway" onclick="pickWord('1','underway',this)">underway</span><span class="word-chip" data-set="1" data-word="measurable" onclick="pickWord('1','measurable',this)">measurable</span><span class="word-chip" data-set="1" data-word="harness" onclick="pickWord('1','harness',this)">harness</span><span class="word-chip" data-set="1" data-word="delicate" onclick="pickWord('1','delicate',this)">delicate</span><span class="word-chip" data-set="1" data-word="random" onclick="pickWord('1','random',this)">random</span><span class="word-chip" data-set="1" data-word="declining" onclick="pickWord('1','declining',this)">declining</span><span class="word-chip" data-set="1" data-word="reluctant" onclick="pickWord('1','reluctant',this)">reluctant</span><span class="word-chip" data-set="1" data-word="isolated" onclick="pickWord('1','isolated',this)">isolated</span></div>
+      <div class="reading-text cloze-text">The human gut contains trillions of microorganisms whose <span class="blank" id="c1_1">(1)____</span> influence extends far beyond digestion. Over the past decade, researchers have linked the gut microbiome to conditions ranging from depression to autoimmune disorders. A <span class="blank" id="c1_2">(2)____</span> study published in Nature tracked 1,200 individuals over five years and found that those with greater microbial <span class="blank" id="c1_3">(3)____</span> were significantly less likely to develop chronic inflammatory diseases. The mechanism appears to involve the production of short-chain fatty acids, which <span class="blank" id="c1_4">(4)____</span> the immune system and reduce inflammation throughout the body. Diet plays a <span class="blank" id="c1_5">(5)____</span> role in shaping the microbiome. A fiber-rich diet promotes beneficial bacteria, while processed foods tend to favor microbial communities <span class="blank" id="c1_6">(6)____</span> with poor health outcomes. However, the field also faces a <span class="blank" id="c1_7">(7)____</span> challenge: distinguishing correlation from causation. Just because a particular bacterial strain is associated with a disease does not prove that it causes it. Several clinical trials are now <span class="blank" id="c1_8">(8)____</span> to test whether modifying the microbiome through diet, probiotics, or even fecal transplants can produce <span class="blank" id="c1_9">(9)____</span> health improvements. Early results are promising, suggesting that we may soon be able to <span class="blank" id="c1_10">(10)____</span> the microbiome as a therapeutic tool.</div>
+      <div style="margin-top:8px"><span class="hint">当前选择：</span><span id="pick-ci1" style="color:var(--accent);font-weight:600">无</span></div>
+      <button class="btn-sm" onclick="checkCloze(1, ["collective", "landmark", "diversity", "regulate", "crucial", "associated", "fundamental", "underway", "measurable", "harness"])">✅ 检查答案</button>
+      <div class="explain" id="clozenote-1"></div>
+    </div>
+    <div class="section">
+      <h3>📖 Set 3 — 在线教育的公平悖论</h3>
+      <p class="hint">先标注每个空需要的词性(n/v/adj/adv)，再选词。点击词汇→点击空格填入，双击空格撤销。</p>
+      <div class="word-bank"><span class="word-chip" data-set="2" data-word="hailed" onclick="pickWord('2','hailed',this)">hailed</span><span class="word-chip" data-set="2" data-word="complex" onclick="pickWord('2','complex',this)">complex</span><span class="word-chip" data-set="2" data-word="stubbornly" onclick="pickWord('2','stubbornly',this)">stubbornly</span><span class="word-chip" data-set="2" data-word="disproportionately" onclick="pickWord('2','disproportionately',this)">disproportionately</span><span class="word-chip" data-set="2" data-word="widening" onclick="pickWord('2','widening',this)">widening</span><span class="word-chip" data-set="2" data-word="contribute" onclick="pickWord('2','contribute',this)">contribute</span><span class="word-chip" data-set="2" data-word="interaction" onclick="pickWord('2','interaction',this)">interaction</span><span class="word-chip" data-set="2" data-word="hybrid" onclick="pickWord('2','hybrid',this)">hybrid</span><span class="word-chip" data-set="2" data-word="element" onclick="pickWord('2','element',this)">element</span><span class="word-chip" data-set="2" data-word="bridge" onclick="pickWord('2','bridge',this)">bridge</span><span class="word-chip" data-set="2" data-word="rapidly" onclick="pickWord('2','rapidly',this)">rapidly</span><span class="word-chip" data-set="2" data-word="neglected" onclick="pickWord('2','neglected',this)">neglected</span><span class="word-chip" data-set="2" data-word="excessive" onclick="pickWord('2','excessive',this)">excessive</span><span class="word-chip" data-set="2" data-word="restricted" onclick="pickWord('2','restricted',this)">restricted</span><span class="word-chip" data-set="2" data-word="passive" onclick="pickWord('2','passive',this)">passive</span></div>
+      <div class="reading-text cloze-text">When massive open online courses first emerged a decade ago, they were <span class="blank" id="c2_1">(1)____</span> as a democratizing force that would bring elite education to anyone with an internet connection. The reality has proven more <span class="blank" id="c2_2">(2)____</span>. While millions have enrolled in these courses, completion rates remain <span class="blank" id="c2_3">(3)____</span> low — typically below 10 percent. More troubling, the beneficiaries have been <span class="blank" id="c2_4">(4)____</span> those who were already educationally advantaged. A 2024 UNESCO report found that 78 percent of MOOC learners already held a bachelor's degree or higher, suggesting that online education may be <span class="blank" id="c2_5">(5)____</span> rather than reducing educational inequality. Several factors <span class="blank" id="c2_6">(6)____</span> to this pattern. Learners from disadvantaged backgrounds often lack the reliable internet access, quiet study space, and self-regulation skills that online learning demands. The absence of face-to-face <span class="blank" id="c2_7">(7)____</span> with instructors and peers can leave struggling students feeling isolated and unmotivated. Some institutions are now experimenting with <span class="blank" id="c2_8">(8)____</span> models that combine online content with in-person support, aiming to capture the scalability of digital learning while preserving the human <span class="blank" id="c2_9">(9)____</span> that keeps students engaged. Whether these efforts can truly <span class="blank" id="c2_10">(10)____</span> the gap between promise and performance remains an open question.</div>
+      <div style="margin-top:8px"><span class="hint">当前选择：</span><span id="pick-ci2" style="color:var(--accent);font-weight:600">无</span></div>
+      <button class="btn-sm" onclick="checkCloze(2, ["hailed", "complex", "stubbornly", "disproportionately", "widening", "contribute", "interaction", "hybrid", "element", "bridge"])">✅ 检查答案</button>
+      <div class="explain" id="clozenote-2"></div>
+    </div>
+</div>
+<div id="tab-lecture" style="display:none">
+  <div class="section" style="background:#f0f0ff">
+    <h3>⚡ 讲座听力三遍法</h3>
+    <p class="hint">①第一遍：正常做题不暂停 → ②第二遍：逐句听写（听不出的空着） → ③第三遍：对照原文标红失败位置，分析原因</p>
+    <p class="hint">信号词后必出题：However / In fact / Therefore / Moreover / Strikingly / As a result</p>
+  </div>
+  
+    <div class="section">
+      <h3>🎧 讲座 1 — 睡眠与记忆巩固</h3>
+      <p class="hint">信号词位置：[Q1] 主旨，开头3句 | [Q2] In fact, 慢波睡眠功能 | [Q3] Moreover, REM与程序记忆 | [Q4] Therefore, 对教育的影响 | [Q5] As a result, 结尾论点</p>
+      <details class="script-box"><summary>📄 原文（做完后对照）</summary>
+      <pre class="script-text" style="max-height:300px;overflow-y:auto">Good morning. Today I'd like to explore a fascinating intersection of neuroscience and daily life: the relationship between sleep and memory. [Q1] We spend roughly one-third of our lives asleep, and for much of scientific history, this was viewed as a purely restorative process — the brain simply shutting down to recover from the day's mental exertion. However, research over the past two decades has revealed something far more interesting. Sleep is not a passive state but an active one, during which the brain performs essential cognitive maintenance.
+
+In fact, one of the most important functions of sleep is memory consolidation — the process by which newly acquired information is stabilized and integrated into long-term storage. [Q2] During the deep, slow-wave stages of sleep, the brain replays the day's experiences in a compressed form, strengthening neural connections that represent important information while allowing irrelevant details to fade. Strikingly, this replay occurs at speeds up to twenty times faster than the original experience, allowing the brain to process an entire day's learning in a fraction of the time.
+
+Moreover, different sleep stages serve different memory functions. Slow-wave sleep primarily consolidates declarative memories — facts, events, and explicit knowledge. [Q3] REM sleep, characterized by rapid eye movements, appears to be crucial for procedural memory and creative problem-solving. A classic experiment demonstrated this vividly: participants who were allowed to sleep between learning a complex task and being tested on it performed significantly better than those who stayed awake, even when total practice time was equal. The sleeping brain, it seems, was not just resting but actively refining the skill.
+
+Therefore, the implications for education and workplace performance are profound. [Q4] The widespread cultural tendency to sacrifice sleep for productivity may be fundamentally counterproductive. Students who pull all-nighters before exams may actually be impairing their ability to retain the very material they are studying. Some school districts in the United States have already responded to this research by pushing back high school start times, and the results have been striking — improved grades, reduced absenteeism, and even fewer car accidents among teenage drivers.
+
+As a result, I would argue that sleep should be viewed not as a luxury or an obstacle to productivity, but as an essential component of the learning process itself. [Q5] The brain's overnight work — sorting, strengthening, and integrating the day's experiences — is as important to learning as the waking hours spent in study. The next time someone tells you they will sleep when they are dead, you might gently suggest that without sleep, their memories will be dead long before they are.</pre></details>
+      <div class="q-list"><div class="q-item"><p class="q-num">1.</p><label><input type="radio" name="l0_0" value="A"> A. The history of sleep research.</label><label><input type="radio" name="l0_0" value="B"> B. The connection between sleep and memory.</label><label><input type="radio" name="l0_0" value="C"> C. How to cure common sleep disorders.</label><label><input type="radio" name="l0_0" value="D"> D. The biological need for rest.</label></div><div class="q-item"><p class="q-num">2.</p><label><input type="radio" name="l0_1" value="A"> A. The brain replays experiences at accelerated speed.</label><label><input type="radio" name="l0_1" value="B"> B. New neural connections are permanently deleted.</label><label><input type="radio" name="l0_1" value="C"> C. External stimuli become easier to process.</label><label><input type="radio" name="l0_1" value="D"> D. The body enters a state of complete inactivity.</label></div><div class="q-item"><p class="q-num">3.</p><label><input type="radio" name="l0_2" value="A"> A. Declarative memory and factual knowledge.</label><label><input type="radio" name="l0_2" value="B"> B. Physical recovery from daily exhaustion.</label><label><input type="radio" name="l0_2" value="C"> C. Procedural memory and creative thinking.</label><label><input type="radio" name="l0_2" value="D"> D. The initial encoding of new information.</label></div><div class="q-item"><p class="q-num">4.</p><label><input type="radio" name="l0_3" value="A"> A. It has no effect on long-term academic outcomes.</label><label><input type="radio" name="l0_3" value="B"> B. It may actually reduce learning effectiveness.</label><label><input type="radio" name="l0_3" value="C"> C. It is necessary for highly competitive fields.</label><label><input type="radio" name="l0_3" value="D"> D. It only affects physical rather than mental health.</label></div><div class="q-item"><p class="q-num">5.</p><label><input type="radio" name="l0_4" value="A"> A. Sleep is more important for learning than waking study.</label><label><input type="radio" name="l0_4" value="B"> B. Students should sleep at least ten hours every night.</label><label><input type="radio" name="l0_4" value="C"> C. Memory loss can be reversed through better sleep habits.</label><label><input type="radio" name="l0_4" value="D"> D. Sleep should be seen as part of the learning process.</label></div></div>
+      <button class="btn-sm" onclick="checkLec(0, ["B", "A", "C", "B", "D"])">✅ 检查答案</button>
+      <div class="explain" id="lecnote-0"></div>
+    </div>
+    <div class="section">
+      <h3>🎧 讲座 2 — 行为经济学中的默认效应</h3>
+      <p class="hint">信号词位置：[Q1] 主旨，开头定义 | [Q2] In fact, 器官捐献案例 | [Q3] However, 退休储蓄+Strikingly数据 | [Q4] Therefore, 政策应用 | [Q5] Consequently, 结尾伦理问题</p>
+      <details class="script-box"><summary>📄 原文（做完后对照）</summary>
+      <pre class="script-text" style="max-height:300px;overflow-y:auto">Today I want to introduce a concept from behavioral economics that has quietly reshaped public policy around the world: the default effect. [Q1] The default effect refers to the well-documented tendency for people to stick with pre-selected options rather than making active changes — even when the stakes are significant. What's crucial to understand is that defaults are not neutral. They shape behavior powerfully, often without people realizing they are being influenced.
+
+In fact, the most famous demonstration of this effect comes from organ donation policy. [Q2] In countries where citizens are automatically registered as organ donors unless they actively opt out — the so-called opt-out system — donation rates typically exceed 90 percent. In countries with opt-in systems, where citizens must actively choose to become donors, rates hover around 15 percent. The difference is not explained by cultural attitudes toward donation; it is almost entirely a function of the default setting. People in opt-in countries are not more opposed to donation — they simply never get around to signing up.
+
+However, the power of defaults extends far beyond organ donation. Retirement savings provides another compelling case. [Q3] When companies automatically enroll employees in retirement plans, participation rates jump from roughly 40 percent to over 90 percent. Strikingly, even when employees are free to opt out at any time and the financial incentives are identical, the default condition alone produces this dramatic shift. The psychological mechanism behind this appears to involve a combination of inertia, the perception that the default represents an implicit recommendation, and the mental effort required to evaluate alternatives.
+
+Therefore, policymakers have increasingly embraced what Richard Thaler and Cass Sunstein termed 'libertarian paternalism' — designing choice architectures that nudge people toward better decisions while preserving their freedom to choose otherwise. [Q4] This approach has been applied to areas ranging from healthy eating in school cafeterias to energy conservation in households, with consistently positive results. By simply changing which option is presented as the default, significant improvements in public welfare can be achieved at minimal cost.
+
+Consequently, the default effect raises important ethical questions that deserve careful consideration. [Q5] If defaults are so powerful, who should design them, and toward what ends? Used responsibly, they represent one of the most cost-effective tools available for improving public well-being. Used carelessly or manipulatively, they could become a form of invisible coercion. The challenge for democratic societies is to harness the power of defaults transparently, ensuring that the architects of choice are accountable to the citizens whose decisions they are shaping.</pre></details>
+      <div class="q-list"><div class="q-item"><p class="q-num">1.</p><label><input type="radio" name="l1_0" value="A"> A. A marketing strategy used by technology companies.</label><label><input type="radio" name="l1_0" value="B"> B. The tendency to accept pre-set options without changing them.</label><label><input type="radio" name="l1_0" value="C"> C. A legal requirement in international trade agreements.</label><label><input type="radio" name="l1_0" value="D"> D. The psychological impact of having too many choices.</label></div><div class="q-item"><p class="q-num">2.</p><label><input type="radio" name="l1_1" value="A"> A. Cultural beliefs determine donation rates across nations.</label><label><input type="radio" name="l1_1" value="B"> B. Opt-out systems produce dramatically higher donation rates.</label><label><input type="radio" name="l1_1" value="C"> C. Most people actively oppose the idea of organ donation.</label><label><input type="radio" name="l1_1" value="D"> D. Government mandates are necessary to increase donations.</label></div><div class="q-item"><p class="q-num">3.</p><label><input type="radio" name="l1_2" value="A"> A. Most employees choose to opt out within the first year.</label><label><input type="radio" name="l1_2" value="B"> B. Participation increases from roughly 40 percent to over 90 percent.</label><label><input type="radio" name="l1_2" value="C"> C. Financial returns decrease due to inexperienced investors.</label><label><input type="radio" name="l1_2" value="D"> D. Employees report lower job satisfaction than before enrollment.</label></div><div class="q-item"><p class="q-num">4.</p><label><input type="radio" name="l1_3" value="A"> A. Reducing personal freedom to enforce better public decisions.</label><label><input type="radio" name="l1_3" value="B"> B. Designing choices that guide behavior while preserving freedom.</label><label><input type="radio" name="l1_3" value="C"> C. A political movement opposing all forms of government regulation.</label><label><input type="radio" name="l1_3" value="D"> D. Using financial penalties to discourage undesirable behaviors.</label></div><div class="q-item"><p class="q-num">5.</p><label><input type="radio" name="l1_4" value="A"> A. They are too expensive for most governments to implement.</label><label><input type="radio" name="l1_4" value="B"> B. They may violate international trade and privacy regulations.</label><label><input type="radio" name="l1_4" value="C"> C. They raise questions about who designs them and for what purpose.</label><label><input type="radio" name="l1_4" value="D"> D. They have been proven ineffective in real-world policy settings.</label></div></div>
+      <button class="btn-sm" onclick="checkLec(1, ["B", "B", "B", "B", "C"])">✅ 检查答案</button>
+      <div class="explain" id="lecnote-1"></div>
+    </div>
+    <div class="section">
+      <h3>🎧 讲座 3 — 语言的濒危与保护</h3>
+      <p class="hint">信号词位置：[Q1] 主旨，开头数据 | [Q2] In fact, 主要原因 | [Q3] Strikingly, 知识损失 | [Q4] Moreover, 心理影响 | [Q5] Therefore, 结尾观点</p>
+      <details class="script-box"><summary>📄 原文（做完后对照）</summary>
+      <pre class="script-text" style="max-height:300px;overflow-y:auto">Today I want to address a crisis that receives far less attention than climate change or biodiversity loss, yet is arguably just as urgent: the mass extinction of the world's languages. [Q1] Of the approximately 7,000 languages spoken today, linguists estimate that between 50 and 90 percent will disappear by the end of this century. On average, one language dies every two weeks. What's crucial is that when a language disappears, what is lost is not merely a communication system but an entire way of understanding the world.
+
+In fact, the causes of language endangerment are well understood and distressingly familiar. [Q2] The primary driver is the dominance of a handful of global languages — English, Mandarin Chinese, Spanish, and a few others — in education, media, commerce, and governance. When children are educated exclusively in a dominant language and come to associate their ancestral tongue with backwardness or limited opportunity, intergenerational transmission breaks within a single generation. Parents stop speaking the old language to their children, and the chain is severed.
+
+However, what makes language loss uniquely tragic is the knowledge it erases. Indigenous languages often contain detailed taxonomies of local plants and animals, accumulated over centuries of close observation. [Q3] Strikingly, when the last speaker of an Amazonian language dies, the equivalent of an entire library of botanical and ecological knowledge may disappear with them — knowledge that could potentially inform pharmaceutical research or sustainable resource management. Languages are not interchangeable codes for the same thoughts; they encode distinct ways of categorizing experience.
+
+Moreover, the loss of linguistic diversity has psychological consequences for the communities affected. Research has shown that language revitalization programs are associated with lower rates of youth suicide and substance abuse in indigenous communities. [Q4] The connection between language and identity runs deep, and the restoration of a threatened language can serve as a powerful tool for community healing. Several successful revitalization efforts — the revival of Hebrew in Israel, the resurgence of Maori in New Zealand, and the reclamation of Welsh in the United Kingdom — demonstrate that language death is not inevitable when communities mobilize.
+
+Therefore, I want to leave you with a challenge to the common assumption that a world with fewer languages would be more efficient. [Q5] The value of linguistic diversity cannot be measured solely in economic terms. Each language represents a unique human experiment in making sense of existence — a distinct way of seeing, naming, and understanding. To lose a language is to narrow the collective human imagination, and in an era of unprecedented global challenges, we can ill afford to lose any of the cognitive tools our species has developed over millennia.</pre></details>
+      <div class="q-list"><div class="q-item"><p class="q-num">1.</p><label><input type="radio" name="l2_0" value="A"> A. The economic benefits of learning multiple languages.</label><label><input type="radio" name="l2_0" value="B"> B. The rapid disappearance of languages and its consequences.</label><label><input type="radio" name="l2_0" value="C"> C. The history of the English language as a global phenomenon.</label><label><input type="radio" name="l2_0" value="D"> D. New technologies for translating endangered languages.</label></div><div class="q-item"><p class="q-num">2.</p><label><input type="radio" name="l2_1" value="A"> A. Natural disasters destroying isolated communities.</label><label><input type="radio" name="l2_1" value="B"> B. The dominance of a few global languages in key domains.</label><label><input type="radio" name="l2_1" value="C"> C. Government policies that explicitly ban minority languages.</label><label><input type="radio" name="l2_1" value="D"> D. A decline in the number of trained language teachers worldwide.</label></div><div class="q-item"><p class="q-num">3.</p><label><input type="radio" name="l2_2" value="A"> A. Detailed understanding of local plants, animals, and ecosystems.</label><label><input type="radio" name="l2_2" value="B"> B. Advanced mathematical systems developed over centuries.</label><label><input type="radio" name="l2_2" value="C"> C. Military strategies used in historical regional conflicts.</label><label><input type="radio" name="l2_2" value="D"> D. Architectural techniques for building in extreme climates.</label></div><div class="q-item"><p class="q-num">4.</p><label><input type="radio" name="l2_3" value="A"> A. Higher rates of international trade and tourism revenue.</label><label><input type="radio" name="l2_3" value="B"> B. Lower rates of youth suicide in indigenous communities.</label><label><input type="radio" name="l2_3" value="C"> C. Increased agricultural productivity in rural farming areas.</label><label><input type="radio" name="l2_3" value="D"> D. Faster adoption of digital technologies among older adults.</label></div><div class="q-item"><p class="q-num">5.</p><label><input type="radio" name="l2_4" value="A"> A. A unified global language would solve most communication problems.</label><label><input type="radio" name="l2_4" value="B"> B. Linguistic diversity represents irreplaceable human cognitive resources.</label><label><input type="radio" name="l2_4" value="C"> C. Governments should mandate that all citizens learn three languages.</label><label><input type="radio" name="l2_4" value="D"> D. The loss of languages is unfortunate but economically unavoidable.</label></div></div>
+      <button class="btn-sm" onclick="checkLec(2, ["B", "B", "A", "B", "B"])">✅ 检查答案</button>
+      <div class="explain" id="lecnote-2"></div>
+    </div>
+</div>
+<div id="tab-trans" style="display:none">
+  <div class="section">
+    <h3>✍️ 翻译高频句型（10个）</h3>
+    <p class="hint">每天背2句，5天背完。做翻译时强制用上。</p>
+    <table><tr><td>不仅……而且……</td><td>not only... but also...</td><td>高铁不仅缩短了旅行时间，还改变了经济格局。</td></tr><tr><td>值得注意的是……</td><td>It is worth noting that...</td><td>值得注意的是，中国标准动车组已出口至多国。</td></tr><tr><td>自……以来</td><td>Since..., ...has...</td><td>自2008年以来，高铁已运营超过45000公里。</td></tr><tr><td>在……方面</td><td>In terms of...</td><td>在环保方面，高铁降低了碳排放。</td></tr><tr><td>可以说……</td><td>It can be said that... / It is fair to say that...</td><td>可以说，高铁已成为现代化的重要象征。</td></tr><tr><td>发挥着……作用</td><td>plays a(n)... role</td><td>长江发挥着不可替代的经济作用。</td></tr><tr><td>随着……的发展</td><td>With the development of...</td><td>随着沿江经济的快速发展……</td></tr><tr><td>努力在……之间寻求平衡</td><td>strive to strike a balance between...</td><td>努力在发展与保护之间寻求平衡。</td></tr><tr><td>日益紧迫</td><td>increasingly urgent</td><td>生态保护已成为日益紧迫的议题。</td></tr><tr><td>实施了一系列措施</td><td>has implemented a series of measures</td><td>政府已实施了一系列措施来治理污染。</td></tr></table>
+  </div>
+  <div class="section">
+    <h3>📝 翻译专有名词（20个）</h3>
+    <p class="hint">考前必须零拼写错的名词。</p>
+    <div class="word-bank" style="background:#fff"><span class="word-chip" style="background:#27ae60">the Yangtze River 长江</span><span class="word-chip" style="background:#27ae60">the Silk Road 丝绸之路</span><span class="word-chip" style="background:#27ae60">the Great Wall 长城</span><span class="word-chip" style="background:#27ae60">the Forbidden City 故宫</span><span class="word-chip" style="background:#27ae60">Chinese calligraphy 中国书法</span><span class="word-chip" style="background:#27ae60">traditional Chinese medicine 中医</span><span class="word-chip" style="background:#27ae60">the Spring Festival 春节</span><span class="word-chip" style="background:#27ae60">the Mid-Autumn Festival 中秋节</span><span class="word-chip" style="background:#27ae60">high-speed rail 高铁</span><span class="word-chip" style="background:#27ae60">mobile payment 移动支付</span><span class="word-chip" style="background:#27ae60">the sharing economy 共享经济</span><span class="word-chip" style="background:#27ae60">space station 空间站</span><span class="word-chip" style="background:#27ae60">intangible cultural heritage 非物质文化遗产</span><span class="word-chip" style="background:#27ae60">the Belt and Road Initiative 一带一路</span><span class="word-chip" style="background:#27ae60">the Greater Bay Area 大湾区</span><span class="word-chip" style="background:#27ae60">renewable energy 可再生能源</span><span class="word-chip" style="background:#27ae60">carbon neutrality 碳中和</span><span class="word-chip" style="background:#27ae60">rural revitalization 乡村振兴</span><span class="word-chip" style="background:#27ae60">the digital economy 数字经济</span><span class="word-chip" style="background:#27ae60">cultural relics 文物</span></div>
+  </div>
+</div>
+
+</div>
+
+<script>
+function showTab(name) {
+  document.querySelectorAll('[id^="tab-"]').forEach(el => el.style.display = 'none');
+  document.getElementById('tab-' + name).style.display = '';
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+// Cloze word picking
+let currentPick = {};
+function pickWord(setIdx, word, el) {
+  currentPick[setIdx] = {word, el};
+  document.getElementById('pick-ci'+setIdx).textContent = word;
+  document.querySelectorAll('.word-chip[data-set="'+setIdx+'"]').forEach(c => c.style.outline='none');
+  el.style.outline = '3px solid #ffd700';
+}
+
+document.querySelectorAll('.blank').forEach(b => {
+  b.addEventListener('click', function() {
+    const setIdx = this.id.split('_')[0].replace('c','');
+    if (!currentPick[setIdx]) return;
+    if (this.classList.contains('filled')) return;
+    this.textContent = currentPick[setIdx].word;
+    this.classList.add('filled');
+    this.dataset.pick = currentPick[setIdx].word;
+    currentPick[setIdx].el.classList.add('used');
+    currentPick[setIdx] = null;
+    document.getElementById('pick-ci'+setIdx).textContent = '无';
+  });
+  b.addEventListener('dblclick', function() {
+    if (!this.classList.contains('filled')) return;
+    const w = this.dataset.pick;
+    document.querySelectorAll('.word-chip[data-word="'+w+'"]').forEach(c => c.classList.remove('used'));
+    this.textContent = '(' + this.id.split('_')[1] + ')____';
+    this.classList.remove('filled');
+    delete this.dataset.pick;
+  });
+});
+
+function checkCloze(idx, answers) {
+  let correct = 0;
+  answers.forEach((ans, i) => {
+    const b = document.getElementById('c'+idx+'_'+(i+1));
+    if (b && b.dataset.pick === ans) { correct++; b.style.borderBottom='3px solid var(--green)'; }
+    else if (b) { b.style.borderBottom='3px solid var(--red)'; b.title='答案: '+ans; }
+  });
+  const el = document.getElementById('clozenote-'+idx);
+  el.className = 'explain show';
+  el.textContent = (correct >= 7 ? '✅ ' : correct >= 4 ? '⚠️ ' : '❌ ') + correct + '/10 ' + (correct >= 7 ? '过关！' : '继续练');
+  el.style.background = correct >= 7 ? '#e8f5e9' : '#fdecea';
+}
+
+function checkLec(idx, answers) {
+  let correct = 0;
+  answers.forEach((ans, i) => {
+    const sel = document.querySelector('input[name="l'+idx+'_'+i+'"]:checked');
+    if (sel && sel.value === ans) correct++;
+  });
+  const el = document.getElementById('lecnote-'+idx);
+  el.className = 'explain show';
+  el.textContent = (correct >= 4 ? '✅ ' : correct >= 3 ? '⚠️ ' : '❌ ') + correct + '/5 ' + (correct >= 4 ? '过关！' : '用三遍法重听');
+  el.style.background = correct >= 4 ? '#e8f5e9' : '#fdecea';
+}
+</script>
+</body>
+</html>
