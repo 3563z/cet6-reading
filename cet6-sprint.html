@@ -243,12 +243,13 @@ function checkCloze(idx, answers) {
       b.style.borderBottom='3px solid var(--red)'; 
       b.style.background='#fdecea';
       b.title = '答案: '+ans;
-      // Show correct answer next to wrong blank
       var hint = document.createElement('sup');
       hint.style.cssText = 'color:var(--green);font-size:11px;margin-left:2px;';
       hint.textContent = '→' + ans;
       b.appendChild(hint);
     }
+    // Show explanation
+    showExplain(b.parentNode, idx, i, 'cloze');
   });
   var el = document.getElementById('clozenote-'+idx);
   el.className = 'explain show';
@@ -258,23 +259,19 @@ function checkCloze(idx, answers) {
 
 function checkLec(idx, answers) {
   let correct = 0;
-  var letters = ['A','B','C','D'];
   answers.forEach((ans, i) => {
     var sel = document.querySelector('input[name="l'+idx+'_'+i+'"]:checked');
-    var qNum = document.querySelector('.q-num'); // find the question number p
-    // Find all labels for this question
     var labels = document.querySelectorAll('input[name="l'+idx+'_'+i+'"]');
     var myLabel = null;
+    var qDiv = labels[0].closest('.q-item');
     labels.forEach(function(inp) {
       var lbl = inp.closest('label');
       if (sel && inp.value === ans) {
-        // This is the correct answer label
         lbl.style.background = '#e8f5e9';
         lbl.style.borderRadius = '4px';
         lbl.style.padding = '2px 6px';
       }
       if (sel && inp === sel && sel.value !== ans) {
-        // User picked this but it's wrong
         lbl.style.background = '#fdecea';
         lbl.style.borderRadius = '4px';
         lbl.style.padding = '2px 6px';
@@ -284,13 +281,11 @@ function checkLec(idx, answers) {
     if (sel && sel.value === ans) {
       correct++;
     } else if (sel) {
-      // Mark wrong + show correct answer
       var sp = document.createElement('span');
       sp.style.cssText = 'color:var(--green);font-weight:600;font-size:12px;margin-left:6px;';
       sp.textContent = '→ 正确答案: ' + ans;
       myLabel.appendChild(sp);
     } else {
-      // Not answered
       var correctLbl = document.querySelector('input[name="l'+idx+'_'+i+'"][value="'+ans+'"]').closest('label');
       correctLbl.style.background = '#fff3cd';
       correctLbl.style.borderRadius = '4px';
@@ -300,11 +295,88 @@ function checkLec(idx, answers) {
       sp2.textContent = '← 未作答，正确答案';
       correctLbl.appendChild(sp2);
     }
+    // Show explanation
+    if (qDiv) showExplain(qDiv, idx, i, 'lec');
   });
   var el = document.getElementById('lecnote-'+idx);
   el.className = 'explain show';
   el.style.background = correct >= 4 ? '#e8f5e9' : '#fdecea';
   el.innerHTML = '<b>' + (correct >= 4 ? '✅ ' : correct >= 3 ? '⚠️ ' : '❌ ') + correct + '/5</b> ' + (correct >= 4 ? '过关！' : '用三遍法重听') + ' — 绿底=对，红底=错，黄底=未答';
+}
+
+
+// ========== EXPLANATIONS ==========
+var LEC_EXPLAIN = {
+  0: [ // 讲座1 - 睡眠与记忆
+    '主旨题。开头 "the relationship between sleep and memory" 直接点题，全文围绕睡眠如何巩固记忆展开。',
+    '细节题。"the brain replays the day\'s experiences in a compressed form... at speeds up to twenty times faster" — 大脑以加速方式重放经历。',
+    '细节题。"REM sleep... appears to be crucial for procedural memory and creative problem-solving" — REM 睡眠负责程序记忆和创造性思维。',
+    '推断题。"sacrifice sleep for productivity may be fundamentally counterproductive" — 牺牲睡眠反而降低学习效果。',
+    '主旨/态度题。结尾 "sleep should be viewed... as an essential component of the learning process" — 睡眠是学习过程的一部分。'
+  ],
+  1: [ // 讲座2 - 默认效应
+    '主旨题。开头定义 "the tendency for people to stick with pre-selected options" — 人们倾向于接受预设选项。',
+    '细节题。"opt-out system — donation rates typically exceed 90 percent... opt-in... hover around 15 percent" — 选择退出制大幅提高捐赠率。',
+    '细节题。"participation rates jump from roughly 40 percent to over 90 percent" — 自动注册使参与率从40%升至90%以上。',
+    '术语理解。"designing choice architectures that nudge people toward better decisions while preserving their freedom" — 引导但不限制自由。',
+    '推断/态度题。结尾 "who should design them, and toward what ends?" — 默认效应的设计者和目的引发伦理问题。'
+  ],
+  2: [ // 讲座3 - 语言濒危
+    '主旨题。"the mass extinction of the world\'s languages... 50 and 90 percent will disappear" — 语言快速消失及其后果。',
+    '细节题。"primary driver is the dominance of a handful of global languages in education, media, commerce" — 少数全球语言的主导地位。',
+    '细节题。"detailed taxonomies of local plants and animals... an entire library of botanical and ecological knowledge" — 对当地动植物的详细知识。',
+    '细节题。"language revitalization programs are associated with lower rates of youth suicide" — 语言复兴与降低青少年自杀率相关。',
+    '态度题。"linguistic diversity represents irreplaceable human cognitive resources" — 语言多样性是不可替代的认知资源。'
+  ]
+};
+
+var CLOZE_EXPLAIN = {
+  0: [ // 气候变化临界点
+    'tipping points: 固定搭配"临界点"，空前是"marked by"，需要名词复数。',
+    'irreversible: "potentially ___" 修饰 changes，不可逆转的变化是气候变化的核心概念。',
+    'potent: "far more ___ than carbon dioxide"，甲烷比CO₂更强效，需要形容词比较级。',
+    'impossible: "difficult or even ___ to stop"，与 difficult 并列递进，不是暂时而是不可能。',
+    'consequence: "The ___ of crossing these thresholds"，空前有 The，需要名词主语。',
+    'infrastructure: "trillions of dollars in ___ damage"，空前有 in，经济方面指基础设施损害。',
+    'define: "could accurately ___ what a tipping point was"，情态动词后需要动词原形，define 意为"定义"。',
+    'formidable: "a ___ challenge for policymakers"，空前有 a，需要形容词修饰 challenge。',
+    'inaction: "the cost of ___ grows"，空前有 of，指"不作为的代价"与上文"act before"呼应。',
+    'options: "running out of ___"，空前有 of，与 "running out of time" 并列，指选择越来越少。'
+  ],
+  1: [ // 微生物组
+    'collective: "whose ___ influence"，空前有 whose，需要形容词修饰 influence，集体影响力。',
+    'landmark: "A ___ study published in Nature"，空前有 A，Nature 上的研究是里程碑式的。',
+    'diversity: "greater microbial ___"，空前有形容词 microbial，需要名词，微生物多样性。',
+    'regulate: "which ___ the immune system"，定语从句缺少谓语动词，短链脂肪酸调节免疫。',
+    'crucial: "plays a ___ role"，空前有 a，play a crucial role 是固定搭配。',
+    'associated: "communities ___ with poor health outcomes"，空前有 communities，associated with 是固定搭配。',
+    'fundamental: "faces a ___ challenge"，空前有 a，需要形容词，"根本性挑战"。',
+    'underway: "Several clinical trials are now ___"，空前有 are，进行中 = underway。',
+    'measurable: "produce ___ health improvements"，需要形容词修饰 improvements，可测量的改善。',
+    'harness: "able to ___ the microbiome as a therapeutic tool"，to 后需要动词原形，harness=利用。'
+  ],
+  2: [ // 在线教育
+    'hailed: "they were ___ as a democratizing force"，被动语态，be hailed as=被誉为。',
+    'complex: "proven more ___"，与 democratizing 的乐观预期对比，现实更复杂。',
+    'stubbornly: "remain ___ low"，修饰形容词 low，需要副词，"顽固地低"。',
+    'disproportionately: "been ___ those who were already advantaged"，修饰整个从句，不成比例地。',
+    'widening: "may be ___ rather than reducing"，与 reducing 对比，正在扩大而非缩小差距。',
+    'contribute: "Several factors ___ to this pattern"，固定搭配 contribute to=促成。',
+    'interaction: "absence of face-to-face ___"，空前有 of，需要名词，面对面互动。',
+    'hybrid: "experimenting with ___ models"，空前有 with，混合模式=线上线下结合。',
+    'element: "the human ___ that keeps students engaged"，空前有 the/human，人的因素/元素。',
+    'bridge: "truly ___ the gap"，to 后需要动词原形，bridge the gap=弥合差距。'
+  ]
+};
+
+function showExplain(container, idx, i, type) {
+  var data = type === 'lec' ? LEC_EXPLAIN : CLOZE_EXPLAIN;
+  var ex = data[idx] && data[idx][i];
+  if (!ex) return;
+  var div = document.createElement('div');
+  div.style.cssText = 'margin-top:4px;padding:6px 10px;background:var(--accent-light, #f0f0ff);border-radius:6px;font-size:12px;line-height:1.6;color:var(--text, #333);';
+  div.textContent = '💡 ' + ex;
+  container.appendChild(div);
 }
 
 // ========== HIGHLIGHT MODE ==========
