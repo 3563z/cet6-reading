@@ -234,25 +234,77 @@ function checkCloze(idx, answers) {
   let correct = 0;
   answers.forEach((ans, i) => {
     const b = document.getElementById('c'+idx+'_'+(i+1));
-    if (b && b.dataset.pick === ans) { correct++; b.style.borderBottom='3px solid var(--green)'; }
-    else if (b) { b.style.borderBottom='3px solid var(--red)'; b.title='答案: '+ans; }
+    if (!b) return;
+    if (b.dataset.pick === ans) { 
+      correct++; 
+      b.style.borderBottom='3px solid var(--green)'; 
+      b.style.background='#e8f5e9';
+    } else { 
+      b.style.borderBottom='3px solid var(--red)'; 
+      b.style.background='#fdecea';
+      b.title = '答案: '+ans;
+      // Show correct answer next to wrong blank
+      var hint = document.createElement('sup');
+      hint.style.cssText = 'color:var(--green);font-size:11px;margin-left:2px;';
+      hint.textContent = '→' + ans;
+      b.appendChild(hint);
+    }
   });
-  const el = document.getElementById('clozenote-'+idx);
+  var el = document.getElementById('clozenote-'+idx);
   el.className = 'explain show';
-  el.textContent = (correct >= 7 ? '✅ ' : correct >= 4 ? '⚠️ ' : '❌ ') + correct + '/10 ' + (correct >= 7 ? '过关！' : '继续练');
   el.style.background = correct >= 7 ? '#e8f5e9' : '#fdecea';
+  el.innerHTML = (correct >= 7 ? '✅ ' : correct >= 4 ? '⚠️ ' : '❌ ') + '<b>' + correct + '/10</b> ' + (correct >= 7 ? '过关！' : '继续练') + ' — 绿色=对，红色=错（箭头后是正确答案）';
 }
 
 function checkLec(idx, answers) {
   let correct = 0;
+  var letters = ['A','B','C','D'];
   answers.forEach((ans, i) => {
-    const sel = document.querySelector('input[name="l'+idx+'_'+i+'"]:checked');
-    if (sel && sel.value === ans) correct++;
+    var sel = document.querySelector('input[name="l'+idx+'_'+i+'"]:checked');
+    var qNum = document.querySelector('.q-num'); // find the question number p
+    // Find all labels for this question
+    var labels = document.querySelectorAll('input[name="l'+idx+'_'+i+'"]');
+    var myLabel = null;
+    labels.forEach(function(inp) {
+      var lbl = inp.closest('label');
+      if (sel && inp.value === ans) {
+        // This is the correct answer label
+        lbl.style.background = '#e8f5e9';
+        lbl.style.borderRadius = '4px';
+        lbl.style.padding = '2px 6px';
+      }
+      if (sel && inp === sel && sel.value !== ans) {
+        // User picked this but it's wrong
+        lbl.style.background = '#fdecea';
+        lbl.style.borderRadius = '4px';
+        lbl.style.padding = '2px 6px';
+      }
+      if (inp === sel) myLabel = lbl;
+    });
+    if (sel && sel.value === ans) {
+      correct++;
+    } else if (sel) {
+      // Mark wrong + show correct answer
+      var sp = document.createElement('span');
+      sp.style.cssText = 'color:var(--green);font-weight:600;font-size:12px;margin-left:6px;';
+      sp.textContent = '→ 正确答案: ' + ans;
+      myLabel.appendChild(sp);
+    } else {
+      // Not answered
+      var correctLbl = document.querySelector('input[name="l'+idx+'_'+i+'"][value="'+ans+'"]').closest('label');
+      correctLbl.style.background = '#fff3cd';
+      correctLbl.style.borderRadius = '4px';
+      correctLbl.style.padding = '2px 6px';
+      var sp2 = document.createElement('span');
+      sp2.style.cssText = 'color:#856404;font-weight:600;font-size:12px;margin-left:6px;';
+      sp2.textContent = '← 未作答，正确答案';
+      correctLbl.appendChild(sp2);
+    }
   });
-  const el = document.getElementById('lecnote-'+idx);
+  var el = document.getElementById('lecnote-'+idx);
   el.className = 'explain show';
-  el.textContent = (correct >= 4 ? '✅ ' : correct >= 3 ? '⚠️ ' : '❌ ') + correct + '/5 ' + (correct >= 4 ? '过关！' : '用三遍法重听');
   el.style.background = correct >= 4 ? '#e8f5e9' : '#fdecea';
+  el.innerHTML = '<b>' + (correct >= 4 ? '✅ ' : correct >= 3 ? '⚠️ ' : '❌ ') + correct + '/5</b> ' + (correct >= 4 ? '过关！' : '用三遍法重听') + ' — 绿底=对，红底=错，黄底=未答';
 }
 
 // ========== HIGHLIGHT MODE ==========
