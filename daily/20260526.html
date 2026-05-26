@@ -115,6 +115,11 @@ hr { margin: 20px 0; border: none; border-top: 1px solid var(--border); }
 .result-bar { text-align: center; padding: 20px; margin: 15px 0; background: var(--reveal-bg); border-radius: 8px; border: 1px solid var(--reveal-border); }
 .result-bar .score { font-size: 28px; font-weight: 700; color: var(--accent); }
 .result-bar .detail { font-size: 16px; margin-top: 5px; color: var(--text-muted); }
+.highlight-toggle { padding: 6px 14px; border: 2px solid var(--accent); border-radius: 20px; background: transparent; color: var(--accent); cursor: pointer; font-size: 13px; transition: all 0.2s; margin-left: 8px; }
+.highlight-toggle.active { background: #fff3cd; border-color: #e6a817; color: #856404; }
+mark.user-highlight { background: #fff3cd; padding: 0 1px; border-radius: 2px; cursor: pointer; }
+[data-theme="dark"] mark.user-highlight { background: #5a4a1a; color: #ffd54f; }
+[data-theme="dark"] .highlight-toggle.active { background: #5a4a1a; border-color: #e6a817; color: #ffd54f; }
 @media (min-width: 768px) {
   .container { max-width: 800px; }
   .section { padding: 28px; }
@@ -133,6 +138,7 @@ hr { margin: 20px 0; border: none; border-top: 1px solid var(--border); }
     <button class="theme-btn active" data-theme="default">🌙 默认</button>
     <button class="theme-btn" data-theme="warm">☀️ 暖黄</button>
     <button class="theme-btn" data-theme="dark">🌑 深色</button>
+    <button class="highlight-toggle" id="highlight-toggle" onclick="toggleHighlightMode()">🖊️ 勾画模式</button>
   </div>
 </div>
 <div class="container">
@@ -703,6 +709,61 @@ function revealWriting() {
   document.getElementById('writing-model').textContent = DATA.writing.model;
   document.getElementById('writing-reveal').classList.add('show');
 }
+
+// ========== HIGHLIGHT MODE ==========
+var highlightMode = false;
+function toggleHighlightMode() {
+  highlightMode = !highlightMode;
+  var btn = document.getElementById('highlight-toggle');
+  if (highlightMode) {
+    btn.classList.add('active');
+    btn.textContent = '🖊️ 勾画中（点击文字标记，再点取消）';
+  } else {
+    btn.classList.remove('active');
+    btn.textContent = '🖊️ 勾画模式';
+  }
+}
+
+document.addEventListener('mouseup', function(e) {
+  if (!highlightMode) return;
+  // Click on existing mark to remove it
+  var existing = e.target.closest('mark.user-highlight');
+  if (existing) {
+    var txt = existing.textContent;
+    var parent = existing.parentNode;
+    existing.replaceWith(document.createTextNode(txt));
+    window.getSelection().removeAllRanges();
+    return;
+  }
+  // Select text in label to highlight it
+  var sel = window.getSelection();
+  if (!sel.rangeCount || sel.isCollapsed) return;
+  var range = sel.getRangeAt(0);
+  var label = e.target.closest('label');
+  if (!label) return;
+  if (!label.contains(range.commonAncestorContainer)) return;
+  try {
+    var mark = document.createElement('mark');
+    mark.className = 'user-highlight';
+    range.surroundContents(mark);
+    sel.removeAllRanges();
+  } catch(ex) { /* selection crosses boundaries, ignore */ }
+});
+
+// ========== SUBMIT BUTTON FALLBACK ==========
+// Ensure onclick works even if HTML attribute fails
+(function() {
+  var btns = [
+    {id:'btn-listening', fn:revealListening},
+    {id:'btn-reading', fn:revealReading}
+  ];
+  btns.forEach(function(b) {
+    var el = document.getElementById(b.id);
+    if (el && !el.onclick) {
+      el.addEventListener('click', b.fn);
+    }
+  });
+})();
 
 // ========== INIT ==========
 (function init() {
