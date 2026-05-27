@@ -1,0 +1,621 @@
+{
+  "cloze_sets": [
+    {
+      "title": "Set 1 — 气候变化的临界点",
+      "text": "Scientists have long warned that climate change is not a gradual process but one marked by (1) points — thresholds beyond which changes become self-reinforcing and potentially (2). The melting of Arctic permafrost is a prime example. As frozen ground thaws, it releases methane, a greenhouse gas far more (3) than carbon dioxide, which in turn accelerates warming and causes further thawing. Once this feedback loop begins, it may be difficult or even (4) to stop. Researchers at the University of Cambridge have identified fifteen such tipping elements, including the collapse of the Greenland ice sheet and the dieback of the Amazon rainforest. The (5) of crossing these thresholds is not merely environmental but economic, potentially costing trillions of dollars in (6) damage. Yet public awareness remains surprisingly low. A recent survey found that while 72 percent of respondents expressed general concern about climate change, only 18 percent could accurately (7) what a tipping point was. This gap between concern and understanding represents a (8) challenge for policymakers, who must persuade voters to support costly mitigation measures before the worst effects become visible. The window for action is narrowing, and the cost of (9) grows with each passing year. As one lead researcher noted, we are not just running out of time — we are running out of (10).",
+      "word_bank": [
+        {
+          "word": "tipping"
+        },
+        {
+          "word": "irreversible"
+        },
+        {
+          "word": "potent"
+        },
+        {
+          "word": "impossible"
+        },
+        {
+          "word": "consequence"
+        },
+        {
+          "word": "infrastructure"
+        },
+        {
+          "word": "define"
+        },
+        {
+          "word": "formidable"
+        },
+        {
+          "word": "inaction"
+        },
+        {
+          "word": "options"
+        },
+        {
+          "word": "curious"
+        },
+        {
+          "word": "temporary"
+        },
+        {
+          "word": "modest"
+        },
+        {
+          "word": "opportunity"
+        },
+        {
+          "word": "reluctant"
+        }
+      ],
+      "answers": [
+        "tipping",
+        "irreversible",
+        "potent",
+        "impossible",
+        "consequence",
+        "infrastructure",
+        "define",
+        "formidable",
+        "inaction",
+        "options"
+      ],
+      "explain": [
+        "tipping points: 固定搭配\"临界点\"，空前是\"marked by\"，需要名词复数。",
+        "irreversible: \"potentially ___\" 修饰 changes，不可逆转的变化是气候变化的核心概念。",
+        "potent: \"far more ___ than carbon dioxide\"，甲烷比CO₂更强效，需要形容词比较级。",
+        "impossible: \"difficult or even ___ to stop\"，与 difficult 并列递进，不是暂时而是不可能。",
+        "consequence: \"The ___ of crossing these thresholds\"，空前有 The，需要名词主语。",
+        "infrastructure: \"trillions of dollars in ___ damage\"，空前有 in，经济方面指基础设施损害。",
+        "define: \"could accurately ___ what a tipping point was\"，情态动词后需要动词原形，define 意为\"定义\"。",
+        "formidable: \"a ___ challenge for policymakers\"，空前有 a，需要形容词修饰 challenge。",
+        "inaction: \"the cost of ___ grows\"，空前有 of，指\"不作为的代价\"与上文\"act before\"呼应。",
+        "options: \"running out of ___\"，空前有 of，与 \"running out of time\" 并列，指选择越来越少。"
+      ]
+    },
+    {
+      "title": "Set 2 — 微生物组与人类健康",
+      "text": "The human gut contains trillions of microorganisms whose (1) influence extends far beyond digestion. Over the past decade, researchers have linked the gut microbiome to conditions ranging from depression to autoimmune disorders. A (2) study published in Nature tracked 1,200 individuals over five years and found that those with greater microbial (3) were significantly less likely to develop chronic inflammatory diseases. The mechanism appears to involve the production of short-chain fatty acids, which (4) the immune system and reduce inflammation throughout the body. Diet plays a (5) role in shaping the microbiome. A fiber-rich diet promotes beneficial bacteria, while processed foods tend to favor microbial communities (6) with poor health outcomes. However, the field also faces a (7) challenge: distinguishing correlation from causation. Just because a particular bacterial strain is associated with a disease does not prove that it causes it. Several clinical trials are now (8) to test whether modifying the microbiome through diet, probiotics, or even fecal transplants can produce (9) health improvements. Early results are promising, suggesting that we may soon be able to (10) the microbiome as a therapeutic tool.",
+      "word_bank": [
+        {
+          "word": "collective"
+        },
+        {
+          "word": "landmark"
+        },
+        {
+          "word": "diversity"
+        },
+        {
+          "word": "regulate"
+        },
+        {
+          "word": "crucial"
+        },
+        {
+          "word": "associated"
+        },
+        {
+          "word": "fundamental"
+        },
+        {
+          "word": "underway"
+        },
+        {
+          "word": "measurable"
+        },
+        {
+          "word": "harness"
+        },
+        {
+          "word": "delicate"
+        },
+        {
+          "word": "random"
+        },
+        {
+          "word": "declining"
+        },
+        {
+          "word": "reluctant"
+        },
+        {
+          "word": "isolated"
+        }
+      ],
+      "answers": [
+        "collective",
+        "landmark",
+        "diversity",
+        "regulate",
+        "crucial",
+        "associated",
+        "fundamental",
+        "underway",
+        "measurable",
+        "harness"
+      ],
+      "explain": [
+        "collective: \"whose ___ influence\"，空前有 whose，需要形容词修饰 influence，集体影响力。",
+        "landmark: \"A ___ study published in Nature\"，空前有 A，Nature 上的研究是里程碑式的。",
+        "diversity: \"greater microbial ___\"，空前有形容词 microbial，需要名词，微生物多样性。",
+        "regulate: \"which ___ the immune system\"，定语从句缺少谓语动词，短链脂肪酸调节免疫。",
+        "crucial: \"plays a ___ role\"，空前有 a，play a crucial role 是固定搭配。",
+        "associated: \"communities ___ with poor health outcomes\"，空前有 communities，associated with 是固定搭配。",
+        "fundamental: \"faces a ___ challenge\"，空前有 a，需要形容词，\"根本性挑战\"。",
+        "underway: \"Several clinical trials are now ___\"，空前有 are，进行中 = underway。",
+        "measurable: \"produce ___ health improvements\"，需要形容词修饰 improvements，可测量的改善。",
+        "harness: \"able to ___ the microbiome as a therapeutic tool\"，to 后需要动词原形，harness=利用。"
+      ]
+    },
+    {
+      "title": "Set 3 — 在线教育的公平悖论",
+      "text": "When massive open online courses first emerged a decade ago, they were (1) as a democratizing force that would bring elite education to anyone with an internet connection. The reality has proven more (2). While millions have enrolled in these courses, completion rates remain (3) low — typically below 10 percent. More troubling, the beneficiaries have been (4) those who were already educationally advantaged. A 2024 UNESCO report found that 78 percent of MOOC learners already held a bachelor's degree or higher, suggesting that online education may be (5) rather than reducing educational inequality. Several factors (6) to this pattern. Learners from disadvantaged backgrounds often lack the reliable internet access, quiet study space, and self-regulation skills that online learning demands. The absence of face-to-face (7) with instructors and peers can leave struggling students feeling isolated and unmotivated. Some institutions are now experimenting with (8) models that combine online content with in-person support, aiming to capture the scalability of digital learning while preserving the human (9) that keeps students engaged. Whether these efforts can truly (10) the gap between promise and performance remains an open question.",
+      "word_bank": [
+        {
+          "word": "hailed"
+        },
+        {
+          "word": "complex"
+        },
+        {
+          "word": "stubbornly"
+        },
+        {
+          "word": "disproportionately"
+        },
+        {
+          "word": "widening"
+        },
+        {
+          "word": "contribute"
+        },
+        {
+          "word": "interaction"
+        },
+        {
+          "word": "hybrid"
+        },
+        {
+          "word": "element"
+        },
+        {
+          "word": "bridge"
+        },
+        {
+          "word": "rapidly"
+        },
+        {
+          "word": "neglected"
+        },
+        {
+          "word": "excessive"
+        },
+        {
+          "word": "restricted"
+        },
+        {
+          "word": "passive"
+        }
+      ],
+      "answers": [
+        "hailed",
+        "complex",
+        "stubbornly",
+        "disproportionately",
+        "widening",
+        "contribute",
+        "interaction",
+        "hybrid",
+        "element",
+        "bridge"
+      ],
+      "explain": [
+        "hailed: \"they were ___ as a democratizing force\"，被动语态，be hailed as=被誉为。",
+        "complex: \"proven more ___\"，与 democratizing 的乐观预期对比，现实更复杂。",
+        "stubbornly: \"remain ___ low\"，修饰形容词 low，需要副词，\"顽固地低\"。",
+        "disproportionately: \"been ___ those who were already advantaged\"，修饰整个从句，不成比例地。",
+        "widening: \"may be ___ rather than reducing\"，与 reducing 对比，正在扩大而非缩小差距。",
+        "contribute: \"Several factors ___ to this pattern\"，固定搭配 contribute to=促成。",
+        "interaction: \"absence of face-to-face ___\"，空前有 of，需要名词，面对面互动。",
+        "hybrid: \"experimenting with ___ models\"，空前有 with，混合模式=线上线下结合。",
+        "element: \"the human ___ that keeps students engaged\"，空前有 the/human，人的因素/元素。",
+        "bridge: \"truly ___ the gap\"，to 后需要动词原形，bridge the gap=弥合差距。"
+      ]
+    }
+  ],
+  "lectures": [
+    {
+      "title": "讲座 1 — 睡眠与记忆巩固",
+      "script": "Good morning. Today I'd like to explore a fascinating intersection of neuroscience and daily life: the relationship between sleep and memory. [Q1] We spend roughly one-third of our lives asleep, and for much of scientific history, this was viewed as a purely restorative process — the brain simply shutting down to recover from the day's mental exertion. However, research over the past two decades has revealed something far more interesting. Sleep is not a passive state but an active one, during which the brain performs essential cognitive maintenance.\n\nIn fact, one of the most important functions of sleep is memory consolidation — the process by which newly acquired information is stabilized and integrated into long-term storage. [Q2] During the deep, slow-wave stages of sleep, the brain replays the day's experiences in a compressed form, strengthening neural connections that represent important information while allowing irrelevant details to fade. Strikingly, this replay occurs at speeds up to twenty times faster than the original experience, allowing the brain to process an entire day's learning in a fraction of the time.\n\nMoreover, different sleep stages serve different memory functions. Slow-wave sleep primarily consolidates declarative memories — facts, events, and explicit knowledge. [Q3] REM sleep, characterized by rapid eye movements, appears to be crucial for procedural memory and creative problem-solving. A classic experiment demonstrated this vividly: participants who were allowed to sleep between learning a complex task and being tested on it performed significantly better than those who stayed awake, even when total practice time was equal. The sleeping brain, it seems, was not just resting but actively refining the skill.\n\nTherefore, the implications for education and workplace performance are profound. [Q4] The widespread cultural tendency to sacrifice sleep for productivity may be fundamentally counterproductive. Students who pull all-nighters before exams may actually be impairing their ability to retain the very material they are studying. Some school districts in the United States have already responded to this research by pushing back high school start times, and the results have been striking — improved grades, reduced absenteeism, and even fewer car accidents among teenage drivers.\n\nAs a result, I would argue that sleep should be viewed not as a luxury or an obstacle to productivity, but as an essential component of the learning process itself. [Q5] The brain's overnight work — sorting, strengthening, and integrating the day's experiences — is as important to learning as the waking hours spent in study. The next time someone tells you they will sleep when they are dead, you might gently suggest that without sleep, their memories will be dead long before they are.",
+      "questions": [
+        {
+          "q": "What is the main topic of this lecture?",
+          "A": "The history of sleep research.",
+          "B": "The connection between sleep and memory.",
+          "C": "How to cure common sleep disorders.",
+          "D": "The biological need for rest.",
+          "answer": "B"
+        },
+        {
+          "q": "What happens during slow-wave sleep?",
+          "A": "The brain replays experiences at accelerated speed.",
+          "B": "New neural connections are permanently deleted.",
+          "C": "External stimuli become easier to process.",
+          "D": "The body enters a state of complete inactivity.",
+          "answer": "A"
+        },
+        {
+          "q": "What is REM sleep associated with?",
+          "A": "Declarative memory and factual knowledge.",
+          "B": "Physical recovery from daily exhaustion.",
+          "C": "Procedural memory and creative thinking.",
+          "D": "The initial encoding of new information.",
+          "answer": "C"
+        },
+        {
+          "q": "What does the speaker say about sacrificing sleep?",
+          "A": "It has no effect on long-term academic outcomes.",
+          "B": "It may actually reduce learning effectiveness.",
+          "C": "It is necessary for highly competitive fields.",
+          "D": "It only affects physical rather than mental health.",
+          "answer": "B"
+        },
+        {
+          "q": "What is the speaker's concluding argument?",
+          "A": "Sleep is more important for learning than waking study.",
+          "B": "Students should sleep at least ten hours every night.",
+          "C": "Memory loss can be reversed through better sleep habits.",
+          "D": "Sleep should be seen as part of the learning process.",
+          "answer": "D"
+        }
+      ],
+      "signals": "[Q1] 主旨，开头3句 | [Q2] In fact, 慢波睡眠功能 | [Q3] Moreover, REM与程序记忆 | [Q4] Therefore, 对教育的影响 | [Q5] As a result, 结尾论点",
+      "audio": "sprint_lec1.mp3",
+      "explain": [
+        "主旨题。开头 \"the relationship between sleep and memory\" 直接点题，全文围绕睡眠如何巩固记忆展开。",
+        "细节题。\"the brain replays the day's experiences in a compressed form... at speeds up to twenty times faster\" — 大脑以加速方式重放经历。",
+        "细节题。\"REM sleep... appears to be crucial for procedural memory and creative problem-solving\" — REM 睡眠负责程序记忆和创造性思维。",
+        "推断题。\"sacrifice sleep for productivity may be fundamentally counterproductive\" — 牺牲睡眠反而降低学习效果。",
+        "主旨/态度题。结尾 \"sleep should be viewed... as an essential component of the learning process\" — 睡眠是学习过程的一部分。"
+      ]
+    },
+    {
+      "title": "讲座 2 — 行为经济学中的默认效应",
+      "script": "Today I want to introduce a concept from behavioral economics that has quietly reshaped public policy around the world: the default effect. [Q1] The default effect refers to the well-documented tendency for people to stick with pre-selected options rather than making active changes — even when the stakes are significant. What's crucial to understand is that defaults are not neutral. They shape behavior powerfully, often without people realizing they are being influenced.\n\nIn fact, the most famous demonstration of this effect comes from organ donation policy. [Q2] In countries where citizens are automatically registered as organ donors unless they actively opt out — the so-called opt-out system — donation rates typically exceed 90 percent. In countries with opt-in systems, where citizens must actively choose to become donors, rates hover around 15 percent. The difference is not explained by cultural attitudes toward donation; it is almost entirely a function of the default setting. People in opt-in countries are not more opposed to donation — they simply never get around to signing up.\n\nHowever, the power of defaults extends far beyond organ donation. Retirement savings provides another compelling case. [Q3] When companies automatically enroll employees in retirement plans, participation rates jump from roughly 40 percent to over 90 percent. Strikingly, even when employees are free to opt out at any time and the financial incentives are identical, the default condition alone produces this dramatic shift. The psychological mechanism behind this appears to involve a combination of inertia, the perception that the default represents an implicit recommendation, and the mental effort required to evaluate alternatives.\n\nTherefore, policymakers have increasingly embraced what Richard Thaler and Cass Sunstein termed 'libertarian paternalism' — designing choice architectures that nudge people toward better decisions while preserving their freedom to choose otherwise. [Q4] This approach has been applied to areas ranging from healthy eating in school cafeterias to energy conservation in households, with consistently positive results. By simply changing which option is presented as the default, significant improvements in public welfare can be achieved at minimal cost.\n\nConsequently, the default effect raises important ethical questions that deserve careful consideration. [Q5] If defaults are so powerful, who should design them, and toward what ends? Used responsibly, they represent one of the most cost-effective tools available for improving public well-being. Used carelessly or manipulatively, they could become a form of invisible coercion. The challenge for democratic societies is to harness the power of defaults transparently, ensuring that the architects of choice are accountable to the citizens whose decisions they are shaping.",
+      "questions": [
+        {
+          "q": "What is the default effect?",
+          "A": "A marketing strategy used by technology companies.",
+          "B": "The tendency to accept pre-set options without changing them.",
+          "C": "A legal requirement in international trade agreements.",
+          "D": "The psychological impact of having too many choices.",
+          "answer": "B"
+        },
+        {
+          "q": "What does the organ donation example illustrate?",
+          "A": "Cultural beliefs determine donation rates across nations.",
+          "B": "Opt-out systems produce dramatically higher donation rates.",
+          "C": "Most people actively oppose the idea of organ donation.",
+          "D": "Government mandates are necessary to increase donations.",
+          "answer": "B"
+        },
+        {
+          "q": "What happens when companies auto-enroll employees in retirement plans?",
+          "A": "Most employees choose to opt out within the first year.",
+          "B": "Participation increases from roughly 40 percent to over 90 percent.",
+          "C": "Financial returns decrease due to inexperienced investors.",
+          "D": "Employees report lower job satisfaction than before enrollment.",
+          "answer": "B"
+        },
+        {
+          "q": "What is 'libertarian paternalism'?",
+          "A": "Reducing personal freedom to enforce better public decisions.",
+          "B": "Designing choices that guide behavior while preserving freedom.",
+          "C": "A political movement opposing all forms of government regulation.",
+          "D": "Using financial penalties to discourage undesirable behaviors.",
+          "answer": "B"
+        },
+        {
+          "q": "What ethical concern does the speaker raise about defaults?",
+          "A": "They are too expensive for most governments to implement.",
+          "B": "They may violate international trade and privacy regulations.",
+          "C": "They raise questions about who designs them and for what purpose.",
+          "D": "They have been proven ineffective in real-world policy settings.",
+          "answer": "C"
+        }
+      ],
+      "signals": "[Q1] 主旨，开头定义 | [Q2] In fact, 器官捐献案例 | [Q3] However, 退休储蓄+Strikingly数据 | [Q4] Therefore, 政策应用 | [Q5] Consequently, 结尾伦理问题",
+      "audio": "sprint_lec2.mp3",
+      "explain": [
+        "主旨题。开头定义 \"the tendency for people to stick with pre-selected options\" — 人们倾向于接受预设选项。",
+        "细节题。\"opt-out system — donation rates typically exceed 90 percent... opt-in... hover around 15 percent\" — 选择退出制大幅提高捐赠率。",
+        "细节题。\"participation rates jump from roughly 40 percent to over 90 percent\" — 自动注册使参与率从40%升至90%以上。",
+        "术语理解。\"designing choice architectures that nudge people toward better decisions while preserving their freedom\" — 引导但不限制自由。",
+        "推断/态度题。结尾 \"who should design them, and toward what ends?\" — 默认效应的设计者和目的引发伦理问题。"
+      ]
+    },
+    {
+      "title": "讲座 3 — 语言的濒危与保护",
+      "script": "Today I want to address a crisis that receives far less attention than climate change or biodiversity loss, yet is arguably just as urgent: the mass extinction of the world's languages. [Q1] Of the approximately 7,000 languages spoken today, linguists estimate that between 50 and 90 percent will disappear by the end of this century. On average, one language dies every two weeks. What's crucial is that when a language disappears, what is lost is not merely a communication system but an entire way of understanding the world.\n\nIn fact, the causes of language endangerment are well understood and distressingly familiar. [Q2] The primary driver is the dominance of a handful of global languages — English, Mandarin Chinese, Spanish, and a few others — in education, media, commerce, and governance. When children are educated exclusively in a dominant language and come to associate their ancestral tongue with backwardness or limited opportunity, intergenerational transmission breaks within a single generation. Parents stop speaking the old language to their children, and the chain is severed.\n\nHowever, what makes language loss uniquely tragic is the knowledge it erases. Indigenous languages often contain detailed taxonomies of local plants and animals, accumulated over centuries of close observation. [Q3] Strikingly, when the last speaker of an Amazonian language dies, the equivalent of an entire library of botanical and ecological knowledge may disappear with them — knowledge that could potentially inform pharmaceutical research or sustainable resource management. Languages are not interchangeable codes for the same thoughts; they encode distinct ways of categorizing experience.\n\nMoreover, the loss of linguistic diversity has psychological consequences for the communities affected. Research has shown that language revitalization programs are associated with lower rates of youth suicide and substance abuse in indigenous communities. [Q4] The connection between language and identity runs deep, and the restoration of a threatened language can serve as a powerful tool for community healing. Several successful revitalization efforts — the revival of Hebrew in Israel, the resurgence of Maori in New Zealand, and the reclamation of Welsh in the United Kingdom — demonstrate that language death is not inevitable when communities mobilize.\n\nTherefore, I want to leave you with a challenge to the common assumption that a world with fewer languages would be more efficient. [Q5] The value of linguistic diversity cannot be measured solely in economic terms. Each language represents a unique human experiment in making sense of existence — a distinct way of seeing, naming, and understanding. To lose a language is to narrow the collective human imagination, and in an era of unprecedented global challenges, we can ill afford to lose any of the cognitive tools our species has developed over millennia.",
+      "questions": [
+        {
+          "q": "What is the lecture mainly about?",
+          "A": "The economic benefits of learning multiple languages.",
+          "B": "The rapid disappearance of languages and its consequences.",
+          "C": "The history of the English language as a global phenomenon.",
+          "D": "New technologies for translating endangered languages.",
+          "answer": "B"
+        },
+        {
+          "q": "What is the primary cause of language endangerment?",
+          "A": "Natural disasters destroying isolated communities.",
+          "B": "The dominance of a few global languages in key domains.",
+          "C": "Government policies that explicitly ban minority languages.",
+          "D": "A decline in the number of trained language teachers worldwide.",
+          "answer": "B"
+        },
+        {
+          "q": "What unique knowledge is lost when indigenous languages disappear?",
+          "A": "Detailed understanding of local plants, animals, and ecosystems.",
+          "B": "Advanced mathematical systems developed over centuries.",
+          "C": "Military strategies used in historical regional conflicts.",
+          "D": "Architectural techniques for building in extreme climates.",
+          "answer": "A"
+        },
+        {
+          "q": "What benefit has been linked to language revitalization?",
+          "A": "Higher rates of international trade and tourism revenue.",
+          "B": "Lower rates of youth suicide in indigenous communities.",
+          "C": "Increased agricultural productivity in rural farming areas.",
+          "D": "Faster adoption of digital technologies among older adults.",
+          "answer": "B"
+        },
+        {
+          "q": "What is the speaker's concluding message?",
+          "A": "A unified global language would solve most communication problems.",
+          "B": "Linguistic diversity represents irreplaceable human cognitive resources.",
+          "C": "Governments should mandate that all citizens learn three languages.",
+          "D": "The loss of languages is unfortunate but economically unavoidable.",
+          "answer": "B"
+        }
+      ],
+      "signals": "[Q1] 主旨，开头数据 | [Q2] In fact, 主要原因 | [Q3] Strikingly, 知识损失 | [Q4] Moreover, 心理影响 | [Q5] Therefore, 结尾观点",
+      "audio": "sprint_lec3.mp3",
+      "explain": [
+        "主旨题。\"the mass extinction of the world's languages... 50 and 90 percent will disappear\" — 语言快速消失及其后果。",
+        "细节题。\"primary driver is the dominance of a handful of global languages in education, media, commerce\" — 少数全球语言的主导地位。",
+        "细节题。\"detailed taxonomies of local plants and animals... an entire library of botanical and ecological knowledge\" — 对当地动植物的详细知识。",
+        "细节题。\"language revitalization programs are associated with lower rates of youth suicide\" — 语言复兴与降低青少年自杀率相关。",
+        "态度题。\"linguistic diversity represents irreplaceable human cognitive resources\" — 语言多样性是不可替代的认知资源。"
+      ]
+    }
+  ],
+  "spelling": [
+    {
+      "wrong": "impotant",
+      "correct": "important",
+      "hint": "im·por·tant — 中间有个 por"
+    },
+    {
+      "wrong": "truely",
+      "correct": "truly",
+      "hint": "true 去 e 加 ly，不保留 e"
+    },
+    {
+      "wrong": "beging",
+      "correct": "beginning",
+      "hint": "begin + n + ing — 双写 n"
+    },
+    {
+      "wrong": "atention",
+      "correct": "attention",
+      "hint": "at·ten·tion — 双 t"
+    },
+    {
+      "wrong": "goverment",
+      "correct": "government",
+      "hint": "govern + ment — 中间有 n"
+    },
+    {
+      "wrong": "crimal",
+      "correct": "criminal",
+      "hint": "crime 变 crim·i·nal — 加 i"
+    },
+    {
+      "wrong": "identifly",
+      "correct": "identify",
+      "hint": "iden·ti·fy — fy 不是 fly"
+    },
+    {
+      "wrong": "assient",
+      "correct": "assistant",
+      "hint": "as·sis·tant — 双 s"
+    },
+    {
+      "wrong": "konw",
+      "correct": "know",
+      "hint": "k-now — k 不发音但必须写"
+    },
+    {
+      "wrong": "daliy",
+      "correct": "daily",
+      "hint": "day 变 dai·ly — ai 不是 a"
+    },
+    {
+      "wrong": "resent",
+      "correct": "recent",
+      "hint": "re·cent — e 不是 e"
+    },
+    {
+      "wrong": "puloution",
+      "correct": "pollution",
+      "hint": "pol·lu·tion — 双 l, tion"
+    },
+    {
+      "wrong": "developing",
+      "correct": "developing",
+      "hint": "你写对了！但 developing the skill 不是 developing skill"
+    },
+    {
+      "wrong": "noly",
+      "correct": "only",
+      "hint": "on·ly — on 不是 no"
+    },
+    {
+      "wrong": "longgest",
+      "correct": "longest",
+      "hint": "long + est — 没有 g"
+    },
+    {
+      "wrong": "mlies",
+      "correct": "kilometers",
+      "hint": "中文'公里'=kilometers，不是miles"
+    },
+    {
+      "wrong": "importance(adj)",
+      "correct": "important",
+      "hint": "importance 是名词，important 是形容词"
+    },
+    {
+      "wrong": "take action",
+      "correct": "taken action",
+      "hint": "has taken — 现在完成时"
+    },
+    {
+      "wrong": "restoration(n.)",
+      "correct": "restore(v.)",
+      "hint": "平行结构：control and restore"
+    },
+    {
+      "wrong": "all most",
+      "correct": "almost",
+      "hint": "一个词，不是两个"
+    }
+  ],
+  "translation_patterns": [
+    {
+      "cn": "不仅……而且……",
+      "en": "not only... but also...",
+      "example": "高铁不仅缩短了旅行时间，还改变了经济格局。"
+    },
+    {
+      "cn": "值得注意的是……",
+      "en": "It is worth noting that...",
+      "example": "值得注意的是，中国标准动车组已出口至多国。"
+    },
+    {
+      "cn": "自……以来",
+      "en": "Since..., ...has...",
+      "example": "自2008年以来，高铁已运营超过45000公里。"
+    },
+    {
+      "cn": "在……方面",
+      "en": "In terms of...",
+      "example": "在环保方面，高铁降低了碳排放。"
+    },
+    {
+      "cn": "可以说……",
+      "en": "It can be said that... / It is fair to say that...",
+      "example": "可以说，高铁已成为现代化的重要象征。"
+    },
+    {
+      "cn": "发挥着……作用",
+      "en": "plays a(n)... role",
+      "example": "长江发挥着不可替代的经济作用。"
+    },
+    {
+      "cn": "随着……的发展",
+      "en": "With the development of...",
+      "example": "随着沿江经济的快速发展……"
+    },
+    {
+      "cn": "努力在……之间寻求平衡",
+      "en": "strive to strike a balance between...",
+      "example": "努力在发展与保护之间寻求平衡。"
+    },
+    {
+      "cn": "日益紧迫",
+      "en": "increasingly urgent",
+      "example": "生态保护已成为日益紧迫的议题。"
+    },
+    {
+      "cn": "实施了一系列措施",
+      "en": "has implemented a series of measures",
+      "example": "政府已实施了一系列措施来治理污染。"
+    }
+  ],
+  "proper_nouns": [
+    "the Yangtze River 长江",
+    "the Silk Road 丝绸之路",
+    "the Great Wall 长城",
+    "the Forbidden City 故宫",
+    "Chinese calligraphy 中国书法",
+    "traditional Chinese medicine 中医",
+    "the Spring Festival 春节",
+    "the Mid-Autumn Festival 中秋节",
+    "high-speed rail 高铁",
+    "mobile payment 移动支付",
+    "the sharing economy 共享经济",
+    "space station 空间站",
+    "intangible cultural heritage 非物质文化遗产",
+    "the Belt and Road Initiative 一带一路",
+    "the Greater Bay Area 大湾区",
+    "renewable energy 可再生能源",
+    "carbon neutrality 碳中和",
+    "rural revitalization 乡村振兴",
+    "the digital economy 数字经济",
+    "cultural relics 文物"
+  ],
+  "schedule": [
+    {
+      "phase": "D1-D3 选词填空突破",
+      "tasks": [
+        "晨15min：拼写表前10词各写3遍",
+        "上午：1套选词填空 — 先标词性(n/v/adj/adv)再看原文",
+        "下午：1篇讲座三遍法",
+        "晚：1段翻译 + 对照答案改错",
+        "睡前：翻今日错词"
+      ]
+    },
+    {
+      "phase": "D4-D6 听力强攻",
+      "tasks": [
+        "晨15min：拼写表后10词各写3遍",
+        "上午：1套选词填空（目标5+正确）",
+        "下午：2篇讲座三遍法",
+        "晚：1段翻译 + 背3个翻译句型",
+        "睡前：写作模板默写1遍"
+      ]
+    },
+    {
+      "phase": "D7-D9 输出提升",
+      "tasks": [
+        "晨15min：循环复习拼写表（遮中文写英文）",
+        "上午：选词填空限时12分钟",
+        "下午：1篇全真听力（长对话+篇章+讲座连做）",
+        "晚：1段翻译限时25分钟 + 1篇写作限时30分钟"
+      ]
+    },
+    {
+      "phase": "D10-D14 全真模拟期",
+      "tasks": [
+        "每2天1整套全真模拟（严格计时）",
+        "交替日：错题精析 + 弱项定点补",
+        "每日：翻拼写表3分钟",
+        "翻译+写作各3篇"
+      ]
+    },
+    {
+      "phase": "D15-D18 收网",
+      "tasks": [
+        "不做新题，只复习错题",
+        "默写翻译10句型和20专有名词",
+        "写作模板过3遍",
+        "考前1天：检查准考证身份证耳机"
+      ]
+    }
+  ]
+}
