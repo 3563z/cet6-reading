@@ -273,7 +273,7 @@
         }
       ],
       "signals": "[Q1] 主旨，开头3句 | [Q2] In fact, 慢波睡眠功能 | [Q3] Moreover, REM与程序记忆 | [Q4] Therefore, 对教育的影响 | [Q5] As a result, 结尾论点",
-      "audio": "sprint_lec1.mp3",
+      "audio": "audio/sprint_lecture_1.mp3",
       "explain": [
         "主旨题。开头 \"the relationship between sleep and memory\" 直接点题，全文围绕睡眠如何巩固记忆展开。",
         "细节题。\"the brain replays the day's experiences in a compressed form... at speeds up to twenty times faster\" — 大脑以加速方式重放经历。",
@@ -328,7 +328,7 @@
         }
       ],
       "signals": "[Q1] 主旨，开头定义 | [Q2] In fact, 器官捐献案例 | [Q3] However, 退休储蓄+Strikingly数据 | [Q4] Therefore, 政策应用 | [Q5] Consequently, 结尾伦理问题",
-      "audio": "sprint_lec2.mp3",
+      "audio": "audio/sprint_lecture_2.mp3",
       "explain": [
         "主旨题。开头定义 \"the tendency for people to stick with pre-selected options\" — 人们倾向于接受预设选项。",
         "细节题。\"opt-out system — donation rates typically exceed 90 percent... opt-in... hover around 15 percent\" — 选择退出制大幅提高捐赠率。",
@@ -383,7 +383,7 @@
         }
       ],
       "signals": "[Q1] 主旨，开头数据 | [Q2] In fact, 主要原因 | [Q3] Strikingly, 知识损失 | [Q4] Moreover, 心理影响 | [Q5] Therefore, 结尾观点",
-      "audio": "sprint_lec3.mp3",
+      "audio": "audio/sprint_lecture_3.mp3",
       "explain": [
         "主旨题。\"the mass extinction of the world's languages... 50 and 90 percent will disappear\" — 语言快速消失及其后果。",
         "细节题。\"primary driver is the dominance of a handful of global languages in education, media, commerce\" — 少数全球语言的主导地位。",
