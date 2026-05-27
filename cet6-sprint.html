@@ -61,6 +61,13 @@ th { background:var(--accent-light); }
 .highlight-toggle.active { background:#fff3cd; border-color:#e6a817; color:#856404; }
 mark.user-highlight { background:#fff3cd; padding:0 1px; border-radius:2px; cursor:pointer; }
 .theme-toggle { padding:6px 14px; border:2px solid var(--accent); border-radius:20px; background:transparent; color:var(--accent); cursor:pointer; font-size:13px; transition:all .2s; }
+.timer-bar { display:none; height:4px; background:var(--accent); border-radius:2px; transition:width .5s linear; margin-top:12px; }
+.timer-bar.warn { background:var(--red); }
+.timer-label { display:none; font-size:12px; color:var(--hint); margin-top:4px; }
+.err-log { font-size:13px; line-height:1.8; }
+.err-item { padding:8px 12px; border-left:3px solid var(--red); margin:8px 0; background:var(--accent-light); border-radius:0 6px 6px 0; }
+.err-item .user-ans { color:var(--red); text-decoration:line-through; }
+.err-item .correct-ans { color:var(--green); font-weight:600; }
 </style>
 </head>
 <body>
@@ -72,6 +79,8 @@ mark.user-highlight { background:#fff3cd; padding:0 1px; border-radius:2px; curs
     <button class="highlight-toggle" id="highlight-toggle" onclick="toggleHighlightMode()">🖊️ 勾画模式</button>
     <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙 深色模式</button>
   </div>
+  <div class="timer-bar" id="timer-bar"></div>
+  <div class="timer-label" id="timer-label"></div>
 </div>
 <div class="container">
 
@@ -81,6 +90,7 @@ mark.user-highlight { background:#fff3cd; padding:0 1px; border-radius:2px; curs
   <div class="tab" onclick="showTab('cloze')">📖 选词填空×3</div>
   <div class="tab" onclick="showTab('lecture')">🎧 讲座听力×3</div>
   <div class="tab" onclick="showTab('trans')">✍️ 翻译句型</div>
+  <div class="tab" id="err-tab" style="display:none" onclick="showTab('errors')">📋 错题本</div>
 </div>
 
 <div id="tab-schedule"><div class="section"><h3>📅 D1-D3 选词填空突破</h3><ul style="padding-left:20px;line-height:2.2"><li>晨15min：拼写表前10词各写3遍</li><li>上午：1套选词填空 — 先标词性(n/v/adj/adv)再看原文</li><li>下午：1篇讲座三遍法</li><li>晚：1段翻译 + 对照答案改错</li><li>睡前：翻今日错词</li></ul></div><div class="section"><h3>📅 D4-D6 听力强攻</h3><ul style="padding-left:20px;line-height:2.2"><li>晨15min：拼写表后10词各写3遍</li><li>上午：1套选词填空（目标5+正确）</li><li>下午：2篇讲座三遍法</li><li>晚：1段翻译 + 背3个翻译句型</li><li>睡前：写作模板默写1遍</li></ul></div><div class="section"><h3>📅 D7-D9 输出提升</h3><ul style="padding-left:20px;line-height:2.2"><li>晨15min：循环复习拼写表（遮中文写英文）</li><li>上午：选词填空限时12分钟</li><li>下午：1篇全真听力（长对话+篇章+讲座连做）</li><li>晚：1段翻译限时25分钟 + 1篇写作限时30分钟</li></ul></div><div class="section"><h3>📅 D10-D14 全真模拟期</h3><ul style="padding-left:20px;line-height:2.2"><li>每2天1整套全真模拟（严格计时）</li><li>交替日：错题精析 + 弱项定点补</li><li>每日：翻拼写表3分钟</li><li>翻译+写作各3篇</li></ul></div><div class="section"><h3>📅 D15-D18 收网</h3><ul style="padding-left:20px;line-height:2.2"><li>不做新题，只复习错题</li><li>默写翻译10句型和20专有名词</li><li>写作模板过3遍</li><li>考前1天：检查准考证身份证耳机</li></ul></div></div>
@@ -204,6 +214,13 @@ Therefore, I want to leave you with a challenge to the common assumption that a 
     <div class="word-bank" style="background:#fff"><span class="word-chip" style="background:#27ae60">the Yangtze River 长江</span><span class="word-chip" style="background:#27ae60">the Silk Road 丝绸之路</span><span class="word-chip" style="background:#27ae60">the Great Wall 长城</span><span class="word-chip" style="background:#27ae60">the Forbidden City 故宫</span><span class="word-chip" style="background:#27ae60">Chinese calligraphy 中国书法</span><span class="word-chip" style="background:#27ae60">traditional Chinese medicine 中医</span><span class="word-chip" style="background:#27ae60">the Spring Festival 春节</span><span class="word-chip" style="background:#27ae60">the Mid-Autumn Festival 中秋节</span><span class="word-chip" style="background:#27ae60">high-speed rail 高铁</span><span class="word-chip" style="background:#27ae60">mobile payment 移动支付</span><span class="word-chip" style="background:#27ae60">the sharing economy 共享经济</span><span class="word-chip" style="background:#27ae60">space station 空间站</span><span class="word-chip" style="background:#27ae60">intangible cultural heritage 非物质文化遗产</span><span class="word-chip" style="background:#27ae60">the Belt and Road Initiative 一带一路</span><span class="word-chip" style="background:#27ae60">the Greater Bay Area 大湾区</span><span class="word-chip" style="background:#27ae60">renewable energy 可再生能源</span><span class="word-chip" style="background:#27ae60">carbon neutrality 碳中和</span><span class="word-chip" style="background:#27ae60">rural revitalization 乡村振兴</span><span class="word-chip" style="background:#27ae60">the digital economy 数字经济</span><span class="word-chip" style="background:#27ae60">cultural relics 文物</span></div>
   </div>
 </div>
+<div id="tab-errors" style="display:none">
+  <div class="section">
+    <h3>📋 错题本（全冲刺周期积累）</h3>
+    <p class="hint">每次检查答案后自动收集错题。D15-D18 集中复习，逐一消灭。</p>
+    <div class="err-log" id="err-log">暂无错题。做了题就会自动记录。</div>
+  </div>
+</div>
 
 </div>
 
@@ -277,6 +294,7 @@ function checkCloze(idx, answers) {
       hint.style.cssText = 'color:var(--green);font-size:11px;margin-left:2px;';
       hint.textContent = '→' + ans;
       b.appendChild(hint);
+      saveError('选词填空', idx, i+1, b.dataset.pick||'(空)', ans, CLOZE_EXPLAIN[idx]&&CLOZE_EXPLAIN[idx][i]||'');
     }
     showExplain(b.parentNode, idx, i, 'cloze');
   });
@@ -314,6 +332,7 @@ function checkLec(idx, answers) {
       sp.style.cssText = 'color:var(--green);font-weight:600;font-size:12px;margin-left:6px;';
       sp.textContent = '→ 正确答案: ' + ans;
       myLabel.appendChild(sp);
+      saveError('讲座听力', idx, i+1, sel.value, ans, LEC_EXPLAIN[idx]&&LEC_EXPLAIN[idx][i]||'');
     } else {
       var correctLbl = document.querySelector('input[name="l'+idx+'_'+i+'"][value="'+ans+'"]').closest('label');
       correctLbl.style.background = '#fff3cd';
@@ -323,6 +342,7 @@ function checkLec(idx, answers) {
       sp2.style.cssText = 'color:#856404;font-weight:600;font-size:12px;margin-left:6px;';
       sp2.textContent = '← 未作答，正确答案';
       correctLbl.appendChild(sp2);
+      saveError('讲座听力', idx, i+1, '未作答', ans, LEC_EXPLAIN[idx]&&LEC_EXPLAIN[idx][i]||'');
     }
     if (qDiv) showExplain(qDiv, idx, i, 'lec');
   });
@@ -401,6 +421,73 @@ document.addEventListener('keydown', function(e) {
     el.innerHTML = 'Day ' + dayNum + '/18 · 冲刺训练营';
   }
 })();
+// ========== TIMER (D7-D9) ==========
+var sprintDay = dayNum;
+var timerInterval = null;
+var timerSeconds = 0;
+function startTimer(sec, label) {
+  var bar = document.getElementById('timer-bar');
+  var lbl = document.getElementById('timer-label');
+  if (sprintDay < 7 || sprintDay > 9) return;
+  bar.style.display = 'block'; lbl.style.display = 'block';
+  timerSeconds = sec;
+  bar.style.width = '100%'; bar.classList.remove('warn');
+  updateTimerLabel();
+  timerInterval = setInterval(function() {
+    timerSeconds--;
+    var pct = Math.max(0, timerSeconds / sec * 100);
+    bar.style.width = pct + '%';
+    if (pct < 20) bar.classList.add('warn');
+    updateTimerLabel();
+    if (timerSeconds <= 0) { clearInterval(timerInterval); bar.style.width='0%'; lbl.textContent='⏰ 时间到！'; }
+  }, 1000);
+}
+function updateTimerLabel() {
+  var m = Math.floor(timerSeconds / 60), s = timerSeconds % 60;
+  document.getElementById('timer-label').textContent = '⏱ ' + m + ':' + (s<10?'0':'') + s;
+}
+function stopTimer() { if(timerInterval){ clearInterval(timerInterval); timerInterval=null; } }
+// Auto-start timer when entering cloze/lecture tab in D7-D9
+var origShowTab = showTab;
+showTab = function(name) {
+  stopTimer();
+  if (sprintDay >= 7 && sprintDay <= 9) {
+    if (name === 'cloze') startTimer(720, '限时12分钟');
+    else if (name === 'lecture') startTimer(900, '限时15分钟');
+  }
+  origShowTab(name);
+};
+
+// ========== ERROR LOG ==========
+function saveError(type, setId, qNum, userAns, correctAns, explain) {
+  var log = JSON.parse(localStorage.getItem('sprint-errors') || '[]');
+  log.push({type:type, set:setId, q:qNum, user:userAns, correct:correctAns, explain:explain, date:new Date().toISOString().slice(0,10)});
+  localStorage.setItem('sprint-errors', JSON.stringify(log));
+}
+function renderErrors() {
+  var log = JSON.parse(localStorage.getItem('sprint-errors') || '[]');
+  var el = document.getElementById('err-log');
+  if (!log.length) { el.innerHTML = '暂无错题。做了题就会自动记录。'; return; }
+  var html = '<p class="hint">共 <b>' + log.length + '</b> 条错题</p>';
+  log.forEach(function(e, i) {
+    html += '<div class="err-item"><b>' + (i+1) + '.</b> [' + e.type + ' Set' + (e.set+1) + ' Q' + e.qNum + '] ' + e.date;
+    html += '<br>你的答案: <span class="user-ans">' + e.user + '</span> → 正确答案: <span class="correct-ans">' + e.correct + '</span>';
+    html += '<br><span style="color:var(--hint)">' + (e.explain || '') + '</span></div>';
+  });
+  el.innerHTML = html;
+}
+// Show error tab only D15-D18
+if (sprintDay >= 15) {
+  document.getElementById('err-tab').style.display = '';
+  renderErrors();
+}
+// Clear errors button
+function clearErrors() {
+  if (confirm('确定清空所有错题记录？不可恢复。')) {
+    localStorage.removeItem('sprint-errors');
+    renderErrors();
+  }
+}
 function toggleTheme() {
   var current = document.documentElement.getAttribute('data-theme');
   var next = current === 'dark' ? '' : 'dark';
