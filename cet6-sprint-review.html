@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CET-6 冲刺复习宝典</title>
+<style>
+:root {--bg:#f8f9fa;--card:#fff;--text:#2d3436;--accent:#6c5ce7;--accent2:#00b894;--accent3:#e17055;--accent4:#0984e3;--border:#e0e0e0;--code-bg:#f1f2f6;--tag-bg:#f0f0ff;--hint:#888;--good:#27ae60;--bad:#e74c3c;--warn:#e6a817;}
+[data-theme="dark"] {--bg:#1a1a2e;--card:#16213e;--text:#e0e0e0;--border:#333;--code-bg:#1e1e3a;--tag-bg:#2a2a4e;--hint:#999;}
+* {margin:0;padding:0;box-sizing:border-box;}
+body {font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;padding-bottom:80px;}
+.header {background:linear-gradient(135deg,#6c5ce7,#a29bfe);color:#fff;padding:30px 20px;text-align:center;}
+.header h1 {font-size:24px;}
+.header p {font-size:13px;opacity:.85;margin-top:4px;}
+.toolbar {display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap;}
+.toolbar button {padding:6px 16px;border:2px solid rgba(255,255,255,.5);border-radius:20px;background:transparent;color:#fff;cursor:pointer;font-size:13px;transition:.2s;}
+.toolbar button:hover {background:rgba(255,255,255,.15);}
+.tabs {display:flex;justify-content:center;gap:6px;padding:16px;background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;flex-wrap:wrap;}
+.tab {padding:8px 18px;border:2px solid var(--border);border-radius:8px;background:var(--card);cursor:pointer;font-size:14px;font-weight:600;transition:.2s;}
+.tab:hover {border-color:var(--accent);}
+.tab.active {background:var(--accent);color:#fff;border-color:var(--accent);}
+.container {max-width:860px;margin:0 auto;padding:16px;}
+.section {background:var(--card);border-radius:12px;padding:20px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+.section h3 {font-size:17px;margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid var(--accent);color:var(--accent);}
+.section h4 {font-size:15px;margin:14px 0 8px;color:var(--accent2);}
+.template-box {background:var(--code-bg);border-radius:8px;padding:14px;margin:8px 0;font-size:13px;line-height:2;}
+.template-box .cn {color:var(--hint);font-size:12px;margin-bottom:4px;}
+.template-box .en {color:var(--text);}
+.template-box .label {display:inline-block;background:var(--accent);color:#fff;font-size:11px;padding:1px 8px;border-radius:10px;margin-right:6px;}
+table {width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;}
+th,td {padding:6px 10px;border:1px solid var(--border);text-align:left;}
+th {background:var(--tag-bg);font-weight:600;}
+tr:nth-child(even) {background:var(--code-bg);}
+.chip {display:inline-block;padding:3px 10px;background:var(--tag-bg);border-radius:12px;font-size:12px;margin:2px 3px;}
+.chip.accent {background:var(--accent);color:#fff;}
+.highlight {background:linear-gradient(transparent 60%, #ffeaa7 60%);padding:0 2px;}
+[data-theme="dark"] .highlight {background:linear-gradient(transparent 60%, #5a4a1a 60%);}
+.tip {border-left:3px solid var(--accent2);padding:8px 12px;margin:8px 0;background:var(--code-bg);border-radius:0 8px 8px 0;font-size:13px;}
+.tip::before {content:'💡 ';}
+.warn {border-left:3px solid var(--warn);padding:8px 12px;margin:8px 0;background:var(--code-bg);border-radius:0 8px 8px 0;font-size:13px;}
+.warn::before {content:'⚠️ ';}
+.grid2 {display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.grid3 {display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.vocab-card {background:var(--code-bg);padding:10px;border-radius:8px;text-align:center;}
+.vocab-card .word {font-weight:700;font-size:15px;color:var(--accent);}
+.vocab-card .def {font-size:12px;color:var(--hint);}
+.checklist {list-style:none;padding:0;}
+.checklist li {padding:3px 0;font-size:13px;}
+.checklist li::before {content:'☐ ';color:var(--accent);margin-right:6px;}
+@media(max-width:640px){.grid2,.grid3{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📚 CET-6 冲刺复习宝典</h1>
+  <p>作文 · 翻译 · 听力 · 阅读 · 词汇 — 18天冲刺一页搞定</p>
+  <div class="toolbar">
+    <button onclick="toggleTheme()">🌙 深色模式</button>
+    <button onclick="window.print()">🖨️ 打印</button>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('writing')">✍️ 作文</div>
+  <div class="tab" onclick="showTab('translation')">🌐 翻译</div>
+  <div class="tab" onclick="showTab('listening')">🎧 听力</div>
+  <div class="tab" onclick="showTab('reading')">📖 阅读</div>
+  <div class="tab" onclick="showTab('vocab')">📝 词汇</div>
+</div>
+
+<div class="container">
+
+<!-- ====== WRITING ====== -->
+<div id="tab-writing">
+<div class="section">
+<h3>✍️ 作文万能模板</h3>
+
+<h4>模板一：现象解释型（Explain a Phenomenon）</h4>
+<div class="template-box">
+<div class="cn"><span class="label">Para 1</span> 描述现象 + 引入话题</div>
+<div class="en">In recent years, <span class="highlight">[现象]</span> has drawn widespread public attention. A growing number of <span class="highlight">[人群]</span> are <span class="highlight">[行为]</span>, which has led to heated discussions about its implications for <span class="highlight">[领域]</span>.</div>
+<div class="cn" style="margin-top:10px"><span class="label">Para 2</span> 分析原因（2~3点）</div>
+<div class="en">Several factors account for this phenomenon. <strong>To begin with,</strong> <span class="highlight">[原因1]</span>. <strong>Furthermore,</strong> <span class="highlight">[原因2]</span>. <strong>What is more,</strong> <span class="highlight">[原因3]</span> has also played an indispensable role.</div>
+<div class="cn" style="margin-top:10px"><span class="label">Para 3</span> 总结 + 展望</div>
+<div class="en"><strong>In conclusion,</strong> <span class="highlight">[现象]</span> is a natural outcome of <span class="highlight">[深层原因]</span>. While it poses certain challenges, I am convinced that with proper guidance, <span class="highlight">[积极展望]</span>.</div>
+</div>
+
+<h4>模板二：观点对比型（Compare Views）</h4>
+<div class="template-box">
+<div class="cn"><span class="label">Para 1</span> 引出争议话题</div>
+<div class="en">The issue of whether <span class="highlight">[话题]</span> has long been a subject of debate. People's opinions differ sharply on this matter.</div>
+<div class="cn" style="margin-top:10px"><span class="label">Para 2</span> 一方观点 + 另一方观点</div>
+<div class="en"><strong>Some people argue that</strong> <span class="highlight">[观点A+理由]</span>. They maintain that <span class="highlight">[进一步论证]</span>. <strong>Others, however, hold the opposite view.</strong> They contend that <span class="highlight">[观点B+理由]</span>, citing evidence that <span class="highlight">[例证]</span>.</div>
+<div class="cn" style="margin-top:10px"><span class="label">Para 3</span> 个人观点 + 理由</div>
+<div class="en"><strong>As far as I am concerned,</strong> <span class="highlight">[你的立场]</span>. While <span class="highlight">[承认对方部分合理]</span>, I believe that <span class="highlight">[核心理由]</span>. Only by <span class="highlight">[做法]</span> can we <span class="highlight">[目标]</span>.</div>
+</div>
+
+<h4>模板三：图表作文（Chart/Graph）</h4>
+<div class="template-box">
+<div class="cn"><span class="label">Para 1</span> 描述图表数据</div>
+<div class="en">As is illustrated in the <span class="highlight">[图表类型: chart/graph/table]</span>, <span class="highlight">[主题]</span> has undergone dramatic changes over the past <span class="highlight">[时间段]</span>. To be specific, <span class="highlight">[关键数据1: 从A到B]</span>, while <span class="highlight">[关键数据2]</span>.</div>
+<div class="cn" style="margin-top:10px"><span class="label">Para 2</span> 分析原因</div>
+<div class="en">There are several reasons behind these changes. <strong>First and foremost,</strong> <span class="highlight">[原因1]</span>. <strong>In addition,</strong> <span class="highlight">[原因2]</span>. <strong>Last but not least,</strong> <span class="highlight">[原因3]</span>.</div>
+<div class="cn" style="margin-top:10px"><span class="label">Para 3</span> 趋势预测 + 建议</div>
+<div class="en"><strong>Taking all these factors into account,</strong> we can predict that <span class="highlight">[趋势]</span> will continue in the foreseeable future. It is advisable that <span class="highlight">[建议]</span>.</div>
+</div>
+
+<h4>模板四：应用文（书信/邮件/通知）</h4>
+<div class="template-box">
+<div class="cn"><span class="label">格式</span> 书信 = 称呼 + 正文三段 + 落款</div>
+<div class="en"><strong>Dear <span class="highlight">[收信人]</span>,</strong><br><br>
+<strong>Para 1:</strong> I am writing to <span class="highlight">[目的: express my sincere gratitude / apply for / invite you to]</span>...<br>
+<strong>Para 2:</strong> The reason is that <span class="highlight">[具体内容2-3句]</span>...<br>
+<strong>Para 3:</strong> I would appreciate it if you could <span class="highlight">[期望]</span>. I am looking forward to <span class="highlight">[展望]</span>.<br><br>
+<strong>Yours sincerely,</strong><br><span class="highlight">[署名]</span></div>
+</div>
+</div>
+
+<div class="section">
+<h3>🔥 句型弹药库</h3>
+
+<h4>开头句（6选2背熟）</h4>
+<table>
+<tr><th>功能</th><th>句型</th></tr>
+<tr><td>引出话题</td><td>There is a growing concern about whether...</td></tr>
+<tr><td>描述背景</td><td>With the rapid development of..., ...has become increasingly...</td></tr>
+<tr><td>引用数据</td><td>According to a recent survey, nearly <span class="highlight">[%]</span> of <span class="highlight">[群体]</span>...</td></tr>
+<tr><td>提出争议</td><td>Whether... has triggered a heated debate among the general public.</td></tr>
+<tr><td>个人立场</td><td>From my perspective, the advantages of... far outweigh its drawbacks.</td></tr>
+<tr><td>名人引言</td><td>As <span class="highlight">[名人]</span> once put it, "..."</td></tr>
+</table>
+
+<h4>论证句（正文段）</h4>
+<table>
+<tr><th>功能</th><th>句型</th></tr>
+<tr><td>列举原因</td><td>Several factors contribute to this phenomenon. / The reasons are threefold.</td></tr>
+<tr><td>举例</td><td>A case in point is... / Take... as an illustration. / ...serves as a compelling example.</td></tr>
+<tr><td>对比</td><td>Conversely, / By contrast, / On the flip side,</td></tr>
+<tr><td>因果</td><td>As a result, / Consequently, / This, in turn, leads to...</td></tr>
+<tr><td>让步</td><td>Admittedly, / It is true that..., however, / Despite the fact that...,</td></tr>
+<tr><td>递进</td><td>What is more concerning is that... / More importantly,</td></tr>
+</table>
+
+<h4>结尾句</h4>
+<table>
+<tr><th>功能</th><th>句型</th></tr>
+<tr><td>总结</td><td>In a nutshell, / To sum up, / All in all,</td></tr>
+<tr><td>建议</td><td>It is high time that we took effective measures to...</td></tr>
+<tr><td>呼吁</td><td>Only through collective efforts can we...</td></tr>
+<tr><td>展望</td><td>There is every reason to believe that... will...</td></tr>
+</table>
+
+<h4>🚫 禁用句式（会被判模板作文）</h4>
+<div class="warn">
+<strong>以下句式禁止使用</strong>：has sparked a heated debate · On the one hand... On the other hand... · lies not in... but in... · While both have their merits... · has emerged as a hotly debated topic · the future of... lies in...
+</div>
+</div>
+
+<div class="section">
+<h3>📊 高级替换词（提分利器）</h3>
+<div class="grid2">
+<table>
+<tr><th>普通词</th><th>→ 高级替换</th></tr>
+<tr><td>important</td><td>crucial / vital / indispensable / paramount</td></tr>
+<tr><td>many</td><td>numerous / a multitude of / a host of</td></tr>
+<tr><td>think</td><td>argue / contend / maintain / assert</td></tr>
+<tr><td>good</td><td>beneficial / advantageous / rewarding</td></tr>
+<tr><td>bad</td><td>detrimental / adverse / undesirable</td></tr>
+<tr><td>big</td><td>substantial / considerable / enormous</td></tr>
+<tr><td>show</td><td>demonstrate / illustrate / reveal / indicate</td></tr>
+<tr><td>solve</td><td>address / tackle / resolve / mitigate</td></tr>
+</table>
+<table>
+<tr><th>普通词</th><th>→ 高级替换</th></tr>
+<tr><td>cause</td><td>give rise to / contribute to / account for</td></tr>
+<tr><td>very</td><td>exceedingly / remarkably / exceptionally</td></tr>
+<tr><td>people</td><td>individuals / the general public / citizens</td></tr>
+<tr><td>more and more</td><td>an increasing number of / a growing body of</td></tr>
+<tr><td>pay attention to</td><td>attach importance to / place emphasis on</td></tr>
+<tr><td>help</td><td>facilitate / promote / foster / enhance</td></tr>
+<tr><td>different</td><td>diverse / distinct / a wide range of</td></tr>
+<tr><td>use</td><td>utilize / employ / harness / leverage</td></tr>
+</table>
+</div>
+</div>
+</div>
+
+<!-- ====== TRANSLATION ====== -->
+<div id="tab-translation" style="display:none">
+<div class="section">
+<h3>🌐 翻译高分策略</h3>
+
+<h4>五步翻译法</h4>
+<table>
+<tr><th>步骤</th><th>操作</th><th>注意</th></tr>
+<tr><td>1. 找主干</td><td>每句找主语+谓语+宾语</td><td>中文主语可能在中间，需要重新定位</td></tr>
+<tr><td>2. 拆长句</td><td>中文流水句→切2-3句英文</td><td>在逻辑停顿处（分号、逗号第二个动作）切</td></tr>
+<tr><td>3. 补主语</td><td>无主语句→补主语或改被动</td><td>必须/应当/值得注意的是... → We must / It is worth noting</td></tr>
+<tr><td>4. 加连接词</td><td>中文隐性逻辑→英文显性连接</td><td>Therefore / However / Moreover / As a result</td></tr>
+<tr><td>5. 检查</td><td>主谓一致/冠词/介词/时态</td><td>重点查 the、a/an、单复数、时态一致性</td></tr>
+</table>
+
+<h4>高频翻译句型</h4>
+<table>
+<tr><th>中文特征</th><th>英文处理</th><th>示例</th></tr>
+<tr><td>流水句（逗号连多短句）</td><td>拆成2-3句，或现在分词连接</td><td>移动支付发展迅速，人们不再携带现金。→ Mobile payments have developed rapidly. As a result, people no longer carry cash.</td></tr>
+<tr><td>无主语句</td><td>补主语 we/people + 主动，或改被动</td><td>必须重视环境保护。→ Great importance must be attached to environmental protection.</td></tr>
+<tr><td>"是……的"强调句</td><td>It is... that... 强调结构</td><td>正是在唐朝，诗歌达到了顶峰。→ It was during the Tang Dynasty that poetry reached its peak.</td></tr>
+<tr><td>"不仅……而且"</td><td>Not only... but also...（倒装）</td><td>它不仅影响经济，而且改变生活方式。→ Not only does it affect the economy, but it also transforms lifestyles.</td></tr>
+<tr><td>"……之一"</td><td>one of + 复数名词</td><td>中国是最大的发展中国家之一。→ China is one of the largest developing countries.</td></tr>
+<tr><td>"被称为/被誉为"</td><td>be known as / be hailed as / be referred to as</td><td>苏州被称为东方威尼斯。→ Suzhou is known as the Venice of the East.</td></tr>
+<tr><td>"随着……的发展"</td><td>With the development of... / As... develops</td><td>随着经济的发展→ As the economy develops / With economic growth</td></tr>
+</table>
+</div>
+
+<div class="section">
+<h3>📋 专有名词速记（必考50词）</h3>
+<div class="grid3">
+<div class="vocab-card"><div class="word">the Belt and Road Initiative</div><div class="def">一带一路倡议</div></div>
+<div class="vocab-card"><div class="word">mobile payment</div><div class="def">移动支付</div></div>
+<div class="vocab-card"><div class="word">the Forbidden City</div><div class="def">故宫</div></div>
+<div class="vocab-card"><div class="word">the Silk Road</div><div class="def">丝绸之路</div></div>
+<div class="vocab-card"><div class="word">artificial intelligence</div><div class="def">人工智能</div></div>
+<div class="vocab-card"><div class="word">the Great Wall</div><div class="def">长城</div></div>
+<div class="vocab-card"><div class="word">5G network</div><div class="def">5G网络</div></div>
+<div class="vocab-card"><div class="word">reform and opening-up</div><div class="def">改革开放</div></div>
+<div class="vocab-card"><div class="word">the Spring Festival</div><div class="def">春节</div></div>
+<div class="vocab-card"><div class="word">Confucianism</div><div class="def">儒家思想</div></div>
+<div class="vocab-card"><div class="word">e-commerce</div><div class="def">电子商务</div></div>
+<div class="vocab-card"><div class="word">the Terracotta Warriors</div><div class="def">兵马俑</div></div>
+<div class="vocab-card"><div class="word">paper cutting</div><div class="def">剪纸</div></div>
+<div class="vocab-card"><div class="word">calligraphy</div><div class="def">书法</div></div>
+<div class="vocab-card"><div class="word">the Summer Palace</div><div class="def">颐和园</div></div>
+<div class="vocab-card"><div class="word">traditional Chinese medicine</div><div class="def">中医</div></div>
+<div class="vocab-card"><div class="word">high-speed rail</div><div class="def">高铁</div></div>
+<div class="vocab-card"><div class="word">erhu / pipa / guzheng</div><div class="def">二胡/琵琶/古筝</div></div>
+<div class="vocab-card"><div class="word">the Tang Dynasty</div><div class="def">唐朝</div></div>
+<div class="vocab-card"><div class="word">Beijing Opera</div><div class="def">京剧</div></div>
+<div class="vocab-card"><div class="word">the Yangtze River</div><div class="def">长江</div></div>
+<div class="vocab-card"><div class="word">lunar calendar</div><div class="def">农历</div></div>
+<div class="vocab-card"><div class="word">couplets</div><div class="def">对联</div></div>
+<div class="vocab-card"><div class="word">sharing economy</div><div class="def">共享经济</div></div>
+<div class="vocab-card"><div class="word">live streaming</div><div class="def">直播</div></div>
+<div class="vocab-card"><div class="word">big data</div><div class="def">大数据</div></div>
+<div class="vocab-card"><div class="word">carbon neutrality</div><div class="def">碳中和</div></div>
+<div class="vocab-card"><div class="word">the Four Great Inventions</div><div class="def">四大发明</div></div>
+<div class="vocab-card"><div class="word">renewable energy</div><div class="def">可再生能源</div></div>
+<div class="vocab-card"><div class="word">the Qingming Festival</div><div class="def">清明节</div></div>
+</div>
+</div>
+
+<div class="section">
+<h3>⚠️ 翻译常见坑</h3>
+<div class="warn">
+<strong>中式英语</strong>：中文虚词不要逐字译——"进行"处理→ deal with / handle，"加以"改善→ improve<br>
+<strong>时态错误</strong>：描述历史用过去时，"已"实现用现在完成时<br>
+<strong>冠词漏掉</strong>：专有名词前通常不加the（China不是the China），但山河湖海加the（the Yangtze River）<br>
+<strong>介词搭配</strong>：pay by mobile phone✓ / pay with mobile phone✗
+</div>
+</div>
+</div>
+
+<!-- ====== LISTENING ====== -->
+<div id="tab-listening" style="display:none">
+<div class="section">
+<h3>🎧 讲座听力 · 信号词（拿分关键）</h3>
+<p style="font-size:13px;color:var(--hint);margin-bottom:10px">
+讲座占听力20%分值，答案通常藏在信号词后面。听到下面这些词，立刻竖起耳朵——后面80%概率出答案。
+</p>
+
+<table>
+<tr><th>类型</th><th>信号词</th><th>含义</th></tr>
+<tr><td style="color:var(--accent);font-weight:700">转折</td>
+<td>but, however, nevertheless, yet, on the contrary, instead, actually, in fact, as a matter of fact</td>
+<td>前面说的作废，后面才是真答案</td>
+</tr>
+<tr><td style="color:var(--accent2);font-weight:700">强调</td>
+<td>the most important, it is worth noting that, I'd like to emphasize, what matters is, the key point is, above all</td>
+<td>直接告诉你"这是考点"</td>
+</tr>
+<tr><td style="color:var(--accent3);font-weight:700">因果</td>
+<td>because, since, as, due to, owing to, therefore, consequently, as a result, that's why, the reason is</td>
+<td>原因和结果都可能出题</td>
+</tr>
+<tr><td style="color:var(--accent4);font-weight:700">举例</td>
+<td>for example, for instance, such as, take... as an example, a case in point, let me illustrate</td>
+<td>例子细节常考推断题</td>
+</tr>
+<tr><td style="color:#e84393;font-weight:700">顺序</td>
+<td>first, second, finally, to begin with, next, another, additionally, furthermore, last but not least</td>
+<td>并列列举 → 可能考"以下哪项未提及"</td>
+</tr>
+<tr><td style="color:#fdcb6e;font-weight:700">结论</td>
+<td>in conclusion, to sum up, in short, therefore, thus, the takeaway is, to wrap up</td>
+<td>主旨题答案 = 结论信号词后面那句</td>
+</tr>
+<tr><td style="color:#6c5ce7;font-weight:700">对比</td>
+<td>while, whereas, in contrast, compared with, on the other hand, differ from, similarly, likewise</td>
+<td>比较双方特征都可能出题</td>
+</tr>
+</table>
+</div>
+
+<div class="section">
+<h3>📖 三遍精听法（讲座专用）</h3>
+<table>
+<tr><th>遍次</th><th>操作</th><th>目标</th></tr>
+<tr><td><strong>第1遍</strong></td><td>盲听，不暂停，不做题</td><td>抓主旨：讲了什么？结构是怎样的？</td></tr>
+<tr><td><strong>第2遍</strong></td><td>逐题定位：听信号词→答题</td><td>每题定位到具体句子，标记不确定的</td></tr>
+<tr><td><strong>第3遍</strong></td><td>看script跟读，验证答案</td><td>确认每题定位是否准确，总结错因</td></tr>
+</table>
+<div class="tip">做完三遍后把错题信号词对应的原文句子抄下来，早读3遍。连续积累5篇，正确率至少提20%。</div>
+</div>
+
+<div class="section">
+<h3>🎯 长对话核心场景词汇</h3>
+<div class="grid2">
+<div>
+<h4>🎓 校园场景</h4>
+<table>
+<tr><td>seminar</td><td>研讨会</td></tr>
+<tr><td>dissertation / thesis</td><td>学位论文</td></tr>
+<tr><td>deadline / extension</td><td>截止日期/延期</td></tr>
+<tr><td>scholarship / grant</td><td>奖学金/助学金</td></tr>
+<tr><td>curriculum / syllabus</td><td>课程大纲</td></tr>
+<tr><td>elective / compulsory</td><td>选修课/必修课</td></tr>
+<tr><td>tutorial / lecture</td><td>辅导课/讲座</td></tr>
+<tr><td>plagiarism</td><td>抄袭</td></tr>
+</table>
+</div>
+<div>
+<h4>💼 职场场景</h4>
+<table>
+<tr><td>internship</td><td>实习</td></tr>
+<tr><td>promotion</td><td>晋升</td></tr>
+<tr><td>resign / lay off</td><td>辞职/裁员</td></tr>
+<tr><td>negotiation</td><td>谈判</td></tr>
+<tr><td>budget / revenue</td><td>预算/收入</td></tr>
+<tr><td>clients / colleagues</td><td>客户/同事</td></tr>
+<tr><td>performance review</td><td>绩效评估</td></tr>
+<tr><td>work-life balance</td><td>工作生活平衡</td></tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ====== READING ====== -->
+<div id="tab-reading" style="display:none">
+<div class="section">
+<h3>📖 选词填空 · 词性排除法（15选10）</h3>
+
+<div class="tip">别读完全文再做题——先花30秒把15个词标上词性，然后用<strong>句子语法结构</strong>判断每个空需要什么词性，排除到只剩1~2个候选。</div>
+
+<table>
+<tr><th>空前线索</th><th>需要的词性</th><th>示例</th></tr>
+<tr><td>a/an/the + ___ + 名词</td><td><span class="chip accent">形容词</span></td>
+<td>a ___ challenge → significant</td></tr>
+<tr><td>be + ___</td><td><span class="chip accent">形容词</span> / 过去分词</td>
+<td>is ___ → crucial / determined</td></tr>
+<tr><td>be + ___ + by</td><td><span class="chip accent">过去分词</span></td>
+<td>is ___ by → influenced / driven</td></tr>
+<tr><td>情态动词 + ___</td><td><span class="chip">动词原形</span></td>
+<td>can ___ → solve / address</td></tr>
+<tr><td>介词 + ___</td><td><span class="chip">名词</span> / 动名词</td>
+<td>of ___ → importance / improving</td></tr>
+<tr><td>形容词 + ___</td><td><span class="chip">名词</span></td>
+<td>significant ___ → impact / challenges</td></tr>
+<tr><td>副词 + ___</td><td><span class="chip">形容词</span> / 过去分词</td>
+<td>highly ___ → competitive / regarded</td></tr>
+<tr><td>___ + 宾语</td><td><span class="chip">动词</span></td>
+<td>___ the problem → solve / address</td></tr>
+<tr><td>and/or 前后</td><td><span class="chip">同类词</span></td>
+<td>a and ___ → 也是名词</td></tr>
+</table>
+
+<h4>词性标记速成</h4>
+<table>
+<tr><th>后缀</th><th>词性</th><th>例词</th></tr>
+<tr><td>-tion, -sion, -ment, -ness, -ity, -ance</td><td>名词</td><td>education, development, awareness</td></tr>
+<tr><td>-ive, -ous, -able, -ible, -al, -ful, -less</td><td>形容词</td><td>effective, dangerous, valuable</td></tr>
+<tr><td>-ly</td><td>副词</td><td>rapidly, significantly, increasingly</td></tr>
+<tr><td>-ate, -ize, -ify, en-</td><td>动词</td><td>indicate, realize, identify</td></tr>
+<tr><td>-ed / -ing</td><td>过去分词/现在分词</td><td>increased, increasing</td></tr>
+</table>
+</div>
+
+<div class="section">
+<h3>🔍 仔细阅读 · 题干定位法</h3>
+
+<h4>四步定位法</h4>
+<table>
+<tr><th>步骤</th><th>操作</th><th>时间</th></tr>
+<tr><td><strong>Step 1</strong></td><td>读题干（不看选项！），圈关键词（专有名词、数字、大写、特殊词）</td><td>30秒</td></tr>
+<tr><td><strong>Step 2</strong></td><td>按题文同序原则，回原文找关键词所在句</td><td>每题30秒</td></tr>
+<tr><td><strong>Step 3</strong></td><td>读定位句+上下各1句，用自己的话概括答案</td><td>每题30秒</td></tr>
+<tr><td><strong>Step 4</strong></td><td>用你的概括去匹配选项（同义改写=正确；照抄原文=警惕）</td><td>每题20秒</td></tr>
+</table>
+
+<div class="warn">
+<strong>不要先看选项</strong>——4个选项里有3个干扰项会"污染"你的阅读。先看题干→定位→自己概括→再匹配选项。
+<strong>题文同序是铁律</strong>：如果Q2的答案在Para 3找到，Q1一定在Para 1~2，Q3一定在Para 3之后。如果找不到，说明定位错了。
+</div>
+</div>
+
+<div class="section">
+<h3>🕵️ 六种干扰项，一眼识破</h3>
+<table>
+<tr><th>类型</th><th>特征</th><th>识别方法</th></tr>
+<tr><td><strong>拼凑干扰</strong></td><td>用原文A词+B词组合成原文没有的意思</td><td>查找每个词是否都在原文，但组合意思变了</td></tr>
+<tr><td><strong>张冠李戴</strong></td><td>把A做的事情说成B做的</td><td>核对主语/宾语/时间/地点</td></tr>
+<tr><td><strong>以偏概全</strong></td><td>部分事实 + all/most/every/only</td><td>绝对词出现立即警惕，回原文确认范围</td></tr>
+<tr><td><strong>过度推断</strong></td><td>may→must, could→definitely</td><td>原文用may/might/could → 选项用must/definitely → 错</td></tr>
+<tr><td><strong>反义干扰</strong></td><td>肯定↔否定，原因↔结果互换</td><td>检查肯否定和因果方向</td></tr>
+<tr><td><strong>时态偷换</strong></td><td>will→has, 正在→已经</td><td>核对时态标记词</td></tr>
+</table>
+</div>
+</div>
+
+<!-- ====== VOCABULARY ====== -->
+<div id="tab-vocab" style="display:none">
+<div class="section">
+<h3>📝 六级高频词汇（200词 · 按场景分类）</h3>
+
+<h4>🔬 科技与环境 (40词)</h4>
+<div class="grid3">
+<div class="vocab-card"><div class="word">artificial intelligence</div><div class="def">人工智能</div></div>
+<div class="vocab-card"><div class="word">algorithm</div><div class="def">算法</div></div>
+<div class="vocab-card"><div class="word">automation</div><div class="def">自动化</div></div>
+<div class="vocab-card"><div class="word">breakthrough</div><div class="def">突破</div></div>
+<div class="vocab-card"><div class="word">innovation</div><div class="def">创新</div></div>
+<div class="vocab-card"><div class="word">cutting-edge</div><div class="def">尖端的</div></div>
+<div class="vocab-card"><div class="word">cybersecurity</div><div class="def">网络安全</div></div>
+<div class="vocab-card"><div class="word">genome / genetic</div><div class="def">基因组/遗传的</div></div>
+<div class="vocab-card"><div class="word">renewable energy</div><div class="def">可再生能源</div></div>
+<div class="vocab-card"><div class="word">carbon emission</div><div class="def">碳排放</div></div>
+<div class="vocab-card"><div class="word">biodiversity</div><div class="def">生物多样性</div></div>
+<div class="vocab-card"><div class="word">sustainable</div><div class="def">可持续的</div></div>
+<div class="vocab-card"><div class="word">ecosystem</div><div class="def">生态系统</div></div>
+<div class="vocab-card"><div class="word">deforestation</div><div class="def">森林砍伐</div></div>
+<div class="vocab-card"><div class="word">deteriorate</div><div class="def">恶化</div></div>
+<div class="vocab-card"><div class="word">contaminate</div><div class="def">污染</div></div>
+<div class="vocab-card"><div class="word">deplete</div><div class="def">耗尽</div></div>
+<div class="vocab-card"><div class="word">mitigate</div><div class="def">缓解</div></div>
+<div class="vocab-card"><div class="word">conserve</div><div class="def">保护</div></div>
+<div class="vocab-card"><div class="word">alternative</div><div class="def">替代的/n.替代方案</div></div>
+<div class="vocab-card"><div class="word">implement</div><div class="def">实施</div></div>
+<div class="vocab-card"><div class="word">initiative</div><div class="def">倡议</div></div>
+<div class="vocab-card"><div class="word">consensus</div><div class="def">共识</div></div>
+<div class="vocab-card"><div class="word">oversight</div><div class="def">监管/疏忽</div></div>
+<div class="vocab-card"><div class="word">infrastructure</div><div class="def">基础设施</div></div>
+<div class="vocab-card"><div class="word">autonomous</div><div class="def">自主的</div></div>
+<div class="vocab-card"><div class="word">sophisticated</div><div class="def">精密的/复杂的</div></div>
+<div class="vocab-card"><div class="word">prominent</div><div class="def">突出的</div></div>
+<div class="vocab-card"><div class="word">profound</div><div class="def">深远的</div></div>
+<div class="vocab-card"><div class="word">inevitable</div><div class="def">不可避免的</div></div>
+<div class="vocab-card"><div class="word">vulnerable</div><div class="def">脆弱的</div></div>
+<div class="vocab-card"><div class="word">resilient</div><div class="def">有弹性的/适应力强的</div></div>
+<div class="vocab-card"><div class="word">exponential</div><div class="def">指数的</div></div>
+<div class="vocab-card"><div class="word">feasible</div><div class="def">可行的</div></div>
+<div class="vocab-card"><div class="word">yield</div><div class="def">产生/产量</div></div>
+<div class="vocab-card"><div class="word">undergo</div><div class="def">经历</div></div>
+<div class="vocab-card"><div class="word">trigger</div><div class="def">触发</div></div>
+<div class="vocab-card"><div class="word">stem from</div><div class="def">源于</div></div>
+<div class="vocab-card"><div class="word">account for</div><div class="def">解释/占...比例</div></div>
+<div class="vocab-card"><div class="word">give rise to</div><div class="def">导致</div></div>
+</div>
+
+<h4>📊 经济与社会 (40词)</h4>
+<div class="grid3">
+<div class="vocab-card"><div class="word">prosperity</div><div class="def">繁荣</div></div>
+<div class="vocab-card"><div class="word">recession</div><div class="def">衰退</div></div>
+<div class="vocab-card"><div class="word">fluctuation</div><div class="def">波动</div></div>
+<div class="vocab-card"><div class="word">subsidy</div><div class="def">补贴</div></div>
+<div class="vocab-card"><div class="word">tariff</div><div class="def">关税</div></div>
+<div class="vocab-card"><div class="word">surplus / deficit</div><div class="def">盈余/赤字</div></div>
+<div class="vocab-card"><div class="word">entrepreneur</div><div class="def">企业家</div></div>
+<div class="vocab-card"><div class="word">commodity</div><div class="def">商品</div></div>
+<div class="vocab-card"><div class="word">monopoly</div><div class="def">垄断</div></div>
+<div class="vocab-card"><div class="word">acquisition</div><div class="def">收购</div></div>
+<div class="vocab-card"><div class="word">demographic</div><div class="def">人口统计的</div></div>
+<div class="vocab-card"><div class="word">urbanization</div><div class="def">城市化</div></div>
+<div class="vocab-card"><div class="word">migration / immigrant</div><div class="def">迁移/移民</div></div>
+<div class="vocab-card"><div class="word">inequality</div><div class="def">不平等</div></div>
+<div class="vocab-card"><div class="word">discrimination</div><div class="def">歧视</div></div>
+<div class="vocab-card"><div class="word">welfare</div><div class="def">福利</div></div>
+<div class="vocab-card"><div class="word">literacy</div><div class="def">识字率/素养</div></div>
+<div class="vocab-card"><div class="word">curriculum</div><div class="def">课程</div></div>
+<div class="vocab-card"><div class="word">vocational</div><div class="def">职业的</div></div>
+<div class="vocab-card"><div class="word">prestigious</div><div class="def">有声望的</div></div>
+<div class="vocab-card"><div class="word">advocate</div><div class="def">倡导/v.拥护</div></div>
+<div class="vocab-card"><div class="word">boycott</div><div class="def">抵制</div></div>
+<div class="vocab-card"><div class="word">legislation</div><div class="def">立法</div></div>
+<div class="vocab-card"><div class="word">jurisdiction</div><div class="def">管辖权</div></div>
+<div class="vocab-card"><div class="word">scrutiny</div><div class="def">审查</div></div>
+<div class="vocab-card"><div class="word">comply with</div><div class="def">遵守</div></div>
+<div class="vocab-card"><div class="word">violate</div><div class="def">违反</div></div>
+<div class="vocab-card"><div class="word">impose</div><div class="def">强加/征收</div></div>
+<div class="vocab-card"><div class="word">allocate</div><div class="def">分配</div></div>
+<div class="vocab-card"><div class="word">subsidize</div><div class="def">资助</div></div>
+<div class="vocab-card"><div class="word">thrive</div><div class="def">繁荣发展</div></div>
+<div class="vocab-card"><div class="word">soar</div><div class="def">飙升</div></div>
+<div class="vocab-card"><div class="word">plummet</div><div class="def">暴跌</div></div>
+<div class="vocab-card"><div class="word">diminish</div><div class="def">减少/削弱</div></div>
+<div class="vocab-card"><div class="word">alleviate</div><div class="def">减轻</div></div>
+<div class="vocab-card"><div class="word">aggravate</div><div class="def">加重</div></div>
+<div class="vocab-card"><div class="word">hinder</div><div class="def">阻碍</div></div>
+<div class="vocab-card"><div class="word">facilitate</div><div class="def">促进</div></div>
+<div class="vocab-card"><div class="word">flourish</div><div class="def">繁荣</div></div>
+<div class="vocab-card"><div class="word">deteriorate</div><div class="def">恶化</div></div>
+</div>
+
+<h4>🧠 心理与健康 (30词)</h4>
+<div class="grid3">
+<div class="vocab-card"><div class="word">cognitive</div><div class="def">认知的</div></div>
+<div class="vocab-card"><div class="word">perception</div><div class="def">感知</div></div>
+<div class="vocab-card"><div class="word">consciousness</div><div class="def">意识</div></div>
+<div class="vocab-card"><div class="word">stimulus / stimuli</div><div class="def">刺激(物)</div></div>
+<div class="vocab-card"><div class="word">empathy</div><div class="def">同理心</div></div>
+<div class="vocab-card"><div class="word">resilience</div><div class="def">韧性</div></div>
+<div class="vocab-card"><div class="word">anxiety / depression</div><div class="def">焦虑/抑郁</div></div>
+<div class="vocab-card"><div class="word">insomnia</div><div class="def">失眠</div></div>
+<div class="vocab-card"><div class="word">chronic</div><div class="def">慢性的</div></div>
+<div class="vocab-card"><div class="word">acute</div><div class="def">急性的</div></div>
+<div class="vocab-card"><div class="word">symptom</div><div class="def">症状</div></div>
+<div class="vocab-card"><div class="word">diagnosis</div><div class="def">诊断</div></div>
+<div class="vocab-card"><div class="word">therapy / therapeutic</div><div class="def">治疗/治疗的</div></div>
+<div class="vocab-card"><div class="word">prescription</div><div class="def">处方</div></div>
+<div class="vocab-card"><div class="word">pharmaceutical</div><div class="def">药物的</div></div>
+<div class="vocab-card"><div class="word">immune</div><div class="def">免疫的</div></div>
+<div class="vocab-card"><div class="word">epidemic / pandemic</div><div class="def">流行病/大流行</div></div>
+<div class="vocab-card"><div class="word">vaccine</div><div class="def">疫苗</div></div>
+<div class="vocab-card"><div class="word">nutrition</div><div class="def">营养</div></div>
+<div class="vocab-card"><div class="word">obesity</div><div class="def">肥胖</div></div>
+<div class="vocab-card"><div class="word">sedentary</div><div class="def">久坐的</div></div>
+<div class="vocab-card"><div class="word">metabolism</div><div class="def">新陈代谢</div></div>
+<div class="vocab-card"><div class="word">stigma</div><div class="def">污名</div></div>
+<div class="vocab-card"><div class="word">well-being</div><div class="def">幸福感</div></div>
+<div class="vocab-card"><div class="word">burnout</div><div class="def">倦怠</div></div>
+<div class="vocab-card"><div class="word">mindfulness</div><div class="def">正念</div></div>
+<div class="vocab-card"><div class="word">meditation</div><div class="def">冥想</div></div>
+<div class="vocab-card"><div class="word">fatigue</div><div class="def">疲劳</div></div>
+<div class="vocab-card"><div class="word">adverse</div><div class="def">不利的</div></div>
+<div class="vocab-card"><div class="word">beneficial</div><div class="def">有益的</div></div>
+</div>
+
+<h4>📚 学术高频 (30词)</h4>
+<div class="grid3">
+<div class="vocab-card"><div class="word">hypothesis</div><div class="def">假设</div></div>
+<div class="vocab-card"><div class="word">empirical</div><div class="def">实证的</div></div>
+<div class="vocab-card"><div class="word">qualitative / quantitative</div><div class="def">定性的/定量的</div></div>
+<div class="vocab-card"><div class="word">correlation</div><div class="def">相关性</div></div>
+<div class="vocab-card"><div class="word">causality</div><div class="def">因果关系</div></div>
+<div class="vocab-card"><div class="word">variable</div><div class="def">变量</div></div>
+<div class="vocab-card"><div class="word">paradigm</div><div class="def">范式</div></div>
+<div class="vocab-card"><div class="word">thesis / dissertation</div><div class="def">论文</div></div>
+<div class="vocab-card"><div class="word">bibliography</div><div class="def">参考文献</div></div>
+<div class="vocab-card"><div class="word">peer review</div><div class="def">同行评审</div></div>
+<div class="vocab-card"><div class="word">plagiarism</div><div class="def">抄袭</div></div>
+<div class="vocab-card"><div class="word">abstract</div><div class="def">摘要</div></div>
+<div class="vocab-card"><div class="word">cite / citation</div><div class="def">引用</div></div>
+<div class="vocab-card"><div class="word">integrity</div><div class="def">诚信</div></div>
+<div class="vocab-card"><div class="word">rigorous</div><div class="def">严谨的</div></div>
+<div class="vocab-card"><div class="word">comprehensive</div><div class="def">全面的</div></div>
+<div class="vocab-card"><div class="word">controversial</div><div class="def">有争议的</div></div>
+<div class="vocab-card"><div class="word">plausible</div><div class="def">似乎合理的</div></div>
+<div class="vocab-card"><div class="word">underlying</div><div class="def">根本的</div></div>
+<div class="vocab-card"><div class="word">implicit / explicit</div><div class="def">隐含的/明确的</div></div>
+<div class="vocab-card"><div class="word">preliminary</div><div class="def">初步的</div></div>
+<div class="vocab-card"><div class="word">subsequent</div><div class="def">随后的</div></div>
+<div class="vocab-card"><div class="word">simultaneously</div><div class="def">同时地</div></div>
+<div class="vocab-card"><div class="word">predominantly</div><div class="def">主要地</div></div>
+<div class="vocab-card"><div class="word">exclusively</div><div class="def">排他地/仅仅</div></div>
+<div class="vocab-card"><div class="word">accordingly</div><div class="def">相应地</div></div>
+<div class="vocab-card"><div class="word">nevertheless</div><div class="def">然而</div></div>
+<div class="vocab-card"><div class="word">furthermore</div><div class="def">此外</div></div>
+<div class="vocab-card"><div class="word">consequently</div><div class="def">因此</div></div>
+<div class="vocab-card"><div class="word">notwithstanding</div><div class="def">尽管</div></div>
+</div>
+
+<h4>🎭 文化与艺术 (20词)</h4>
+<div class="grid3">
+<div class="vocab-card"><div class="word">heritage</div><div class="def">遗产</div></div>
+<div class="vocab-card"><div class="word">preservation</div><div class="def">保护</div></div>
+<div class="vocab-card"><div class="word">civilization</div><div class="def">文明</div></div>
+<div class="vocab-card"><div class="word">dynasty</div><div class="def">朝代</div></div>
+<div class="vocab-card"><div class="word">aesthetic</div><div class="def">美学的</div></div>
+<div class="vocab-card"><div class="word">masterpiece</div><div class="def">杰作</div></div>
+<div class="vocab-card"><div class="word">contemporary</div><div class="def">当代的</div></div>
+<div class="vocab-card"><div class="word">portrait / landscape</div><div class="def">肖像画/风景画</div></div>
+<div class="vocab-card"><div class="word">symphony</div><div class="def">交响乐</div></div>
+<div class="vocab-card"><div class="word">choreography</div><div class="def">编舞</div></div>
+<div class="vocab-card"><div class="word">ritual</div><div class="def">仪式</div></div>
+<div class="vocab-card"><div class="word">folklore</div><div class="def">民间传说</div></div>
+<div class="vocab-card"><div class="word">mythology</div><div class="def">神话</div></div>
+<div class="vocab-card"><div class="word">indigenous</div><div class="def">本土的</div></div>
+<div class="vocab-card"><div class="word">exquisite</div><div class="def">精美的</div></div>
+<div class="vocab-card"><div class="word">intricate</div><div class="def">错综复杂的</div></div>
+<div class="vocab-card"><div class="word">inspire / inspiration</div><div class="def">启发/灵感</div></div>
+<div class="vocab-card"><div class="word">depict</div><div class="def">描绘</div></div>
+<div class="vocab-card"><div class="word">portray</div><div class="def">描绘/扮演</div></div>
+<div class="vocab-card"><div class="word">embody</div><div class="def">体现</div></div>
+</div>
+
+<h4>⚡ 动词短语20组（阅读必考）</h4>
+<div class="grid2">
+<table>
+<tr><th>短语</th><th>释义</th></tr>
+<tr><td>break down</td><td>分解/故障/崩溃</td></tr>
+<tr><td>break through</td><td>突破</td></tr>
+<tr><td>bring about</td><td>引起</td></tr>
+<tr><td>carry out</td><td>执行</td></tr>
+<tr><td>come across</td><td>偶然遇到</td></tr>
+<tr><td>cut back on</td><td>削减</td></tr>
+<tr><td>draw on</td><td>利用</td></tr>
+<tr><td>figure out</td><td>弄清楚</td></tr>
+<tr><td>give off</td><td>发出(气味/光/热)</td></tr>
+<tr><td>hold back</td><td>抑制/阻碍</td></tr>
+</table>
+<table>
+<tr><th>短语</th><th>释义</th></tr>
+<tr><td>lay off</td><td>解雇</td></tr>
+<tr><td>look into</td><td>调查</td></tr>
+<tr><td>make up for</td><td>弥补</td></tr>
+<tr><td>put forward</td><td>提出</td></tr>
+<tr><td>rule out</td><td>排除</td></tr>
+<tr><td>set off</td><td>出发/引发</td></tr>
+<tr><td>stand out</td><td>突出</td></tr>
+<tr><td>take on</td><td>承担/呈现</td></tr>
+<tr><td>turn down</td><td>拒绝/调低</td></tr>
+<tr><td>wipe out</td><td>消灭</td></tr>
+</table>
+</div>
+</div>
+</div>
+
+</div><!-- container -->
+
+<script>
+function showTab(name) {
+  ['writing','translation','listening','reading','vocab'].forEach(t => {
+    document.getElementById('tab-'+t).style.display = t===name ? 'block' : 'none';
+  });
+  document.querySelectorAll('.tab').forEach((el,i,a) => {
+    el.classList.toggle('active', a[i] === document.querySelectorAll('.tab')[['writing','translation','listening','reading','vocab'].indexOf(name)]);
+  });
+}
+function toggleTheme() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.documentElement.setAttribute('data-theme', isDark ? '' : 'dark');
+  document.querySelector('.toolbar button').textContent = isDark ? '🌙 深色模式' : '☀️ 浅色模式';
+}
+</script>
+</body>
+</html>
